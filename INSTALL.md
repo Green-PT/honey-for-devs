@@ -14,7 +14,7 @@ you have, or a manual per-tool copy. Pick whichever fits.
 ## Option A — Claude Code plugin marketplace (recommended for Claude Code)
 
 ```
-/plugin marketplace add Green-PT/Honey-I-Shrunk-the-AI
+/plugin marketplace add Green-PT/honey-for-devs
 /plugin install honey@honey
 ```
 
@@ -34,13 +34,13 @@ A `🍯 honey:<mode>` badge appears in your statusline while it's active.
 macOS / Linux / WSL / Git Bash:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.sh | bash
 ```
 
 Windows (PowerShell 5.1+):
 
 ```powershell
-irm https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.ps1 | iex
 ```
 
 The installer detects which agents you have, runs each one's native install
@@ -64,8 +64,8 @@ Pass flags through the pipe with `bash -s --`, e.g.
 ### Manual (no piping)
 
 ```bash
-git clone https://github.com/Green-PT/Honey-I-Shrunk-the-AI.git
-cd Honey-I-Shrunk-the-AI
+git clone https://github.com/Green-PT/honey-for-devs.git
+cd honey-for-devs
 node bin/install.js --list           # see what's detected
 node bin/install.js --dry-run --all  # preview
 node bin/install.js                  # install
@@ -93,7 +93,7 @@ edit the source and run `node scripts/build-rules.js`.
 
 ```bash
 # via the one-liner
-curl -fsSL https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.sh | bash -s -- --uninstall
+curl -fsSL https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.sh | bash -s -- --uninstall
 
 # or from a clone
 node bin/install.js --uninstall

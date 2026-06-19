@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Honey one-line installer (macOS / Linux / WSL / Git Bash).
-#   curl -fsSL https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.sh | bash
 # Pass flags through bash -s, e.g. to also drop editor rule files into the cwd:
 #   curl -fsSL .../install.sh | bash -s -- --with-init
 set -euo pipefail
 
-REPO="https://github.com/Green-PT/Honey-I-Shrunk-the-AI"
+REPO="https://github.com/Green-PT/honey-for-devs"
 DEST="${HOME}/.honey-src"
 
 if ! command -v node >/dev/null 2>&1; then

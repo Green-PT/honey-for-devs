@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Honey (I Shrunk the AI) — write less code and say less about it. A coding skill that cuts agent token cost across every major AI coding tool.",
   "license": "MIT",
-  "repository": "github:Green-PT/Honey-I-Shrunk-the-AI",
-  "homepage": "https://github.com/Green-PT/Honey-I-Shrunk-the-AI",
+  "repository": "github:Green-PT/honey-for-devs",
+  "homepage": "https://github.com/Green-PT/honey-for-devs",
   "bin": {
     "honey-install": "bin/install.js"
   },

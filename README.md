@@ -46,7 +46,7 @@ Claude Code.
 ### Claude Code (plugin marketplace)
 
 ```
-/plugin marketplace add Green-PT/Honey-I-Shrunk-the-AI
+/plugin marketplace add Green-PT/honey-for-devs
 /plugin install honey@honey
 ```
 
@@ -58,13 +58,13 @@ Then `/honey` to turn it on (`/honey lite|full|ultra` to set intensity,
 macOS / Linux / WSL / Git Bash:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.sh | bash
 ```
 
 Windows (PowerShell 5.1+):
 
 ```powershell
-irm https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.ps1 | iex
+irm https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.ps1 | iex
 ```
 
 Add `bash -s -- --with-init` to also drop editor rule files into the current
@@ -74,10 +74,10 @@ repo. Requires Node.js on your PATH. Safe to re-run; skips tools you don't have.
 
 | Platform | Install |
 |----------|---------|
-| Claude Code | `/plugin marketplace add Green-PT/Honey-I-Shrunk-the-AI` then `/plugin install honey@honey` |
-| Codex | `codex plugin marketplace add Green-PT/Honey-I-Shrunk-the-AI` then enable via `/plugins` |
-| GitHub Copilot CLI | `copilot plugin marketplace add Green-PT/Honey-I-Shrunk-the-AI` then `copilot plugin install honey@honey` |
-| Gemini CLI | `gemini extensions install https://github.com/Green-PT/Honey-I-Shrunk-the-AI` |
+| Claude Code | `/plugin marketplace add Green-PT/honey-for-devs` then `/plugin install honey@honey` |
+| Codex | `codex plugin marketplace add Green-PT/honey-for-devs` then enable via `/plugins` |
+| GitHub Copilot CLI | `copilot plugin marketplace add Green-PT/honey-for-devs` then `copilot plugin install honey@honey` |
+| Gemini CLI | `gemini extensions install https://github.com/Green-PT/honey-for-devs` |
 | Cursor | copy `.cursor/rules/honey.mdc` into your project |
 | Windsurf | copy `.windsurf/rules/honey.md` into your project |
 | Cline | copy `.clinerules/honey.md` into your project |

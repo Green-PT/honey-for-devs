@@ -20,7 +20,7 @@ const os = require("os");
 const path = require("path");
 
 const REPO = path.resolve(__dirname, "..");
-const SLUG = "Green-PT/Honey-I-Shrunk-the-AI";
+const SLUG = "Green-PT/honey-for-devs";
 const URL = "https://github.com/" + SLUG;
 const HOME = os.homedir();
 const CLAUDE_DIR = process.env.CLAUDE_CONFIG_DIR || path.join(HOME, ".claude");

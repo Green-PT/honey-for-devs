@@ -1,9 +1,9 @@
 # Honey one-line installer (Windows PowerShell 5.1+).
-#   irm https://raw.githubusercontent.com/Green-PT/Honey-I-Shrunk-the-AI/main/install.ps1 | iex
+#   irm https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.ps1 | iex
 # To pass flags, clone and run bin/install.js directly (see INSTALL.md).
 $ErrorActionPreference = "Stop"
 
-$Repo = "https://github.com/Green-PT/Honey-I-Shrunk-the-AI"
+$Repo = "https://github.com/Green-PT/honey-for-devs"
 $Dest = Join-Path $HOME ".honey-src"
 
 if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
@@ -24,7 +24,7 @@ if (Get-Command git -ErrorAction SilentlyContinue) {
   $zip = Join-Path $env:TEMP "honey.zip"
   Invoke-WebRequest -UseBasicParsing "$Repo/archive/refs/heads/main.zip" -OutFile $zip
   Expand-Archive -Force $zip $env:TEMP
-  Move-Item -Force (Join-Path $env:TEMP "Honey-I-Shrunk-the-AI-main") $Dest
+  Move-Item -Force (Join-Path $env:TEMP "honey-for-devs-main") $Dest
 }
 
 node (Join-Path $Dest "bin/install.js") @args

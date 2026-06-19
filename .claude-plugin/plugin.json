@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Honey (I Shrunk the AI) — reflexive minimal-code + terse-prose discipline that cuts agent token cost while keeping correctness and safety-critical paths exact. Auto-intensity: lite/full/ultra.",
   "author": { "name": "Green-PT", "url": "https://github.com/Green-PT" },
-  "homepage": "https://github.com/Green-PT/Honey-I-Shrunk-the-AI",
-  "repository": "https://github.com/Green-PT/Honey-I-Shrunk-the-AI",
+  "homepage": "https://github.com/Green-PT/honey-for-devs",
+  "repository": "https://github.com/Green-PT/honey-for-devs",
   "license": "MIT",
   "keywords": ["tokens", "yagni", "minimal", "concise", "cost", "terse"],
   "hooks": "./hooks/hooks.json"
