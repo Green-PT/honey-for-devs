@@ -89,6 +89,39 @@ repo. Requires Node.js on your PATH. Safe to re-run; skips tools you don't have.
 All of these are also handled automatically by the one-line installer. See
 [INSTALL.md](INSTALL.md) for manual steps, flags, and uninstall.
 
+## Carbon badge (Claude Code)
+
+When Honey is active, the statusline also shows a live **CO₂ estimate** for the
+session and the **CO₂/$ saved** vs a no-Honey baseline:
+
+```
+🍯 honey:full · 🌿 8.3g CO₂ (saved ~11g · $0.05)
+```
+
+The estimate is a faithful port of [EcoLogits](https://github.com/genai-impact/ecologits)
+v0.8.2 (verified to match the package exactly). Params **and grid switch per
+provider** — Anthropic on AWS Trainium (~500 gCO₂/kWh), OpenAI on Azure (~400),
+Google on GCP (~330) — matched from the model id. All inputs (assumed params,
+per-provider grids, per-mode savings) live in
+[`hooks/eco-config.json`](hooks/eco-config.json); edit and the badge updates.
+
+The badge itself renders **only in Claude Code** (it reads Claude Code's
+transcript, where every model is a Claude model). The provider switching matters
+for [`scripts/eco_report.py`](scripts/eco_report.py), which runs against any
+transcript — Codex/Gemini CLIs would each need their own statusline hook to show
+a live badge there.
+
+> Params are **speculative** — Anthropic discloses none. EcoLogits' coefficient is
+> a single-stream upper bound; heavily-batched production serving is lower. Treat
+> these as a range, not a meter reading.
+
+For the full breakdown (usage + embodied + primary energy) run the real package:
+
+```bash
+pip install ecologits
+python scripts/eco_report.py        # newest session, or --transcript PATH
+```
+
 ## How it stays in sync
 
 The skill is authored **once** in [`skills/honey/SKILL.md`](skills/honey/SKILL.md).
