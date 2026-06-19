@@ -1,0 +1,25 @@
+{
+  "_about": "Assumptions behind Honey's CO2 estimate. Edit freely.",
+  "_engine": "Faithful port of EcoLogits v0.8.2 (genai-impact/ecologits, MIT). scripts/eco_report.py runs the real package for an authoritative breakdown.",
+  "_params_note": "SPECULATIVE — no lab discloses parameter counts. active/total are best-guess billions from tier/pricing. Change them and the badge updates.",
+  "_grid_note": "Per-provider, since they run in different clouds: Anthropic on AWS Trainium (Project Rainier PA/IN/MS ~500), OpenAI on Azure US (~400), Google on GCP (cleaner ~330). Location-based; market-based (renewable PPAs) would be lower.",
+  "grids_gco2_per_kwh": {
+    "anthropic": 500,
+    "openai": 400,
+    "google": 330,
+    "default": 450
+  },
+
+  "_savings_note": "Token reduction vs a no-Honey baseline. 'full' = 0.57 from the README benchmark (Opus 4.8, 20 tasks x3). lite/ultra are estimates.",
+  "savings_vs_baseline": { "lite": 0.35, "full": 0.57, "ultra": 0.65 },
+
+  "default_model": { "active": 100, "total": 300, "provider": "default" },
+  "models": [
+    { "match": ["haiku"],          "active": 10,  "total": 10,   "provider": "anthropic" },
+    { "match": ["sonnet"],         "active": 100, "total": 300,  "provider": "anthropic" },
+    { "match": ["opus"],           "active": 400, "total": 1500, "provider": "anthropic" },
+    { "match": ["gpt-5", "codex", "o3", "o4"], "active": 200, "total": 1000, "provider": "openai" },
+    { "match": ["gpt-4", "gpt-3"], "active": 100, "total": 400,  "provider": "openai" },
+    { "match": ["gemini"],         "active": 100, "total": 400,  "provider": "google" }
+  ]
+}
