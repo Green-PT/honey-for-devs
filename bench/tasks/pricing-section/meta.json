@@ -1,0 +1,8 @@
+{
+  "id": "pricing-section",
+  "lang": "html",
+  "type": "web",
+  "category": "ui-component",
+  "checks": ["viewport", "css", "cta"],
+  "min_sections": 0
+}

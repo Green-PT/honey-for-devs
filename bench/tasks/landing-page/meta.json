@@ -1,0 +1,8 @@
+{
+  "id": "landing-page",
+  "lang": "html",
+  "type": "web",
+  "category": "landing-page",
+  "checks": ["doctype", "title", "viewport", "h1", "nav", "footer", "css", "cta", "img_alt"],
+  "min_sections": 0
+}
