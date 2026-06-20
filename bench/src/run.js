@@ -8,7 +8,7 @@
 //   node src/run.js --mock          # no API, validates the whole pipeline for free
 //   MODEL=claude-opus-4-8 RUNS=3 node src/run.js --variants honey,baseline --tasks flatten
 //
-// Env: MODEL, JUDGE_MODEL, RUNS, THINKING (token budget, 0=off), CONCURRENCY.
+// Env: MODEL, JUDGE_MODELS (comma list = panel), RUNS, THINKING (token budget, 0=off), CONCURRENCY.
 
 const fs = require("fs");
 const path = require("path");
@@ -26,7 +26,12 @@ const flag = (name) => {
 };
 const MOCK = args.includes("--mock");
 const MODEL = process.env.MODEL || "claude-opus-4-8";
-const JUDGE_MODEL = process.env.JUDGE_MODEL || MODEL;
+// Judge panel: median of N models cancels single-judge self-preference and noise.
+// Default to the model under test; pass JUDGE_MODELS=a,b,c for a panel.
+const JUDGE_MODELS = (process.env.JUDGE_MODELS || process.env.JUDGE_MODEL || MODEL)
+  .split(",")
+  .map((s) => s.trim())
+  .filter(Boolean);
 const RUNS = Number(process.env.RUNS || 1);
 const THINKING = Number(process.env.THINKING || 0);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4);
@@ -149,12 +154,17 @@ async function runCell(task, variantName, system, run) {
   let code = extractCode(gen.text, lang);
   if (web && !/<(html|body|main|section|div)\b/i.test(code)) code = gen.text; // raw, unfenced HTML
   const g = web ? gradeWeb(task, code) : grade(task, code);
-  const j = await judge({
-    model: JUDGE_MODEL,
-    taskPrompt: task.prompt,
-    candidateOutput: gen.text,
-    type: web ? "web" : "code",
-  });
+
+  // judge panel: score with each model, headline = median (robust to one harsh/lenient judge)
+  const panel = await Promise.all(
+    JUDGE_MODELS.map((m) =>
+      judge({ model: m, taskPrompt: task.prompt, candidateOutput: gen.text, type: web ? "web" : "code" })
+        .then((r) => ({ model: m, ...r }))
+    )
+  );
+  const scores = panel.map((p) => p.score).filter((s) => s != null);
+  const judges = Object.fromEntries(panel.map((p) => [p.model, p.score]));
+
   const { gco2 } = eco.estimate(MODEL, gen.usage.output, cfg);
   return {
     variant: variantName,
@@ -165,11 +175,21 @@ async function runCell(task, variantName, system, run) {
     usage: gen.usage,
     passed: g.passed,
     grade_detail: g.detail,
-    judge: j.score,
-    judge_note: j.note,
+    judge: median(scores),
+    judge_min: scores.length ? Math.min(...scores) : null,
+    judge_max: scores.length ? Math.max(...scores) : null,
+    judges,
+    judge_note: panel[0] ? panel[0].note : "",
     gco2,
     reply: gen.text,
   };
+}
+
+function median(xs) {
+  if (!xs.length) return null;
+  const s = [...xs].sort((a, b) => a - b);
+  const m = Math.floor(s.length / 2);
+  return s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;
 }
 
 // --- main ----------------------------------------------------------------------
@@ -183,7 +203,7 @@ async function runCell(task, variantName, system, run) {
     for (const task of tasks) for (let r = 0; r < RUNS; r++) cells.push({ v, task, r });
 
   console.log(
-    `${MOCK ? "[MOCK] " : ""}model=${MODEL} judge=${JUDGE_MODEL} variants=${VARIANTS.join(",")} ` +
+    `${MOCK ? "[MOCK] " : ""}model=${MODEL} judge=${JUDGE_MODELS.join("+")} variants=${VARIANTS.join(",")} ` +
       `tasks=${tasks.length} runs=${RUNS} thinking=${THINKING} -> ${cells.length} generations`
   );
 
@@ -208,14 +228,14 @@ async function runCell(task, variantName, system, run) {
     fs.writeFileSync(f, rec.reply);
   }
   const slim = records.map(({ reply, ...r }) => r);
-  fs.writeFileSync(path.join(outDir, "results.json"), JSON.stringify({ meta: { model: MODEL, judge: JUDGE_MODEL, runs: RUNS, thinking: THINKING, mock: MOCK }, records: slim }, null, 2));
+  fs.writeFileSync(path.join(outDir, "results.json"), JSON.stringify({ meta: { model: MODEL, judge: JUDGE_MODELS, runs: RUNS, thinking: THINKING, mock: MOCK }, records: slim }, null, 2));
 
   const { aggregate, table } = require("./report");
   const rows = aggregate(records, ALL_VARIANTS.filter((v) => VARIANTS.includes(v)), MODEL);
   const tbl = table(rows, ALL_VARIANTS.filter((v) => VARIANTS.includes(v)));
   const md =
     `# Honey benchmark results\n\n` +
-    `model: \`${MODEL}\` · judge: \`${JUDGE_MODEL}\` · tasks: ${tasks.length} · runs: ${RUNS}` +
+    `model: \`${MODEL}\` · judge: \`${JUDGE_MODELS.join("+")}\` · tasks: ${tasks.length} · runs: ${RUNS}` +
     `${THINKING ? ` · thinking: ${THINKING}` : ""}${MOCK ? " · **MOCK**" : ""}\n\n` +
     `${tbl}\n\n` +
     `- **Tests pass** — objective: extracted code run against unit tests.\n` +

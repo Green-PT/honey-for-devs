@@ -19,7 +19,11 @@ Per task × variant × run:
 1. **Objective correctness** — the code block is extracted from the reply, written to disk,
    and run against a real unit test (`tasks/<id>/test.{py,js}`). Pass = exit 0. No vibes.
 2. **Quality** — an LLM judge scores the reply 0–100 on correctness/completeness/clarity,
-   explicitly told *not* to reward length or penalize terseness (see [`src/judge.js`](src/judge.js)).
+   explicitly told *not* to reward length, penalize terseness, penalize correct stdlib
+   delegation, or invent requirements (see [`src/judge.js`](src/judge.js)). Pass
+   `JUDGE_MODELS=a,b,c` to score with a **panel** — the headline value is the median, which
+   cancels a single judge's self-preference or harshness. `src/rejudge.js` re-scores saved
+   replies with any panel without regenerating, to tell a real delta from judge noise.
 3. **Tokens** — input/output/cache from the API `usage`.
 4. **CO₂** — via the repo's EcoLogits port ([`hooks/eco.js`](../hooks/eco.js)), from output tokens.
 5. **$** — cache-aware (see below), rates in [`pricing.json`](pricing.json).
