@@ -99,6 +99,7 @@ reach for at a specific moment.
 | Name | Kind | What it does |
 |------|------|--------------|
 | `honey` | core skill (always-on) | the three levers, applied reflexively to every response. `/honey [lite\|full\|ultra\|off]` |
+| `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
@@ -114,6 +115,11 @@ with zero loss (`npm run bench:hive`). Live, the skills hold up too — honey �
 honey-review −70%, hive-reviewer −43% output tokens at passing correctness
 (`npm run bench:skills`). See [`bench/hive/RESULTS.md`](bench/hive/RESULTS.md) and
 [`bench/skills/RESULTS.md`](bench/skills/RESULTS.md).
+
+On **user-facing** work — where the core skill *spends* tokens because polish is the
+spec — `honey-design` keeps the same rendered polish for **−19% output tokens** vs no
+skill (judge 92 vs 90), beating the core skill on both axes across 7 landing-page/UI
+tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 
 > **Honesty note.** Earlier versions of this README quoted `92% / 78% / 73%` quality
 > and `−57% / −65% / −70%` tokens from an unpublished run. Those don't reproduce —
