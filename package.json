@@ -6,20 +6,29 @@
   "repository": "github:Green-PT/honey-for-devs",
   "homepage": "https://github.com/Green-PT/honey-for-devs",
   "bin": {
-    "honey-install": "bin/install.js"
+    "honey-install": "bin/install.js",
+    "esf": "bin/esf.js"
   },
   "scripts": {
+    "bench:esf": "node bench/esf/run.mjs",
+    "bench:formats": "node bench/esf/formats.mjs",
     "build": "node scripts/build-rules.js",
     "check": "node scripts/build-rules.js --check",
-    "test": "node scripts/build-rules.js --check"
+    "test": "node --test esf/*.test.js && node scripts/build-rules.js --check"
   },
   "files": [
     "bin",
     "hooks",
+    "esf",
     "scripts",
     "skills",
     "commands",
     ".claude-plugin",
     "AGENTS.md"
-  ]
+  ],
+  "devDependencies": {
+    "@anthropic-ai/tokenizer": "^0.0.4",
+    "@toon-format/toon": "^2.3.0",
+    "gpt-tokenizer": "^3.4.0"
+  }
 }

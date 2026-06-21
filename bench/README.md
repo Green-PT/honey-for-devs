@@ -48,6 +48,9 @@ npm run bench:mock              # full pipeline, no API, no cost — validates e
 
 export ANTHROPIC_API_KEY=sk-...
 npm run bench                   # live
+
+export OPENAI_API_KEY=sk-...
+MODEL=gpt-5.4 STAMP=openai npm run bench
 ```
 
 Knobs (env):

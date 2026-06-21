@@ -94,26 +94,34 @@ If compressing makes the reader work to recover the meaning, you moved cost, not
 ## Lever 3 — compress agent-to-agent messages
 
 When the reader is **another agent, not a human** (subagent return, orchestrator↔worker
-handoff, LLM-read payload), drop human formatting for the densest format the
-receiver parses losslessly. Fires **only** here — never emit a wire format as a
-user-facing answer. Pick by data shape:
+handoff, LLM-read payload), drop human formatting for the densest format the receiver
+parses losslessly. Fires **only** here — never emit a wire format as a user-facing answer.
 
-- **Uniform array of same-shaped records → TOON tabular.** Field names once in a
-  header, then bare rows with an explicit count:
-  ```
-  findings[3]{sev,issue}:
-    H,token never expires
-    M,no rate limiting
-  ```
-  Drops JSON's per-row key repetition (~50% fewer tokens vs JSON, lossless). Keep
-  delimiter chars out of values.
-- **Everything else → compressed JSON** (minified, short keys): nested, irregular,
-  or typed data; 1–2 records; or any schema-validated handoff. When in doubt, use
-  it — a misparsed dense format costs more than it saved.
+**These beat any format choice** — measured equal across formats, frontier models included:
 
-**Verify on read:** a dense misparse is *silent* — the reader may confabulate.
-Treat the declared count (`[N]`) as a checksum. **Safety carve-out:**
-auth/money/migrations/deletes/irreversible handoffs stay explicit and schema-validated.
+- **Compact, never pretty.** Minified over indented JSON — pretty-printing is ~+55% tokens for nothing.
+- **Address records by stable key, never by position.** "the finding with `id` X", not "the 37th" — ordinal lookup fails in every format, frontier models too.
+- **Aggregate in code, never make the model count rows.** "how many match X" scores ~0% even on frontier models. Filter/tally in the program; pass the model the number.
+- **Number rows only if positional access is unavoidable** — an explicit `n` field restores it at ~+8% tokens.
+
+**Then pick the format by shape** (token rank is secondary — comprehension ties for real lookups):
+
+- **Default → compressed JSON.** Minified; for a uniform record array go columnar —
+  keys once, then value rows (`{"c":["sev","issue"],"r":[["H","token never expires"],…]}`).
+  ~−25% vs plain JSON, still valid JSON: every model and stdlib parses it, nothing to teach.
+- **Opt-in → ESF**, only for high-volume, **cached**, record-array-heavy pipes you own
+  end-to-end. Buys a further ~6–10%, but costs a ~120-token format primer plus the bundled
+  `esf` codec, and *loses* below a few messages or on small/scalar payloads:
+  ```
+  !esf/1
+  findings[2]{sev,issue}
+  H\ttoken never expires
+  M\tno rate limiting
+  ```
+
+**Verify on read:** a dense misparse is *silent* — the reader may confabulate. Treat the
+declared count (`[N]`) as a checksum. **Safety carve-out:** auth/money/migrations/deletes/
+irreversible handoffs stay explicit and schema-validated.
 
 ## Examples
 

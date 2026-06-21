@@ -55,8 +55,23 @@ safe to:
 - **User-facing** — the carve-out keeps Honey from compressing polish, so it spends
   *more* (+10%) and earns the top quality score; Ponytail strips hardest and loses
   the most quality.
-- **Agent-to-agent** — Honey's TOON/compact-JSON lever cuts handoff size in half
+- **Agent-to-agent** — Honey's ESF/compact-JSON lever cuts handoff size in half
   with zero loss of recovery: its biggest, cleanest win.
+
+## Efficient Structured Format
+
+Honey includes [ESF](esf/SPEC.md), a zero-dependency, schema-first format for
+agent handoffs. Repeated record keys are emitted once; declared row counts catch
+truncated messages; JSON-compatible cells preserve types.
+
+The reproducible [ESF/TOON/JSON benchmark](bench/esf/RESULTS.md) measures bytes,
+two tokenizer estimates, codec speed, and lossless recovery across five agent
+handoff shapes. Run it with `npm run bench:esf`.
+
+```bash
+printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]}' | esf encode
+esf decode < handoff.esf
+```
 
 Pick Honey when you want the best quality-per-token, especially in Claude Code.
 
