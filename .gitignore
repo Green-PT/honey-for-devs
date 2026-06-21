@@ -15,3 +15,6 @@ yarn-error.log*
 # Python bytecode
 __pycache__/
 *.pyc
+
+# CCR runtime cache
+.honey-ccr/
