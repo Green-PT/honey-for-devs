@@ -68,6 +68,7 @@ def main():
     grids = CFG["grids_gco2_per_kwh"]
     ADPE, PE = 7.4e-8, 9.99  # EcoLogits world-mix defaults for ADPe / primary energy
     R = CFG["savings_vs_baseline"].get(args.mode, 0)
+    B = CFG.get("serving_concurrency", 1) or 1  # single-stream ceiling -> served (see _serving_note)
 
     per = output_tokens_by_model(tx)
     energy = gwp = tokens = 0.0
@@ -81,12 +82,13 @@ def main():
         energy += _mean(r.energy.value)
         gwp += _mean(r.gwp.value)
         tokens += out
-        print(f"  {model:32} {out:>8,} tok  {p['provider']:9} @{grids.get(p['provider'], grids['default'])}g/kWh  -> {_mean(r.gwp.value)*1000:.2f} g")
+        print(f"  {model:32} {out:>8,} tok  {p['provider']:9} @{grids.get(p['provider'], grids['default'])}g/kWh  -> {_mean(r.gwp.value)*1000/B:.2f} g served")
     k = R / (1 - R) if R < 1 else 0
     print(f"output tok : {int(tokens):,}")
-    print(f"energy     : {energy*1000:.2f} Wh")
-    print(f"CO2eq      : {gwp*1000:.2f} g  (usage + embodied)")
-    print(f"saved (~{int(R*100)}% vs no-Honey): {gwp*1000*k:.2f} g CO2eq")
+    print(f"energy     : {energy*1000/B:.2f} Wh  (served, /{B} batching)")
+    print(f"CO2eq      : {gwp*1000/B:.2f} g  (served, usage + embodied)")
+    print(f"saved (~{int(R*100)}% vs no-Honey): {gwp*1000/B*k:.2f} g CO2eq")
+    print(f"ceiling    : {gwp*1000:.2f} g  (EcoLogits single-stream, batch=1)")
 
 
 def _mean(v):

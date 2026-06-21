@@ -11,3 +11,7 @@ yarn-error.log*
 
 # Local Honey state (created at runtime, not source)
 .honey-active
+
+# Python bytecode
+__pycache__/
+*.pyc

@@ -3,6 +3,12 @@
 // Mean-value path only — we want one number for the badge, not the +/-1.96 sigma band.
 // Grid intensity comes from eco-config.json so the estimate reflects where Claude
 // actually runs (AWS Trainium, PA/IN/MS ~500 gCO2/kWh), not EcoLogits' world mix.
+//
+// impacts() is the verbatim single-stream (batch-size-1) EcoLogits figure — an
+// upper bound that assigns one request the whole GPU set for the full latency.
+// estimate() divides that ceiling by eco-config.json's serving_concurrency to
+// report realistic SERVED (continuously-batched) impact, and also returns the
+// untouched ceiling. See the _serving_note in eco-config.json for the rationale.
 // For the authoritative figure (embodied + ADPe + primary energy) run the real
 // package via scripts/eco_report.py — this JS exists to keep the statusline fast
 // and dependency-free.
@@ -60,10 +66,20 @@ function gridFor(provider, cfg) {
   return (g[provider] != null ? g[provider] : g.default) / 1000; // -> kgCO2eq/kWh
 }
 
+// Served estimate: the faithful single-stream ceiling divided by serving_concurrency
+// (continuous-batching amortization). Returns the served figure as `gco2` plus the
+// untouched single-stream `gco2Ceiling` and the `concurrency` used.
 function estimate(model, outTokens, cfg) {
   cfg = cfg || loadConfig();
   const p = resolveParams(model, cfg);
-  return impacts(p.active, p.total, outTokens, gridFor(p.provider, cfg));
+  const B = cfg.serving_concurrency > 0 ? cfg.serving_concurrency : 1;
+  const ceiling = impacts(p.active, p.total, outTokens, gridFor(p.provider, cfg));
+  return {
+    energyKwh: ceiling.energyKwh / B,
+    gco2: ceiling.gco2 / B,
+    gco2Ceiling: ceiling.gco2,
+    concurrency: B,
+  };
 }
 
 module.exports = { loadConfig, resolveParams, impacts, estimate, gridFor };

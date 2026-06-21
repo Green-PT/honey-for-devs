@@ -113,11 +113,11 @@ parses losslessly. Fires **only** here — never emit a wire format as a user-fa
 - **Default → compressed JSON.** Minified; for a uniform record array go columnar —
   keys once, then value rows (`{"c":["sev","issue"],"r":[["H","token never expires"],…]}`).
   ~−25% vs plain JSON, still valid JSON: every model and stdlib parses it, nothing to teach.
-- **Opt-in → ESF**, only for high-volume, **cached**, record-array-heavy pipes you own
+- **Opt-in → ESO**, only for high-volume, **cached**, record-array-heavy pipes you own
   end-to-end. Buys a further ~6–10%, but costs a ~120-token format primer plus the bundled
-  `esf` codec, and *loses* below a few messages or on small/scalar payloads:
+  `eso` codec, and *loses* below a few messages or on small/scalar payloads:
   ```
-  !esf/1
+  !eso/1
   findings[2]{sev,issue}
   H\ttoken never expires
   M\tno rate limiting

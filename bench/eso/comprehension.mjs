@@ -6,11 +6,11 @@ import { decode as toonDecode, encode as toonEncode } from "@toon-format/toon";
 
 const require = createRequire(import.meta.url);
 const { complete } = require("../src/client.js");
-const { decode: esfDecode, encode: esfEncode } = require("../../esf");
+const { decode: esoDecode, encode: esoEncode } = require("../../eso");
 
 // Token efficiency is settled by run.mjs. This harness measures the other half of
 // "efficient vs quality": can a model actually READ each format and answer questions
-// that require parsing scalars, record arrays, AND nested values? ESF's nested values
+// that require parsing scalars, record arrays, AND nested values? ESO's nested values
 // are compact JSON cells, so the nested questions are where it is most at risk.
 
 const finding = (i) => ({
@@ -28,7 +28,7 @@ const document = {
   findings: Array.from({ length: 12 }, (_, i) => finding(i)),
   context: {
     repository: "greenpt/honey",
-    branch: "feature/esf",
+    branch: "feature/eso",
     constraints: ["no new runtime dependencies", "preserve public API"],
     environment: { runtime: "node", version: 22 },
   },
@@ -90,21 +90,21 @@ const formats = {
   JSON: (d) => JSON.stringify(d, null, 0),
   "JSON-columnar": (d) => JSON.stringify(colEncode(d)),
   TOON: (d) => toonEncode(d),
-  ESF: (d) => esfEncode(d),
+  ESO: (d) => esoEncode(d),
 };
 // Sanity: every format must round-trip this document before we trust any answer.
 assert.deepEqual(JSON.parse(formats.JSON(document)), document);
 assert.deepEqual(colDecode(JSON.parse(formats["JSON-columnar"](document))), document);
 assert.deepEqual(toonDecode(formats.TOON(document)), document);
-assert.deepEqual(esfDecode(formats.ESF(document)), document);
+assert.deepEqual(esoDecode(formats.ESO(document)), document);
 
-const models = (process.env.ESF_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
+const models = (process.env.ESO_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
   .split(",").map((m) => m.trim()).filter(Boolean);
-const repeats = Number(process.env.ESF_REPEATS || 1);
+const repeats = Number(process.env.ESO_REPEATS || 1);
 
 const system =
   "You read a structured agent-to-agent message and answer a question about it. " +
-  "The message may be in JSON, TOON, or ESF (a compact tab-delimited format). " +
+  "The message may be in JSON, TOON, or ESO (a compact tab-delimited format). " +
   "Answer with ONLY the requested value, no explanation, no punctuation, no units.";
 
 async function ask(model, encoded, question) {
@@ -140,7 +140,7 @@ for (const model of models) {
 }
 
 const pct = (c, t) => (t ? `${((c / t) * 100).toFixed(1)}%` : "n/a");
-let report = `# ESF Comprehension vs TOON vs JSON\n\n`;
+let report = `# ESO Comprehension vs TOON vs JSON\n\n`;
 report += `Models: ${models.join(", ")} · ${repeats} repeat(s) · ${questions.length} questions.\n`;
 report += `Each answer is checked against the source object. Accuracy is the quality axis;\n`;
 report += `tokens are the efficiency axis. The best format maximizes accuracy per token.\n\n`;
@@ -155,7 +155,7 @@ if (misses.length) {
     report += `| ${m.format} | ${m.model} | ${m.probes} | \`${m.want}\` | \`${String(m.got).slice(0, 40)}\` |\n`;
   }
 }
-report += `\nRun with \`ESF_MODELS=... ESF_REPEATS=3 node bench/esf/comprehension.mjs\`. Requires an API key.\n`;
+report += `\nRun with \`ESO_MODELS=... ESO_REPEATS=3 node bench/eso/comprehension.mjs\`. Requires an API key.\n`;
 
 fs.writeFileSync(new URL("./COMPREHENSION.md", import.meta.url), report);
 console.log(report);

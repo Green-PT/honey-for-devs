@@ -7,19 +7,19 @@
   "homepage": "https://github.com/Green-PT/honey-for-devs",
   "bin": {
     "honey-install": "bin/install.js",
-    "esf": "bin/esf.js"
+    "eso": "bin/eso.js"
   },
   "scripts": {
-    "bench:esf": "node bench/esf/run.mjs",
-    "bench:formats": "node bench/esf/formats.mjs",
+    "bench:eso": "node bench/eso/run.mjs",
+    "bench:formats": "node bench/eso/formats.mjs",
     "build": "node scripts/build-rules.js",
     "check": "node scripts/build-rules.js --check",
-    "test": "node --test esf/*.test.js && node scripts/build-rules.js --check"
+    "test": "node --test eso/*.test.js && node scripts/build-rules.js --check"
   },
   "files": [
     "bin",
     "hooks",
-    "esf",
+    "eso",
     "scripts",
     "skills",
     "commands",

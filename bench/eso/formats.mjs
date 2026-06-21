@@ -7,12 +7,12 @@ import { decode as toonDecode, encode as toonEncode } from "@toon-format/toon";
 import { countTokens as o200kTokens } from "gpt-tokenizer/encoding/o200k_base";
 
 const require = createRequire(import.meta.url);
-const { decode: esfDecode, encode: esfEncode } = require("../../esf");
+const { decode: esoDecode, encode: esoEncode } = require("../../eso");
 const lock = require("../../package-lock.json");
 const version = (name) => lock.packages[`node_modules/${name}`].version;
 
-// Broaden the field beyond JSON/TOON/ESF. The question this answers: is a custom
-// format (ESF) actually worth it for agent-to-agent messages, or does "just compress
+// Broaden the field beyond JSON/TOON/ESO. The question this answers: is a custom
+// format (ESO) actually worth it for agent-to-agent messages, or does "just compress
 // the JSON" (columnar JSON — still valid JSON, parseable by every model and stdlib)
 // capture most of the win at a fraction of the quality risk?
 //
@@ -44,7 +44,7 @@ const datasets = {
   "nested context": {
     from: "orchestrator", to: "worker", kind: "implementation",
     context: {
-      repository: "greenpt/honey", branch: "feature/esf",
+      repository: "greenpt/honey", branch: "feature/eso",
       constraints: ["no new runtime dependencies", "preserve public API"],
       environment: { runtime: "node", version: 22 },
     },
@@ -98,7 +98,7 @@ const formats = {
   "JSON (pretty)": { encode: (d) => JSON.stringify(d, null, 2), decode: JSON.parse },
   "JSON (columnar)": { encode: (d) => JSON.stringify(colEncode(d)), decode: (s) => colDecode(JSON.parse(s)) },
   TOON: { encode: toonEncode, decode: toonDecode },
-  ESF: { encode: esfEncode, decode: esfDecode },
+  ESO: { encode: esoEncode, decode: esoDecode },
 };
 
 const encoded = {};
@@ -154,15 +154,15 @@ ${perDataset.join("\n")}
 - **JSON (pretty)** is the realistic baseline models emit unprompted — the most wasteful.
 - **JSON (columnar)** keeps full JSON validity (every model + stdlib parses it) while
   deduping record keys. It captures most of the structural win with near-zero quality risk.
-- **TOON / ESF** drop JSON punctuation too, so they edge columnar JSON on tokens, but
+- **TOON / ESO** drop JSON punctuation too, so they edge columnar JSON on tokens, but
   require a custom parser and put comprehension at stake — the axis this size bench cannot
   measure. See \`comprehension.mjs\` (needs an API key) for that half.
-- The efficiency gap between columnar JSON and ESF is the price of leaving JSON-land.
+- The efficiency gap between columnar JSON and ESO is the price of leaving JSON-land.
   If that gap is small, "just compress the JSON" may be the better quality-adjusted choice.
 
 ## Method
 
-- TOON: \`@toon-format/toon@${version("@toon-format/toon")}\`. ESF: local \`!esf/1\` codec.
+- TOON: \`@toon-format/toon@${version("@toon-format/toon")}\`. ESO: local \`!eso/1\` codec.
 - Columnar JSON: uniform record arrays → \`{"#c":[cols],"#r":[rows]}\`, still valid JSON.
 - OpenAI count: \`gpt-tokenizer@${version("gpt-tokenizer")}\` o200k_base. Claude: \`@anthropic-ai/tokenizer@${version("@anthropic-ai/tokenizer")}\`.
 - Run with \`npm run bench:formats\`.

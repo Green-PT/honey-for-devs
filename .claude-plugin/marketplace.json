@@ -12,11 +12,11 @@
     {
       "name": "honey",
       "source": "./",
-      "description": "Reflexive minimal-code (YAGNI/stdlib-first) + terse-prose discipline that cuts agent token cost while keeping correctness and safety-critical paths exact. Auto-intensity: lite/full/ultra.",
+      "description": "Three reflexive levers that cut agent token cost — less code (YAGNI/stdlib-first), less prose, denser agent-to-agent handoffs (ESO/compact-JSON) — plus on-demand satellites (review, eco, gain, compress) and a hive of read-only subagents. Auto-intensity lite/full/ultra; safety-critical paths stay exact.",
       "version": "1.0.0",
       "author": { "name": "Green-PT" },
       "license": "MIT",
-      "keywords": ["tokens", "yagni", "minimal", "concise", "cost", "terse"]
+      "keywords": ["tokens", "yagni", "minimal", "concise", "cost", "terse", "subagents", "handoff", "eso"]
     }
   ]
 }

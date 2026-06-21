@@ -32,18 +32,18 @@ test("round-trips empty objects and empty record arrays", () => {
 });
 
 test("rejects keys that are not valid names instead of corrupting them", () => {
-  assert.throws(() => encode({ "a b": 1 }), /Invalid ESF name/);
-  assert.throws(() => encode({ "café": 1 }), /Invalid ESF name/);
+  assert.throws(() => encode({ "a b": 1 }), /Invalid ESO name/);
+  assert.throws(() => encode({ "café": 1 }), /Invalid ESO name/);
 });
 
 test("rejects malformed input and schema drift", () => {
-  assert.throws(() => decode("!esf/1\nrows[2]{id}\n1\n"), /expected 2 rows/);
-  assert.throws(() => decode("!esf/1\nrow{x,x}\n1\t2\n"), /Duplicate field/);
+  assert.throws(() => decode("!eso/1\nrows[2]{id}\n1\n"), /expected 2 rows/);
+  assert.throws(() => decode("!eso/1\nrow{x,x}\n1\t2\n"), /Duplicate field/);
   assert.throws(() => encode({ rows: [{ a: 1 }, { b: 2 }] }), /one schema/);
-  assert.throws(() => encode({ "bad name": 1 }), /Invalid ESF name/);
+  assert.throws(() => encode({ "bad name": 1 }), /Invalid ESO name/);
   assert.throws(() => encode({ nested: { bad: NaN } }), /finite numbers/);
-  assert.throws(() => encode({ nested: { bad: undefined } }), /Unsupported ESF value/);
-  assert.throws(() => decode("!esf/1\nn=1e999\n"), /Invalid ESF number/);
+  assert.throws(() => encode({ nested: { bad: undefined } }), /Unsupported ESO value/);
+  assert.throws(() => decode("!eso/1\nn=1e999\n"), /Invalid ESO number/);
 });
 
 test("treats prototype-shaped names as data", () => {
@@ -63,7 +63,7 @@ test("round-trips thousands of random documents losslessly", () => {
   const scalar = () => pick([
     null, true, false, 0, -0, 1, -1, 42, 3.14, -2.5, 1e6, 9007199254740991,
     "", "x", "hello world", "  pad  ", "null", "true", "01", "1", "1.0",
-    "a\tb", "a\nb", "[bracket", "{brace", '"quote', "café 🚀", "back\\slash", "!esf/1",
+    "a\tb", "a\nb", "[bracket", "{brace", '"quote', "café 🚀", "back\\slash", "!eso/1",
   ]);
   const keys = (n) => { const s = new Set(); while (s.size < n) s.add(name()); return [...s]; };
   const gen = (depth) => {
@@ -79,7 +79,7 @@ test("round-trips thousands of random documents losslessly", () => {
   };
   for (let i = 0; i < 5000; i++) {
     const root = Object.fromEntries(keys(1 + Math.floor(rnd() * 4)).map((key) => [key, gen(0)]));
-    // Compare via JSON text: ESF guarantees JSON-semantics losslessness, where -0 and 0
+    // Compare via JSON text: ESO guarantees JSON-semantics losslessness, where -0 and 0
     // are the same number (JSON.stringify(-0) === "0"). This comparison is order-sensitive,
     // so it still catches any field-order or value corruption.
     assert.equal(JSON.stringify(decode(encode(root))), JSON.stringify(root),
@@ -92,7 +92,7 @@ test("is smaller than compact JSON for repeated records", () => {
 });
 
 test("CLI encodes and decodes stdin", () => {
-  const cli = require.resolve("../bin/esf.js");
+  const cli = require.resolve("../bin/eso.js");
   const encoded = execFileSync(process.execPath, [cli, "encode"], { input: JSON.stringify(handoff), encoding: "utf8" });
   const decoded = execFileSync(process.execPath, [cli, "decode"], { input: encoded, encoding: "utf8" });
   assert.deepEqual(JSON.parse(decoded), handoff);
