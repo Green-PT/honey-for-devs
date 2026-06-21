@@ -88,6 +88,25 @@ printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]
 eso decode < handoff.eso
 ```
 
+### CCR — for huge, redundant array tool output
+
+ESO is lossless, for handoffs where every row matters. **CCR** (Compress-Cache-Retrieve)
+is the lossy-but-recoverable lever for the opposite case: a long uniform array you must
+read but mostly skim — logs, scan results, event streams. It keeps an informative sample
+(endpoints, anomalies/change-points, head/tail), caches the dropped rows locally, and
+leaves a `<<ccr:HASH N_rows_offloaded>>` sentinel. Nothing is lost — `retrieve` restores
+the original by hash on demand.
+
+```bash
+some-tool | eso crush          # → sampled view + sentinel; originals cached in .honey-ccr/
+eso retrieve <hash>            # → the full original array, verbatim
+```
+
+Validated on a 90-row log (opus-4.8 + gpt-5.5): **−82% tokens**, crushed-only **96%**
+answer accuracy, **100%** with retrieve — and the lone crushed miss was a refusal, not a
+hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comprehension`
+(quality). The `honey-ccr` skill tells the agent when to reach for it.
+
 Pick Honey when you want the best quality-per-token, especially in Claude Code.
 
 ## Skills & subagents
@@ -104,6 +123,7 @@ reach for at a specific moment.
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
+| `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eso crush`/`retrieve` |
 | `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |
 | `hive-scout` | subagent (haiku, read-only) | locate symbols / callers / configs; returns a compact id-keyed JSON map |
 | `hive-reviewer` | subagent (haiku, read-only) | review a diff/files; returns columnar id-keyed JSON findings |
