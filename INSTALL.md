@@ -29,6 +29,21 @@ Usage:
 
 A `🍯 honey:<mode>` badge appears in your statusline while it's active.
 
+## Option A2 — Codex plugin marketplace (recommended for Codex)
+
+```
+codex plugin marketplace add Green-PT/honey-for-devs
+```
+
+Then enable `honey` from Codex's `/plugins` UI. This installs the same
+`skills/` (read natively via the Agent Skills standard) and the SessionStart
+hook (Codex honors the `CLAUDE_PLUGIN_ROOT` env var for backwards compat, so the
+hook runs unchanged).
+
+Codex also reads a root `AGENTS.md` automatically, so for a single project you
+can skip the plugin entirely and just `cp AGENTS.md <project>/` — or drop it at
+`~/.codex/AGENTS.md` for a global install.
+
 ## Option B — One-line installer (all agents)
 
 macOS / Linux / WSL / Git Bash:
