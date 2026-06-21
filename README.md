@@ -222,3 +222,7 @@ node scripts/build-rules.js --check  # CI: fail if any copy drifted
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+The carbon-estimation data and coefficients in `hooks/eco-models.json` and
+`hooks/eco.js` are derived from [EcoLogits](https://github.com/genai-impact/ecologits)
+and remain under the **MPL-2.0**. See [NOTICE](NOTICE) for details.
