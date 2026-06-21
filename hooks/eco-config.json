@@ -1,0 +1,27 @@
+{
+  "_about": "Honey CO2 estimate config. Model params come from EcoLogits' registry (hooks/eco-models.json), NOT hand estimates. This file only holds: grids, savings, and aliases for frontier models too new for the registry.",
+  "_engine": "Faithful port of EcoLogits v0.8.2 (genai-impact/ecologits, MIT). scripts/eco_report.py runs the real package for the authoritative breakdown.",
+  "_match": "A model id is resolved by: (1) exact name in eco-models.json, else (2) first alias whose 'match' substring appears in the id -> borrow that registry model's params, else (3) default_alias. Params and provider always come from the registry.",
+  "_grid_note": "Per-provider, location-based. Anthropic on AWS Trainium (Project Rainier PA/IN/MS ~500), OpenAI on Azure (~400), Google on GCP (~330). Researched, not from EcoLogits; market-based (renewable PPAs) would be lower.",
+  "grids_gco2_per_kwh": {
+    "anthropic": 500,
+    "openai": 400,
+    "google": 330,
+    "default": 450
+  },
+
+  "_savings_note": "Output-token reduction vs a no-Honey baseline (CO2 scales with output tokens). 'full' = 0.37 from the reproducible bench/ (Opus 4.8, 12 code tasks x3 panel run; see bench/results/combined.md). This is the code-tier figure — the badge's home turf; savings are smaller on user-facing tasks (the visual carve-out preserves polish) and larger on agent-to-agent handoffs (~0.54). $ savings run lower than CO2 (~0.21 on code) since input isn't cut. lite/ultra are extrapolations, not measured.",
+  "savings_vs_baseline": { "lite": 0.22, "full": 0.37, "ultra": 0.48 },
+
+  "_aliases_note": "For ids newer than the registry. Each points at the closest registry model whose EcoLogits params we borrow.",
+  "default_alias": "gpt-4o",
+  "aliases": [
+    { "match": ["opus"],            "registry": "claude-opus-4-1" },
+    { "match": ["sonnet"],          "registry": "claude-sonnet-4-0" },
+    { "match": ["haiku"],           "registry": "claude-3-5-haiku-latest" },
+    { "match": ["gpt-5", "codex"],  "registry": "gpt-5" },
+    { "match": ["gpt-4.1"],         "registry": "gpt-4.1" },
+    { "match": ["gpt-4", "o3", "o4", "o1"], "registry": "gpt-4o" },
+    { "match": ["gemini"],          "registry": "gemini-2.0-flash" }
+  ]
+}

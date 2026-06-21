@@ -1,0 +1,1 @@
+{ "id": "parse-pagination", "lang": "python", "category": "validation", "solution_file": "solution.py", "test_file": "test.py", "test_cmd": ["python3", "test.py"] }

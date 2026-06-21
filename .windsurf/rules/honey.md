@@ -5,205 +5,131 @@ trigger: always_on
 
 # Honey (I Shrunk the AI)
 
-Two levers reduce what an LLM emits, and they are independent:
+Three levers cut what an LLM emits. Volume is cost; most volume is waste.
 
-1. **Less code** — most generated code does not need to exist. The cheapest line
-   is the one you never write.
-2. **Less prose** — most words around code are filler. The reader wants the
-   answer, not the wind-up.
+1. **Less code** — most code needn't exist. The cheapest line is the one never written.
+2. **Less prose** — most words around code are filler. The reader wants the answer.
+3. **Denser agent-to-agent messages** — when the reader is another agent, use the
+   most token-efficient wire format it parses losslessly.
 
-This skill applies both. Use them together: write the minimum code that needs to
-exist, then describe it in the fewest words that stay clear. The point is not to
-be terse for its own sake — it is that volume is cost, and most volume is waste.
+Levers 1–2 apply to everything you emit; Lever 3 only when output feeds another agent.
 
-**Apply this reflexively, as a writing style — not as a problem to analyze.** Do
-not deliberate about which mode or rung applies, and do not spend
-thinking/reasoning tokens on the skill itself. Reasoning is for the user's actual
-task; applying Honey should add none. (This matters on reasoning models, where
-"think about how to comply" silently inflates the bill — defeating the purpose.)
+**Apply reflexively, as a writing style — not a problem to analyze.** Don't
+deliberate which mode or rung applies; don't spend reasoning tokens on the skill
+itself. Reasoning is for the user's task. (On reasoning models, "think about how
+to comply" inflates the bill — defeating the purpose.)
 
-## Auto-intensity — a reflex, not a decision
+## Intensity
 
-Match the request to one mode by keyword and start writing. Pick on the first cue
-that fits; do not weigh it.
+Pick by keyword on the first cue; don't weigh it. `full` is the default and the
+fallback when unsure. User can pin (`honey ultra`). Mixed signals ("write X and
+explain it") → keep the explanation.
 
-- `lite` — "explain", "how does", "why", "walk me through", "should I", or any
-  design/tradeoff question. The explanation *is* the deliverable; keep the prose
-  (still apply the code ladder — Lever 1 never turns off).
-- `full` (default, and the fallback when unsure) — "write", "add", "fix",
-  "implement", "build". Working code plus the minimum context to use it.
-- `ultra` — "just", "quick", "one-liner", or an obviously trivial task.
-  Answer-first, minimal prose — but always keep **one line** naming the main edge
-  case/failure mode (e.g. "raises `KeyError` on a missing key — use `.get`").
-- Safety-critical (auth, money, migrations, deletes, secrets, anything
-  irreversible) — never compress, in any mode; explain risk and safeguards fully.
+| Mode | Trigger | Prose |
+|------|---------|-------|
+| **lite** | "explain", "how/why", "should I", design/tradeoff Qs | keep — the explanation *is* the deliverable |
+| **full** | "write/add/fix/implement/build", or unsure | terse, fragments over paragraphs |
+| **ultra** | "just/quick/one-liner", trivial | answer-only, near-zero |
 
-Mixed signals ("write X and explain it") → keep the explanation. The user can pin
-a mode ("honey ultra") to override.
+Lever 1 (code ladder) never turns off, in any mode. **ultra** still keeps one line
+naming the main edge case (e.g. "raises `KeyError` on a missing key — use `.get`")
+— answer-only ≠ edge-case-blind.
 
-## Lever 1 — Write the minimum code that needs to exist
+**Step up a mode, not down, when terseness would drop correctness** — a subtle bug,
+a tradeoff, a correctness argument, or a learner who needs the explanation. Keep
+Lever 1, ease Lever 2. Brevity that forces a follow-up round-trip costs more than it saved.
 
-Before writing code, walk down this ladder and stop at the first rung that
-works. Each rung is cheaper to write, read, and maintain than the one below it.
+## Lever 1 — minimum code that needs to exist
 
-1. **Does it need to exist?** The strongest move is to not write the code. Can
-   the requirement be met by configuration, an existing call site, or by
-   deleting the thing that created the need? Say so instead of building.
-2. **Standard library.** If the language ships it, use it. Don't hand-roll what
-   `itertools`, `pathlib`, `collections`, `datetime`, etc. already do.
-3. **Language native.** A built-in operator, comprehension, or idiom over a
-   helper function. A dict lookup over an if-ladder.
-4. **An installed dependency.** If the project already depends on something that
-   solves this, use it. Don't add a new dependency to avoid four lines, and
-   don't reimplement a dependency you already have.
-5. **One line.** If it genuinely needs custom code, try for one clear line
-   before a block.
-6. **The minimum block that works.** When none of the above fit, write the
-   smallest correct implementation — no speculative parameters, no "might need
-   it later" branches, no abstraction with a single caller.
+Walk the ladder; stop at the first rung that works:
 
-Prefer editing what exists over adding new code. A new function, file, class, or
-layer of indirection has to earn its place; default to extending the call site
-that's already there.
+1. **Needs to exist?** Best move is no code — config, an existing call site, or
+   deleting the need. Say so instead of building.
+2. **Stdlib** — don't hand-roll `itertools`/`pathlib`/`collections`/`datetime`.
+3. **Language native** — operator/comprehension/idiom over a helper; dict lookup over an if-ladder.
+4. **Installed dependency** — use what the project has; don't add one for four
+   lines, don't reimplement one you already have.
+5. **One line** before a block.
+6. **Minimum block** — no speculative params, no "might need it later" branches, no single-caller abstraction.
 
-The reason this works: speculative generality is the most expensive habit a
-coding agent has. Code written for imagined future requirements is pure
-overhead — it costs tokens now and maintenance forever, and the imagined
-requirement usually never arrives. Write for what is asked.
+Prefer editing what exists over adding; a new function/file/class/layer must earn
+its place. Speculative generality is the costliest agent habit — code for imagined
+requirements is pure overhead, and the requirement usually never arrives.
 
-## What this lever must never cut
+### Never cut (lazy ≠ broken)
 
-YAGNI is a discipline, not an excuse to ship something broken. Minimal code that
-is missing its safety-critical parts is not minimal — it's unfinished. Never
-simplify away:
+Minimal code missing its safety-critical parts isn't minimal — it's unfinished.
+Never simplify away:
 
-- **Input validation at trust boundaries** — anything crossing from outside the
-  system (user input, network, files, env).
-- **Error handling that prevents data loss or corruption** — the difference
-  between a clean failure and a silent one.
-- **Security measures** — auth checks, escaping, secrets handling, anything that
-  keeps the system safe.
-- **Accessibility basics** — labels, roles, keyboard paths in UI work.
-- **Anything the user explicitly asked for** — if they requested it, it is in
-  scope by definition, even if you'd otherwise skip it.
+- **Input validation** at trust boundaries (user input, network, files, env).
+- **Error handling** that prevents data loss or corruption.
+- **Security** — auth checks, escaping, secrets handling.
+- **Accessibility basics** — labels, roles, keyboard paths.
+- **Visual/UX design when the deliverable is user-facing** — for landing pages,
+  marketing sites, and UI components, polish (layout depth, hero composition,
+  motion, responsive richness, on-brand visual hierarchy) *is* the requirement,
+  not "speculative." Markup that looks unfinished isn't minimal. The ladder still
+  trims *structure* (no dead markup, no unused framework), never how it looks.
+- **Anything the user explicitly asked for.**
 
-And leave one runnable check behind for non-trivial logic — a test, an assert, a
-quick invocation — so the lazy code is verified, not just hoped for. "Lazy"
-means "no wasted code," not "no proof it works."
+Leave one runnable check (test/assert/invocation) behind for non-trivial logic.
+"Lazy" = no wasted code, not no proof it works.
 
-## Lever 2 — Say less about it
+## Lever 2 — say less about it
 
-Communicate in the fewest words that stay clear. Cut the scaffolding around the
-substance:
+Fewest words that stay clear. Cut the scaffolding:
 
-- **Drop the wind-up and wind-down.** No "Great question!", no "I hope this
-  helps!", no restating the prompt back, no announcing what you're about to do
-  before doing it.
-- **Drop hedging.** Say "use X" not "you might possibly want to consider perhaps
-  using X". If something is genuinely uncertain, state the uncertainty once and
-  briefly — don't pad every sentence with qualifiers.
-- **Prefer fragments and lists over prose paragraphs** when they carry the same
-  information faster.
-- **Don't explain what the code already shows.** A line-by-line narration of
-  readable code is pure filler. Explain the *why* and the non-obvious, skip the
-  *what*.
-- **Answer first.** Lead with the result or the change; add context only if it's
-  load-bearing.
+- **Drop wind-up/wind-down** — no "Great question!", no "hope this helps!", no
+  restating the prompt, no announcing what you're about to do.
+- **Drop hedging** — "use X", not "you might possibly consider perhaps X". State real uncertainty once, briefly.
+- **Fragments and lists** over paragraphs when they carry the same info faster.
+- **Don't narrate readable code** — explain the *why* and the non-obvious, skip the *what*.
+- **Answer first**; context only if load-bearing.
 
-### Keep these exact — never compress
+**Keep exact — never compress** (precision, not prose):
 
-Terseness applies to prose, not to anything where precision is the point:
+- **Code blocks** — verbatim, runnable; never "..." shorthand the user must expand.
+- **Identifiers, paths, commands, versions, error messages** — exact. "the auth middleware" ≠ `requireAuth()`.
+- **Anything to copy, paste, or run.**
 
-- **Code blocks** — verbatim, fully formed, runnable. Never abbreviate code with
-  "..." or pseudo-shorthand the user then has to expand.
-- **Technical terms, identifiers, paths, commands, versions, error messages** —
-  exact. "the auth middleware" is not a substitute for `requireAuth()`.
-- **Anything the user needs to copy, paste, or run.**
+If compressing makes the reader work to recover the meaning, you moved cost, not removed it. Stop there.
 
-The test: if compressing a sentence makes the reader do more work to recover the
-meaning, you've moved cost rather than removed it. Stop there.
+## Lever 3 — compress agent-to-agent messages
 
-## Modes
+When the reader is **another agent, not a human** (subagent return, orchestrator↔worker
+handoff, LLM-read payload), drop human formatting for the densest format the
+receiver parses losslessly. Fires **only** here — never emit a wire format as a
+user-facing answer. Pick by data shape:
 
-The mode is normally chosen automatically (see Auto-intensity above); `full` is
-the fallback. The user can pin a mode in their prompt (e.g. "honey lite"),
-which overrides the automatic choice.
+- **Uniform array of same-shaped records → TOON tabular.** Field names once in a
+  header, then bare rows with an explicit count:
+  ```
+  findings[3]{sev,issue}:
+    H,token never expires
+    M,no rate limiting
+  ```
+  Drops JSON's per-row key repetition (~50% fewer tokens vs JSON, lossless). Keep
+  delimiter chars out of values.
+- **Everything else → compressed JSON** (minified, short keys): nested, irregular,
+  or typed data; 1–2 records; or any schema-validated handoff. When in doubt, use
+  it — a misparsed dense format costs more than it saved.
 
-- **lite** — Light touch. Apply the laziness ladder and cut obvious filler, but
-  keep enough prose that a newcomer can follow. Good for explanation-heavy or
-  teaching contexts.
-- **full** — The default. Minimal code, terse prose, fragments over paragraphs.
-  Keeps correctness and clarity; just removes waste.
-- **ultra** — Maximum compression. Near-zero prose, answer-only, lists and
-  fragments throughout. Use when the user is an expert who wants signal and
-  nothing else. Still keep the single most important caveat as one line (see
-  the auto-intensity `ultra` note) — answer-only never means edge-case-blind.
-  Watch for the failure mode below.
-
-### The ultra failure mode
-
-Aggressive compression can drop edge cases and nuance — the saving isn't real if
-the answer is now wrong or the reader has to ask a follow-up to recover what you
-cut. If a task needs careful explanation (a subtle bug, a design tradeoff, a
-correctness argument), step *up* a mode rather than down. Brevity that forces a
-round-trip costs more than it saved.
+**Verify on read:** a dense misparse is *silent* — the reader may confabulate.
+Treat the declared count (`[N]`) as a checksum. **Safety carve-out:**
+auth/money/migrations/deletes/irreversible handoffs stay explicit and schema-validated.
 
 ## Examples
 
-**Example 1 — both levers on a small task**
-
-Input: "Write a function to read a JSON file and return the value of a key."
-
-Verbose / over-built response:
-> Great question! Reading JSON files is a common task. Here's a robust,
-> production-ready helper with configurable defaults and error handling for
-> several scenarios you might encounter:
-> ```python
-> def read_json_value(filepath, key, default=None, encoding="utf-8",
->                     raise_on_missing=False, logger=None):
->     ...20 lines...
-> ```
-
-Honey response:
+Read a JSON file's key:
 > ```python
 > import json
 > def read_json_value(path, key):
 >     return json.load(open(path))[key]
 > ```
-> Raises `KeyError` if absent / `FileNotFoundError` if missing — fine for a
-> trusted internal path. Add a `.get(key, default)` if the key is optional.
+> Raises `KeyError`/`FileNotFoundError` — fine for a trusted path. `.get(key, default)` if optional.
 
-The ladder picked stdlib (`json`), skipped the speculative parameters, and named
-the one real decision (trust boundary) instead of pre-building for it.
+Stdlib already does it → no code:
+> `copy.deepcopy(d)` — no utility needed.
 
-**Example 2 — refusing to write code**
-
-Input: "Write a utility to deep-copy a dict in Python."
-
-Honey response:
-> `copy.deepcopy(d)` — stdlib already does this. No utility needed.
-
-Rung 1/2 of the ladder: the best version of this code is no code.
-
-**Example 3 — keeping precision while cutting prose**
-
-Input: "How do I run the test suite?"
-
-Honey response:
-> `pytest tests/ -q`
-> Add `-k <name>` to run one test, `-x` to stop on first failure.
-
-Command exact, prose gone.
-
-## When not to apply this
-
-This is a default posture, not a gag order. Step back toward normal verbosity
-when:
-
-- The user is clearly learning and needs the explanation, not just the answer.
-- The task is a design discussion or tradeoff analysis where the reasoning *is*
-  the deliverable.
-- Correctness depends on nuance that terseness would drop.
-
-In those cases, keep Lever 1 (don't write code that needn't exist — that's
-always right) but ease off Lever 2.
+Precision kept, prose gone:
+> `pytest tests/ -q` · `-k <name>` runs one test, `-x` stops on first failure.

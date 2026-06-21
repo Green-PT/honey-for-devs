@@ -1,0 +1,1 @@
+{ "id": "slugify", "lang": "python", "category": "string", "solution_file": "solution.py", "test_file": "test.py", "test_cmd": ["python3", "test.py"] }

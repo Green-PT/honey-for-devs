@@ -1,0 +1,14 @@
+{
+  "id": "findings-relay",
+  "type": "relay",
+  "lang": "text",
+  "category": "agent-handoff",
+  "queries": [
+    { "q": "How many findings have severity H? Answer with just the number.", "a": "3" },
+    { "q": "What is the file of finding F7? Answer with just the file path.", "a": "src/upload.js" },
+    { "q": "What is the rule of finding F2? Answer with just the rule id.", "a": "sql-string" },
+    { "q": "How many findings have severity M? Answer with just the number.", "a": "4" },
+    { "q": "List the ids of all severity-H findings, comma-separated, in order (e.g. F1,F2).", "a": "F1,F4,F7" },
+    { "q": "What is the line number of finding F10? Answer with just the number.", "a": "99" }
+  ]
+}

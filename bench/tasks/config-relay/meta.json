@@ -1,0 +1,14 @@
+{
+  "id": "config-relay",
+  "type": "relay",
+  "lang": "text",
+  "category": "agent-handoff",
+  "queries": [
+    { "q": "What is the memory limit? Answer with just the value.", "a": "512Mi" },
+    { "q": "How many replicas? Answer with just the number.", "a": "3" },
+    { "q": "Is auth required for the /charge route? Answer yes or no.", "a": "yes" },
+    { "q": "What is the value of env RETRIES? Answer with just the number.", "a": "5" },
+    { "q": "Is the legacy_api flag on? Answer yes or no.", "a": "no" },
+    { "q": "How many routes use method POST? Answer with just the number.", "a": "2" }
+  ]
+}

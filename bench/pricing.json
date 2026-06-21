@@ -1,0 +1,9 @@
+{
+  "_about": "Approximate USD per 1M tokens, for the $ column only. Update to your real rates. Matched by first substring hit; falls back to _default.",
+  "_default": { "in": 3.0, "out": 15.0 },
+  "rates": [
+    { "match": "opus",   "in": 15.0, "out": 75.0 },
+    { "match": "sonnet", "in": 3.0,  "out": 15.0 },
+    { "match": "haiku",  "in": 0.8,  "out": 4.0 }
+  ]
+}

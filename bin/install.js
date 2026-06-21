@@ -82,6 +82,9 @@ const settingsPath = path.join(CLAUDE_DIR, "settings.json");
 function installStatusline() {
   if (MINIMAL) return;
   copy("hooks/statusline.js", SL_PATH);
+  copy("hooks/eco.js", path.join(SL_DIR, "eco.js")); // statusline requires these
+  copy("hooks/eco-config.json", path.join(SL_DIR, "eco-config.json"));
+  copy("hooks/eco-models.json", path.join(SL_DIR, "eco-models.json"));
   const cmd = 'node "' + SL_PATH + '"';
   if (DRY) return note("  [dry-run] wire statusLine in " + settingsPath);
   let settings = {};

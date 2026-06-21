@@ -1,0 +1,12 @@
+{
+  "name": "honey-bench",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Reproducible benchmark: baseline vs caveman vs ponytail vs honey — tokens, CO2, executable correctness, LLM-judge quality.",
+  "license": "MIT",
+  "scripts": {
+    "bench": "node src/run.js",
+    "bench:mock": "node src/run.js --mock",
+    "verify-tests": "node src/verify-tests.js"
+  }
+}

@@ -26,20 +26,46 @@ prose) do separately, and adds two things that matter:
 Volume is cost. In agentic coding sessions, the volume of generated code and
 prose is what runs up the bill — and most of it is waste.
 
-Benchmarked across 20 real coding tasks × 3 runs on Claude Opus 4.8 (adaptive
-thinking, high effort):
+This repo ships a **reproducible benchmark** ([`bench/`](bench/)) so you don't have
+to take the numbers on faith: 17 tasks across three kinds of work — baseline vs
+[Caveman](https://github.com/JuliusBrussee/caveman) vs
+[Ponytail](https://github.com/DietrichGebert/ponytail) vs Honey — same model, same
+prompts, only the skill changes. Correctness is objective (unit tests, structural /
+accessibility checks, and lossless round-trip recovery for agent handoffs); quality
+is scored by a **3-model judge panel** (median of Opus 4.8 + Sonnet 4.6 + Haiku 4.5).
+The figures below are the committed results (Claude Opus 4.8, 3 runs each) — run
+`cd bench && npm run bench` to reproduce.
 
-| Skill | Quality (vs baseline) | Billed tokens (vs baseline) |
-|-------|----------------------:|----------------------------:|
-| **Honey** | **92%** | **−57%** |
-| Ponytail | 78% | −65% |
-| Caveman | 73% | −70% |
+A single blended number hides the story, because the levers fire differently per
+task type. Quality is **% of baseline** (panel median; for handoffs, lossless
+recovery); tokens are **generated output vs baseline**:
 
-Honey is the **quality leader** while still cutting tokens by more than half, and
-it wins or ties every task category. On forced-reasoning models (e.g. OpenAI
-gpt-5.5 high) the reflex design keeps it net-positive; pure-prose Caveman saves
-more there. Pick Honey when you want the best quality-per-token, especially in
-Claude Code.
+| Task tier | Caveman | Ponytail | **Honey** |
+|-----------|:-------:|:--------:|:---------:|
+| **Code** (12 unit-tested tasks) | 99% · −26% | 99% · **+42%** | **100% · −37%** |
+| **User-facing** (3 landing/UI tasks) | 99% · −14% | 93% · −41% | **101% · +10%** |
+| **Agent-to-agent** (2 handoff tasks) | 100% · −27% | 100% · −25% | **100% · −54%** |
+
+Honey is the **quality leader in every tier** — it ties or beats the no-skill
+baseline and is never the lowest-quality skill — while cutting tokens where it's
+safe to:
+
+- **Code** — best on both axes: top quality *and* the deepest cut (−37% output,
+  −21% $). Caveman saves less; Ponytail's mandatory self-check *inflates* trivial code.
+- **User-facing** — the carve-out keeps Honey from compressing polish, so it spends
+  *more* (+10%) and earns the top quality score; Ponytail strips hardest and loses
+  the most quality.
+- **Agent-to-agent** — Honey's TOON/compact-JSON lever cuts handoff size in half
+  with zero loss of recovery: its biggest, cleanest win.
+
+Pick Honey when you want the best quality-per-token, especially in Claude Code.
+
+> **Honesty note.** Earlier versions of this README quoted `92% / 78% / 73%` quality
+> and `−57% / −65% / −70%` tokens from an unpublished run. Those don't reproduce —
+> the real quality spread is far narrower and the token savings are tier-dependent
+> (and Ponytail *adds* tokens on simple code). The table above is what the committed
+> [`bench/`](bench/) harness actually produces; see
+> [`bench/results/combined.md`](bench/results/combined.md) for the full breakdown.
 
 ## Install
 
@@ -88,6 +114,41 @@ repo. Requires Node.js on your PATH. Safe to re-run; skips tools you don't have.
 
 All of these are also handled automatically by the one-line installer. See
 [INSTALL.md](INSTALL.md) for manual steps, flags, and uninstall.
+
+## Carbon badge (Claude Code)
+
+When Honey is active, the statusline also shows a live **CO₂ estimate** for the
+session and the **CO₂/$ saved** vs a no-Honey baseline:
+
+```
+🍯 honey:full · 🌿 8.3g CO₂ (saved ~4.9g · $0.02)
+```
+
+The estimate is a faithful port of [EcoLogits](https://github.com/genai-impact/ecologits)
+v0.8.2 (verified to match the package exactly). **Model params come from
+EcoLogits' own registry** ([`hooks/eco-models.json`](hooks/eco-models.json),
+exported by [`scripts/build-eco-models.py`](scripts/build-eco-models.py)) — matched
+by exact id, falling back to a per-family alias for frontier models too new for
+the registry. **Grid switches per provider** — Anthropic on AWS Trainium (~500
+gCO₂/kWh), OpenAI on Azure (~400), Google on GCP (~330). Aliases, grids, and
+per-mode savings live in [`hooks/eco-config.json`](hooks/eco-config.json).
+
+The badge itself renders **only in Claude Code** (it reads Claude Code's
+transcript, where every model is a Claude model). The provider switching matters
+for [`scripts/eco_report.py`](scripts/eco_report.py), which runs against any
+transcript — Codex/Gemini CLIs would each need their own statusline hook to show
+a live badge there.
+
+> Params are **speculative** — Anthropic discloses none. EcoLogits' coefficient is
+> a single-stream upper bound; heavily-batched production serving is lower. Treat
+> these as a range, not a meter reading.
+
+For the full breakdown (usage + embodied + primary energy) run the real package:
+
+```bash
+pip install ecologits
+python scripts/eco_report.py        # newest session, or --transcript PATH
+```
 
 ## How it stays in sync
 

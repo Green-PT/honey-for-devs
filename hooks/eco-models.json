@@ -1,0 +1,405 @@
+{
+"_source": "EcoLogits model_repository (genai-impact/ecologits)",
+"models": {
+"databricks/dbrx-base": {
+"active": 36,
+"total": 132,
+"provider": "huggingface_hub"
+},
+"databricks/dbrx-instruct": {
+"active": 36,
+"total": 132,
+"provider": "huggingface_hub"
+},
+"mistralai/Mixtral-8x7B-v0.1": {
+"active": 12.9,
+"total": 46.7,
+"provider": "huggingface_hub"
+},
+"mistralai/Mixtral-8x7B-Instruct-v0.1": {
+"active": 12.9,
+"total": 46.7,
+"provider": "huggingface_hub"
+},
+"mistralai/Mixtral-8x22B-v0.1": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistralai/Mixtral-8x22B-Instruct-v0.1": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/Mixtral-8x22B-v0.1": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/Mixtral-8x22B-v0.1-original": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/Mixtral-8x22B-v0.1-4bit": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/Mixtral-8x22B-v0.1-AWQ": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/Mixtral-8x22B-Instruct-v0.1-4bit": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/mixtral-8x22B-Instruct-v0.3-original": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/mixtral-8x22B-v0.3-original": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"mistral-community/mixtral-8x22B-v0.3": {
+"active": 39.1,
+"total": 140.6,
+"provider": "huggingface_hub"
+},
+"openai/gpt-oss-120b": {
+"active": 5.1,
+"total": 117,
+"provider": "huggingface_hub"
+},
+"openai/gpt-oss-20b": {
+"active": 3.6,
+"total": 21,
+"provider": "huggingface_hub"
+},
+"open-mixtral-8x22b": {
+"active": 39.1,
+"total": 140.6,
+"provider": "mistralai"
+},
+"open-mixtral-8x22b-2404": {
+"active": 39.1,
+"total": 140.6,
+"provider": "mistralai"
+},
+"open-mixtral-8x7b": {
+"active": 12.9,
+"total": 46.7,
+"provider": "mistralai"
+},
+"claude-3-5-haiku-20241022": {
+"active": 18.0,
+"total": 18.0,
+"provider": "anthropic"
+},
+"claude-3-5-haiku-latest": {
+"active": 18.0,
+"total": 18.0,
+"provider": "anthropic"
+},
+"claude-3-5-sonnet-20240620": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"claude-3-5-sonnet-20241022": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"claude-3-5-sonnet-latest": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"claude-3-7-sonnet-20250219": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"claude-3-7-sonnet-latest": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"claude-3-haiku-20240307": {
+"active": 112.5,
+"total": 300,
+"provider": "anthropic"
+},
+"claude-3-opus-20240229": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-3-opus-latest": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-3-sonnet-20240229": {
+"active": 250.0,
+"total": 800,
+"provider": "anthropic"
+},
+"claude-opus-4-1-20250805": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-opus-4-20250514": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-sonnet-4-20250514": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+},
+"gemini-2.0-flash": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-001": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-exp": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-exp-image-generation": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-preview-image-generation": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-thinking-exp": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-thinking-exp-01-21": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.0-flash-thinking-exp-1219": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.5-flash": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.5-flash-preview-05-20": {
+"active": 137.5,
+"total": 440,
+"provider": "google"
+},
+"gemini-2.5-pro": {
+"active": 625.0,
+"total": 2000,
+"provider": "google"
+},
+"gemini-2.5-pro-preview-03-25": {
+"active": 625.0,
+"total": 2000,
+"provider": "google"
+},
+"gemini-2.5-pro-preview-05-06": {
+"active": 625.0,
+"total": 2000,
+"provider": "google"
+},
+"gemini-2.5-pro-preview-06-05": {
+"active": 625.0,
+"total": 2000,
+"provider": "google"
+},
+"chatgpt-4o-latest": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4": {
+"active": 550.0,
+"total": 1760,
+"provider": "openai"
+},
+"gpt-4-0125-preview": {
+"active": 550.0,
+"total": 1760,
+"provider": "openai"
+},
+"gpt-4-0613": {
+"active": 550.0,
+"total": 1760,
+"provider": "openai"
+},
+"gpt-4-1106-preview": {
+"active": 550.0,
+"total": 1760,
+"provider": "openai"
+},
+"gpt-4-turbo": {
+"active": 275.0,
+"total": 880,
+"provider": "openai"
+},
+"gpt-4-turbo-2024-04-09": {
+"active": 275.0,
+"total": 880,
+"provider": "openai"
+},
+"gpt-4-turbo-preview": {
+"active": 275.0,
+"total": 880,
+"provider": "openai"
+},
+"gpt-4.1": {
+"active": 110.0,
+"total": 352,
+"provider": "openai"
+},
+"gpt-4.1-2025-04-14": {
+"active": 110.0,
+"total": 352,
+"provider": "openai"
+},
+"gpt-4o": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-2024-05-13": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-2024-08-06": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-2024-11-20": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-audio-preview": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-audio-preview-2024-10-01": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-audio-preview-2024-12-17": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-audio-preview-2025-06-03": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-realtime-preview": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-realtime-preview-2024-10-01": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-realtime-preview-2024-12-17": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-realtime-preview-2025-06-03": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-search-preview": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-search-preview-2025-03-11": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-4o-transcribe": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"gpt-5": {
+"active": 93.75,
+"total": 300,
+"provider": "openai"
+},
+"gpt-5-2025-08-07": {
+"active": 93.75,
+"total": 300,
+"provider": "openai"
+},
+"gpt-5-chat-latest": {
+"active": 93.75,
+"total": 300,
+"provider": "openai"
+},
+"o1": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"o1-2024-12-17": {
+"active": 137.5,
+"total": 440,
+"provider": "openai"
+},
+"claude-opus-4-1": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-opus-4-0": {
+"active": 625.0,
+"total": 2000,
+"provider": "anthropic"
+},
+"claude-sonnet-4-0": {
+"active": 137.5,
+"total": 440,
+"provider": "anthropic"
+}
+}
+}
