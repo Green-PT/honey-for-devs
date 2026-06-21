@@ -4,9 +4,11 @@
   <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHRsNndobm8wM3F1c3pqNnhxODF6NDY2a2t3YjN5OHFoYmtvZXg0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUh0yTz4h931K/giphy.gif" alt="Honey, I shrunk the AI" width="480">
 </p>
 
-**Write less code and say less about it.** Honey is a coding skill that makes AI
-agents emit less — less code *and* less prose — without losing correctness. Three
-independent levers, applied reflexively:
+**Write less code and say less about it.** Honey (I Shrunk the AI) is a
+cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
+making agents emit less code *and* less prose without losing correctness. It works
+with **Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
+and Kiro**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
