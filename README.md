@@ -1,7 +1,11 @@
 # 🍯 Honey (I Shrunk the AI)
 
+<p align="center">
+  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHRsNndobm8wM3F1c3pqNnhxODF6NDY2a2t3YjN5OHFoYmtvZXg0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUh0yTz4h931K/giphy.gif" alt="Honey, I shrunk the AI" width="480">
+</p>
+
 **Write less code and say less about it.** Honey is a coding skill that makes AI
-agents emit less — less code *and* less prose — without losing correctness. Two
+agents emit less — less code *and* less prose — without losing correctness. Three
 independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
@@ -9,10 +13,14 @@ independent levers, applied reflexively:
    the first rung that works. The cheapest line is the one you never write.
 2. **Less prose** — drop the wind-up, the hedging, the narration of code that
    already speaks for itself. Answer first.
+3. **Denser agent-to-agent handoffs** — when the reader is another agent, not a
+   human, hand it the most token-efficient format it parses losslessly (compact /
+   columnar JSON, or [ESO](eso/SPEC.md)). Cuts handoff size ~in half at zero loss
+   of recovery. Fires only here — never as a user-facing answer.
 
 Honey combines what [Ponytail](https://github.com/DietrichGebert/ponytail)
 (minimal code) and [Caveman](https://github.com/JuliusBrussee/caveman) (terse
-prose) do separately, and adds two things that matter:
+prose) do separately, then goes further:
 
 - **Auto-intensity** — `lite` / `full` / `ultra` chosen reflexively from the
   request, with no deliberation tax (it never spends reasoning tokens deciding
@@ -20,6 +28,9 @@ prose) do separately, and adds two things that matter:
 - **Safety carve-outs** — input validation, error handling, auth, secrets,
   migrations, deletes, and anything you explicitly asked for are **never**
   compressed. Lazy ≠ broken.
+- **A skill family, not one prompt** — an always-on core plus on-demand satellites
+  (review, eco, gain, compress) and a *hive* of read-only subagents that return
+  compressed handoffs. See [Skills & subagents](#skills--subagents).
 
 ## Why
 
@@ -42,23 +53,64 @@ recovery); tokens are **generated output vs baseline**:
 
 | Task tier | Caveman | Ponytail | **Honey** |
 |-----------|:-------:|:--------:|:---------:|
-| **Code** (12 unit-tested tasks) | 99% · −26% | 99% · **+42%** | **100% · −37%** |
-| **User-facing** (3 landing/UI tasks) | 99% · −14% | 93% · −41% | **101% · +10%** |
-| **Agent-to-agent** (2 handoff tasks) | 100% · −27% | 100% · −25% | **100% · −54%** |
+| **Code** (12 unit-tested tasks) | 99% · −27% | 99% · **+39%** | **98% · −39%** |
+| **User-facing** (3 landing/UI tasks) | 98% · −16% | 94% · −39% | **101% · +12%** |
+| **Agent-to-agent** (2 handoff tasks) | 100% · −29% | 100% · −26% | **100% · −53%** |
 
-Honey is the **quality leader in every tier** — it ties or beats the no-skill
-baseline and is never the lowest-quality skill — while cutting tokens where it's
-safe to:
+Honey **leads quality where it matters most** — it tops the user-facing and
+agent-to-agent tiers (the quality-separating ones) and stays within judge noise
+of the pack on saturated code tasks — while cutting tokens where it's safe to:
 
-- **Code** — best on both axes: top quality *and* the deepest cut (−37% output,
-  −21% $). Caveman saves less; Ponytail's mandatory self-check *inflates* trivial code.
+- **Code** — the deepest cut (−39% output, −20% $) at essentially tied quality
+  (98% vs 99%, within judge noise on tasks every variant passes). Caveman saves
+  less; Ponytail's mandatory self-check *inflates* trivial code.
 - **User-facing** — the carve-out keeps Honey from compressing polish, so it spends
-  *more* (+10%) and earns the top quality score; Ponytail strips hardest and loses
+  *more* (+12%) and earns the top quality score; Ponytail strips hardest and loses
   the most quality.
-- **Agent-to-agent** — Honey's TOON/compact-JSON lever cuts handoff size in half
+- **Agent-to-agent** — Honey's ESO/compact-JSON lever cuts handoff size in half
   with zero loss of recovery: its biggest, cleanest win.
 
+## Efficient Structured Output
+
+Honey includes [ESO](eso/SPEC.md), a zero-dependency, schema-first format for
+agent handoffs. Repeated record keys are emitted once; declared row counts catch
+truncated messages; JSON-compatible cells preserve types.
+
+The reproducible [ESO/TOON/JSON benchmark](bench/eso/RESULTS.md) measures bytes,
+two tokenizer estimates, codec speed, and lossless recovery across five agent
+handoff shapes. Run it with `npm run bench:eso`.
+
+```bash
+printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]}' | eso encode
+eso decode < handoff.eso
+```
+
 Pick Honey when you want the best quality-per-token, especially in Claude Code.
+
+## Skills & subagents
+
+Honey is one always-on core plus a family of on-demand tools. The core is a
+*writing style* (it must be the default to pay off); the rest are *actions* you
+reach for at a specific moment.
+
+| Name | Kind | What it does |
+|------|------|--------------|
+| `honey` | core skill (always-on) | the three levers, applied reflexively to every response. `/honey [lite\|full\|ultra\|off]` |
+| `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
+| `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
+| `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
+| `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
+| `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |
+| `hive-scout` | subagent (haiku, read-only) | locate symbols / callers / configs; returns a compact id-keyed JSON map |
+| `hive-reviewer` | subagent (haiku, read-only) | review a diff/files; returns columnar id-keyed JSON findings |
+| `hive-builder` | subagent (sonnet, ≤2 files) | make a surgical edit under the ladder; returns a compact change-manifest |
+
+The **hive** is Lever 3 with a runtime: each subagent returns a compressed handoff,
+so the result injected back into the orchestrator's context is **−44–53%** smaller
+with zero loss (`npm run bench:hive`). Live, the skills hold up too — honey −86%,
+honey-review −70%, hive-reviewer −43% output tokens at passing correctness
+(`npm run bench:skills`). See [`bench/hive/RESULTS.md`](bench/hive/RESULTS.md) and
+[`bench/skills/RESULTS.md`](bench/skills/RESULTS.md).
 
 > **Honesty note.** Earlier versions of this README quoted `92% / 78% / 73%` quality
 > and `−57% / −65% / −70%` tokens from an unpublished run. Those don't reproduce —
@@ -121,17 +173,18 @@ When Honey is active, the statusline also shows a live **CO₂ estimate** for th
 session and the **CO₂/$ saved** vs a no-Honey baseline:
 
 ```
-🍯 honey:full · 🌿 8.3g CO₂ (saved ~4.9g · $0.02)
+🍯 honey:full · 🌿 44g CO₂ (saved ~26g · $0.18)
 ```
 
-The estimate is a faithful port of [EcoLogits](https://github.com/genai-impact/ecologits)
-v0.8.2 (verified to match the package exactly). **Model params come from
-EcoLogits' own registry** ([`hooks/eco-models.json`](hooks/eco-models.json),
-exported by [`scripts/build-eco-models.py`](scripts/build-eco-models.py)) — matched
-by exact id, falling back to a per-family alias for frontier models too new for
-the registry. **Grid switches per provider** — Anthropic on AWS Trainium (~500
-gCO₂/kWh), OpenAI on Azure (~400), Google on GCP (~330). Aliases, grids, and
-per-mode savings live in [`hooks/eco-config.json`](hooks/eco-config.json).
+(Illustrative — a ~2k-output-token Opus session.) The estimate is a faithful port
+of [EcoLogits](https://github.com/genai-impact/ecologits) v0.8.2 (verified to match
+the package exactly). **Model params come from EcoLogits' own registry**
+([`hooks/eco-models.json`](hooks/eco-models.json), exported by
+[`scripts/build-eco-models.py`](scripts/build-eco-models.py)) — matched by exact id,
+falling back to a per-family alias for frontier models too new for the registry.
+**Grid switches per provider** — Anthropic on AWS Trainium (~500 gCO₂/kWh), OpenAI
+on Azure (~400), Google on GCP (~330). Aliases, grids, and per-mode savings live in
+[`hooks/eco-config.json`](hooks/eco-config.json).
 
 The badge itself renders **only in Claude Code** (it reads Claude Code's
 transcript, where every model is a Claude model). The provider switching matters
@@ -139,9 +192,15 @@ for [`scripts/eco_report.py`](scripts/eco_report.py), which runs against any
 transcript — Codex/Gemini CLIs would each need their own statusline hook to show
 a live badge there.
 
-> Params are **speculative** — Anthropic discloses none. EcoLogits' coefficient is
-> a single-stream upper bound; heavily-batched production serving is lower. Treat
-> these as a range, not a meter reading.
+> Params are **speculative** — Anthropic discloses none. EcoLogits' raw coefficient
+> is a **single-stream (batch-size-1) upper bound** — it gives one request the whole
+> GPU set for the full generation (for Opus, ~1.9 tok/s, ~30× slower than reality),
+> which alone is ~1.4 kg per 1M output tokens. Production serves many requests
+> concurrently, so the badge divides that ceiling by an effective batch concurrency
+> (`serving_concurrency`, default 32 — calibrated so modeled throughput matches real
+> ~50–70 tok/s serving) to show realistic **served** impact. `eco_report.py` prints
+> both the served figure and the single-stream ceiling. Treat these as a range, not
+> a meter reading.
 
 For the full breakdown (usage + embodied + primary energy) run the real package:
 

@@ -12,8 +12,8 @@ for (const d of fs.readdirSync(dir)) {
   const metaPath = path.join(dir, d, "meta.json");
   if (!fs.existsSync(metaPath)) continue;
   const meta = JSON.parse(fs.readFileSync(metaPath, "utf8"));
-  if (meta.type === "web") {
-    console.log(`SKIP  ${d} (web: graded by structural checks, no reference)`);
+  if (meta.type === "web" || meta.type === "relay") {
+    console.log(`SKIP  ${d} (${meta.type}: no executable reference)`);
     continue;
   }
   const refPath = path.join(dir, d, `reference.${meta.lang === "python" ? "py" : "js"}`);

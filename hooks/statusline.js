@@ -66,5 +66,6 @@ function ecoSuffix(mode) {
 }
 
 function g(v) {
+  if (v >= 1000) return `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}kg`;
   return v >= 100 ? `${Math.round(v)}g` : v >= 1 ? `${v.toFixed(1)}g` : `${v.toFixed(2)}g`;
 }
