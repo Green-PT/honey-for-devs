@@ -1,0 +1,8 @@
+{
+  "id": "settings-panel",
+  "lang": "html",
+  "type": "web",
+  "category": "ui-component",
+  "checks": ["viewport", "css", "labels"],
+  "min_sections": 0
+}

@@ -37,8 +37,11 @@ const JUDGE_MODELS = (process.env.JUDGE_MODELS || process.env.JUDGE_MODEL || MOD
 const RUNS = Number(process.env.RUNS || 1);
 const THINKING = Number(process.env.THINKING || 0);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4);
-const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey"];
-const VARIANTS = (flag("variants") || ALL_VARIANTS.join(",")).split(",").map((s) => s.trim());
+const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey", "honey-design"];
+// honey-design is an opt-in user-facing variant; exclude it from the default sweep
+// (it only makes sense on web tasks) — request it explicitly with --variants.
+const DEFAULT_VARIANTS = ALL_VARIANTS.filter((v) => v !== "honey-design");
+const VARIANTS = (flag("variants") || DEFAULT_VARIANTS.join(",")).split(",").map((s) => s.trim());
 const TASK_FILTER = flag("tasks") ? new Set(flag("tasks").split(",").map((s) => s.trim())) : null;
 
 // --- variant system prompts ----------------------------------------------------
@@ -47,9 +50,11 @@ function stripFrontmatter(md) {
 }
 function loadVariant(name) {
   if (name === "baseline") return null; // control: no skill
+  // honey and honey-design load their shipped SKILL.md directly — single source of
+  // truth, no copy in variants/ to drift. Other variants are pinned in variants/.
   const file =
-    name === "honey"
-      ? path.join(REPO, "skills", "honey", "SKILL.md") // single source of truth
+    name === "honey" || name === "honey-design"
+      ? path.join(REPO, "skills", name, "SKILL.md")
       : path.join(ROOT, "variants", `${name}.md`);
   return stripFrontmatter(fs.readFileSync(file, "utf8"));
 }

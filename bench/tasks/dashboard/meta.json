@@ -1,0 +1,8 @@
+{
+  "id": "dashboard",
+  "lang": "html",
+  "type": "web",
+  "category": "dashboard",
+  "checks": ["doctype", "title", "viewport", "h1", "nav", "css"],
+  "min_sections": 0
+}

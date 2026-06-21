@@ -1,5 +1,6 @@
 {
 "_source": "EcoLogits model_repository (genai-impact/ecologits)",
+"_license": "MPL-2.0 — derived from EcoLogits, not MIT. See NOTICE.",
 "models": {
 "databricks/dbrx-base": {
 "active": 36,

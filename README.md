@@ -4,9 +4,12 @@
   <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHRsNndobm8wM3F1c3pqNnhxODF6NDY2a2t3YjN5OHFoYmtvZXg0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUh0yTz4h931K/giphy.gif" alt="Honey, I shrunk the AI" width="480">
 </p>
 
-**Write less code and say less about it.** Honey is a coding skill that makes AI
-agents emit less — less code *and* less prose — without losing correctness. Three
-independent levers, applied reflexively:
+**Write less code and say less about it.** Honey (I Shrunk the AI) by
+[GreenPT](https://github.com/Green-PT) is a
+cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
+making agents emit less code *and* less prose without losing correctness. It works
+with **Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
+and Kiro**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
@@ -85,6 +88,25 @@ printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]
 eso decode < handoff.eso
 ```
 
+### CCR — for huge, redundant array tool output
+
+ESO is lossless, for handoffs where every row matters. **CCR** (Compress-Cache-Retrieve)
+is the lossy-but-recoverable lever for the opposite case: a long uniform array you must
+read but mostly skim — logs, scan results, event streams. It keeps an informative sample
+(endpoints, anomalies/change-points, head/tail), caches the dropped rows locally, and
+leaves a `<<ccr:HASH N_rows_offloaded>>` sentinel. Nothing is lost — `retrieve` restores
+the original by hash on demand.
+
+```bash
+some-tool | eso crush          # → sampled view + sentinel; originals cached in .honey-ccr/
+eso retrieve <hash>            # → the full original array, verbatim
+```
+
+Validated on a 90-row log (opus-4.8 + gpt-5.5): **−82% tokens**, crushed-only **96%**
+answer accuracy, **100%** with retrieve — and the lone crushed miss was a refusal, not a
+hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comprehension`
+(quality). The `honey-ccr` skill tells the agent when to reach for it.
+
 Pick Honey when you want the best quality-per-token, especially in Claude Code.
 
 ## Skills & subagents
@@ -96,10 +118,12 @@ reach for at a specific moment.
 | Name | Kind | What it does |
 |------|------|--------------|
 | `honey` | core skill (always-on) | the three levers, applied reflexively to every response. `/honey [lite\|full\|ultra\|off]` |
+| `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
+| `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eso crush`/`retrieve` |
 | `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |
 | `hive-scout` | subagent (haiku, read-only) | locate symbols / callers / configs; returns a compact id-keyed JSON map |
 | `hive-reviewer` | subagent (haiku, read-only) | review a diff/files; returns columnar id-keyed JSON findings |
@@ -111,6 +135,11 @@ with zero loss (`npm run bench:hive`). Live, the skills hold up too — honey �
 honey-review −70%, hive-reviewer −43% output tokens at passing correctness
 (`npm run bench:skills`). See [`bench/hive/RESULTS.md`](bench/hive/RESULTS.md) and
 [`bench/skills/RESULTS.md`](bench/skills/RESULTS.md).
+
+On **user-facing** work — where the core skill *spends* tokens because polish is the
+spec — `honey-design` keeps the same rendered polish for **−19% output tokens** vs no
+skill (judge 92 vs 90), beating the core skill on both axes across 7 landing-page/UI
+tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 
 > **Honesty note.** Earlier versions of this README quoted `92% / 78% / 73%` quality
 > and `−57% / −65% / −70%` tokens from an unpublished run. Those don't reproduce —
@@ -222,3 +251,7 @@ node scripts/build-rules.js --check  # CI: fail if any copy drifted
 ## License
 
 MIT — see [LICENSE](LICENSE).
+
+The carbon-estimation data and coefficients in `hooks/eco-models.json` and
+`hooks/eco.js` are derived from [EcoLogits](https://github.com/genai-impact/ecologits)
+and remain under the **MPL-2.0**. See [NOTICE](NOTICE) for details.

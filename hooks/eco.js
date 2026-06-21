@@ -18,6 +18,9 @@ const fs = require("fs");
 const path = require("path");
 
 // EcoLogits 0.8.2 constants — units: kWh, kgCO2eq, seconds, GB.
+// These constants and the per-request impact methodology are derived from
+// EcoLogits (genai-impact/ecologits) and are licensed MPL-2.0, not MIT.
+// See NOTICE. Source: https://github.com/genai-impact/ecologits
 const Q_BITS = 4;
 const E_ALPHA = 8.91e-8, E_BETA = 1.43e-6; // GPU energy/token: alpha*activeB + beta
 const L_ALPHA = 8.02e-4, L_BETA = 2.23e-2; // GPU latency/token: alpha*activeB + beta
