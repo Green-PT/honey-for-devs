@@ -1,10 +1,44 @@
 "use strict";
-// Minimal Anthropic Messages client over fetch (Node 18+ global fetch) — no SDK dep,
-// matching the repo's zero-dependency style. Reads ANTHROPIC_API_KEY / ANTHROPIC_BASE_URL.
+// Minimal Anthropic Messages + OpenAI Responses client over fetch (Node 18+).
 
-const BASE = (process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/$/, "");
+const ANTHROPIC_BASE = (process.env.ANTHROPIC_BASE_URL || "https://api.anthropic.com").replace(/\/$/, "");
+const OPENAI_BASE = (process.env.OPENAI_BASE_URL || "https://api.openai.com").replace(/\/$/, "");
+
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const TRANSIENT = new Set([408, 409, 429, 500, 502, 503, 504, 529]);
+
+// POST JSON with retry — a long benchmark run will hit the odd transient network drop or
+// 429/overloaded; one of those shouldn't kill 200 generations. Up to 5 attempts, exp backoff.
+async function postJSON(url, headers, body, label) {
+  let lastErr;
+  for (let attempt = 0; attempt <= 4; attempt++) {
+    let res;
+    try {
+      res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
+    } catch (e) {
+      lastErr = e; // network error (fetch failed / ECONNRESET)
+      if (attempt < 4) { await sleep(800 * 2 ** attempt + Math.floor(Math.random() * 400)); continue; }
+      throw e;
+    }
+    if (res.ok) return res.json();
+    const text = await res.text();
+    lastErr = new Error(`${label} ${res.status}: ${text.slice(0, 400)}`);
+    if (TRANSIENT.has(res.status) && attempt < 4) {
+      await sleep(800 * 2 ** attempt + Math.floor(Math.random() * 400));
+      continue;
+    }
+    throw lastErr;
+  }
+  throw lastErr;
+}
 
 async function complete({ model, system, user, maxTokens = 4096, thinking = 0 }) {
+  return /^(gpt-|o\d|chatgpt-)/i.test(model)
+    ? completeOpenAI({ model, system, user, maxTokens, thinking })
+    : completeAnthropic({ model, system, user, maxTokens, thinking });
+}
+
+async function completeAnthropic({ model, system, user, maxTokens, thinking }) {
   const key = process.env.ANTHROPIC_API_KEY;
   if (!key) throw new Error("ANTHROPIC_API_KEY is not set");
 
@@ -21,19 +55,12 @@ async function complete({ model, system, user, maxTokens = 4096, thinking = 0 })
     body.max_tokens = maxTokens + thinking; // max_tokens must exceed the thinking budget
   }
 
-  const res = await fetch(`${BASE}/v1/messages`, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": key,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify(body),
-  });
-  if (!res.ok) {
-    throw new Error(`API ${res.status}: ${(await res.text()).slice(0, 500)}`);
-  }
-  const data = await res.json();
+  const data = await postJSON(
+    `${ANTHROPIC_BASE}/v1/messages`,
+    { "content-type": "application/json", "x-api-key": key, "anthropic-version": "2023-06-01" },
+    body,
+    "anthropic"
+  );
   const text = (data.content || [])
     .filter((b) => b.type === "text")
     .map((b) => b.text)
@@ -47,6 +74,46 @@ async function complete({ model, system, user, maxTokens = 4096, thinking = 0 })
       // cache fields are reported but not added into billed totals here
       cache_read: u.cache_read_input_tokens || 0,
       cache_write: u.cache_creation_input_tokens || 0,
+    },
+  };
+}
+
+async function completeOpenAI({ model, system, user, maxTokens, thinking }) {
+  const key = process.env.OPENAI_API_KEY;
+  if (!key) throw new Error("OPENAI_API_KEY is not set");
+
+  const body = {
+    model,
+    input: user,
+    // Reasoning models spend output budget on hidden reasoning before the answer; without
+    // headroom the answer gets truncated (empty reply at the cap). Add room beyond the
+    // answer budget so the visible output isn't starved.
+    max_output_tokens: maxTokens + 8192,
+    store: false,
+  };
+  if (system) body.instructions = system;
+  if (thinking > 0) body.reasoning = { effort: "medium" };
+
+  const data = await postJSON(
+    `${OPENAI_BASE}/v1/responses`,
+    { "content-type": "application/json", authorization: `Bearer ${key}` },
+    body,
+    "openai"
+  );
+  const text = data.output_text || (data.output || [])
+    .flatMap((item) => item.content || [])
+    .filter((item) => item.type === "output_text")
+    .map((item) => item.text)
+    .join("");
+  const u = data.usage || {};
+  const cached = u.input_tokens_details?.cached_tokens || 0;
+  return {
+    text,
+    usage: {
+      input: Math.max(0, (u.input_tokens || 0) - cached),
+      output: u.output_tokens || 0,
+      cache_read: cached,
+      cache_write: 0,
     },
   };
 }
