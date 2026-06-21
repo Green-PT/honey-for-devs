@@ -41,6 +41,6 @@ for m in models.list_models():
     out[m.name] = {"active": a, "total": t, "provider": norm_provider(m.provider)}
 
 with open(OUT, "w") as f:
-    json.dump({"_source": "EcoLogits model_repository (genai-impact/ecologits)", "models": out}, f, indent=0)
+    json.dump({"_source": "EcoLogits model_repository (genai-impact/ecologits)", "_license": "MPL-2.0 — derived from EcoLogits, not MIT. See NOTICE.", "models": out}, f, indent=0)
     f.write("\n")
 print(f"wrote {len(out)} models -> {os.path.relpath(OUT)}")

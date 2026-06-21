@@ -1,0 +1,30 @@
+Honey (I Shrunk the AI)
+Copyright (c) 2026 Green-PT
+
+This product is licensed under the MIT License (see LICENSE), with the
+exception of the third-party material noted below.
+
+------------------------------------------------------------------------
+Third-party material
+------------------------------------------------------------------------
+
+EcoLogits (genai-impact/ecologits) — Mozilla Public License 2.0 (MPL-2.0)
+  https://github.com/genai-impact/ecologits
+  License: https://www.mozilla.org/MPL/2.0/
+
+The following files are derived from EcoLogits and remain governed by the
+MPL-2.0, not the MIT License:
+
+  - hooks/eco-models.json
+        Generated from EcoLogits' model_repository (model active/total
+        parameter counts). Regenerated via scripts/build-eco-models.py.
+
+  - hooks/eco.js
+        The GPU energy/latency coefficients and the per-request impact
+        methodology (constants E_ALPHA, E_BETA, L_ALPHA, L_BETA, GPU_MEM,
+        GPU_EMB_GWP, and related serving/embodied factors) are taken from
+        EcoLogits and are MPL-2.0. The surrounding application code is MIT.
+
+Under the MPL-2.0, the source form of these files is available in this
+repository. Modifications to the EcoLogits-derived portions are also
+governed by the MPL-2.0.
