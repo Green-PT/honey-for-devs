@@ -1,11 +1,11 @@
-# Efficient Structured Format (ESF) 1
+# Efficient Structured Output (ESO) 1
 
-ESF is a compact, lossless wire format for agent handoffs. It optimizes the common
+ESO is a compact, lossless wire format for agent handoffs. It optimizes the common
 shape: a small envelope plus uniform record arrays. It is UTF-8, line-oriented,
 streamable, and deliberately narrower than JSON.
 
-```esf
-!esf/1
+```eso
+!eso/1
 from=reviewer
 to=implementer
 kind=code_review
@@ -19,7 +19,7 @@ true\tnull
 ## Grammar
 
 ```text
-document = "!esf/1" LF entry*
+document = "!eso/1" LF entry*
 entry    = name "=" cell LF
          | name "[" count "]" ("{" fields "}")? LF row{count}
          | name "{" fields "}" LF row
@@ -39,9 +39,9 @@ name     = ALPHA / "_", then ALPHA / DIGIT / "_" / "." / "-"
 - An empty object is `name{}` followed by one empty line; an empty array is
   `name[0]` with no rows. Both round-trip.
 - Names must match the grammar above. Keys with spaces or non-ASCII characters are
-  rejected at encode time, not escaped — ESF assumes code-controlled identifiers.
+  rejected at encode time, not escaped — ESO assumes code-controlled identifiers.
 - Numbers are finite JSON numbers. Negative zero collapses to `0` inside nested JSON
-  cells, matching `JSON.stringify`; ESF inherits JSON's number semantics. Duplicate
+  cells, matching `JSON.stringify`; ESO inherits JSON's number semantics. Duplicate
   names/fields and mixed record schemas are invalid.
 
 ## Agent Contract
@@ -51,5 +51,5 @@ record arrays. Keep auth, money, migrations, deletion, and other irreversible
 instructions in JSON validated against an application schema; compactness is not
 worth an ambiguous high-impact action.
 
-ESF does not replace JSON for public APIs, deeply nested data, signatures, or
-untrusted input. Version changes require a new header such as `!esf/2`.
+ESO does not replace JSON for public APIs, deeply nested data, signatures, or
+untrusted input. Version changes require a new header such as `!eso/2`.

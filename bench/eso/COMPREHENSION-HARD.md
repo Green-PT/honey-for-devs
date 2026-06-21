@@ -1,4 +1,4 @@
-# ESF Comprehension — HARD MODE
+# ESO Comprehension — HARD MODE
 
 Models: claude-haiku-4-5-20251001, gpt-4.1-mini · 3 repeats · 12 questions · 50-record block.
 Stresses deep indexing, column-matching, aggregation, and nested-cell extraction.
@@ -8,7 +8,7 @@ Stresses deep indexing, column-matching, aggregation, and nested-cell extraction
 | JSON | 2217 | 76% | 17% | 100% | 100% | 42% | 100% | 100% |
 | JSON-columnar | 1685 | 76% | 8% | 100% | 100% | 50% | 100% | 100% |
 | TOON | 1633 | 81% | 8% | 100% | 100% | 75% | 100% | 100% |
-| ESF | 1531 | 76% | 8% | 100% | 100% | 50% | 100% | 100% |
+| ESO | 1531 | 76% | 8% | 100% | 100% | 50% | 100% | 100% |
 
 ## Misses (65)
 
@@ -62,15 +62,15 @@ Stresses deep indexing, column-matching, aggregation, and nested-cell extraction
 | TOON | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-6/module-1034.js` |
 | TOON | gpt-4.1-mini | deep-index | `team-auth` | `team-ui` |
 | TOON | gpt-4.1-mini | deep-index | `team-auth` | `team-ui` |
-| ESF | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
-| ESF | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
-| ESF | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
-| ESF | claude-haiku-4-5-20251001 | deep-index | `team-auth` | `team-ui` |
-| ESF | claude-haiku-4-5-20251001 | deep-index | `team-auth` | `team-ui` |
-| ESF | claude-haiku-4-5-20251001 | aggregate | `20` | `17` |
-| ESF | claude-haiku-4-5-20251001 | aggregate | `20` | `16` |
-| ESF | claude-haiku-4-5-20251001 | aggregate | `20` | `17` |
-| ESF | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-5/module-1033.js` |
-| ESF | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-4/module-1039.js` |
-| ESF | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
-| ESF | gpt-4.1-mini | deep-index | `team-auth` | `team-ui` |
+| ESO | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
+| ESO | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
+| ESO | claude-haiku-4-5-20251001 | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
+| ESO | claude-haiku-4-5-20251001 | deep-index | `team-auth` | `team-ui` |
+| ESO | claude-haiku-4-5-20251001 | deep-index | `team-auth` | `team-ui` |
+| ESO | claude-haiku-4-5-20251001 | aggregate | `20` | `17` |
+| ESO | claude-haiku-4-5-20251001 | aggregate | `20` | `16` |
+| ESO | claude-haiku-4-5-20251001 | aggregate | `20` | `17` |
+| ESO | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-5/module-1033.js` |
+| ESO | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-4/module-1039.js` |
+| ESO | gpt-4.1-mini | deep-index | `src/area-1/module-1036.js` | `src/area-2/module-1037.js` |
+| ESO | gpt-4.1-mini | deep-index | `team-auth` | `team-ui` |

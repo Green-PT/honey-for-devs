@@ -1,11 +1,11 @@
 "use strict";
 
-const HEADER = "!esf/1";
+const HEADER = "!eso/1";
 const NAME = /^[A-Za-z_][A-Za-z0-9_.-]*$/;
 const NUMBER = /^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?$/;
 
 function assertName(name) {
-  if (!NAME.test(name)) throw new TypeError(`Invalid ESF name: ${name}`);
+  if (!NAME.test(name)) throw new TypeError(`Invalid ESO name: ${name}`);
 }
 
 function isRecord(value) {
@@ -15,16 +15,16 @@ function isRecord(value) {
 function json(value, seen = new WeakSet()) {
   if (value === null || typeof value === "string" || typeof value === "boolean") return JSON.stringify(value);
   if (typeof value === "number") {
-    if (!Number.isFinite(value)) throw new TypeError("ESF only supports finite numbers");
+    if (!Number.isFinite(value)) throw new TypeError("ESO only supports finite numbers");
     return Object.is(value, -0) ? "-0" : JSON.stringify(value);
   }
   if (!Array.isArray(value) && !isRecord(value)) {
-    throw new TypeError(`Unsupported ESF value: ${typeof value}`);
+    throw new TypeError(`Unsupported ESO value: ${typeof value}`);
   }
-  if (seen.has(value)) throw new TypeError("ESF does not support cyclic values");
+  if (seen.has(value)) throw new TypeError("ESO does not support cyclic values");
   seen.add(value);
   if (Array.isArray(value)) {
-    if (Object.keys(value).length !== value.length) throw new TypeError("ESF does not support sparse arrays");
+    if (Object.keys(value).length !== value.length) throw new TypeError("ESO does not support sparse arrays");
     value.forEach((item) => json(item, seen));
   } else {
     Object.values(value).forEach((item) => json(item, seen));
@@ -38,7 +38,7 @@ function cell(value) {
     return json(value);
   }
   if (typeof value !== "string" && !Array.isArray(value) && !isRecord(value)) {
-    throw new TypeError(`Unsupported ESF value: ${typeof value}`);
+    throw new TypeError(`Unsupported ESO value: ${typeof value}`);
   }
   if (typeof value !== "string") return json(value);
   return value && value === value.trim() && !/[\t\r\n]/.test(value) &&
@@ -52,17 +52,17 @@ function value(text) {
   if (text === "false") return false;
   if (NUMBER.test(text)) {
     const parsed = Number(text);
-    if (!Number.isFinite(parsed)) throw new SyntaxError(`Invalid ESF number: ${text}`);
+    if (!Number.isFinite(parsed)) throw new SyntaxError(`Invalid ESO number: ${text}`);
     return parsed;
   }
   if (/^["[{]/.test(text)) {
-    try { return JSON.parse(text); } catch { throw new SyntaxError(`Invalid ESF cell: ${text}`); }
+    try { return JSON.parse(text); } catch { throw new SyntaxError(`Invalid ESO cell: ${text}`); }
   }
   return text;
 }
 
 function encode(input) {
-  if (!isRecord(input)) throw new TypeError("ESF document root must be an object");
+  if (!isRecord(input)) throw new TypeError("ESO document root must be an object");
   const lines = [HEADER];
 
   for (const [name, data] of Object.entries(input)) {
@@ -73,7 +73,7 @@ function encode(input) {
         const fields = Object.keys(data[0]);
         fields.forEach(assertName);
         if (!data.every((row) => Object.keys(row).join("\0") === fields.join("\0"))) {
-          throw new TypeError(`ESF record array ${name} must have one schema`);
+          throw new TypeError(`ESO record array ${name} must have one schema`);
         }
         lines.push(`${name}[${data.length}]{${fields.join(",")}}`);
         for (const row of data) lines.push(fields.map((field) => cell(row[field])).join("\t"));
@@ -94,7 +94,7 @@ function encode(input) {
 }
 
 function decode(source) {
-  if (typeof source !== "string") throw new TypeError("ESF source must be a string");
+  if (typeof source !== "string") throw new TypeError("ESO source must be a string");
   const lines = source.replace(/\r\n/g, "\n").split("\n");
   if (lines.at(-1) === "") lines.pop();
   if (lines.shift() !== HEADER) throw new SyntaxError(`Expected ${HEADER}`);
@@ -104,7 +104,7 @@ function decode(source) {
     const head = lines.shift();
     let match = head.match(/^([A-Za-z_][A-Za-z0-9_.-]*)=(.*)$/);
     if (match) {
-      if (Object.hasOwn(output, match[1])) throw new SyntaxError(`Duplicate ESF name: ${match[1]}`);
+      if (Object.hasOwn(output, match[1])) throw new SyntaxError(`Duplicate ESO name: ${match[1]}`);
       Object.defineProperty(output, match[1], {
         value: value(match[2]), enumerable: true, configurable: true, writable: true,
       });
@@ -113,10 +113,10 @@ function decode(source) {
 
     match = head.match(/^([A-Za-z_][A-Za-z0-9_.-]*)(?:\[(\d+)\])?(?:\{([^}]*)\})?$/);
     if (!match || (match[2] === undefined && match[3] === undefined)) {
-      throw new SyntaxError(`Invalid ESF section: ${head}`);
+      throw new SyntaxError(`Invalid ESO section: ${head}`);
     }
     const [, name, countText, fieldText] = match;
-    if (Object.hasOwn(output, name)) throw new SyntaxError(`Duplicate ESF name: ${name}`);
+    if (Object.hasOwn(output, name)) throw new SyntaxError(`Duplicate ESO name: ${name}`);
     const count = countText === undefined ? 1 : Number(countText);
     const fields = fieldText === undefined ? null : fieldText ? fieldText.split(",") : [];
     if (fields) {

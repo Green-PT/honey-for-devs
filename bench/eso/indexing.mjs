@@ -6,7 +6,7 @@ import { encode as toonEncode } from "@toon-format/toon";
 
 const require = createRequire(import.meta.url);
 const { complete } = require("../src/client.js");
-const { encode: esfEncode } = require("../../esf");
+const { encode: esoEncode } = require("../../eso");
 
 // The format shootout found ONE real quality gap: every format fails positional access
 // ("the Nth row") and counting-across-rows. Those are model limitations, not format ones.
@@ -46,8 +46,8 @@ const variants = {
   "columnar": { doc: doc(baseFindings), enc: (d) => JSON.stringify(colEncode(d)), indexed: false },
   "columnar+n": { doc: doc(idxFindings), enc: (d) => JSON.stringify(colEncode(d)), indexed: true },
   "TOON": { doc: doc(baseFindings), enc: toonEncode, indexed: false },
-  "ESF": { doc: doc(baseFindings), enc: esfEncode, indexed: false },
-  "ESF+n": { doc: doc(idxFindings), enc: esfEncode, indexed: true },
+  "ESO": { doc: doc(baseFindings), enc: esoEncode, indexed: false },
+  "ESO+n": { doc: doc(idxFindings), enc: esoEncode, indexed: true },
 };
 
 const norm = (s) => String(s).toLowerCase().replace(/[\s."'`]+/g, " ").trim();
@@ -68,12 +68,12 @@ const questions = [
     a: byTicket.owner, probes: "key-lookup" },
 ];
 
-const models = (process.env.ESF_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
+const models = (process.env.ESO_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
   .split(",").map((m) => m.trim()).filter(Boolean);
-const repeats = Number(process.env.ESF_REPEATS || 3);
+const repeats = Number(process.env.ESO_REPEATS || 3);
 const baseSys =
   "You read a structured agent-to-agent message and answer a question about it. " +
-  "Formats: JSON, columnar JSON ({\"#c\":cols,\"#r\":rows}), TOON, or ESF (compact, a schema " +
+  "Formats: JSON, columnar JSON ({\"#c\":cols,\"#r\":rows}), TOON, or ESO (compact, a schema " +
   "line name[N]{a,b} then N tab-separated rows). Answer with ONLY the requested value, no prose.";
 const idxNote = " Each finding record has an `n` field giving its 1-based position in the list.";
 
