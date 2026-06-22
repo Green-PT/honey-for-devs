@@ -2,12 +2,15 @@
 "use strict";
 
 const fs = require("fs");
+const os = require("os");
 const path = require("path");
 const { decode, encode } = require("../eso");
 const { crush } = require("../eso/ccr");
 
 // CCR cache: one <hash>.json per crushed array. Override dir with HONEY_CCR_DIR.
-const ccrDir = () => process.env.HONEY_CCR_DIR || ".honey-ccr";
+// Default is a fixed absolute dir so retrieve finds what crush wrote regardless
+// of the caller's cwd (a relative default loses the originals across dirs).
+const ccrDir = () => process.env.HONEY_CCR_DIR || path.join(os.tmpdir(), "honey-ccr");
 
 try {
   const cmd = process.argv[2];
@@ -27,6 +30,7 @@ try {
   } else if (cmd === "retrieve") {
     const hash = process.argv[3];
     if (!hash) throw new Error("Usage: eso retrieve <hash>");
+    if (!/^[0-9a-f]{16}$/.test(hash)) throw new Error(`Invalid hash: ${hash}`);
     process.stdout.write(fs.readFileSync(path.join(ccrDir(), `${hash}.json`), "utf8") + "\n");
   } else {
     throw new Error("Usage: eso <encode|decode|crush|retrieve>");

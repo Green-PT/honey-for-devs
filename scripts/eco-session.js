@@ -31,7 +31,8 @@ function newestTranscript() {
       const p = path.join(dir, e.name);
       if (e.isDirectory()) walk(p);
       else if (e.name.endsWith(".jsonl")) {
-        const m = fs.statSync(p).mtimeMs;
+        let m;
+        try { m = fs.statSync(p).mtimeMs; } catch { continue; } // rotated away mid-walk
         if (m > newestMtime) { newestMtime = m; newest = p; }
       }
     }
@@ -71,7 +72,7 @@ for (const [model, out] of Object.entries(perModel)) {
 if (!tokens) { console.error("no output tokens in transcript"); process.exit(1); }
 
 const R = (cfg.savings_vs_baseline && cfg.savings_vs_baseline[mode]) || 0;
-const k = R < 1 ? R / (1 - R) : 0;
+const k = eco.savingsFactor(cfg, mode);
 console.log(`output tok : ${tokens.toLocaleString()}`);
 console.log(`CO2eq      : ${gco2.toFixed(2)} g  (served, usage + embodied, JS port)`);
 console.log(`saved (~${Math.round(R * 100)}% vs no-Honey): ${(gco2 * k).toFixed(2)} g CO2eq`);

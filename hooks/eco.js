@@ -85,4 +85,11 @@ function estimate(model, outTokens, cfg) {
   };
 }
 
-module.exports = { loadConfig, resolveParams, impacts, estimate, gridFor };
+// Saved CO2/$ multiplier: a token reduction R implies baseline = actual/(1-R),
+// so savings scale by R/(1-R). Guard R>=1 (a misconfig) to avoid Infinity/NaN.
+function savingsFactor(cfg, mode) {
+  const R = (cfg.savings_vs_baseline && cfg.savings_vs_baseline[mode]) || 0;
+  return R < 1 ? R / (1 - R) : 0;
+}
+
+module.exports = { loadConfig, resolveParams, impacts, estimate, gridFor, savingsFactor };
