@@ -141,4 +141,4 @@ function decode(source) {
   return output;
 }
 
-module.exports = { decode, encode };
+module.exports = { decode, encode, isRecord };

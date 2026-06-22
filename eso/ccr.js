@@ -10,16 +10,17 @@
 // selection (headroom): head fraction + tail fraction + change-points, capped.
 
 const crypto = require("node:crypto");
+const { isRecord } = require("./index");
 
 const SENTINEL_KEY = "_ccr";
+const SENTINEL_RE = /^<<ccr:[0-9a-f]{16} \d+_rows_offloaded>>$/;
 const DEFAULTS = { minItems: 5, maxItems: 15, firstFraction: 0.3, lastFraction: 0.15 };
 
-function isRecord(value) {
-  return value !== null && typeof value === "object" && !Array.isArray(value);
-}
-
+// Match the marker shape, not just the key — real data carrying a `_ccr` string
+// must not be mistaken for a sentinel and dropped by strip().
 function isSentinel(item) {
-  return isRecord(item) && typeof item[SENTINEL_KEY] === "string";
+  return isRecord(item) && typeof item[SENTINEL_KEY] === "string" &&
+    SENTINEL_RE.test(item[SENTINEL_KEY]);
 }
 
 function hashOf(array) {
@@ -32,11 +33,24 @@ function evenly(items, k) {
   return Array.from({ length: k }, (_, i) => items[Math.floor(i * step)]);
 }
 
-// Change-points on the first string field — the rows a log is read for (a
-// `warn` between `info`s). Both sides of each transition.
+// The categorical string field to watch for transitions — the lowest-cardinality
+// one (a `level` of warn/info), not a per-row unique id whose every pair would
+// look like a change and burn the anomaly budget on noise.
+function changeKey(array) {
+  const first = array.find(isRecord);
+  if (!first) return null;
+  const counts = Object.keys(first)
+    .filter((k) => typeof first[k] === "string")
+    .map((k) => [k, new Set(array.filter(isRecord).map((r) => r[k])).size])
+    .filter(([, card]) => card > 1)
+    .sort((a, b) => a[1] - b[1]);
+  return counts.length ? counts[0][0] : null;
+}
+
+// Change-points on that field — the rows a log is read for (a `warn` between
+// `info`s). Both sides of each transition.
 function changePoints(array) {
-  if (!isRecord(array[0])) return [];
-  const key = Object.keys(array[0]).find((k) => typeof array[0][k] === "string");
+  const key = changeKey(array);
   if (!key) return [];
   const cp = new Set();
   for (let i = 1; i < array.length; i++) {
