@@ -165,7 +165,12 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 Then `/honey` to turn it on (`/honey lite|full|ultra` to set intensity,
 `/honey off` to stop). A 🍯 badge shows the active mode in your statusline.
 
-### One-line installer (auto-detects every agent you have)
+### One-line installer (interactive wizard)
+
+In a terminal it asks which agents you use, whether to wire the CO₂ badge, drop
+per-repo rule files, and your default mode — then sets up exactly that. The wizard
+prompts on `/dev/tty`, so it works through `curl | bash`. CI/pipes and `--yes`
+fall back to auto-detect.
 
 macOS / Linux / WSL / Git Bash:
 
@@ -179,8 +184,9 @@ Windows (PowerShell 5.1+):
 irm https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.ps1 | iex
 ```
 
-Add `bash -s -- --with-init` to also drop editor rule files into the current
-repo. Requires Node.js on your PATH. Safe to re-run; skips tools you don't have.
+Windows (`irm | iex`) runs non-interactive; clone and run `node bin/install.js`
+for the wizard. Add `bash -s -- --yes` to skip prompts. Requires Node.js on your
+PATH. Safe to re-run; skips tools you don't have.
 
 ### Every supported platform
 
