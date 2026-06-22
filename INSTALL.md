@@ -58,21 +58,33 @@ Windows (PowerShell 5.1+):
 irm https://raw.githubusercontent.com/Green-PT/honey-for-devs/main/install.ps1 | iex
 ```
 
-The installer detects which agents you have, runs each one's native install
-pathway, and skips the rest. It's safe to re-run.
+Run in a terminal, it launches an **interactive wizard**: it asks which coding
+agents you use (detected ones pre-selected), whether to wire the CO₂ statusline
+badge, whether to drop per-repo rule files, and your default Honey mode — then
+configures exactly that. The wizard prompts on `/dev/tty`, so it works even
+through `curl | bash`. It's safe to re-run.
+
+Non-interactive (CI, pipes with no terminal, or `--yes`) falls back to
+auto-detect: it finds your installed agents, runs each one's native install
+pathway, and skips the rest. Any explicit flag also skips the wizard.
+
+> Windows (`irm … | iex`) has no `/dev/tty`, so it runs non-interactive. For the
+> wizard on Windows, clone the repo and run `node bin/install.js`.
 
 ### Flags
 
 Pass flags through the pipe with `bash -s --`, e.g.
-`curl -fsSL .../install.sh | bash -s -- --with-init`.
+`curl -fsSL .../install.sh | bash -s -- --yes --with-init`.
 
 | Flag | Effect |
 |------|--------|
-| *(none)* / `--all` | Install detected CLI agents + statusline badge |
+| *(none, terminal)* | Interactive wizard |
+| `--yes`, `-y` | Skip the wizard; non-interactive auto-detect install |
+| `--all` | Install detected CLI agents + statusline badge |
 | `--minimal` | Plugin/extension installs only; skip the statusline wiring |
 | `--only <id>` | Restrict to one agent (repeatable). IDs: `claude`, `codex`, `copilot`, `gemini`, `cursor`, `windsurf`, `cline`, `copilot-editor`, `opencode`, `kiro`, `agents` |
 | `--with-init` | Also drop editor rule files into the **current directory** |
-| `--dry-run` | Print every action without writing anything |
+| `--dry-run` | Print every action without writing anything (works inside the wizard too) |
 | `--list` | Show the agent matrix and what's detected |
 | `--uninstall` | Remove Honey from detected agents |
 
@@ -81,9 +93,10 @@ Pass flags through the pipe with `bash -s --`, e.g.
 ```bash
 git clone https://github.com/Green-PT/honey-for-devs.git
 cd honey-for-devs
+node bin/install.js                  # interactive wizard
 node bin/install.js --list           # see what's detected
-node bin/install.js --dry-run --all  # preview
-node bin/install.js                  # install
+node bin/install.js --dry-run        # preview the wizard's actions
+node bin/install.js --yes            # non-interactive auto-detect install
 ```
 
 ## Option C — Per-tool manual copy

@@ -3,11 +3,17 @@
 // native install pathway: plugin-marketplace / extension commands for CLI agents,
 // and generated rule-file copies for editor agents (with --with-init).
 //
+// Run in a terminal with no flags, it launches an interactive wizard that asks
+// which agents to set up, whether to wire the CO₂ statusline badge, whether to
+// drop per-repo rule files, and the default Honey mode. Non-TTY runs (CI / pipes)
+// and any explicit flag fall back to the auto-detect install below.
+//
 // Flags (mirror the reference installers):
 //   --all          full install: detected CLI agents + statusline (default)
 //   --minimal      CLI/plugin installs only; skip the statusline wiring
 //   --only <id>    restrict to one agent id (repeatable)
 //   --with-init    also drop per-repo rule files into the current directory
+//   --yes, -y      skip the wizard; run the non-interactive auto-detect install
 //   --dry-run      print every action without executing it
 //   --list         show the agent matrix and detection status, then exit
 //   --uninstall    remove Honey from detected agents
@@ -28,13 +34,15 @@ const CLAUDE_DIR = process.env.CLAUDE_CONFIG_DIR || path.join(HOME, ".claude");
 // ---- argv -----------------------------------------------------------------
 const argv = process.argv.slice(2);
 const has = (f) => argv.includes(f);
-const onlyIds = argv.reduce((acc, a, i) => {
+// These are `let` so the wizard can rewrite them before delegating to install().
+let onlyIds = argv.reduce((acc, a, i) => {
   if (a === "--only" && argv[i + 1]) acc.push(argv[i + 1].toLowerCase());
   return acc;
 }, []);
 const DRY = has("--dry-run");
-const MINIMAL = has("--minimal");
-const WITH_INIT = has("--with-init");
+let MINIMAL = has("--minimal");
+let WITH_INIT = has("--with-init");
+const YES = has("--yes") || has("-y");
 const wanted = (id) => onlyIds.length === 0 || onlyIds.includes(id);
 
 // ---- helpers --------------------------------------------------------------
@@ -225,8 +233,102 @@ function help() {
   note(fs.readFileSync(__filename, "utf8").split("\n").filter((l) => l.startsWith("//")).map((l) => l.slice(3)).join("\n"));
 }
 
+// ---- interactive wizard ---------------------------------------------------
+const readline = require("readline");
+
+// A readable stream we can prompt on: the real TTY even when stdin is a pipe
+// (curl|bash feeds the script through stdin, so /dev/tty is the user's keyboard).
+function openTty() {
+  if (process.stdin.isTTY) return { stream: process.stdin, close: () => {} };
+  if (process.platform !== "win32") {
+    try {
+      const fd = fs.openSync("/dev/tty", "r");
+      const stream = fs.createReadStream(null, { fd });
+      return { stream, close: () => { try { fs.closeSync(fd); } catch {} } };
+    } catch {}
+  }
+  return null;
+}
+function ttyAvailable() {
+  if (process.stdin.isTTY) return true;
+  if (process.platform === "win32") return false;
+  try { fs.closeSync(fs.openSync("/dev/tty", "r")); return true; } catch { return false; }
+}
+
+const ask = (rl, q) => new Promise((res) => rl.question(q, (a) => res(a.trim())));
+async function askYesNo(rl, q, def) {
+  const a = (await ask(rl, q + (def ? " [Y/n] " : " [y/N] "))).toLowerCase();
+  if (!a) return def;
+  return a[0] === "y";
+}
+
+async function wizard() {
+  const tty = openTty();
+  const rl = readline.createInterface({ input: tty.stream, output: process.stdout });
+  rl.on("SIGINT", () => { rl.close(); tty.close(); note("\nAborted."); process.exit(130); });
+
+  note("🍯 Honey installer\n");
+  const agents = [...CLI_AGENTS.map((a) => ({ ...a, kind: "cli" })),
+                  ...RULE_AGENTS.map((a) => ({ ...a, kind: "rule" }))];
+  const detected = new Set(CLI_AGENTS.filter((a) => a.detect()).map((a) => a.id));
+  note("Which coding agents do you use? (detected ones are pre-selected)\n");
+  agents.forEach((a, i) => {
+    const mark = detected.has(a.id) ? "x" : " ";
+    const tag = a.kind === "cli" ? "" : "  (per-repo rule file)";
+    note("  " + String(i + 1).padStart(2) + ") [" + mark + "] " + a.name + tag);
+  });
+  note("\nEnter numbers (e.g. 1,3,5), or `all` / `detected` / blank = detected.");
+
+  let chosen = [];
+  for (let tries = 0; tries < 2; tries++) {
+    const raw = (await ask(rl, "> ")).toLowerCase();
+    if (raw === "all") chosen = agents.map((a) => a.id);
+    else if (raw === "" || raw === "detected") chosen = [...detected];
+    else {
+      chosen = raw.split(",").map((s) => parseInt(s.trim(), 10) - 1)
+        .filter((n) => n >= 0 && n < agents.length).map((n) => agents[n].id);
+    }
+    if (chosen.length) break;
+    note("No agents selected — pick at least one.");
+  }
+  if (!chosen.length) { rl.close(); tty.close(); note("Nothing selected. Exiting."); return; }
+
+  const chosenSet = new Set(chosen);
+  const claude = chosenSet.has("claude");
+  const editorPicked = RULE_AGENTS.some((a) => chosenSet.has(a.id));
+
+  let statusline = false;
+  if (claude) statusline = await askYesNo(rl, "\nWire the 🍯 CO₂ statusline badge into Claude Code?", true);
+
+  let withInit = false;
+  if (editorPicked)
+    withInit = await askYesNo(rl, "\nDrop editor rule files into this repo (" + process.cwd() + ")?", false);
+
+  let mode = (await ask(rl, "\nDefault Honey mode — lite / full / ultra [full]: ")).toLowerCase();
+  if (!["lite", "full", "ultra"].includes(mode)) mode = "full";
+
+  rl.close();
+  tty.close();
+
+  // Feed the answers into the existing install() path. Editor agents only ever
+  // produce rule files, so they belong in onlyIds *only* when the user opted into
+  // dropping them — otherwise install() would copy them off the bare selection.
+  const cliIds = new Set(CLI_AGENTS.map((a) => a.id));
+  const cliChosen = chosen.filter((id) => cliIds.has(id));
+  WITH_INIT = withInit && editorPicked;
+  onlyIds = WITH_INIT ? chosen : cliChosen;
+  MINIMAL = !statusline;
+  if (!onlyIds.length && !WITH_INIT) { note("\nNothing to install."); return; }
+  note("");
+  install();
+  note("\nDefault mode: " + mode);
+  run('node "' + path.join(REPO, "hooks", "honey-state.js") + '" set ' + mode);
+}
+
 // ---- dispatch -------------------------------------------------------------
+const explicit = onlyIds.length || has("--all") || MINIMAL || WITH_INIT || YES;
 if (has("--help")) help();
 else if (has("--list")) list();
 else if (has("--uninstall")) uninstall();
+else if (!explicit && ttyAvailable()) wizard();
 else install();

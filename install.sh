@@ -26,4 +26,10 @@ else
   curl -fsSL "${REPO}/archive/refs/heads/main.tar.gz" | tar xz -C "$DEST" --strip-components=1
 fi
 
-exec node "$DEST/bin/install.js" "$@"
+# Reconnect stdin to the terminal so the installer's wizard can prompt even when
+# this script itself arrived over a pipe (curl | bash).
+if [ -e /dev/tty ]; then
+  exec node "$DEST/bin/install.js" "$@" < /dev/tty
+else
+  exec node "$DEST/bin/install.js" "$@"
+fi
