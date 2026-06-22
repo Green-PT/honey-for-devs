@@ -56,22 +56,27 @@ recovery); tokens are **generated output vs baseline**:
 
 | Task tier | Caveman | Ponytail | **Honey** |
 |-----------|:-------:|:--------:|:---------:|
-| **Code** (12 unit-tested tasks) | 99% · −27% | 99% · **+39%** | **98% · −39%** |
-| **User-facing** (3 landing/UI tasks) | 98% · −16% | 94% · −39% | **101% · +12%** |
-| **Agent-to-agent** (2 handoff tasks) | 100% · −29% | 100% · −26% | **100% · −53%** |
+| **Code** (12 unit-tested tasks) | 100% · −30% | 98% · **+38%** | **99% · −40%** |
+| **User-facing** (3 landing/UI tasks) | 99% · −15% | 95% · −31% | **100% · −4%** |
+| **Agent-to-agent** (2 handoff tasks) | 100% · −22% | 100% · −21% | **100% · −49%** |
 
 Honey **leads quality where it matters most** — it tops the user-facing and
 agent-to-agent tiers (the quality-separating ones) and stays within judge noise
 of the pack on saturated code tasks — while cutting tokens where it's safe to:
 
-- **Code** — the deepest cut (−39% output, −20% $) at essentially tied quality
-  (98% vs 99%, within judge noise on tasks every variant passes). Caveman saves
-  less; Ponytail's mandatory self-check *inflates* trivial code.
-- **User-facing** — the carve-out keeps Honey from compressing polish, so it spends
-  *more* (+12%) and earns the top quality score; Ponytail strips hardest and loses
-  the most quality.
-- **Agent-to-agent** — Honey's ESO/compact-JSON lever cuts handoff size in half
-  with zero loss of recovery: its biggest, cleanest win.
+- **Code** — the deepest cut (−40% output) at essentially tied quality (99% vs
+  100%, within judge noise on tasks every variant passes). Caveman saves less;
+  Ponytail's mandatory self-check *inflates* trivial code (+38%).
+- **User-facing** — the carve-out keeps Honey from compressing polish, yet it
+  still trims output (−4%) while earning the top quality score (100% of baseline);
+  Ponytail strips hardest and loses the most quality.
+- **Agent-to-agent** — Honey's ESO/compact-JSON lever roughly halves handoff size
+  (−49%) with zero loss of recovery: its biggest, cleanest win.
+
+The same pattern holds on GPT-5.5 (full two-provider table in
+[`bench/results/cross-provider.md`](bench/results/cross-provider.md)): Honey is the
+only variant that keeps 100% tests and top-tier quality on both models while cutting
+tokens on every tier.
 
 ## Efficient Structured Output
 
