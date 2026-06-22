@@ -14,6 +14,7 @@
     "bench:formats": "node bench/eso/formats.mjs",
     "bench:ccr": "node bench/headroom/run.mjs",
     "bench:ccr:comprehension": "node bench/headroom/comprehension.mjs",
+    "bench:memory": "node bench/memory/run.mjs",
     "bench:all": "npm run bench:formats && npm run bench:ccr && npm run bench:ccr:comprehension",
     "build": "node scripts/build-rules.js",
     "check": "node scripts/build-rules.js --check",
