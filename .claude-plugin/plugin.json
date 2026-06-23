@@ -6,6 +6,5 @@
   "homepage": "https://github.com/Green-PT/honey-for-devs",
   "repository": "https://github.com/Green-PT/honey-for-devs",
   "license": "MIT",
-  "keywords": ["tokens", "yagni", "minimal", "concise", "cost", "terse", "subagents", "handoff", "eso"],
-  "hooks": "./hooks/hooks.json"
+  "keywords": ["tokens", "yagni", "minimal", "concise", "cost", "terse", "subagents", "handoff", "eso"]
 }
