@@ -18,6 +18,11 @@ function dollars(model, freshIn, cacheIn, outTok) {
 }
 
 const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : 0);
+const stdev = (xs) => {
+  if (xs.length < 2) return 0;
+  const m = mean(xs);
+  return Math.sqrt(mean(xs.map((x) => (x - m) ** 2)));
+};
 const pct = (x) => `${(x * 100).toFixed(0)}%`;
 const signedPct = (x) => `${x >= 0 ? "+" : ""}${(x * 100).toFixed(0)}%`;
 
@@ -32,16 +37,19 @@ function aggregate(records, order, model) {
     const freshIn = rs.reduce((a, r) => a + r.usage.input, 0);
     const cacheIn = rs.reduce((a, r) => a + (r.usage.cache_read || 0), 0);
     const outTok = rs.reduce((a, r) => a + r.usage.output, 0);
+    const judges = rs.filter((r) => r.judge != null).map((r) => r.judge);
     rows[v] = {
       variant: v,
       n: rs.length,
       passRate: mean(rs.map((r) => (r.passed ? 1 : 0))),
-      judge: mean(rs.filter((r) => r.judge != null).map((r) => r.judge)),
+      judge: mean(judges),
+      judgeSd: stdev(judges), // per-record spread: a small judge gap inside ±sd is noise, not a win
       input: freshIn,
       cacheIn,
       output: outTok,
       gco2: rs.reduce((a, r) => a + (r.gco2 || 0), 0),
-      usd: dollars(model, freshIn, cacheIn, outTok),
+      usd: dollars(model, freshIn, cacheIn, outTok), // cached steady-state
+      usdCold: dollars(model, freshIn + cacheIn, 0, outTok), // cold session: skill prompt billed fresh
     };
   }
   return rows;
@@ -55,16 +63,16 @@ function table(rows, order) {
   // Headline reduction is OUTPUT tokens — the volume each skill directly controls, and
   // caching-independent. Input is dominated by the cacheable, one-time skill prompt.
   const header =
-    "| Variant | Tests pass | Judge | Judge vs base | Output tok | Output vs base | $ (cached) | $ vs base | CO₂ (g) |\n" +
-    "|---------|-----------:|------:|--------------:|-----------:|---------------:|-----------:|----------:|--------:|";
+    "| Variant | Tests pass | Judge ±sd | Judge vs base | Output tok | Output vs base | $ (cached) | $ (cold) | CO₂ (g) |\n" +
+    "|---------|-----------:|----------:|--------------:|-----------:|---------------:|-----------:|---------:|--------:|";
   const lines = order
     .filter((v) => rows[v] && rows[v].n)
     .map((v) => {
       const r = rows[v];
       const q = base && base.judge ? pct(qVs(r.judge, base.judge)) : "—";
       const ov = base ? signedPct(rel(r.output, base.output)) : "—";
-      const dv = base && base.usd ? signedPct(rel(r.usd, base.usd)) : "—";
-      return `| ${v} | ${pct(r.passRate)} | ${r.judge.toFixed(0)} | ${q} | ${r.output.toLocaleString()} | ${ov} | $${r.usd.toFixed(3)} | ${dv} | ${r.gco2.toFixed(1)} |`;
+      const j = `${r.judge.toFixed(0)} ±${r.judgeSd.toFixed(0)}`;
+      return `| ${v} | ${pct(r.passRate)} | ${j} | ${q} | ${r.output.toLocaleString()} | ${ov} | $${r.usd.toFixed(3)} | $${r.usdCold.toFixed(3)} | ${r.gco2.toFixed(1)} |`;
     });
   return [header, ...lines].join("\n");
 }

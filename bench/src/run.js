@@ -12,7 +12,8 @@
 
 const fs = require("fs");
 const path = require("path");
-const { extractCode } = require("./extract");
+const crypto = require("crypto");
+const { extractInfo } = require("./extract");
 const { grade } = require("./grade");
 const { gradeWeb } = require("./grade-web");
 const { receiverPrompt, parseAnswers, scoreRelay } = require("./relay");
@@ -195,7 +196,8 @@ async function runCell(task, variantName, system, run) {
   }
 
   const lang = task.meta.lang === "python" ? "python" : type === "web" ? "html" : "javascript";
-  let code = extractCode(gen.text, lang);
+  const ex = extractInfo(gen.text, lang);
+  let code = ex.code;
   if (type === "web" && !/<(html|body|main|section|div)\b/i.test(code)) code = gen.text; // raw, unfenced HTML
   const g = type === "web" ? gradeWeb(task, code) : grade(task, code);
 
@@ -211,6 +213,7 @@ async function runCell(task, variantName, system, run) {
     ...common,
     passed: g.passed,
     grade_detail: g.detail,
+    nblocks: ex.nblocks,
     judge: median(scores),
     judge_min: scores.length ? Math.min(...scores) : null,
     judge_max: scores.length ? Math.max(...scores) : null,
@@ -230,6 +233,15 @@ function median(xs) {
 (async () => {
   const tasks = loadTasks();
   const systems = Object.fromEntries(VARIANTS.map((v) => [v, loadVariant(v)]));
+  // Pin every variant's exact system prompt this run: hash it and snapshot the resolved text
+  // (below). honey loads live from skills/, so without this the comparison drifts as the skill
+  // is edited — the hash makes "which honey vs which competitors" reproducible per result set.
+  const variantHashes = Object.fromEntries(
+    Object.entries(systems).map(([v, s]) => [
+      v,
+      s ? crypto.createHash("sha256").update(s).digest("hex").slice(0, 12) : null,
+    ])
+  );
 
   // build the full work list (variant × task × run)
   const cells = [];
@@ -257,12 +269,23 @@ function median(xs) {
   const stamp = (process.env.STAMP || "latest").replace(/[^\w.-]/g, "_");
   const outDir = path.join(ROOT, "results", stamp);
   fs.mkdirSync(path.join(outDir, "raw"), { recursive: true });
+  fs.mkdirSync(path.join(outDir, "systems"), { recursive: true });
   for (const rec of records) {
     const f = path.join(outDir, "raw", `${rec.variant}__${rec.task}__r${rec.run}.md`);
     fs.writeFileSync(f, rec.reply);
   }
+  for (const [v, s] of Object.entries(systems)) if (s) fs.writeFileSync(path.join(outDir, "systems", `${v}.md`), s);
   const slim = records.map(({ reply, ...r }) => r);
-  fs.writeFileSync(path.join(outDir, "results.json"), JSON.stringify({ meta: { model: MODEL, judge: JUDGE_MODELS, runs: RUNS, thinking: THINKING, mock: MOCK }, records: slim }, null, 2));
+  const meta = {
+    model: MODEL,
+    judge: JUDGE_MODELS,
+    judge_rubric: process.env.JUDGE_RUBRIC || "plain",
+    runs: RUNS,
+    thinking: THINKING,
+    mock: MOCK,
+    variant_hashes: variantHashes,
+  };
+  fs.writeFileSync(path.join(outDir, "results.json"), JSON.stringify({ meta, records: slim }, null, 2));
 
   const { aggregate, table } = require("./report");
   const rows = aggregate(records, ALL_VARIANTS.filter((v) => VARIANTS.includes(v)), MODEL);
@@ -273,11 +296,13 @@ function median(xs) {
     `${THINKING ? ` · thinking: ${THINKING}` : ""}${MOCK ? " · **MOCK**" : ""}\n\n` +
     `${tbl}\n\n` +
     `- **Tests pass** — objective: extracted code run against unit tests.\n` +
-    `- **Judge / Judge vs base** — LLM-as-judge (0-100), and as a ratio to baseline.\n` +
+    `- **Judge ±sd** — LLM-as-judge (0-100, panel median) with per-record stdev. A judge gap\n` +
+    `  inside ±sd is noise, not a quality win. Rubric: \`${process.env.JUDGE_RUBRIC || "plain"}\`.\n` +
     `- **Output tok / Output vs base** — the headline lever: tokens each skill directly\n` +
     `  controls. Caching-independent.\n` +
-    `- **$ (cached)** — cache-aware: the skill system prompt is prompt-cached (≈10% input\n` +
-    `  cost on repeat tasks), as in real agentic use. Rates in \`bench/pricing.json\`.\n` +
+    `- **$ (cached)** — steady state: skill prompt prompt-cached (≈10% input cost on repeat\n` +
+    `  tasks). **$ (cold)** — first-turn worst case: skill prompt billed as fresh input. Real\n` +
+    `  cost sits between, nearer cached as a session lengthens. Rates in \`bench/pricing.json\`.\n` +
     `- **CO₂** via EcoLogits port (\`hooks/eco.js\`), from output tokens.\n`;
   fs.writeFileSync(path.join(outDir, "report.md"), md);
 
