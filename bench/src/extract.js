@@ -17,10 +17,35 @@ function isUsageBlock(body, lang) {
   return /\brequire\(\s*['"]\.\//.test(body) || /^\s*import\s+.*\bfrom\s+['"]\.\//m.test(body);
 }
 
-// Concatenate every fenced block whose tag matches the task language (in document order),
-// minus usage/example blocks. Untagged blocks count too — terse variants often drop the
-// ```python tag. If nothing matches the language and nothing is untagged, fall back to all.
-function extractCode(text, lang) {
+// Top-level symbols a block defines. Used to detect when a single block is the complete
+// final answer vs. when blocks genuinely split a helper from the main function.
+function defs(body, lang) {
+  const pats =
+    lang === "python"
+      ? [/^(?:async\s+)?def\s+([A-Za-z_]\w*)/gm, /^class\s+([A-Za-z_]\w*)/gm]
+      : [
+          /^(?:export\s+)?(?:async\s+)?function\s+([A-Za-z_$][\w$]*)/gm,
+          /^(?:export\s+)?(?:const|let|var)\s+([A-Za-z_$][\w$]*)/gm,
+          /^(?:export\s+)?class\s+([A-Za-z_$][\w$]*)/gm,
+        ];
+  const names = new Set();
+  for (const p of pats) {
+    p.lastIndex = 0;
+    let m;
+    while ((m = p.exec(body)) !== null) names.add(m[1]);
+  }
+  return names;
+}
+
+// Pick the code a grader will execute. Collect fenced blocks matching the task language
+// (untagged count too — terse variants drop the tag), minus usage/example blocks.
+//
+// If one block already defines every top-level symbol seen across the blocks, that block IS
+// the complete answer — use it ALONE (the LAST such block = the final version). This stops a
+// chatty reply that shows the solution plus an alternative/buggy variant from getting both
+// glued together and failing — an artifact that penalized verbosity, not correctness. Only
+// when no single block is complete (a real helper+main split) do we concatenate.
+function extractInfo(text, lang) {
   const want = new Set(LANG_ALIASES[lang] || [lang]);
   const matched = [];
   const untagged = [];
@@ -36,7 +61,28 @@ function extractCode(text, lang) {
     else if (want.has(tag)) matched.push(body);
   }
   const pick = matched.length ? matched : untagged.length ? untagged : all;
-  return pick.join("\n\n").trim();
+  if (!pick.length) return { code: "", nblocks: 0 };
+
+  const union = new Set();
+  const blockDefs = pick.map((b) => {
+    const d = defs(b, lang);
+    for (const n of d) union.add(n);
+    return d;
+  });
+  let code;
+  if (union.size) {
+    let chosen = -1;
+    for (let i = 0; i < pick.length; i++)
+      if ([...union].every((n) => blockDefs[i].has(n))) chosen = i; // last complete block wins
+    code = chosen >= 0 ? pick[chosen] : pick.join("\n\n");
+  } else {
+    code = pick.join("\n\n");
+  }
+  return { code: code.trim(), nblocks: pick.length };
 }
 
-module.exports = { extractCode };
+function extractCode(text, lang) {
+  return extractInfo(text, lang).code;
+}
+
+module.exports = { extractCode, extractInfo };

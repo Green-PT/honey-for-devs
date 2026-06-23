@@ -5,7 +5,29 @@
 
 const { complete } = require("./client");
 
-const SYSTEM_CODE = `You are a strict, neutral code-review judge. Score a candidate answer to a
+// Rubric mode (env JUDGE_RUBRIC):
+//   plain (default) — neutral: no instruction about length/terseness in either direction, so
+//     honey's terseness gets no thumb on the scale. The only guardrails are correctness-
+//     neutral (judge stated requirements; don't assume a stdlib fn is buggy) and apply to
+//     every variant identically. This is the rubric the headline runs on.
+//   aware — the older rubric that explicitly tells the judge not to penalize terseness and to
+//     credit stdlib delegation. Kept so plain-vs-aware can be measured: if honey's lead only
+//     shows under `aware`, the lead is the rubric, not the skill.
+const RUBRIC = (process.env.JUDGE_RUBRIC || "plain").toLowerCase();
+
+const PLAIN_CODE = `You are a strict, neutral code-review judge. Score a candidate answer to a
+coding task from 0 to 100 on three things only:
+- Correctness: does the code do what the task asks, including the stated edge cases?
+- Completeness: is the required function/class present with the right signature and exports?
+- Clarity: is it readable and unambiguous?
+
+Correctness-neutral guardrails (apply to every answer equally):
+- Judge ONLY against the task's stated requirements. Do not invent extra ones (e.g. if the
+  task asks for a float only on even-length input, do not penalize an int on odd-length).
+- Do NOT assume a standard-library function is buggy. If unsure of its behavior, treat it as correct.
+Reply with ONLY a JSON object: {"score": <int 0-100>, "note": "<= 12 words"}`;
+
+const AWARE_CODE = `You are a strict, neutral code-review judge. Score a candidate answer to a
 coding task from 0 to 100 on three things only:
 - Correctness: does the code do what the task asks, including the stated edge cases?
 - Completeness: is the required function/class present with the right signature and exports?
@@ -23,6 +45,8 @@ Critical anti-bias rules:
 - Judge ONLY against the task's stated requirements. Do not invent extra ones (e.g. if the
   task asks for a float only on even-length input, do not penalize an int on odd-length).
 Reply with ONLY a JSON object: {"score": <int 0-100>, "note": "<= 12 words"}`;
+
+const SYSTEM_CODE = RUBRIC === "aware" ? AWARE_CODE : PLAIN_CODE;
 
 const SYSTEM_WEB = `You are a senior design engineer judging a user-facing web deliverable
 (a landing page or UI component). Score the DELIVERABLE itself from 0 to 100 on:
@@ -56,4 +80,4 @@ async function judge({ model, taskPrompt, candidateOutput, type = "code" }) {
   return parseScore(text);
 }
 
-module.exports = { judge };
+module.exports = { judge, RUBRIC };

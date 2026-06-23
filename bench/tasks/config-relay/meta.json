@@ -9,6 +9,10 @@
     { "q": "Is auth required for the /charge route? Answer yes or no.", "a": "yes" },
     { "q": "What is the value of env RETRIES? Answer with just the number.", "a": "5" },
     { "q": "Is the legacy_api flag on? Answer yes or no.", "a": "no" },
-    { "q": "How many routes use method POST? Answer with just the number.", "a": "2" }
+    { "q": "How many routes use method POST? Answer with just the number.", "a": "2" },
+    { "q": "Does the 2nd route in the list require auth? Answer yes or no.", "a": "no" },
+    { "q": "How many routes do NOT require auth? Answer with just the number.", "a": "1" },
+    { "q": "What is the value of env STRIPE_MODE? Answer with just the value.", "a": "live" },
+    { "q": "Is there an env var named MAX_CONN? Answer yes or no.", "a": "no" }
   ]
 }

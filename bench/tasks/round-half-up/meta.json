@@ -1,0 +1,8 @@
+{
+  "id": "round-half-up",
+  "lang": "python",
+  "category": "bugfix",
+  "solution_file": "solution.py",
+  "test_file": "test.py",
+  "test_cmd": ["python3", "test.py"]
+}

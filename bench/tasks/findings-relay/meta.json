@@ -9,6 +9,10 @@
     { "q": "What is the rule of finding F2? Answer with just the rule id.", "a": "sql-string" },
     { "q": "How many findings have severity M? Answer with just the number.", "a": "4" },
     { "q": "List the ids of all severity-H findings, comma-separated, in order (e.g. F1,F2).", "a": "F1,F4,F7" },
-    { "q": "What is the line number of finding F10? Answer with just the number.", "a": "99" }
+    { "q": "What is the line number of finding F10? Answer with just the number.", "a": "99" },
+    { "q": "What is the rule of the 3rd finding in the list? Answer with just the rule id.", "a": "unused-var" },
+    { "q": "What is the message of finding F4? Answer with the message text only.", "a": "admin route has no authorization check" },
+    { "q": "How many severity-H findings are in files under app/? Answer with just the number.", "a": "2" },
+    { "q": "Is there any finding with rule csrf? Answer yes or no.", "a": "no" }
   ]
 }

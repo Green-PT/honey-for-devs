@@ -8,23 +8,26 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const TRANSIENT = new Set([408, 409, 429, 500, 502, 503, 504, 529]);
 
 // POST JSON with retry — a long benchmark run will hit the odd transient network drop or
-// 429/overloaded; one of those shouldn't kill 200 generations. Up to 5 attempts, exp backoff.
+// 429/overloaded; one of those shouldn't kill 300+ generations. Up to 8 attempts with capped
+// exponential backoff (~1,2,4,8,16,30,30s ≈ 90s total) to ride out a sustained provider overload.
+const MAX_ATTEMPTS = 7;
+const backoff = (a) => Math.min(30000, 1000 * 2 ** a) + Math.floor(Math.random() * 500);
 async function postJSON(url, headers, body, label) {
   let lastErr;
-  for (let attempt = 0; attempt <= 4; attempt++) {
+  for (let attempt = 0; attempt <= MAX_ATTEMPTS; attempt++) {
     let res;
     try {
       res = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
     } catch (e) {
       lastErr = e; // network error (fetch failed / ECONNRESET)
-      if (attempt < 4) { await sleep(800 * 2 ** attempt + Math.floor(Math.random() * 400)); continue; }
+      if (attempt < MAX_ATTEMPTS) { await sleep(backoff(attempt)); continue; }
       throw e;
     }
     if (res.ok) return res.json();
     const text = await res.text();
     lastErr = new Error(`${label} ${res.status}: ${text.slice(0, 400)}`);
-    if (TRANSIENT.has(res.status) && attempt < 4) {
-      await sleep(800 * 2 ** attempt + Math.floor(Math.random() * 400));
+    if (TRANSIENT.has(res.status) && attempt < MAX_ATTEMPTS) {
+      await sleep(backoff(attempt));
       continue;
     }
     throw lastErr;
