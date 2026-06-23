@@ -1,0 +1,27 @@
+[
+  { "q": "How is an authenticated route protected?", "kind": "greppable",
+    "files": ["app/lib/auth/middleware.server.ts"], "answer": "requireAuthOrRefresh" },
+  { "q": "Which algorithm hashes passwords?", "kind": "greppable",
+    "files": ["app/lib/auth/password.server.ts"], "answer": "argon2" },
+  { "q": "How does a public route build its SEO meta?", "kind": "greppable",
+    "files": ["app/lib/seo/meta.ts"], "answer": "buildSeoMeta" },
+  { "q": "How is the House Hunter vs Moments host routing decided?", "kind": "greppable",
+    "files": ["app/lib/site/context.server.ts"], "answer": "getSiteContext" },
+  { "q": "How is the CSP nonce applied?", "kind": "greppable",
+    "files": ["app/lib/security/csp.server.ts"], "answer": "nonce" },
+  { "q": "What test environment does Vitest use?", "kind": "greppable",
+    "files": ["vitest.config.ts"], "answer": "jsdom" },
+  { "q": "What icon represents the Consciousness check agent?", "kind": "greppable",
+    "files": ["app/lib/agents/normalize-agents.ts"], "answer": "Telescope" },
+  { "q": "What is the pre-PR test command?", "kind": "greppable",
+    "files": ["package.json"], "answer": "test:run" },
+
+  { "q": "Why use lg (1024px), not md, for the nav breakpoint?", "kind": "intent",
+    "files": [], "answer": "too narrow for most nav layouts" },
+  { "q": "Why is the README accessibility-audit framing wrong?", "kind": "intent",
+    "files": [], "answer": "legacy README" },
+  { "q": "Why Argon2id and not bcrypt for passwords?", "kind": "intent",
+    "files": [], "answer": "never bcrypt" },
+  { "q": "Why must AI calls go through the provider router?", "kind": "intent",
+    "files": [], "answer": "stay centralised" }
+]

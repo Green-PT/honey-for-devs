@@ -3,7 +3,11 @@
 const assert = require("node:assert/strict");
 const { execFileSync, spawnSync } = require("node:child_process");
 const test = require("node:test");
-const { decode, encode } = require(".");
+const { decode, tryDecode, encode } = require(".");
+
+// JSON.stringify throws on BigInt; compare via a replacer so big-int payloads
+// participate in round-trip checks. Same transform both sides → still catches drift.
+const j = (x) => JSON.stringify(x, (_, v) => (typeof v === "bigint" ? `#${v}` : v));
 
 const handoff = {
   from: "reviewer",
@@ -29,6 +33,31 @@ test("round-trips ambiguous and escaped strings", () => {
 test("round-trips empty objects and empty record arrays", () => {
   const data = { meta: {}, rows: [{}, {}], context: { inner: {} }, items: [] };
   assert.deepEqual(decode(encode(data)), data);
+});
+
+test("preserves integers beyond Number.MAX_SAFE_INTEGER as BigInt", () => {
+  const big = 9007199254740993n; // 2^53 + 1 — corrupts to ...992 if parsed via Number()
+  assert.equal(decode(encode({ id: big })).id, big);
+  assert.equal(decode("!eso/1\nid=9007199254740993\n").id, big); // literal from another runtime
+  assert.equal(typeof decode(encode({ n: 42 })).n, "number"); // safe range stays Number
+  const data = { rows: [{ id: big }], ids: [big] }; // record fields + scalar arrays
+  assert.deepEqual(decode(encode(data)), data);
+  // property-style: varied magnitude/sign, at every valid position, round-trips exact
+  for (let p = 16; p <= 40; p++) {
+    for (const v of [10n ** BigInt(p), -(10n ** BigInt(p)) - 7n]) {
+      const doc = { x: v, rows: [{ id: v }], ids: [v, v + 1n] };
+      assert.deepEqual(decode(encode(doc)), doc, `big-int round-trip failed for ${v}`);
+    }
+  }
+});
+
+test("tryDecode returns a result instead of throwing", () => {
+  const good = tryDecode(encode(handoff));
+  assert.equal(good.ok, true);
+  assert.deepEqual(good.value, handoff);
+  const bad = tryDecode("!eso/1\nrows[2]{id}\n1\n");
+  assert.equal(bad.ok, false);
+  assert.match(bad.error.message, /expected 2 rows/);
 });
 
 test("rejects keys that are not valid names instead of corrupting them", () => {
@@ -64,6 +93,7 @@ test("round-trips thousands of random documents losslessly", () => {
     null, true, false, 0, -0, 1, -1, 42, 3.14, -2.5, 1e6, 9007199254740991,
     "", "x", "hello world", "  pad  ", "null", "true", "01", "1", "1.0",
     "a\tb", "a\nb", "[bracket", "{brace", '"quote', "café 🚀", "back\\slash", "!eso/1",
+    "[2]", "a=b", "x[2]{y}", "id=5", "k{f}", "9007199254740993",
   ]);
   const keys = (n) => { const s = new Set(); while (s.size < n) s.add(name()); return [...s]; };
   const gen = (depth) => {
@@ -82,8 +112,7 @@ test("round-trips thousands of random documents losslessly", () => {
     // Compare via JSON text: ESO guarantees JSON-semantics losslessness, where -0 and 0
     // are the same number (JSON.stringify(-0) === "0"). This comparison is order-sensitive,
     // so it still catches any field-order or value corruption.
-    assert.equal(JSON.stringify(decode(encode(root))), JSON.stringify(root),
-      `round-trip failed for ${JSON.stringify(root)}`);
+    assert.equal(j(decode(encode(root))), j(root), `round-trip failed for ${j(root)}`);
   }
 });
 
@@ -96,6 +125,8 @@ test("CLI encodes and decodes stdin", () => {
   const encoded = execFileSync(process.execPath, [cli, "encode"], { input: JSON.stringify(handoff), encoding: "utf8" });
   const decoded = execFileSync(process.execPath, [cli, "decode"], { input: encoded, encoding: "utf8" });
   assert.deepEqual(JSON.parse(decoded), handoff);
+  const big = execFileSync(process.execPath, [cli, "decode"], { input: "!eso/1\nid=9007199254740993\n", encoding: "utf8" });
+  assert.match(big, /"id":9007199254740993(?!\d)/); // bare literal, not corrupted to ...992 or quoted
   const bad = spawnSync(process.execPath, [cli], { encoding: "utf8" });
   assert.equal(bad.status, 1);
   assert.match(bad.stderr, /Usage/);

@@ -2,7 +2,9 @@
 
 ESO is a compact, lossless wire format for agent handoffs. It optimizes the common
 shape: a small envelope plus uniform record arrays. It is UTF-8, line-oriented,
-streamable, and deliberately narrower than JSON.
+and deliberately narrower than JSON. (The reference `decode` parses a whole
+document; the line-oriented grammar is amenable to streaming, but no incremental
+parser ships yet.)
 
 ```eso
 !eso/1
@@ -43,13 +45,20 @@ name     = ALPHA / "_", then ALPHA / DIGIT / "_" / "." / "-"
 - Numbers are finite JSON numbers. Negative zero collapses to `0` inside nested JSON
   cells, matching `JSON.stringify`; ESO inherits JSON's number semantics. Duplicate
   names/fields and mixed record schemas are invalid.
+- Integers outside the safe `Number` range (`> 2^53−1`) round-trip losslessly:
+  `BigInt` encodes to bare digits, and integer literals beyond the safe range decode
+  to `BigInt` rather than being corrupted by `Number()`. Safe-range integers decode to
+  `Number`. `BigInt` nested inside a JSON cell is rejected — keep large ids as
+  top-level fields or record fields.
 
 ## Agent Contract
 
 Use `from`, `to`, `kind`, and `id` when routing matters. Put repeated work items in
-record arrays. Keep auth, money, migrations, deletion, and other irreversible
-instructions in JSON validated against an application schema; compactness is not
-worth an ambiguous high-impact action.
+record arrays. A record array carries one schema, so a heterogeneous batch (mixed
+message/event types) must be split into one array per type, not packed into a single
+array. Keep auth, money, migrations, deletion, and other irreversible instructions in
+JSON validated against an application schema; compactness is not worth an ambiguous
+high-impact action.
 
 ESO does not replace JSON for public APIs, deeply nested data, signatures, or
 untrusted input. Version changes require a new header such as `!eso/2`.
