@@ -92,4 +92,4 @@ function savingsFactor(cfg, mode) {
   return R < 1 ? R / (1 - R) : 0;
 }
 
-module.exports = { loadConfig, resolveParams, impacts, estimate, gridFor, savingsFactor };
+module.exports = { loadConfig, estimate, savingsFactor };

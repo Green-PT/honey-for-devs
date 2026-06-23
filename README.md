@@ -9,7 +9,7 @@
 cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
 making agents emit less code *and* less prose without losing correctness. It works
 with **Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
-and Kiro**. Three independent levers, applied reflexively:
+OpenClaw, and Kiro**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
@@ -128,6 +128,7 @@ reach for at a specific moment.
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
+| `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git |
 | `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eso crush`/`retrieve` |
 | `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |
 | `hive-scout` | subagent (haiku, read-only) | locate symbols / callers / configs; returns a compact id-keyed JSON map |
@@ -196,6 +197,7 @@ PATH. Safe to re-run; skips tools you don't have.
 | Codex | `codex plugin marketplace add Green-PT/honey-for-devs` then enable via `/plugins` |
 | GitHub Copilot CLI | `copilot plugin marketplace add Green-PT/honey-for-devs` then `copilot plugin install honey@greenpt` |
 | Gemini CLI | `gemini extensions install https://github.com/Green-PT/honey-for-devs` |
+| OpenClaw | `clawhub install honey` (companions: `clawhub install honey-review`, …) |
 | Cursor | copy `.cursor/rules/honey.mdc` into your project |
 | Windsurf | copy `.windsurf/rules/honey.md` into your project |
 | Cline | copy `.clinerules/honey.md` into your project |
@@ -258,6 +260,10 @@ Every per-platform rule file (and `AGENTS.md`) is generated from it:
 node scripts/build-rules.js          # regenerate all rule files
 node scripts/build-rules.js --check  # CI: fail if any copy drifted
 ```
+
+The OpenClaw skill package (`.openclaw/skills/`) is generated the same way from
+`skills/`; rerun `node scripts/build-openclaw-skills.js` after changing a skill.
+`tests/openclaw-skills.test.js` fails if a committed copy is stale.
 
 ## License
 

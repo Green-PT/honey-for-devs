@@ -26,6 +26,7 @@ const os = require("os");
 const path = require("path");
 
 const REPO = path.resolve(__dirname, "..");
+const { NAMES: OPENCLAW_SKILLS } = require("../scripts/build-openclaw-skills");
 const SLUG = "Green-PT/honey-for-devs";
 const URL = "https://github.com/" + SLUG;
 const HOME = os.homedir();
@@ -81,7 +82,6 @@ function copy(srcRel, destAbs) {
   fs.copyFileSync(src, destAbs);
   note("  copy " + srcRel + " -> " + destAbs);
 }
-
 // ---- statusline (Claude Code) ---------------------------------------------
 const SL_DIR = path.join(CLAUDE_DIR, "honey");
 const SL_PATH = path.join(SL_DIR, "statusline.js");
@@ -168,6 +168,18 @@ const CLI_AGENTS = [
     detect: () => which("gemini"),
     install: () => run("gemini extensions install " + URL),
     uninstall: () => run("gemini extensions uninstall honey"),
+  },
+  {
+    id: "openclaw",
+    name: "OpenClaw",
+    detect: () => which("clawhub") || which("openclaw") || dirExists(path.join(HOME, ".openclaw")),
+    // Native OpenClaw skills via ClawHub. The core skill plus each companion
+    // (-review, -design, -gain, …) install separately, mirroring `honey@greenpt`.
+    install: () => {
+      for (const s of OPENCLAW_SKILLS) run("clawhub install " + s);
+      note("  applied on coding tasks; also exposes /honey");
+    },
+    uninstall: () => OPENCLAW_SKILLS.forEach((s) => run("clawhub uninstall " + s)),
   },
 ];
 

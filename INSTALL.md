@@ -44,6 +44,18 @@ Codex also reads a root `AGENTS.md` automatically, so for a single project you
 can skip the plugin entirely and just `cp AGENTS.md <project>/` — or drop it at
 `~/.codex/AGENTS.md` for a global install.
 
+## Option A3 — ClawHub (recommended for OpenClaw)
+
+```
+clawhub install honey
+```
+
+Installs Honey as a native OpenClaw skill from ClawHub; the companion skills
+install the same way (`clawhub install honey-review`, `clawhub install
+honey-design`, and so on). OpenClaw applies it on coding tasks and also exposes a
+`/honey` command. Without ClawHub, copy [`.openclaw/skills/honey`](.openclaw/skills/)
+into `~/.openclaw/skills/`.
+
 ## Option B — One-line installer (all agents)
 
 macOS / Linux / WSL / Git Bash:
@@ -82,7 +94,7 @@ Pass flags through the pipe with `bash -s --`, e.g.
 | `--yes`, `-y` | Skip the wizard; non-interactive auto-detect install |
 | `--all` | Install detected CLI agents + statusline badge |
 | `--minimal` | Plugin/extension installs only; skip the statusline wiring |
-| `--only <id>` | Restrict to one agent (repeatable). IDs: `claude`, `codex`, `copilot`, `gemini`, `cursor`, `windsurf`, `cline`, `copilot-editor`, `opencode`, `kiro`, `agents` |
+| `--only <id>` | Restrict to one agent (repeatable). IDs: `claude`, `codex`, `copilot`, `gemini`, `cursor`, `windsurf`, `cline`, `copilot-editor`, `opencode`, `openclaw`, `kiro`, `agents` |
 | `--with-init` | Also drop editor rule files into the **current directory** |
 | `--dry-run` | Print every action without writing anything (works inside the wizard too) |
 | `--list` | Show the agent matrix and what's detected |
@@ -113,6 +125,8 @@ Each editor reads an always-on rule file. Copy the matching one into your projec
 | Kiro | `.kiro/steering/honey.md` | `<project>/.kiro/steering/` or `~/.kiro/steering/` |
 | OpenCode | `.opencode/AGENTS.md` | `<project>/.opencode/` |
 | Aider / Zed / universal | `AGENTS.md` | `<project>/` |
+
+OpenClaw is not a rule-file copy — it uses native skills; see Option A3.
 
 These files are generated from `skills/honey/SKILL.md`; don't edit them by hand —
 edit the source and run `node scripts/build-rules.js`.
