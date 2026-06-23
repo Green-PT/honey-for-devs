@@ -69,4 +69,4 @@ function table(rows, order) {
   return [header, ...lines].join("\n");
 }
 
-module.exports = { aggregate, table, dollars };
+module.exports = { aggregate, table };

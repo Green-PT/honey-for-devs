@@ -1,6 +1,6 @@
 # Agent-to-Agent Format Shootout
 
-Generated 2026-06-21 with Node v22.13.0 on Apple M4 Pro.
+Generated 2026-06-23 with Node v22.13.0 on Apple M4 Pro.
 All formats round-tripped losslessly before measurement. Lower tokens = cheaper; valid
 JSON = no custom parser and lower comprehension risk. Token count is efficiency, not quality.
 
