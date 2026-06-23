@@ -37,6 +37,7 @@ function cell(value) {
   if (value === null || typeof value === "boolean" || typeof value === "number") {
     return json(value);
   }
+  if (typeof value === "bigint") return value.toString();
   if (typeof value !== "string" && !Array.isArray(value) && !isRecord(value)) {
     throw new TypeError(`Unsupported ESO value: ${typeof value}`);
   }
@@ -51,6 +52,7 @@ function value(text) {
   if (text === "true") return true;
   if (text === "false") return false;
   if (NUMBER.test(text)) {
+    if (!/[.eE]/.test(text) && !Number.isSafeInteger(Number(text))) return BigInt(text);
     const parsed = Number(text);
     if (!Number.isFinite(parsed)) throw new SyntaxError(`Invalid ESO number: ${text}`);
     return parsed;
@@ -141,4 +143,15 @@ function decode(source) {
   return output;
 }
 
-module.exports = { decode, encode, isRecord };
+// Non-throwing decode for message routers: returns {ok:true,value} or
+// {ok:false,error} instead of throwing, so a malformed message can be rejected
+// without a try/catch at every call site.
+function tryDecode(source) {
+  try {
+    return { ok: true, value: decode(source) };
+  } catch (error) {
+    return { ok: false, error };
+  }
+}
+
+module.exports = { decode, tryDecode, encode, isRecord };

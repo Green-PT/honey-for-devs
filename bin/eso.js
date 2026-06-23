@@ -17,7 +17,11 @@ try {
   if (cmd === "encode") {
     process.stdout.write(encode(JSON.parse(fs.readFileSync(0, "utf8"))));
   } else if (cmd === "decode") {
-    process.stdout.write(JSON.stringify(decode(fs.readFileSync(0, "utf8"))) + "\n");
+    // Emit BigInt as a bare JSON number literal (sentinel + unquote): stock
+    // JSON.stringify throws on BigInt, and a quoted string would change the type.
+    const out = JSON.stringify(decode(fs.readFileSync(0, "utf8")), (_, v) =>
+      typeof v === "bigint" ? `${v}` : v).replace(/"(-?\d+)"/g, "$1");
+    process.stdout.write(out + "\n");
   } else if (cmd === "crush") {
     const array = JSON.parse(fs.readFileSync(0, "utf8"));
     const { view, hash } = crush(array);

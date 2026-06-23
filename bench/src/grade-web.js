@@ -68,4 +68,4 @@ function gradeWeb(task, html) {
   };
 }
 
-module.exports = { gradeWeb, CHECKS };
+module.exports = { gradeWeb };
