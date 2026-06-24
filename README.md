@@ -41,14 +41,15 @@ Volume is cost. In agentic coding sessions, the volume of generated code and
 prose is what runs up the bill — and most of it is waste.
 
 This repo ships a **reproducible benchmark** ([`bench/`](bench/)) so you don't have
-to take the numbers on faith: 17 tasks across three kinds of work — baseline vs
+to take the numbers on faith: 23 tasks across three kinds of work — baseline vs
 [Caveman](https://github.com/JuliusBrussee/caveman) vs
 [Ponytail](https://github.com/DietrichGebert/ponytail) vs Honey — same model, same
 prompts, only the skill changes. Correctness is objective (unit tests, structural /
 accessibility checks, and lossless round-trip recovery for agent handoffs); quality
-is scored by a **3-model judge panel** (median of Opus 4.8 + Sonnet 4.6 + Haiku 4.5).
-The figures below are the committed results (Claude Opus 4.8, 3 runs each) — run
-`cd bench && npm run bench` to reproduce.
+is scored by a **4-model cross-family judge panel** (median of Opus 4.8 + Sonnet 4.6
++ Haiku 4.5 + GPT-5.5) under a **neutral rubric** that says nothing about length, so a
+terse skill gets no thumb on the scale. The figures below are the committed results
+(Claude Opus 4.8, 3 runs each) — run `cd bench && npm run bench` to reproduce.
 
 A single blended number hides the story, because the levers fire differently per
 task type. Quality is **% of baseline** (panel median; for handoffs, lossless
@@ -56,27 +57,30 @@ recovery); tokens are **generated output vs baseline**:
 
 | Task tier | Caveman | Ponytail | **Honey** |
 |-----------|:-------:|:--------:|:---------:|
-| **Code** (12 unit-tested tasks) | 100% · −30% | 98% · **+38%** | **99% · −40%** |
-| **User-facing** (3 landing/UI tasks) | 99% · −15% | 95% · −31% | **100% · −4%** |
-| **Agent-to-agent** (2 handoff tasks) | 100% · −22% | 100% · −21% | **100% · −49%** |
+| **Code** (14 unit-tested tasks) | 101% · −37% | 99% · **+24%** | **98% · −49%** |
+| **User-facing** (7 landing/UI tasks) | 99% · −18% | 95% · −33% | **101% · −6%** |
+| **Agent-to-agent** (2 handoff tasks, lossless recovery) | 67% · −23% | 50% · −22% | **100% · −51%** |
 
 Honey **leads quality where it matters most** — it tops the user-facing and
 agent-to-agent tiers (the quality-separating ones) and stays within judge noise
 of the pack on saturated code tasks — while cutting tokens where it's safe to:
 
-- **Code** — the deepest cut (−40% output) at essentially tied quality (99% vs
+- **Code** — the deepest cut (−49% output) at essentially tied quality (98% vs
   100%, within judge noise on tasks every variant passes). Caveman saves less;
-  Ponytail's mandatory self-check *inflates* trivial code (+38%).
+  Ponytail's mandatory self-check *inflates* trivial code (+24%).
 - **User-facing** — the carve-out keeps Honey from compressing polish, yet it
-  still trims output (−4%) while earning the top quality score (100% of baseline);
-  Ponytail strips hardest and loses the most quality.
-- **Agent-to-agent** — Honey's ESO/compact-JSON lever roughly halves handoff size
-  (−49%) with zero loss of recovery: its biggest, cleanest win.
+  still trims output (−6%) while earning the top quality score (101% of baseline)
+  and the only 100% accessibility pass; Ponytail strips hardest and drops to 81%
+  on the structural/a11y checklist.
+- **Agent-to-agent** — under adversarial relay queries (ordinal, nested, absence,
+  cross-field count) Honey is the **only variant that stays 100% lossless** while
+  roughly halving handoff size (−51%); Caveman and Ponytail compress harder *and*
+  lose recovery (67% / 50%). Its biggest, cleanest win.
 
 The same pattern holds on GPT-5.5 (full two-provider table in
 [`bench/results/cross-provider.md`](bench/results/cross-provider.md)): Honey is the
-only variant that keeps 100% tests and top-tier quality on both models while cutting
-tokens on every tier.
+only variant with **no test regressions across all three tiers on Opus**, and on
+both models it keeps top-tier quality while cutting tokens on every tier.
 
 ## Efficient Structured Output
 
