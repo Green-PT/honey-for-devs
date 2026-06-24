@@ -14,8 +14,15 @@ if ! command -v node >/dev/null 2>&1; then
 fi
 
 if command -v git >/dev/null 2>&1; then
+  # $DEST is a throwaway cache — force it to match origin/main. A plain
+  # `pull --ff-only` aborts on any divergence and silently leaves stale code
+  # (e.g. missing newly-added agents), so reset hard, recloning if that fails.
   if [ -d "$DEST/.git" ]; then
-    git -C "$DEST" pull --ff-only --quiet || true
+    if ! git -C "$DEST" fetch --depth 1 --quiet origin main \
+       || ! git -C "$DEST" reset --hard --quiet FETCH_HEAD; then
+      rm -rf "$DEST"
+      git clone --depth 1 --quiet "${REPO}.git" "$DEST"
+    fi
   else
     rm -rf "$DEST"
     git clone --depth 1 --quiet "${REPO}.git" "$DEST"

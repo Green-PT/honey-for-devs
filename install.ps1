@@ -12,9 +12,18 @@ if (-not (Get-Command node -ErrorAction SilentlyContinue)) {
 }
 
 if (Get-Command git -ErrorAction SilentlyContinue) {
+  # Throwaway cache: force it to origin/main. `pull --ff-only` aborts on
+  # divergence and leaves stale code (missing newly-added agents), so reset
+  # hard and reclone if the fetch/reset fails.
+  $ok = $false
   if (Test-Path (Join-Path $Dest ".git")) {
-    git -C $Dest pull --ff-only --quiet
-  } else {
+    git -C $Dest fetch --depth 1 --quiet origin main
+    if ($LASTEXITCODE -eq 0) {
+      git -C $Dest reset --hard --quiet FETCH_HEAD
+      $ok = ($LASTEXITCODE -eq 0)
+    }
+  }
+  if (-not $ok) {
     if (Test-Path $Dest) { Remove-Item -Recurse -Force $Dest }
     git clone --depth 1 --quiet "$Repo.git" $Dest
   }
