@@ -82,6 +82,17 @@ The same pattern holds on GPT-5.5 (full two-provider table in
 only variant with **no test regressions across all three tiers on Opus**, and on
 both models it keeps top-tier quality while cutting tokens on every tier.
 
+### End-to-end agentic measurement (Cline harness)
+
+`npm run bench` makes **one API call** per task — clean for isolating the output lever, but it
+never exercises an agent loop, tool schemas, or multi-turn context growth, where a real agent's
+token bill actually lives. [`bench/src/cline-bench.js`](bench/src/cline-bench.js)
+(`npm run bench:cline`) runs each task *through* the [Cline](https://cline.bot) CLI headless, so
+the measured tokens are end-to-end agentic — harness prompt and every loop iteration included.
+Honey is injected as a Cline **rule**, recommended as the per-turn-cheap
+[`skills/honey/cline-rule.md`](skills/honey/cline-rule.md) (the operational core; the full
+`SKILL.md` re-sent every turn inflates input). See [`bench/README.md`](bench/README.md#harness-benchmark-cline).
+
 ## Efficient Structured Output
 
 Honey includes [ESO](eso/SPEC.md), a zero-dependency, schema-first format for
@@ -117,6 +128,35 @@ hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comp
 (quality). The `honey-ccr` skill tells the agent when to reach for it.
 
 Pick Honey when you want the best quality-per-token, especially in Claude Code.
+
+## Input precompression — a measured negative result
+
+The three levers above cut **output**. There's symmetric waste on the **input** side —
+filler, pleasantries, and repeated sentences in the prompt itself.
+[`hooks/precompress.js`](hooks/precompress.js) is a deterministic, **no-model** compressor
+that strips them before the prompt reaches the LLM, protecting code, paths, URLs,
+double-quoted strings, and numbers **verbatim** (it never touches a token you'd need exact).
+
+```bash
+printf '%s' 'Hi! Could you please write a function `add(a, b)` that returns their sum? Thanks so much in advance!' | node hooks/precompress-cli.js
+# -> write a function `add(a, b)` that returns their sum? in advance!
+```
+
+It's safe and lossless (35/35 property checks; on 10 unit-tested tasks the model's output
+passes **100%→100%** from full vs compressed prompts), and on *chatty* prompts it cuts a lot —
+**−16.5% median** on a hand-written verbose corpus.
+
+**But that corpus flatters it.** Measured on **266 real human-typed prompts** from 35 actual
+sessions ([`bench/input/RESULTS.md`](bench/input/RESULTS.md)), the cut is **2.5% total, median
+0%** — 219 of 266 prompts compress to nothing, because real prompts are already terse and carry
+almost no filler. Deterministic no-model compression can't catch *reworded* restatement (that
+needs a model), so this is the real ceiling, not a tuning problem.
+
+The honest conclusion: **the prompt is the wrong target.** Real input volume in agentic coding
+is tool output (CCR's domain) and re-pasted context across turns — not human pleasantries. This
+ships as a CLI filter for the chatty-prompt case; it is **not** wired always-on, because on real
+traffic it would save ~nothing. Kept here as a measured negative result, in the repo's spirit of
+not overstating. Reproduce: `node bench/input/tokens.mjs`.
 
 ## Skills & subagents
 
@@ -204,7 +244,7 @@ PATH. Safe to re-run; skips tools you don't have.
 | OpenClaw | `clawhub install honey` (companions: `clawhub install honey-review`, …) |
 | Cursor | copy `.cursor/rules/honey.mdc` into your project |
 | Windsurf | copy `.windsurf/rules/honey.md` into your project |
-| Cline | copy `.clinerules/honey.md` into your project |
+| Cline | copy `.clinerules/honey.md` into your project (token-conscious: the compact `skills/honey/cline-rule.md`) |
 | GitHub Copilot (editor) | copy `.github/copilot-instructions.md` into your project |
 | Kiro | copy `.kiro/steering/honey.md` (project or `~/.kiro/steering/`) |
 | OpenCode | copy `.opencode/AGENTS.md` into your project |

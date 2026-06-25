@@ -123,6 +123,25 @@ parses losslessly. Fires **only** here — never emit a wire format as a user-fa
 declared count (`[N]`) as a checksum. **Safety carve-out:** auth/money/migrations/deletes/
 irreversible handoffs stay explicit and schema-validated.
 
+### Lever 3b — request less *input*
+
+Levers 1–3 cut what you emit; this cuts what you pull in. The cheapest input token is the
+one that never enters context. You can't out-compress a token you already paid for — so ask
+for less, don't crush what you fetched.
+
+- **Locate before reading.** `Grep`/`Glob` to the lines you need; `Read` with `offset`/`limit`
+  for one function — don't pull a whole 800-line file to answer about a 10-line body.
+- **Don't re-read or re-paste what's already in context** — reference it. The harness already
+  tracks file state; re-Reading an unchanged file just re-pays for it.
+- **Offload bulk you must keep but mostly skim.** `cmd | eso stash` → a `<<honey:HASH>>` handle;
+  `eso retrieve <hash>` restores it verbatim when a detail is needed. (Lossy-skim variant for
+  huge uniform arrays: `eso crush`.) Reference the handle instead of pasting the blob again.
+- **Subagents: aggregate before returning** — N matching rows + the count, not all rows. Their
+  return is itself a Lever-3 handoff: columnar/minified.
+
+Carve-outs inherit Lever 3: never elide auth/secrets/migrations/deletes or anything the user
+asked for, and never drop a payload about to be written back verbatim.
+
 ## Examples
 
 Read a JSON file's key:

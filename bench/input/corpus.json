@@ -1,0 +1,102 @@
+[
+  {
+    "id": "verbose-bugfix",
+    "task": null,
+    "prompt": "Hi there! I was wondering if you could help me out with something. So basically I have this function and it's actually kind of broken. Please could you take a look? The function is supposed to compute the median of a list of numbers. The function is supposed to compute the median of a list of numbers. But honestly it's giving me wrong answers for even-length lists. Here is the code:\n\n```python\ndef median(xs):\n    xs.sort()\n    return xs[len(xs) // 2]\n```\n\nCould you please fix it? Thanks so much in advance, I really appreciate it!"
+  },
+  {
+    "id": "verbose-feature",
+    "task": null,
+    "prompt": "Hey! Hope you're doing well. I need a little bit of help with a string function. Basically, I want a function called `slugify(s)` that turns a title into a URL slug. So for example \"Hello, World!\" should become \"hello-world\". Please make sure it lowercases everything, and also it should replace spaces with hyphens, and it should strip out any punctuation. As I mentioned, lowercase, hyphens for spaces, no punctuation. Thanks in advance, really appreciate it!!"
+  },
+  {
+    "id": "verbose-log",
+    "task": null,
+    "prompt": "Hi, sorry to bother you. Could you please please help me figure out what is going wrong here? I keep getting this error and I honestly have no idea what it means. Here is the full traceback:\n\n```\nTraceback (most recent call last):\n  File \"app/main.py\", line 42, in <module>\n    main()\n  File \"app/main.py\", line 30, in main\n    user = db.get_user(uid)\n  File \"app/db.py\", line 17, in get_user\n    return self.cache[uid]\nKeyError: 1042\n```\n\nIt happens when the user is not in the cache. What should I do? Thank you so much for your help, I really really appreciate it."
+  },
+  {
+    "id": "verbose-refactor",
+    "task": null,
+    "prompt": "Hello! So I was just wondering, if it's not too much trouble, whether you could maybe help me clean up this code a little bit. It's basically a big if-else ladder that maps a status code to a message, and it's honestly really verbose and kind of ugly. I'd really appreciate it if you could refactor it to be cleaner. The codes are 200, 404, and 500. Map 200 to \"OK\", 404 to \"Not Found\", and 500 to \"Server Error\". Thanks a million in advance!"
+  },
+  {
+    "id": "verbose-repeat",
+    "task": null,
+    "prompt": "Could you please write a function that sums a column in a CSV file? Could you please write a function that sums a column in a CSV file? The file path is data/sales.csv and the column is called amount. Please use the standard library. Please use the standard library. Return the total as a float. Thanks in advance, thanks in advance!"
+  },
+  {
+    "id": "verbose-bullets",
+    "task": null,
+    "prompt": "Hi! I'd really appreciate it if you could write me a function `is_valid_email(s)`. Here are the requirements, please read them carefully:\n\n- It must return True or False.\n- It should require exactly one @ sign.\n- It should require at least one dot after the @.\n- Please don't use any external libraries, just the standard library.\n\nAgain, just to be clear: one @, a dot after it, returns a boolean, stdlib only. Thank you so so much!"
+  },
+  {
+    "id": "verbose-backstory",
+    "task": null,
+    "prompt": "Okay so a bit of context first: I'm learning Python, I've been at it for about three weeks now, and my mentor gave me a classic exercise but I'm a little stuck and honestly kind of frustrated. I've tried a few things but nothing seems to work quite right. Anyway, the actual ask is pretty simple I think: could you please write the classic FizzBuzz for numbers 1 to 100? Multiples of 3 print Fizz, multiples of 5 print Buzz, multiples of both print FizzBuzz, otherwise the number. Thanks!"
+  },
+  {
+    "id": "verbose-multipara",
+    "task": null,
+    "prompt": "Hey, hope your week is going well.\n\nI'm working on a search box and I need a debounce utility. Basically when the user types I don't want to fire the callback on every keystroke.\n\nSo what I need is a function `debounce(fn, ms)` that returns a debounced version of fn. As I said, it should wait `ms` milliseconds after the last call before actually invoking fn.\n\nJust to repeat because it's important: wait until the user stops calling for `ms` ms, then call fn once. JavaScript please. Thanks a lot in advance!"
+  },
+  {
+    "id": "verbose-tried",
+    "task": null,
+    "prompt": "I've been banging my head against this for an hour. I tried a for loop. I tried recursion. I tried using sum() with a start value. Nothing works for deeply nested cases. Honestly I'm about to give up. Could you please just write me a function `flatten(xs)` that takes an arbitrarily nested list of ints and returns a single flat list, in order? Strings should be treated as atomic values, not iterated. Please and thank you!!"
+  },
+  {
+    "id": "verbose-url",
+    "task": null,
+    "prompt": "Hi! So the full spec is documented over at https://example.com/specs/auth?v=2#tokens but the short version is this, and I'll repeat it: I need a function `make_token(user_id)` that returns a random 32-character hex token. A random 32-character hex token. Use the secrets module please, not random, because this is security-sensitive. Thanks so much, really appreciate the help here!"
+  },
+  {
+    "id": "verbose-quotes",
+    "task": null,
+    "prompt": "Could you kindly help me with a tiny string thing? I want `titlecase(s)` that capitalizes the first letter of each word. So \"the quick brown fox\" becomes \"The Quick Brown Fox\". But please keep small words like \"a\", \"the\", \"of\" lowercase unless they're the first word. As I mentioned, first letter of each word uppercase, small words stay lowercase except at the start. Thanks!"
+  },
+  {
+    "id": "verbose-sql",
+    "task": null,
+    "prompt": "Hey, quick favor if you don't mind. I have a table called orders with columns id, customer_id, amount, and created_at. Could you please write me a SQL query that gives the total amount per customer, only for orders in 2024, sorted from highest to lowest total? Again: total amount grouped by customer_id, filtered to created_at in 2024, ordered descending. Thank you very much in advance!"
+  },
+  {
+    "id": "verbose-async",
+    "task": null,
+    "prompt": "Hello, hope you're well! I really really need a retry helper and I'd be super grateful for your help. Please write `retryWithBackoff(fn, retries)` in JavaScript. It should call the async `fn`, and if it throws, wait and try again, doubling the wait each time, up to `retries` attempts. If it still fails after all retries, please throw the last error. To be clear, and I know I'm repeating myself: exponential backoff, max `retries` attempts, throw the last error on final failure. Thanks a million!"
+  },
+  {
+    "id": "verbose-numbers",
+    "task": null,
+    "prompt": "Hi! Could you please write `format_bytes(n)` for me? It takes a number of bytes and returns a human-readable string. So 1024 becomes \"1.0 KB\", 1048576 becomes \"1.0 MB\", and 1500 becomes roughly \"1.5 KB\". Please round to one decimal place. Just to be safe let me restate the examples: 1024 -> 1.0 KB, 1048576 -> 1.0 MB. Thanks so much, you're a lifesaver!"
+  },
+  {
+    "id": "verbose-regex",
+    "task": null,
+    "prompt": "So basically, and sorry if this is a dumb question, I just want to pull all the hashtags out of a tweet. Could you maybe please write `extract_hashtags(text)` that returns a list of all the hashtags? A hashtag is a # followed by letters, digits, or underscores. For example given \"love #python and #web3 stuff\" it should return [\"#python\", \"#web3\"]. Again, # then word characters, return the list. Thank you kindly!"
+  },
+  {
+    "id": "verbose-asisaid",
+    "task": null,
+    "prompt": "Hi there! I need a deep merge function in JavaScript, `deepMerge(a, b)`. As I said to a colleague earlier, it should merge b into a recursively, so nested objects get merged rather than overwritten. As I mentioned, please do NOT mutate the inputs — return a new object. I'll say it once more because it bit me last time: do not mutate a or b, return a fresh object, merge nested objects deeply. Thanks a bunch!"
+  },
+  {
+    "id": "verbose-greeting",
+    "task": null,
+    "prompt": "Heyyy! Hope you're having an awesome day! :) Quick one for you if that's cool — could you pretty please write `reverse_words(s)` that reverses the order of words in a sentence? So \"hello there world\" becomes \"world there hello\". That's it, that's the whole thing. Thanks a ton, you rock!!"
+  },
+  {
+    "id": "terse-control",
+    "task": null,
+    "prompt": "Write `chunk(arr, size)` in JS that splits an array into chunks of length `size`. Don't mutate the input. The last chunk may be shorter."
+  },
+  {
+    "id": "terse-control-2",
+    "task": null,
+    "prompt": "Implement `parseQuery(qs)` in JS. Parse a URL query string into an object. Repeated keys become an array. Decode `+` as space and percent-encoding. Return `{}` for an empty string."
+  },
+  {
+    "id": "terse-control-3",
+    "task": null,
+    "prompt": "Write `merge_intervals(intervals)` in Python. Merge overlapping intervals; touching boundaries (e.g. [1,2],[2,3]) merge. Input may be unsorted. Do not mutate the input. Return a new sorted list."
+  }
+]
