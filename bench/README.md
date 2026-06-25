@@ -103,6 +103,47 @@ Filters: `node src/run.js --variants honey,baseline --tasks flatten,chunk`.
 Results land in `results/<STAMP>/`: `report.md` (the table), `results.json` (every record),
 and `raw/` (every full reply, for inspecting *why* a variant scored as it did).
 
+## Harness benchmark (Cline)
+
+`npm run bench` makes **one API call** per cell — it isolates Honey's output lever cleanly, but
+never exercises an agent loop, tool definitions, or multi-turn context growth. A real coding
+agent's token bill lives mostly in that machinery. `src/cline-bench.js` runs each code task
+*through* the [Cline CLI](https://cline.bot) (`cline --json`, headless), so the measured tokens
+are end-to-end agentic — system prompt, tool schemas, and every loop iteration included. This is
+the layer Cline's SDK/harness rebuild targets, so it's where "does Honey still help on top of a
+real harness" gets answered.
+
+Honey is injected as a Cline **rule** (`.clinerules/honey.md`), not a system-prompt override, so
+Cline's own harness prompt stays intact. Three payloads (`--honey`):
+
+| payload | rule file | note |
+|---------|-----------|------|
+| `off` | none | control |
+| `compact` | [`skills/honey/cline-rule.md`](../skills/honey/cline-rule.md) | the per-turn-cheap operational core — **recommended** |
+| `full` | [`skills/honey/SKILL.md`](../skills/honey/SKILL.md) | whole skill; re-sent every turn, inflates input |
+
+```bash
+export ANTHROPIC_API_KEY=sk-...
+npm run bench:cline                                  # off,compact · code tasks · RUNS=1
+RUNS=3 npm run bench:cline -- --honey off,compact,full
+
+# stable-vs-nightly axis: nightly is the cline@nightly dist-tag. Install it into an isolated
+# prefix (so it doesn't clobber the stable global) and point CLINE_BIN at that binary:
+npm i --prefix /tmp/cline-nightly cline@nightly
+CLINE_BIN=/tmp/cline-nightly/node_modules/.bin/cline npm run bench:cline
+```
+
+Tokens come from Cline's final `run_result.aggregateUsage` (cumulative across turns); the file
+Cline writes is graded by the *same* `grade()` as the single-turn bench, so correctness is
+comparable. Code tasks only — `web`/`relay` tasks don't grade off a written file. Each cell is
+checkpointed to `results.json` as it finishes; `--resume` skips cells already recorded (agentic
+runs are expensive and get killed). Extra env: `PROVIDER` (default `anthropic`), `CLINE_BIN`
+(point at a nightly build), `CLINE_TIMEOUT` (s).
+
+Measured (Opus 4.8, 14 code tasks): `compact` holds Honey's output cut (≈−49% vs `off`) at
+**100% test-pass and flat judge**, while `full` inflates per-turn input (the whole skill re-sent
+each loop) — which is why `compact` is the shape to ship for agentic use.
+
 ## Tasks
 
 Three kinds, set by `meta.type`:

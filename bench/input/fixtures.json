@@ -1,0 +1,78 @@
+[
+  {
+    "id": "log-retry-storm",
+    "type": "log",
+    "content": "[12:00:00] INFO  starting worker pool size=8\n[12:00:01] WARN  db connection refused, retrying in 1s\n[12:00:02] WARN  db connection refused, retrying in 1s\n[12:00:03] WARN  db connection refused, retrying in 1s\n[12:00:04] WARN  db connection refused, retrying in 1s\n[12:00:05] WARN  db connection refused, retrying in 1s\n[12:00:06] WARN  db connection refused, retrying in 1s\n[12:00:07] WARN  db connection refused, retrying in 1s\n[12:00:08] WARN  db connection refused, retrying in 1s\n[12:00:09] WARN  db connection refused, retrying in 1s\n[12:00:10] WARN  db connection refused, retrying in 1s\n[12:00:11] WARN  db connection refused, retrying in 1s\n[12:00:12] WARN  db connection refused, retrying in 1s\n[12:00:13] WARN  db connection refused, retrying in 1s\n[12:00:14] WARN  db connection refused, retrying in 1s\n[12:00:15] WARN  db connection refused, retrying in 1s\n[12:00:16] WARN  db connection refused, retrying in 1s\n[12:00:17] WARN  db connection refused, retrying in 1s\n[12:00:18] WARN  db connection refused, retrying in 1s\n[12:00:19] WARN  db connection refused, retrying in 1s\n[12:00:20] WARN  db connection refused, retrying in 1s\n[12:00:21] WARN  db connection refused, retrying in 1s\n[12:00:22] WARN  db connection refused, retrying in 1s\n[12:00:23] WARN  db connection refused, retrying in 1s\n[12:00:24] WARN  db connection refused, retrying in 1s\n[12:00:25] WARN  db connection refused, retrying in 1s\n[12:00:26] WARN  db connection refused, retrying in 1s\n[12:00:27] ERROR giving up after 26 retries: Connection refused (host=db-primary:5432)\n[12:00:27] INFO  falling back to db-replica:5432\n[12:00:28] INFO  worker pool ready\n",
+    "queries": [
+      {
+        "kind": "countMatch",
+        "arg": "\\bWARN\\b",
+        "expect": 26
+      },
+      {
+        "kind": "countMatch",
+        "arg": "\\bERROR\\b",
+        "expect": 1
+      },
+      {
+        "kind": "contains",
+        "arg": "db-primary:5432",
+        "expect": true
+      },
+      {
+        "kind": "contains",
+        "arg": "db-replica:5432",
+        "expect": true
+      }
+    ]
+  },
+  {
+    "id": "progress-spam",
+    "type": "log",
+    "content": "Resolving dependencies...\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nDownloading package set\nBuilding native module: sharp\nBuilding native module: sharp\nBuilding native module: sharp\nlinking 1422 modules\nDONE in 41.2s\n",
+    "queries": [
+      {
+        "kind": "countMatch",
+        "arg": "^Downloading package set$",
+        "expect": 12
+      },
+      {
+        "kind": "countMatch",
+        "arg": "^Building native module: sharp$",
+        "expect": 3
+      },
+      {
+        "kind": "contains",
+        "arg": "DONE in 41.2s",
+        "expect": true
+      },
+      {
+        "kind": "contains",
+        "arg": "linking 1422 modules",
+        "expect": true
+      }
+    ]
+  },
+  {
+    "id": "code-file-js",
+    "type": "code",
+    "content": "function chunk(array, size) {\n  const out = [];\n  for (let i = 0; i < array.length; i += size) {\n    out.push(array.slice(i, i + size));\n  }\n  return out;\n}\n\nfunction flatten(xs) {\n  return xs.reduce((a, x) => a.concat(Array.isArray(x) ? flatten(x) : x), []);\n}\n\nmodule.exports = { chunk, flatten };\n",
+    "queries": [
+      {
+        "kind": "contains",
+        "arg": "function chunk(array, size)",
+        "expect": true
+      },
+      {
+        "kind": "contains",
+        "arg": "module.exports = { chunk, flatten }",
+        "expect": true
+      },
+      {
+        "kind": "countMatch",
+        "arg": "^function ",
+        "expect": 2
+      }
+    ]
+  }
+]

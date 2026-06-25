@@ -4,6 +4,7 @@
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
+const crypto = require("crypto");
 const { decode, encode } = require("../eso");
 const { crush } = require("../eso/ccr");
 
@@ -31,13 +32,26 @@ try {
       fs.writeFileSync(path.join(dir, `${hash}.json`), JSON.stringify(array));
     }
     process.stdout.write(JSON.stringify(view) + "\n");
+  } else if (cmd === "stash") {
+    // Offload an arbitrary text block (a file body, bulky tool output) and print a handle.
+    // The model references the handle instead of re-pasting; `eso retrieve <hash>` restores
+    // it verbatim. Lossless — unlike `crush`, nothing is dropped, the bytes just move out of
+    // context until needed.
+    const text = fs.readFileSync(0, "utf8");
+    const hash = crypto.createHash("sha256").update(text).digest("hex").slice(0, 16);
+    const dir = ccrDir();
+    fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, `${hash}.json`), text);
+    process.stdout.write(`<<honey:${hash} ${Buffer.byteLength(text)}_bytes_stashed>>\n`);
   } else if (cmd === "retrieve") {
     const hash = process.argv[3];
     if (!hash) throw new Error("Usage: eso retrieve <hash>");
     if (!/^[0-9a-f]{16}$/.test(hash)) throw new Error(`Invalid hash: ${hash}`);
-    process.stdout.write(fs.readFileSync(path.join(ccrDir(), `${hash}.json`), "utf8") + "\n");
+    const file = path.join(ccrDir(), `${hash}.json`);
+    if (!fs.existsSync(file)) throw new Error(`No stash for ${hash} (fail open: use the original)`);
+    process.stdout.write(fs.readFileSync(file, "utf8"));
   } else {
-    throw new Error("Usage: eso <encode|decode|crush|retrieve>");
+    throw new Error("Usage: eso <encode|decode|crush|stash|retrieve>");
   }
 } catch (error) {
   console.error(`eso: ${error.message}`);

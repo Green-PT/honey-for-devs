@@ -1,0 +1,52 @@
+[
+  {
+    "id": "padded-median-bugfix",
+    "task": "median-bugfix",
+    "prompt": "Hi there! Hope you're doing well. I was wondering if you could please help me out with something. This `median` function is wrong for even-length inputs (it returns the lower-middle element\ninstead of the average of the two middle elements) and it mutates the caller's list. Fix both.\n\n```python\ndef median(nums):\n    nums.sort()\n    return nums[len(nums) // 2]\n```\n\nKeep the signature `median(nums)`. Return a float average for even-length input. Put the\nfixed version in a single Python code block. It will be imported as `from solution import median`.\n\nThis `median` function is wrong for even-length inputs (it returns the lower-middle element\n\nThanks so much in advance, I really really appreciate it!"
+  },
+  {
+    "id": "padded-slugify",
+    "task": "slugify",
+    "prompt": "Hey! Sorry to bother you. Could you please please help me with a quick thing? Write a Python function `slugify(text)` that turns a string into a URL slug: lowercase, with\nevery run of non-alphanumeric characters replaced by a single hyphen, and no leading or trailing\nhyphens. Examples: `\"Hello, World!\"` -> `\"hello-world\"`, `\"  Foo   Bar  \"` -> `\"foo-bar\"`,\n`\"C++ Guide\"` -> `\"c-guide\"`. Empty input returns `\"\"`.\n\nPut it in a single Python code block. It will be imported as `from solution import slugify`.\n\nWrite a Python function `slugify(text)` that turns a string into a URL slug: lowercase, with\n\nAgain, I'd really appreciate it if you could help with this. Thanks a million, you're a lifesaver!"
+  },
+  {
+    "id": "padded-csv-column-sum",
+    "task": "csv-column-sum",
+    "prompt": "Hello! I'd really appreciate it if you could help me out here. So basically, Write a Python function `column_sum(csv_text, column)` that parses `csv_text` (a string of CSV\nwith a header row) and returns the sum of the named `column` as a float.\n\nValues in the column are numeric. Handle quoted fields containing commas correctly (standard CSV\nquoting). If the column name is not in the header, raise `KeyError`.\n\nPut it in a single Python code block. It will be imported as `from solution import column_sum`.\n\nWrite a Python function `column_sum(csv_text, column)` that parses `csv_text` (a string of CSV\n\nJust to be clear, that's the whole ask. Thank you so so much, you rock!"
+  },
+  {
+    "id": "padded-flatten",
+    "task": "flatten",
+    "prompt": "Hi! Quick favor if you don't mind. Honestly I've been stuck on this for a while. Write a Python function `flatten(nested)` that returns a single flat list containing every\nnon-list element of `nested`, in left-to-right order, however deeply the lists are nested.\n\nTreat lists and tuples as nestable; everything else (ints, strings, etc.) is a leaf — do not\niterate into strings. Example: `flatten([1, [2, (3, 4)], [[5]]])` → `[1, 2, 3, 4, 5]`.\n\nPut it in a single Python code block. It will be imported as `from solution import flatten`.\n\nWrite a Python function `flatten(nested)` that returns a single flat list containing every\n\nSorry if this is a dumb question. Thanks a ton, much appreciated!"
+  },
+  {
+    "id": "padded-deep-merge",
+    "task": "deep-merge",
+    "prompt": "Heyyy! Hope your week is going well. :) Pretty please could you help me with this one? Write a JavaScript function `deepMerge(target, source)` that returns a new object deeply merging\n`source` into `target`. Nested plain objects are merged recursively; arrays and primitive values\nfrom `source` replace those in `target` (they are not concatenated). Neither input is mutated.\n\nPut it in a single JavaScript code block and `module.exports = deepMerge` (or `{ deepMerge }`).\n\nWrite a JavaScript function `deepMerge(target, source)` that returns a new object deeply merging\n\nThat's it, that's the whole thing. Thanks a bunch in advance!"
+  },
+  {
+    "id": "padded-format-bytes",
+    "task": "format-bytes",
+    "prompt": "Hi there! Hope you're doing well. I was wondering if you could please help me out with something. Write a Python function `format_bytes(n)` that formats a non-negative integer byte count as a\nhuman-readable string using binary units (1 unit = 1024 of the previous): B, KB, MB, GB, TB, PB.\n\n- Below 1024 bytes: `\"<n> B\"` (no decimals), e.g. `format_bytes(500) == \"500 B\"`.\n- Otherwise one decimal place and the largest unit that keeps the value below 1024, e.g.\n  `format_bytes(1536) == \"1.5 KB\"`, `format_bytes(1048576) == \"1.0 MB\"`.\n\nPut it in a single Python code block. It will be imported as `from solution import format_bytes`.\n\nWrite a Python function `format_bytes(n)` that formats a non-negative integer byte count as a\n\nThanks so much in advance, I really really appreciate it!"
+  },
+  {
+    "id": "padded-retry-backoff",
+    "task": "retry-backoff",
+    "prompt": "Hey! Sorry to bother you. Could you please please help me with a quick thing? Write a JavaScript async function `retry(fn, options)` that calls the async function `fn` and\nretries it on rejection with exponential backoff.\n\n- `options.retries` (default 3) is the number of *additional* attempts after the first, so the\n  total number of calls is at most `retries + 1`.\n- `options.baseDelay` (default 100, ms) — wait `baseDelay * 2 ** attempt` before each retry\n  (attempt index starting at 0).\n- Resolve with `fn`'s value on the first success. If every attempt rejects, throw the last error.\n\nPut it in a single JavaScript code block and `module.exports = retry` (or `{ retry }`).\n\nWrite a JavaScript async function `retry(fn, options)` that calls the async function `fn` and\n\nAgain, I'd really appreciate it if you could help with this. Thanks a million, you're a lifesaver!"
+  },
+  {
+    "id": "padded-chunk",
+    "task": "chunk",
+    "prompt": "Hello! I'd really appreciate it if you could help me out here. So basically, Write a JavaScript function `chunk(array, size)` that splits `array` into consecutive\nsub-arrays of length `size`, with the final chunk holding the remainder.\n\n- `chunk([1,2,3,4,5], 2)` → `[[1,2],[3,4],[5]]`.\n- `size` is a positive integer; the original array is not mutated.\n- An empty array returns `[]`.\n\nPut it in a single JavaScript code block and `module.exports = chunk` (or\n`module.exports = { chunk }`). It will be required from `./solution.js`.\n\nWrite a JavaScript function `chunk(array, size)` that splits `array` into consecutive\n\nJust to be clear, that's the whole ask. Thank you so so much, you rock!"
+  },
+  {
+    "id": "padded-parse-query",
+    "task": "parse-query",
+    "prompt": "Hi! Quick favor if you don't mind. Honestly I've been stuck on this for a while. Write a JavaScript function `parseQuery(qs)` that parses a URL query string into an object.\n\n- Leading `?` is optional and ignored.\n- Percent-encoding is decoded (`%20` → space) and `+` means space.\n- A key that appears more than once collects its values into an array, in order.\n- A key with no `=` (e.g. `flag`) maps to an empty string `\"\"`.\n- Empty input returns `{}`.\n\nExample: `parseQuery(\"?a=1&b=hi%20there&a=2&flag\")` →\n`{ a: [\"1\", \"2\"], b: \"hi there\", flag: \"\" }`.\n\nPut it in a single JavaScript code block and `module.exports = parseQuery` (or\n`module.exports = { parseQuery }`). It will be required from `./solution.js`.\n\nWrite a JavaScript function `parseQuery(qs)` that parses a URL query string into an object.\n\nSorry if this is a dumb question. Thanks a ton, much appreciated!"
+  },
+  {
+    "id": "padded-interval-merge",
+    "task": "interval-merge",
+    "prompt": "Heyyy! Hope your week is going well. :) Pretty please could you help me with this one? Write a Python function `merge_intervals(intervals)` that merges all overlapping intervals and\nreturns a new, sorted list of `[start, end]` pairs.\n\nInput is a list of `[start, end]` pairs (ints or floats), not necessarily sorted; each has\n`start <= end`. Intervals that merely **touch** (e.g. `[1, 3]` and `[3, 5]`) count as\noverlapping and must merge into `[1, 5]`. Return `[]` for empty input. Do **not** mutate the\ninput list or its inner lists.\n\nExample: `merge_intervals([[1,3],[2,6],[8,10],[3,4]])` → `[[1, 6], [8, 10]]`.\n\nPut it in a single Python code block. It will be imported as `from solution import merge_intervals`.\n\nWrite a Python function `merge_intervals(intervals)` that merges all overlapping intervals and\n\nThat's it, that's the whole thing. Thanks a bunch in advance!"
+  }
+]

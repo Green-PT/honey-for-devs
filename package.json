@@ -18,7 +18,7 @@
     "bench:all": "npm run bench:formats && npm run bench:ccr && npm run bench:ccr:comprehension",
     "build": "node scripts/build-rules.js && node scripts/build-openclaw-skills.js",
     "check": "node scripts/build-rules.js --check",
-    "test": "node --test eso/*.test.js tests/*.test.js && node scripts/build-rules.js --check"
+    "test": "node --test eso/*.test.js tests/*.test.js hooks/*.test.js && node scripts/build-rules.js --check"
   },
   "files": [
     "bin",

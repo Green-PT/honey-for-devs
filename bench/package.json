@@ -7,6 +7,7 @@
   "scripts": {
     "bench": "node src/run.js",
     "bench:mock": "node src/run.js --mock",
+    "bench:cline": "node src/cline-bench.js",
     "bench:hive": "node hive/check.mjs",
     "bench:skills": "node skills/check.mjs",
     "verify-tests": "node src/verify-tests.js"

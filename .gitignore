@@ -18,3 +18,6 @@ __pycache__/
 
 # CCR runtime cache
 .honey-ccr/
+
+# Cline harness-bench logs (raw run output; results.json under bench/results/ is kept)
+bench/results_cline*.log
