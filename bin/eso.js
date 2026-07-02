@@ -13,16 +13,21 @@ const { crush } = require("../eso/ccr");
 // of the caller's cwd (a relative default loses the originals across dirs).
 const ccrDir = () => process.env.HONEY_CCR_DIR || path.join(os.tmpdir(), "honey-ccr");
 
+// Emit BigInt as a bare JSON number literal: stock JSON.stringify throws on
+// BigInt, and a quoted string would change the type.
+const toJSON = (v) =>
+  typeof v === "bigint" ? `${v}` :
+  Array.isArray(v) ? `[${v.map(toJSON).join(",")}]` :
+  v && typeof v === "object"
+    ? `{${Object.entries(v).map(([k, x]) => `${JSON.stringify(k)}:${toJSON(x)}`).join(",")}}`
+    : JSON.stringify(v);
+
 try {
   const cmd = process.argv[2];
   if (cmd === "encode") {
     process.stdout.write(encode(JSON.parse(fs.readFileSync(0, "utf8"))));
   } else if (cmd === "decode") {
-    // Emit BigInt as a bare JSON number literal (sentinel + unquote): stock
-    // JSON.stringify throws on BigInt, and a quoted string would change the type.
-    const out = JSON.stringify(decode(fs.readFileSync(0, "utf8")), (_, v) =>
-      typeof v === "bigint" ? `${v}` : v).replace(/"(-?\d+)"/g, "$1");
-    process.stdout.write(out + "\n");
+    process.stdout.write(toJSON(decode(fs.readFileSync(0, "utf8"))) + "\n");
   } else if (cmd === "crush") {
     const array = JSON.parse(fs.readFileSync(0, "utf8"));
     const { view, hash } = crush(array);
