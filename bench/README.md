@@ -144,6 +144,52 @@ Measured (Opus 4.8, 14 code tasks): `compact` holds Honey's output cut (≈−49
 **100% test-pass and flat judge**, while `full` inflates per-turn input (the whole skill re-sent
 each loop) — which is why `compact` is the shape to ship for agentic use.
 
+## Regression gate
+
+`skills/honey/SKILL.md` loads live into the bench, so editing the skill silently changes
+what future runs measure. The gate makes an edit mean "the numbers were re-verified":
+
+```bash
+STAMP=candidate npm run bench            # run the edited skill
+npm run gate candidate full-opus48       # compare against the pinned reference stamp
+```
+
+`src/gate.js` compares every variant present in both stamps and exits non-zero if tests
+drop > `GATE_TESTS` (0.02), judge drops > `GATE_JUDGE` (5 pts), or a variant's
+output-vs-baseline reduction shrinks by > `GATE_OUTPUT` (10 pts). Mock stamps only gate
+against mock, live against live. CI (`.github/workflows/ci.yml`) runs the unit tests,
+`verify-tests`, the mock pipeline for all three benches, and a gate smoke test on every
+push/PR — the live gate stays a local, keyed step.
+
+## Loop-tick bench
+
+`src/loop-bench.js` tests the Loops guidance (SKILL.md §Loops + the `honey-loop`
+satellite): simulated recurring-loop ticks where the model writes its tick report and
+picks its own reschedule via a final `NEXT: <seconds>|STOP` line (apparatus, identical
+for every variant). Grading is objective, no judge: poll-external ticks belong in
+60–270s, idle ticks in 1200–3600s, 271–1199s is the dead zone the skill names, and the
+tick meeting the exit condition must `STOP`. Also reported: mean output tokens per tick
+and per *unchanged* tick (the short-circuit claim). Variants: `off`, `honey` (core),
+`honey-loop` (core + satellite).
+
+```bash
+npm run bench:loop:mock          # pipeline check, no API
+RUNS=3 npm run bench:loop        # live
+```
+
+## Subagent-dispatch bench
+
+`src/dispatch-bench.js` tests the `SubagentStart` injection (`hooks/honey-subagent.js`,
+the mechanical form of `honey-superpowers`): the same code tasks dispatched to a
+subagent-framed worker, `plain` vs `directive` (the injected worker block — imported
+from the hook, single source of truth). Correctness by the same `grade()` unit tests;
+the lever is output tokens.
+
+```bash
+npm run bench:dispatch:mock
+RUNS=3 npm run bench:dispatch
+```
+
 ## Tasks
 
 Three kinds, set by `meta.type`:
