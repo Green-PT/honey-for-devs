@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      # unit tests (eso, hooks incl. honey-subagent) + mirror drift check
+      - run: npm test
+      # every reference solution must pass its own grader
+      - run: node src/verify-tests.js
+        working-directory: bench
+      # full pipeline offline: run, extract, grade, judge, report — no API, no cost
+      - run: STAMP=ci-a npm run bench:mock
+        working-directory: bench
+      - run: STAMP=ci-loop npm run bench:loop:mock
+        working-directory: bench
+      - run: STAMP=ci-dispatch npm run bench:dispatch:mock
+        working-directory: bench
+      # gate smoke test: a stamp must not regress against itself
+      - run: node src/gate.js ci-a ci-a
+        working-directory: bench

@@ -146,6 +146,25 @@ for less, don't crush what you fetched.
 Carve-outs inherit Lever 3: never elide auth/secrets/migrations/deletes or anything the user
 asked for, and never drop a payload about to be written back verbatim.
 
+## Loops — cost compounds per tick
+
+A `/loop` multiplies per-tick cost by tick count, so waste compounds. The levers
+above still apply each tick; loops add two leaks the single-shot levers don't cover
+— re-paying for context every wake-up, and re-doing work that didn't change:
+
+- **Pace to the prompt cache (5-min TTL).** Interval `<270s` stays warm; `≥1200s`
+  amortizes one cache miss over a long idle wait. **Never ~300s** — it pays the miss
+  without amortizing. Idle default **1200–1800s**.
+- **Don't poll harness-tracked work.** Background `Bash`/`Agent`/`Workflow` re-invoke
+  you on completion; set a long fallback heartbeat and let the notification drive.
+  Poll only external state the harness can't see (CI, deploy, remote queue).
+- **Short-circuit no-change ticks.** Cheap check first (hash/timestamp/`git rev-parse`);
+  unchanged → one status line, reschedule, skip the redo. Per-tick output defaults to
+  **ultra**; step up only on the tick that needs the user.
+- **Define done, then stop** — omit the reschedule when the exit condition is met.
+
+Full version: the `honey-loop` skill.
+
 ## Examples
 
 Read a JSON file's key:

@@ -26,6 +26,8 @@ const DESCRIPTIONS = {
   'honey-compress': 'Rewrite a memory or context file (CLAUDE.md, AGENTS.md, notes) into Honey-terse form to cut per-session input tokens. Backs up first.',
   'honey-hive': "Delegate search- and review-heavy work to Honey's read-only subagents so large reads return compressed instead of bloating context.",
   'honey-memory': 'Per-project persistent memory: save and recall durable facts across sessions as small frontmatter files, indexed in MEMORY.md.',
+  'honey-loop': 'Cost discipline for recurring /loop runs: cache-aware pacing, event-driven-over-polling, no-change short-circuit, compact state handle, stop condition.',
+  'honey-superpowers': 'Stack Honey onto Superpowers-style subagent workflows: dispatched subagents skip the session hook, so inject the levers into each dispatch prompt.',
 };
 
 const NAMES = Object.keys(DESCRIPTIONS);

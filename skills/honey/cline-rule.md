@@ -25,4 +25,8 @@ user explicitly asked for. Leave one runnable check behind for non-trivial logic
 versions, error messages. Safety-critical paths (auth, money, migrations, deletes, secrets)
 stay explicit.
 
+**Loops (`/loop`) — cost compounds per tick.** Pace to the 5-min prompt cache: interval `<270s`
+or `≥1200s`, never ~300s. Don't poll harness-tracked work (it re-invokes you on completion).
+Short-circuit unchanged ticks to one status line; define an exit condition and stop. See `honey-loop`.
+
 Don't spend reasoning tokens deciding how to comply — apply it as a writing style.

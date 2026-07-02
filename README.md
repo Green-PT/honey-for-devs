@@ -166,7 +166,7 @@ reach for at a specific moment.
 
 | Name | Kind | What it does |
 |------|------|--------------|
-| `honey` | core skill (always-on) | the three levers, applied reflexively to every response. `/honey [lite\|full\|ultra\|off]` |
+| `honey` | core skill (always-on) | the three levers, applied reflexively to every response — plus loop cost discipline for recurring `/loop` runs. `/honey [lite\|full\|ultra\|off]` |
 | `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
@@ -174,6 +174,8 @@ reach for at a specific moment.
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
 | `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git |
 | `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eso crush`/`retrieve` |
+| `honey-loop` | satellite skill | cost discipline for recurring `/loop` runs: cache-aware pacing (skip the 300s dead zone), event-driven-over-polling, no-change short-circuit, compact state handle, stop condition |
+| `honey-superpowers` | satellite skill | stack Honey onto Superpowers-style subagent workflows: the Honey directive to inject into each dispatch prompt (worker + reviewer variants). On Claude Code the plugin's `SubagentStart` hook injects it automatically |
 | `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |
 | `hive-scout` | subagent (haiku, read-only) | locate symbols / callers / configs; returns a compact id-keyed JSON map |
 | `hive-reviewer` | subagent (haiku, read-only) | review a diff/files; returns columnar id-keyed JSON findings |
