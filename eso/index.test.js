@@ -153,7 +153,7 @@ test("CLI encodes and decodes stdin", () => {
   assert.deepEqual(JSON.parse(decoded), handoff);
   const big = execFileSync(process.execPath, [cli, "decode"], { input: "!eson/1\nid=9007199254740993\n", encoding: "utf8" });
   assert.match(big, /"id":9007199254740993(?!\d)/); // bare literal, not corrupted to ...992 or quoted
-  const numStr = execFileSync(process.execPath, [cli, "decode"], { input: '!eso/1\ns="123"\n', encoding: "utf8" });
+  const numStr = execFileSync(process.execPath, [cli, "decode"], { input: '!eson/1\ns="123"\n', encoding: "utf8" });
   assert.equal(JSON.parse(numStr).s, "123"); // numeric-looking string stays a string
   const bad = spawnSync(process.execPath, [cli], { encoding: "utf8" });
   assert.equal(bad.status, 1);
