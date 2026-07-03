@@ -40,4 +40,4 @@ Every return is compact/columnar JSON, records addressed by a stable `id`, with 
 - **Check `n`** against the rows you received — a dense misparse is silent.
 - **Safety carve-out** — auth / money / migration / delete findings come back explicit, not slugged. Treat them verbatim.
 
-ESO is opt-in: ask for it only on a high-volume, cached review pipe you own end-to-end.
+ESON is opt-in: ask for it only on a high-volume, cached review pipe you own end-to-end.

@@ -3,7 +3,7 @@
 // The hive subagents (hive-scout, hive-reviewer) return their results as Lever-3
 // handoffs. This measures the real payloads they emit: every format is
 // round-tripped losslessly BEFORE measurement, then sized with the same two
-// tokenizers the ESO bench uses. No API, no model — fully reproducible.
+// tokenizers the ESON bench uses. No API, no model — fully reproducible.
 //
 //   node bench/hive/check.mjs
 //

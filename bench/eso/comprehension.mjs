@@ -10,7 +10,7 @@ const { decode: esoDecode, encode: esoEncode } = require("../../eso");
 
 // Token efficiency is settled by run.mjs. This harness measures the other half of
 // "efficient vs quality": can a model actually READ each format and answer questions
-// that require parsing scalars, record arrays, AND nested values? ESO's nested values
+// that require parsing scalars, record arrays, AND nested values? ESON's nested values
 // are compact JSON cells, so the nested questions are where it is most at risk.
 
 const finding = (i) => ({
@@ -90,13 +90,13 @@ const formats = {
   JSON: (d) => JSON.stringify(d, null, 0),
   "JSON-columnar": (d) => JSON.stringify(colEncode(d)),
   TOON: (d) => toonEncode(d),
-  ESO: (d) => esoEncode(d),
+  ESON: (d) => esoEncode(d),
 };
 // Sanity: every format must round-trip this document before we trust any answer.
 assert.deepEqual(JSON.parse(formats.JSON(document)), document);
 assert.deepEqual(colDecode(JSON.parse(formats["JSON-columnar"](document))), document);
 assert.deepEqual(toonDecode(formats.TOON(document)), document);
-assert.deepEqual(esoDecode(formats.ESO(document)), document);
+assert.deepEqual(esoDecode(formats.ESON(document)), document);
 
 const models = (process.env.ESO_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
   .split(",").map((m) => m.trim()).filter(Boolean);
@@ -104,7 +104,7 @@ const repeats = Number(process.env.ESO_REPEATS || 1);
 
 const system =
   "You read a structured agent-to-agent message and answer a question about it. " +
-  "The message may be in JSON, TOON, or ESO (a compact tab-delimited format). " +
+  "The message may be in JSON, TOON, or ESON (a compact tab-delimited format). " +
   "Answer with ONLY the requested value, no explanation, no punctuation, no units.";
 
 async function ask(model, encoded, question) {
@@ -140,7 +140,7 @@ for (const model of models) {
 }
 
 const pct = (c, t) => (t ? `${((c / t) * 100).toFixed(1)}%` : "n/a");
-let report = `# ESO Comprehension vs TOON vs JSON\n\n`;
+let report = `# ESON Comprehension vs TOON vs JSON\n\n`;
 report += `Models: ${models.join(", ")} · ${repeats} repeat(s) · ${questions.length} questions.\n`;
 report += `Each answer is checked against the source object. Accuracy is the quality axis;\n`;
 report += `tokens are the efficiency axis. The best format maximizes accuracy per token.\n\n`;

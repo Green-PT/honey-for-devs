@@ -36,13 +36,13 @@ try {
   const { view, dropped } = compress(text);
   if (dropped < 1) passthrough(); // nothing collapsed → leave it
 
-  // stash the original so a per-line detail is recoverable (same cache as `eso retrieve`)
+  // stash the original so a per-line detail is recoverable (same cache as `eson retrieve`)
   const cacheDir = process.env.HONEY_CCR_DIR || path.join(os.tmpdir(), "honey-ccr");
   const hash = crypto.createHash("sha256").update(text).digest("hex").slice(0, 16);
   fs.mkdirSync(cacheDir, { recursive: true });
   fs.writeFileSync(path.join(cacheDir, `${hash}.json`), text);
 
-  const note = `\n[honey: collapsed ${dropped} repeated line(s). Full output: \`eso retrieve ${hash}\`]`;
+  const note = `\n[honey: collapsed ${dropped} repeated line(s). Full output: \`eson retrieve ${hash}\`]`;
   emit({ hookSpecificOutput: { hookEventName: "PostToolUse", updatedToolOutput: view + note } });
 } catch {
   passthrough(); // fail open — never corrupt a tool result

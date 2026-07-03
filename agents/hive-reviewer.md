@@ -37,10 +37,10 @@ Uniform array → columnar compact JSON, addressed by stable `id`:
 - Address findings by `id`, never by position.
 - Nothing found → `{"c":["id","sev","file","line","kind","msg"],"r":[],"n":0}`.
 
-ESO is **opt-in** — emit it only if the orchestrator explicitly asked (high-volume, cached pipe):
+ESON is **opt-in** — emit it only if the orchestrator explicitly asked (high-volume, cached pipe):
 
 ```
-!eso/1
+!eson/1
 findings[2]{id,sev,file,line,kind,msg}
 F1	H	app/auth.js	42	no-rate-limit	login endpoint lacks rate limiting
 F2	M	src/db.js	88	sql-string	query built by string concat

@@ -1,7 +1,7 @@
 {
   "name": "honey",
   "version": "1.0.0",
-  "description": "Honey (I Shrunk the AI) — three reflexive levers that cut agent token cost: less code (YAGNI/stdlib-first), less prose, and denser agent-to-agent handoffs (ESO/compact-JSON). Plus on-demand satellites (review, eco, gain, compress) and a hive of read-only subagents that return compressed handoffs. Auto-intensity lite/full/ultra; correctness and safety-critical paths stay exact.",
+  "description": "Honey (I Shrunk the AI) — three reflexive levers that cut agent token cost: less code (YAGNI/stdlib-first), less prose, and denser agent-to-agent handoffs (ESON/compact-JSON). Plus on-demand satellites (review, eco, gain, compress) and a hive of read-only subagents that return compressed handoffs. Auto-intensity lite/full/ultra; correctness and safety-critical paths stay exact.",
   "author": { "name": "Green-PT", "url": "https://github.com/Green-PT" },
   "homepage": "https://github.com/Green-PT/honey-for-devs",
   "repository": "https://github.com/Green-PT/honey-for-devs",

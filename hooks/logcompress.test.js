@@ -45,7 +45,7 @@ const envUltra = { CLAUDE_CONFIG_DIR: cfg, HONEY_CCR_DIR: cache };
 const bashStorm = { tool_name: "Bash", tool_response: storm };
 const out = run(bashStorm, envUltra);
 ok("hook emits updatedToolOutput on storm", out.includes("updatedToolOutput") && out.includes("×26"));
-const handle = JSON.parse(out).hookSpecificOutput.updatedToolOutput.match(/eso retrieve (\w+)/)[1];
+const handle = JSON.parse(out).hookSpecificOutput.updatedToolOutput.match(/eson retrieve (\w+)/)[1];
 ok("hook stashed original", fs.readFileSync(path.join(cache, `${handle}.json`), "utf8") === storm);
 
 // non-ultra → no output (passthrough)

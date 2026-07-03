@@ -1,4 +1,10 @@
-# ESO — Efficient Structured Output
+# ESON — Efficient Structured Object Notation
+
+> Vendored copy. ESON's canonical home is
+> **[Green-PT/honey-eson](https://github.com/Green-PT/honey-eson)** — normative spec,
+> JS + Python reference implementations, conformance vectors, canonical LLM primer,
+> Wire Profile, and negotiation. This directory tracks its JS implementation so the
+> honey plugin runs dependency-free.
 
 A compact, lossless **serialization format** for agent-to-agent messages, optimized for
 the metric that matters when the reader is an LLM: **tokens, not bytes**. It targets the
@@ -6,7 +12,7 @@ common handoff shape — a small envelope plus uniform record arrays — and sta
 line-oriented, and round-trip exact.
 
 ```eso
-!eso/1
+!eson/1
 from=reviewer
 to=implementer
 kind=code_review
@@ -17,14 +23,14 @@ medium	src/api.js	18	missing rate limit
 
 ## Not a protocol — a wire format
 
-ESO is the encoding layer that sits **under** a transport/protocol like
+ESON is the encoding layer that sits **under** a transport/protocol like
 [MCP](https://modelcontextprotocol.io) or [A2A](https://google.github.io/A2A/), not a
 replacement for them. It defines how a message *body* is serialized; it does not define
 RPC, correlation, acks, capability negotiation, or transport. Use it for the payload of a
 message another agent will read, where token cost dominates.
 
 MessagePack, Protobuf, and CBOR optimize **byte** size and tokenize *worse* (binary →
-noisy tokens). ESO optimizes for the model's tokenizer while staying parseable and
+noisy tokens). ESON optimizes for the model's tokenizer while staying parseable and
 diff-able. The nearest sibling is [TOON](https://github.com/toon-format/toon).
 
 ## Numbers
@@ -37,12 +43,12 @@ Token efficiency vs compact JSON, 5 handoff documents, `o200k` (`npm run bench:f
 | JSON (compact) | yes | 0% |
 | TOON | no | −20% |
 | JSON (columnar) | yes | −22% |
-| **ESO** | no | **−28%** |
+| **ESON** | no | **−28%** |
 
-Comprehension (Claude Haiku 4.5 + GPT-4.1-mini, 50-record doc): ESO **ties** JSON at 100%
+Comprehension (Claude Haiku 4.5 + GPT-4.1-mini, 50-record doc): ESON **ties** JSON at 100%
 on every realistic access pattern (key-lookup, column-match, nested-cell, nested-array).
 Positional access ("the Nth row") and in-context counting fail across *all* formats — a
-model limit, not ESO's. Aggregate in code, address records by key. See
+model limit, not ESON's. Aggregate in code, address records by key. See
 [../bench/eso/VERDICT.md](../bench/eso/VERDICT.md).
 
 ## When to use it
@@ -70,8 +76,8 @@ const res  = tryDecode(wire);           // { ok: true, value } | { ok: false, er
 CLI (reads stdin, writes stdout):
 
 ```sh
-eso encode < message.json    # JSON → ESO
-eso decode < message.eso     # ESO → JSON
+eso encode < message.json    # JSON → ESON
+eso decode < message.eso     # ESON → JSON
 ```
 
 ## Contract
@@ -83,7 +89,7 @@ eso decode < message.eso     # ESO → JSON
 - **Counts are checksums** — a truncated or padded array fails to decode. Verify on read.
 - **Large integers round-trip** as `BigInt` (encode → bare digits; decode of an
   out-of-safe-range integer → `BigInt`). Prefer **string ids** in JSON-bridge pipelines:
-  the CLI's `encode` reads via `JSON.parse`, which corrupts big-int literals before ESO
+  the CLI's `encode` reads via `JSON.parse`, which corrupts big-int literals before ESON
   sees them. `BigInt` nested inside a JSON cell is rejected — keep large ids top-level or
   as record fields.
 

@@ -109,11 +109,12 @@ parses losslessly. Fires **only** here — never emit a wire format as a user-fa
 - **Default → compressed JSON.** Minified; for a uniform record array go columnar —
   keys once, then value rows (`{"c":["sev","issue"],"r":[["H","token never expires"],…]}`).
   ~−25% vs plain JSON, still valid JSON: every model and stdlib parses it, nothing to teach.
-- **Opt-in → ESO**, only for high-volume, **cached**, record-array-heavy pipes you own
-  end-to-end. Buys a further ~6–10%, but costs a ~120-token format primer plus the bundled
-  `eso` codec, and *loses* below a few messages or on small/scalar payloads:
+- **Opt-in → ESON** ([spec + primer](https://github.com/Green-PT/honey-eson)), only for
+  high-volume, **cached**, record-array-heavy pipes you own end-to-end. Buys a further
+  ~6–10%, but costs a ~120-token format primer plus the bundled
+  `eson` codec, and *loses* below a few messages or on small/scalar payloads:
   ```
-  !eso/1
+  !eson/1
   findings[2]{sev,issue}
   H\ttoken never expires
   M\tno rate limiting
@@ -133,9 +134,9 @@ for less, don't crush what you fetched.
   for one function — don't pull a whole 800-line file to answer about a 10-line body.
 - **Don't re-read or re-paste what's already in context** — reference it. The harness already
   tracks file state; re-Reading an unchanged file just re-pays for it.
-- **Offload bulk you must keep but mostly skim.** `cmd | eso stash` → a `<<honey:HASH>>` handle;
-  `eso retrieve <hash>` restores it verbatim when a detail is needed. (Lossy-skim variant for
-  huge uniform arrays: `eso crush`.) Reference the handle instead of pasting the blob again.
+- **Offload bulk you must keep but mostly skim.** `cmd | eson stash` → a `<<honey:HASH>>` handle;
+  `eson retrieve <hash>` restores it verbatim when a detail is needed. (Lossy-skim variant for
+  huge uniform arrays: `eson crush`.) Reference the handle instead of pasting the blob again.
 - **Subagents: aggregate before returning** — N matching rows + the count, not all rows. Their
   return is itself a Lever-3 handoff: columnar/minified.
 

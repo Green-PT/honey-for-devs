@@ -96,19 +96,19 @@ const formats = {
   JSON: (d) => JSON.stringify(d),
   "JSON-columnar": (d) => JSON.stringify(colEncode(d)),
   TOON: (d) => toonEncode(d),
-  ESO: (d) => esoEncode(d),
+  ESON: (d) => esoEncode(d),
 };
 assert.deepEqual(JSON.parse(formats.JSON(document)), document);
 assert.deepEqual(colDecode(JSON.parse(formats["JSON-columnar"](document))), document);
 assert.deepEqual(toonDecode(formats.TOON(document)), document);
-assert.deepEqual(esoDecode(formats.ESO(document)), document);
+assert.deepEqual(esoDecode(formats.ESON(document)), document);
 
 const models = (process.env.ESO_MODELS || "claude-haiku-4-5-20251001,gpt-4.1-mini")
   .split(",").map((m) => m.trim()).filter(Boolean);
 const repeats = Number(process.env.ESO_REPEATS || 3);
 const system =
   "You read a structured agent-to-agent message and answer a question about it. " +
-  "The message may be in JSON, columnar JSON, TOON, or ESO (a compact tab-delimited format " +
+  "The message may be in JSON, columnar JSON, TOON, or ESON (a compact tab-delimited format " +
   "where a schema line like name[N]{a,b} is followed by N tab-separated rows). " +
   "Answer with ONLY the requested value, no explanation, no punctuation, no units.";
 
@@ -141,7 +141,7 @@ for (const model of models) {
 
 const pct = (c, t) => (t ? `${((c / t) * 100).toFixed(0)}%` : "n/a");
 const probeKeys = [...new Set(questions.map((q) => q.probes))];
-let report = `# ESO Comprehension — HARD MODE\n\n`;
+let report = `# ESON Comprehension — HARD MODE\n\n`;
 report += `Models: ${models.join(", ")} · ${repeats} repeats · ${questions.length} questions · ${N}-record block.\n`;
 report += `Stresses deep indexing, column-matching, aggregation, and nested-cell extraction.\n\n`;
 report += `| Format | o200k tokens | Accuracy | ${probeKeys.join(" | ")} |\n|---|---:|---:|${probeKeys.map(() => "---:").join("|")}|\n`;

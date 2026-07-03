@@ -5,18 +5,18 @@ import { encode as toonEncode } from "@toon-format/toon";
 const require = createRequire(import.meta.url);
 const { encode: esoEncode } = require("../../eso");
 
-// ESO's token win over columnar JSON is only real AFTER you pay to teach the model the
+// ESON's token win over columnar JSON is only real AFTER you pay to teach the model the
 // format (a primer in the system prompt). Columnar JSON needs almost no primer (it's JSON).
 // This accounts for that: minimal-but-sufficient primers, their token cost, and the
-// break-even message count where ESO's per-message savings overcome its primer overhead.
+// break-even message count where ESON's per-message savings overcome its primer overhead.
 
 const primers = {
   JSON: "", // models already know JSON; no dedicated primer needed.
   columnar:
     "Record arrays are columnar JSON: an object {\"#c\":[column names],\"#r\":[[row values],...]} " +
     "encodes a list of records sharing those columns. Rebuild each record by zipping #c with a #r row.",
-  ESO:
-    "Messages use ESO, a compact text format. The first line is the magic header !eso/1. " +
+  ESON:
+    "Messages use ESON, a compact text format. The first line is the magic header !eson/1. " +
     "Then entries: `name=value` is a scalar (bare strings are unquoted; null, booleans, numbers, " +
     "and ambiguous or tab/newline strings use JSON). `name[N]{f1,f2}` declares N records sharing " +
     "fields f1,f2; each following line is one record with TAB-separated cells in field order. " +
@@ -24,7 +24,7 @@ const primers = {
     "appear as JSON text inside a cell.",
 };
 
-// Per-message savings come from the real corpus (the 5 handoff docs), ESO vs columnar JSON.
+// Per-message savings come from the real corpus (the 5 handoff docs), ESON vs columnar JSON.
 const finding = (i) => ({ severity: ["high", "medium", "low"][i % 3], file: `src/module-${i}.js`, line: 10 + i, message: `Finding ${i}: validate input before operation ${i}` });
 const datasets = {
   "small review": { from: "reviewer", to: "implementer", kind: "code_review", findings: Array.from({ length: 3 }, (_, i) => finding(i)), meta: { complete: true, retry: null, tags: ["security", "api"] } },
@@ -46,17 +46,17 @@ const colEncode = (v) => {
 };
 
 const primerTok = Object.fromEntries(Object.entries(primers).map(([k, v]) => [k, o200kTokens(v)]));
-const pExtra = primerTok.ESO - primerTok.columnar; // extra one-time tokens ESO needs vs columnar
+const pExtra = primerTok.ESON - primerTok.columnar; // extra one-time tokens ESON needs vs columnar
 
-console.log("# Primer cost & ESO-vs-columnar break-even\n");
+console.log("# Primer cost & ESON-vs-columnar break-even\n");
 console.log("## One-time primer cost (system prompt, cacheable)\n");
 console.log("| Format | Primer tokens |");
 console.log("|---|---:|");
 for (const [k, t] of Object.entries(primerTok)) console.log(`| ${k} | ${t} |`);
 console.log(`\nESO needs **${pExtra}** more primer tokens than columnar JSON (one-time, cacheable).\n`);
 
-console.log("## Per-message savings: ESO vs columnar JSON\n");
-console.log("| Message shape | ESO tok | columnar tok | ESO saves |");
+console.log("## Per-message savings: ESON vs columnar JSON\n");
+console.log("| Message shape | ESON tok | columnar tok | ESON saves |");
 console.log("|---|---:|---:|---:|");
 let totalEso = 0, totalCol = 0;
 for (const [name, d] of Object.entries(datasets)) {
@@ -68,7 +68,7 @@ for (const [name, d] of Object.entries(datasets)) {
 const avgSave = (totalCol - totalEso) / Object.keys(datasets).length;
 console.log(`\nAverage saving **${avgSave.toFixed(0)} tok/message** (range shows it is shape-dependent — scalar envelopes can be negative).\n`);
 
-console.log("## Break-even (how many messages before ESO nets ahead of columnar)\n");
+console.log("## Break-even (how many messages before ESON nets ahead of columnar)\n");
 const breakeven = (save, cacheFactor) => {
   // cached: extra primer billed as p once at full + p*cacheFactor each later turn.
   // net(M) = save*M - p*(1 + cacheFactor*(M-1)); solve net>=0.
@@ -83,5 +83,5 @@ console.log(`| No prompt cache (primer re-sent every call) | ${breakeven(avgSave
 console.log(`| Prompt cache at 10% read cost | ${breakeven(avgSave, 0.1)} |`);
 console.log(`| Primer truly amortized (read ~free) | ${breakeven(avgSave, 0)} |`);
 console.log(`\nWith average ${avgSave.toFixed(0)} tok/msg saving and a ${pExtra}-token extra primer:`);
-console.log(`a cached agent pipeline recovers ESO's primer in a handful of messages; a low-volume`);
+console.log(`a cached agent pipeline recovers ESON's primer in a handful of messages; a low-volume`);
 console.log(`or scalar-heavy one may never recover it. The decision is volume × message-shape.`);

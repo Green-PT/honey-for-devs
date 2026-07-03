@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "honey",
-      "description": "Three reflexive levers that cut agent token cost — less code (YAGNI/stdlib-first), less prose, denser agent-to-agent handoffs (ESO/compact-JSON) — plus on-demand satellites (review, eco, gain, compress) and a hive of read-only subagents. Auto-intensity lite/full/ultra; safety-critical paths stay exact.",
+      "description": "Three reflexive levers that cut agent token cost — less code (YAGNI/stdlib-first), less prose, denser agent-to-agent handoffs (ESON/compact-JSON) — plus on-demand satellites (review, eco, gain, compress) and a hive of read-only subagents. Auto-intensity lite/full/ultra; safety-critical paths stay exact.",
       "source": {
         "source": "local",
         "path": "./"

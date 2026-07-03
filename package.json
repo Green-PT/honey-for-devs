@@ -7,7 +7,8 @@
   "homepage": "https://github.com/Green-PT/honey-for-devs",
   "bin": {
     "honey-install": "bin/install.js",
-    "eso": "bin/eso.js"
+    "eso": "bin/eso.js",
+    "eson": "bin/eso.js"
   },
   "scripts": {
     "bench:eso": "node bench/eso/run.mjs",

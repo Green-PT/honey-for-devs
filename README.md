@@ -18,7 +18,7 @@ OpenClaw, and Kiro**. Three independent levers, applied reflexively:
    already speaks for itself. Answer first.
 3. **Denser agent-to-agent handoffs** — when the reader is another agent, not a
    human, hand it the most token-efficient format it parses losslessly (compact /
-   columnar JSON, or [ESO](eso/SPEC.md)). Cuts handoff size ~in half at zero loss
+   columnar JSON, or [ESON](eso/SPEC.md)). Cuts handoff size ~in half at zero loss
    of recovery. Fires only here — never as a user-facing answer.
 
 Honey combines what [Ponytail](https://github.com/DietrichGebert/ponytail)
@@ -93,24 +93,28 @@ Honey is injected as a Cline **rule**, recommended as the per-turn-cheap
 [`skills/honey/cline-rule.md`](skills/honey/cline-rule.md) (the operational core; the full
 `SKILL.md` re-sent every turn inflates input). See [`bench/README.md`](bench/README.md#harness-benchmark-cline).
 
-## Efficient Structured Output
+## ESON — Efficient Structured Object Notation
 
-Honey includes [ESO](eso/SPEC.md), a zero-dependency, schema-first format for
+Honey includes [ESON](eso/SPEC.md), a zero-dependency, schema-first format for
 agent handoffs. Repeated record keys are emitted once; declared row counts catch
-truncated messages; JSON-compatible cells preserve types.
+truncated messages; JSON-compatible cells preserve types. ESON is developed in
+its own repo — **[Green-PT/honey-eson](https://github.com/Green-PT/honey-eson)**:
+the normative spec, JS + Python reference implementations, conformance vectors,
+the canonical LLM primer, the Honey Wire Profile, and negotiation. Honey vendors
+the codec in [`eso/`](eso/).
 
-The reproducible [ESO/TOON/JSON benchmark](bench/eso/RESULTS.md) measures bytes,
+The reproducible [ESON/TOON/JSON benchmark](bench/eso/RESULTS.md) measures bytes,
 two tokenizer estimates, codec speed, and lossless recovery across five agent
 handoff shapes. Run it with `npm run bench:eso`.
 
 ```bash
-printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]}' | eso encode
-eso decode < handoff.eso
+printf '%s' '{"from":"reviewer","findings":[{"sev":"H","issue":"expired token"}]}' | eson encode
+eson decode < handoff.eson
 ```
 
 ### CCR — for huge, redundant array tool output
 
-ESO is lossless, for handoffs where every row matters. **CCR** (Compress-Cache-Retrieve)
+ESON is lossless, for handoffs where every row matters. **CCR** (Compress-Cache-Retrieve)
 is the lossy-but-recoverable lever for the opposite case: a long uniform array you must
 read but mostly skim — logs, scan results, event streams. It keeps an informative sample
 (endpoints, anomalies/change-points, head/tail), caches the dropped rows locally, and
@@ -118,8 +122,8 @@ leaves a `<<ccr:HASH N_rows_offloaded>>` sentinel. Nothing is lost — `retrieve
 the original by hash on demand.
 
 ```bash
-some-tool | eso crush          # → sampled view + sentinel; originals cached in .honey-ccr/
-eso retrieve <hash>            # → the full original array, verbatim
+some-tool | eson crush          # → sampled view + sentinel; originals cached in .honey-ccr/
+eson retrieve <hash>            # → the full original array, verbatim
 ```
 
 Validated on a 90-row log (opus-4.8 + gpt-5.5): **−82% tokens**, crushed-only **96%**
@@ -173,7 +177,7 @@ reach for at a specific moment.
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
 | `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git |
-| `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eso crush`/`retrieve` |
+| `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eson crush`/`retrieve` |
 | `honey-loop` | satellite skill | cost discipline for recurring `/loop` runs: cache-aware pacing (skip the 300s dead zone), event-driven-over-polling, no-change short-circuit, compact state handle, stop condition |
 | `honey-superpowers` | satellite skill | stack Honey onto Superpowers-style subagent workflows: the Honey directive to inject into each dispatch prompt (worker + reviewer variants). On Claude Code the plugin's `SubagentStart` hook injects it automatically |
 | `honey-hive` | guide skill | decide when to delegate to the hive vs. work inline |

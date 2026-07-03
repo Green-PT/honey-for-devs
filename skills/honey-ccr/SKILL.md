@@ -18,7 +18,7 @@ rest — recoverable by hash, so nothing is lost.
 
 Borrowed from headroom's SmartCrusher. **Lossy by design** — only for data you
 skim, never for payloads where every row matters (e.g. a code-review handoff
-where the implementer needs all findings; use `eso encode` losslessly there).
+where the implementer needs all findings; use `eson encode` losslessly there).
 
 ## When to use
 
@@ -34,13 +34,13 @@ where the implementer needs all findings; use `eso encode` losslessly there).
 ## How
 
 ```sh
-tool-that-spews-json | eso crush          # → sampled view + sentinel; originals cached
-eso retrieve <hash>                        # → the full original array, verbatim
+tool-that-spews-json | eson crush          # → sampled view + sentinel; originals cached
+eson retrieve <hash>                        # → the full original array, verbatim
 ```
 
 `crush` prints the kept sample plus a sentinel
 `{"_ccr":"<<ccr:HASH N_rows_offloaded>>"}`. When you need a dropped row, read the
-hash from the sentinel and run `eso retrieve <hash>`.
+hash from the sentinel and run `eson retrieve <hash>`.
 
 - Cache dir: `.honey-ccr/` (override with `HONEY_CCR_DIR`).
 - Below the size gate, `crush` returns the array unchanged with no sentinel — safe to pipe anything.
