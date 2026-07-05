@@ -8,7 +8,7 @@
 [GreenPT](https://github.com/Green-PT) is a
 cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
 making agents emit less code *and* less prose without losing correctness. It works
-with **Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
+with **Claude (claude.ai and the API), Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
 OpenClaw, and Kiro**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
@@ -218,6 +218,7 @@ reach for at a specific moment.
 | Name | Kind | What it does |
 |------|------|--------------|
 | `honey` | core skill (always-on) | the three levers, applied reflexively to every response — plus loop cost discipline for recurring `/loop` runs. `/honey [lite\|full\|ultra\|off]` |
+| `honey-chat` | standalone prompt | Honey for plain Claude — the terse-prose core, no tools required. Paste [`skills/honey-chat/SKILL.md`](skills/honey-chat/SKILL.md) into a claude.ai Project's custom instructions, a Style, or an API system prompt (~500 tokens) |
 | `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
@@ -263,6 +264,25 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 
 Then `/honey` to turn it on (`/honey lite|full|ultra` to set intensity,
 `/honey off` to stop). A 🍯 badge shows the active mode in your statusline.
+
+### Plain Claude (claude.ai / API) — no install
+
+The chat edition, [`skills/honey-chat/SKILL.md`](skills/honey-chat/SKILL.md)
+(~500 tokens), is the terse-prose core with the agent-harness levers removed —
+nothing in it needs tools. Two ways to use it:
+
+- **Project custom instructions or a Style (recommended):** paste the file in.
+  Instructions become part of the system prompt, so Honey applies to **every
+  message in every conversation** — always on, no triggering needed. The prefix
+  is prompt-cached, and the ~500 input tokens are repaid many times over by the
+  halved output.
+- **Uploaded Skill (paid plans):** zip the `honey-chat/` folder and upload it as
+  a Skill. Cheaper at rest (only the description stays in context) but loads
+  only when Claude judges it relevant — for an always-on writing style, Project
+  instructions are the better default.
+
+On the API, use the file as (part of) your `system` prompt. Pin intensity by
+appending one line: `Default to honey ultra` or `Default to honey lite`.
 
 ### One-line installer (interactive wizard)
 
