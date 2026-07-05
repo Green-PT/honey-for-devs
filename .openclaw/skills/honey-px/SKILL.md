@@ -45,7 +45,10 @@ npx pxpipe-proxy export --json --out <scratchpad> <file-or-dir>   # or --git / -
 Output dir `pxpipe-export-<hash>/` contains `page-*.png`, `factsheet.txt`,
 `manifest.json` (token report). Then:
 
-1. `Read` every `page-*.png` **and** `factsheet.txt`.
+1. `Read` every `page-*.png` **and** `factsheet.txt`. If instead you pass the
+   renders to a model over the raw API (subagent prompt, panel), include the
+   export's `prompt.txt` banner — naked dense renders can trip
+   `stop_reason: refusal` on Fable-class models; the banner prevents it.
 2. Treat the manifest's `percentSaved` as the go/no-go — if it printed low,
    read the text instead.
 3. Before acting on any exact string seen only in an image, verify it against

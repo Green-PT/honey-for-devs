@@ -79,5 +79,33 @@ replaced by a plausible one — exactly why ultra's PX bullet requires
 - Not comparable to the lossless ESON/TOON deltas — different axis. PX sits
   beside CCR in the lossy tier: CCR drops rows recoverably, PX keeps all
   content in view at pixel prices with byte-exactness risk.
-- A proper comprehension panel (multi-model, blinded, n≥100 like
-  bench/headroom/COMPREHENSION.md) needs a live API key — open.
+- Live multi-model panel below (was open; closed 2026-07-05).
+
+## Live comprehension panel (2026-07-05, `node bench/px/comprehension.mjs`)
+
+One corpus (eso/index.test.js), 10 questions with byte-exact expected answers,
+normalized exact-match scoring — the deliberately adversarial axis, since
+byte-exact recall is where PX is weakest. Image arm = pxpipe instruction
+banner + PNG pages, **no factsheet** (answers must come from pixels).
+
+| model | text arm | image arm | image-arm failure flavor |
+|---|---:|---:|---|
+| claude-fable-5 | 10/10 | **7/10** | test-name paraphrase, `5000`→`2000`, path |
+| claude-opus-4-8 | 10/10 | 4/10 | seed confabulated `0x2565f9e1` (actual `0x2545f491`) |
+| claude-sonnet-4-6 | 10/10 | 4/10 | `5000`→`42`; "Invalid JSON name" |
+| claude-haiku-4-5-20251001 | 10/10 | 1/10 | invented `0x9e3779b9` (golden-ratio constant — not in file) |
+
+Reading: every model is perfect from text; only Fable is usable from pixels,
+and even Fable is **not byte-safe** (7/10 on adversarial exact-string probes —
+consistent with pxpipe's 13/15 hex recall and their legibility audit). This
+confirms the Fable-only guard, and that `factsheet.txt` — which carries
+exactly these values as text — is load-bearing, not decorative. Misses are
+plausible inventions, never "can't read".
+
+**Refusal finding (API path):** claude-fable-5's safety layer refuses dense
+renders depending on framing — a naked render with no context, or a user-voice
+preface calling it a "dense PNG render", drew 3/3 `stop_reason: refusal`;
+prepending pxpipe's own `prompt.txt` instruction banner resolved it (residual
+refusals ~1-2/3 attempts, retried). **When passing PX renders over the raw
+API, always include the export's `prompt.txt` banner.** In-harness (Claude
+Code `Read` tool) no refusal was ever observed in this session's checks.

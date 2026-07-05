@@ -44,3 +44,24 @@ A neutral receiver agent answers questions using ONLY the handoff. **Lossless** 
 | ponytail | 50% | 95% | 2,522 | -22% |
 | honey | 100% | 100% | 1,583 | -51% |
 
+
+## Re-validation 2026-07-05 (`full-opus48-px`) — honey skill incl. the ultra/PX addition
+
+Same scope as `full-opus48` (23 tasks × 5 variants × 3 runs, `MODEL=claude-opus-4-8`,
+`JUDGE_RUBRIC=plain`); judge panel Anthropic-only (`claude-opus-4-8,claude-sonnet-4-6,
+claude-haiku-4-5-20251001` — no OpenAI key), so scores are indicative, not directly
+comparable to the cross-family table above. Purpose: the live-loaded `honey` variant's
+system prompt changed (Lever 3b ultra/PX bullet), so the headline needed re-checking.
+
+| Variant | Tests pass | Judge ±sd | Judge vs base | Output tok | Output vs base | $ (cached) | $ (cold) | CO₂ (g) |
+|---------|-----------:|----------:|--------------:|-----------:|---------------:|-----------:|---------:|--------:|
+| baseline | 99% | 95 ±4 | 100% | 87,298 | +0% | $6.753 | $6.753 | 1919.1 |
+| caveman | 94% | 94 ±5 | 99% | 71,217 | -18% | $5.720 | $7.295 | 1565.6 |
+| ponytail | 88% | 90 ±11 | 95% | 68,386 | -22% | $5.969 | $5.969 | 1503.4 |
+| honey | 100% | 93 ±9 | 97% | 73,711 | -16% | $6.117 | $9.583 | 1620.4 |
+| honey-design | 100% | 96 ±4 | 100% | 73,739 | -16% | $5.875 | $7.144 | 1621.0 |
+
+Holds: `honey` remains the only non-design variant at **100% tests** while cutting output
+(−16% vs −15% committed); judge gap to baseline (97%) is inside ±sd. The PX bullet did not
+regress the skill. Its cost shows where expected: `$ (cold)` rose to $9.583 (bigger skill
+prompt, uncached worst case); `$ (cached)` stays below baseline.
