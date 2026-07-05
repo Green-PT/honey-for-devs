@@ -143,6 +143,11 @@ for less, don't crush what you fetched.
   huge uniform arrays: `eson crush`.) Reference the handle instead of pasting the blob again.
 - **Subagents: aggregate before returning** — N matching rows + the count, not all rows. Their
   return is itself a Lever-3 handoff: columnar/minified.
+- **ultra only — image-rendered reads (PX).** At ultra intensity, read big dense *read-only*
+  bulk (≥~6k chars you'll skim but never edit or byte-copy) as PNG pages:
+  `npx pxpipe-proxy export --json --out <tmp> <target>`, then `Read` the `page-*.png` **and**
+  `factsheet.txt` (~5× cheaper; Fable-class readers only). Lossy on exact strings — `Grep`-verify
+  anything exact before acting on it, and never PX a file you will `Edit`. Guards: `honey-px`.
 
 Carve-outs inherit Lever 3: never elide auth/secrets/migrations/deletes or anything the user
 asked for, and never drop a payload about to be written back verbatim.

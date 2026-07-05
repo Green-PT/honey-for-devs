@@ -133,10 +133,15 @@ hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comp
 
 ### PX — image-rendered reads for huge dense read-only bulk
 
-An image's token cost is fixed by its pixel area, not its character count — dense
-text packs ~3 chars per image-token vs ~1 as text. **PX** exploits the gap on the
-*read* path: render big read-only bulk (vendored code, large diffs, docs) to PNG
-pages with [pxpipe](https://github.com/teamchong/pxpipe)'s `export` and `Read` the
+**The intuition:** sending a file as text pays per character; sending an image
+pays per pixel, no matter how much text is crammed into it. So a "photo of the
+page" costs ~5× less than the page itself — and reading it has photo problems:
+the gist survives, an exact serial number might not.
+
+Concretely: dense text packs ~3 chars per image-token vs ~1 as text. **PX**
+exploits the gap on the *read* path: when the agent must skim something huge it
+will never edit (vendored code, a large diff, docs), it renders it to PNG pages
+with [pxpipe](https://github.com/teamchong/pxpipe)'s `export` and `Read`s the
 images instead of the text.
 
 ```bash
@@ -150,7 +155,10 @@ silently confabulated. **Lossy on exact strings** — misreads
 are silent confabulations, so the export ships verbatim precision tokens (paths,
 SHAs, numbers) as `factsheet.txt` text, and the `honey-px` skill forbids it for
 files you'll edit, secrets, or non-Fable readers. Complementary to CCR: CCR drops
-redundant rows recoverably; PX keeps everything in view at pixel prices. For the
+redundant rows recoverably; PX keeps everything in view at pixel prices. At
+`/honey ultra` the core skill reaches for PX automatically on qualifying reads
+(big, dense, read-only); at other intensities it stays on-demand via `honey-px`.
+For the
 full wire-level version (system prompt, tool docs, history), run the pxpipe proxy
 itself — Honey and pxpipe stack.
 

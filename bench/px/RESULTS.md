@@ -47,6 +47,28 @@ That is precisely pxpipe's documented failure mode (their blind-read audit:
 you'll `Edit`, never trust an exact string seen only in an image — `Grep` it
 first; `factsheet.txt` carries precision tokens as text.
 
+## Ultra-flow micro-bench (in-session, Fable 5 — n=1 file)
+
+The full `honey ultra` PX flow on one qualifying read (eso/index.test.js,
+8,091 chars, never read as text in the session), both arms in claude tokens:
+
+| arm | cost |
+|---|---:|
+| text `Read` | 2,714 |
+| PX: `page-001.png` (1568×216 → 452) + `factsheet.txt` (124) + export report (~90) | **~666 (−75%)** |
+
+Read-back: **9/10 grep-verified claims** — exact test name
+(`preserves integers beyond Number.MAX_SAFE_INTEGER as BigInt`), the
+`9007199254740993n` BigInt, `/Invalid ESON name|number/` regexes, the
+`i < 5000` loop, the CLI `execFileSync(process.execPath, [cli, "encode"], …)`
+shape. The miss is the sharpest confabulation example so far: the PRNG line
+was read as the classic LCG `seed = (seed * 9301 + 49297) % 233280` — the file
+actually uses **xorshift** (`seed ^= seed << 13; …`, seed `0x2545f491`); the
+LCG constants appear nowhere in it. The reader pattern-matched "seed math" to
+famous constants and invented them. Gist held; a specific line was silently
+replaced by a plausible one — exactly why ultra's PX bullet requires
+`Grep`-verifying any exact string before acting on it.
+
 ## Verdict
 
 - **Token axis: real and large** (−79…85% here; pxpipe's own end-to-end
