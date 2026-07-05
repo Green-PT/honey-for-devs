@@ -37,7 +37,8 @@ function sourceBody(name) {
   const src = fs.readFileSync(path.join(ROOT, 'skills', name, 'SKILL.md'), 'utf8').replace(/\r\n/g, '\n');
   const fm = src.match(/^---\n[\s\S]*?\n---\n?/);
   if (!fm) throw new Error(`skills/${name}/SKILL.md has no frontmatter`);
-  return src.slice(fm[0].length);
+  // Claude-Code-only sections (e.g. the /honey toggle) don't ship to OpenClaw.
+  return src.slice(fm[0].length).split('<!-- claude-code-only -->')[0].replace(/\n+$/, '\n');
 }
 
 function render(name) {

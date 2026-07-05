@@ -262,8 +262,11 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 /plugin install honey@greenpt
 ```
 
-Then `/honey` to turn it on (`/honey lite|full|ultra` to set intensity,
-`/honey off` to stop). A 🍯 badge shows the active mode in your statusline.
+Then `/honey` **once** to turn it on (`/honey lite|full|ultra` to set intensity,
+`/honey off` to stop). The state persists across sessions — a SessionStart hook
+re-activates it every session until you run `/honey off`. A 🍯 badge shows the
+active mode in your statusline. If your client autocompletes `/honey` to
+`honey:honey`, that's the same command.
 
 ### Plain Claude (claude.ai / API) — no install
 

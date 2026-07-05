@@ -25,7 +25,13 @@ function readSource() {
   const raw = fs.readFileSync(SOURCE, "utf8");
   const m = raw.match(/^---\n[\s\S]*?\n---\n?/);
   if (!m) throw new Error("SKILL.md is missing YAML frontmatter");
-  return { body: raw.slice(m[0].length).replace(/^\n+/, "") };
+  // Claude-Code-only sections (e.g. the /honey toggle) stay out of editor rules.
+  const body = raw
+    .slice(m[0].length)
+    .replace(/^\n+/, "")
+    .split("<!-- claude-code-only -->")[0]
+    .replace(/\n+$/, "\n");
+  return { body };
 }
 
 // Each target: where it lives + how to wrap the shared body for that tool.

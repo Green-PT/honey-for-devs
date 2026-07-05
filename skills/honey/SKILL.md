@@ -8,7 +8,7 @@ description: >-
   or explaining code, or any response where output volume drives token cost — even
   if the user never says "minimal" or "concise". Especially in agentic coding,
   where the volume of generated code and prose runs up the bill.
-argument-hint: "[lite|full|ultra]"
+argument-hint: "[lite|full|ultra|off]"
 license: MIT
 ---
 
@@ -194,3 +194,22 @@ Stdlib already does it → no code:
 
 Precision kept, prose gone:
 > `pytest tests/ -q` · `-k <name>` runs one test, `-x` stops on first failure.
+
+<!-- claude-code-only -->
+
+## Toggling (`/honey` in Claude Code)
+
+Only when the user explicitly invokes `/honey [lite|full|ultra|off]` (or asks to
+turn Honey on/off) — not when this skill loads reflexively — persist the state
+first by running exactly:
+
+`node "${CLAUDE_PLUGIN_ROOT}/hooks/honey-state.js" set $ARGUMENTS`
+
+(If `CLAUDE_PLUGIN_ROOT` is unexpanded, `hooks/honey-state.js` lives at the
+plugin root, two directories above this file.) Empty argument = `full`. Then act
+on the script's output:
+
+- `off` → reply "Honey mode off." and stop applying this skill.
+- `lite`/`full`/`ultra` → reply in one line (e.g. "🍯 Honey on (full).") and apply
+  this skill at that intensity for the rest of the session. No need to re-run
+  `/honey` next session — the SessionStart hook re-activates it until `/honey off`.
