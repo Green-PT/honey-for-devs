@@ -54,3 +54,7 @@ The original is always stashed first, and the rewritten result ends with the exa
 `eson retrieve <hash>` command that restores it. `/honey off` disables the hook;
 history already in context is immutable — this fires at entry, the only place a
 hook can act.
+
+Caveat: Claude Code builds affected by anthropics/claude-code#68951 ignore the
+hook's Bash rewrite, making it inert (a session-start warning tells you when this
+applies). Manual `some-tool | eson crush` piping is unaffected — prefer it there.
