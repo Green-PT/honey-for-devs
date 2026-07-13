@@ -57,6 +57,20 @@ test("honey off → passthrough even for big arrays", () => {
   assert.strictEqual(stdout, "");
 });
 
+test("guard entry file stays parseable on old node (no ??/?./arrows/templates/bare catch)", () => {
+  const src = fs.readFileSync(HOOK, "utf8").replace(/\/\/[^\n]*/g, ""); // strip comments
+  for (const [re, what] of [
+    [/\?\?/, "nullish coalescing"],
+    [/\?\./, "optional chaining"],
+    [/=>/, "arrow function"],
+    [/`/, "template literal"],
+    [/catch\s*\{/, "optional catch binding"],
+    [/\b(const|let)\b/, "const/let"],
+  ]) {
+    assert.ok(!re.test(src), `guard must not use ${what} — old node fails at parse`);
+  }
+});
+
 test("repetitive non-JSON text falls back to line collapse", () => {
   const lines = Array.from({ length: 40 }, () => "retrying connection to db-01...").join("\n");
   const { stdout } = runHook(lines);
