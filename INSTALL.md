@@ -123,7 +123,7 @@ Each editor reads an always-on rule file. Copy the matching one into your projec
 | Cline | `.clinerules/honey.md` | `<project>/.clinerules/` |
 | Copilot (editor) | `.github/copilot-instructions.md` | `<project>/.github/` |
 | Kiro | `.kiro/steering/honey.md` | `<project>/.kiro/steering/` or `~/.kiro/steering/` |
-| OpenCode | `.opencode/AGENTS.md` | `<project>/.opencode/` |
+| OpenCode | `.opencode/AGENTS.md` + `opencode.json` | `<project>/.opencode/` (installer also registers it in `opencode.json` `instructions`, since OpenCode doesn't auto-load nested `.opencode/AGENTS.md`; alternatively copy to `~/.config/opencode/AGENTS.md`) |
 | Aider / Zed / universal | `AGENTS.md` | `<project>/` |
 
 OpenClaw is not a rule-file copy — it uses native skills; see Option A3.

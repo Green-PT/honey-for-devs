@@ -82,6 +82,26 @@ function copy(srcRel, destAbs) {
   fs.copyFileSync(src, destAbs);
   note("  copy " + srcRel + " -> " + destAbs);
 }
+// OpenCode auto-loads root AGENTS.md / global / opencode.json `instructions` —
+// NOT a nested .opencode/AGENTS.md. Register the copied file so it's actually read.
+function registerOpencode(cwd, rel) {
+  const cfg = path.join(cwd, "opencode.json");
+  if (DRY) return note("  [dry-run] register " + rel + " in " + cfg);
+  let json = { $schema: "https://opencode.ai/config.json" };
+  if (fs.existsSync(cfg)) {
+    try {
+      json = JSON.parse(fs.readFileSync(cfg, "utf8"));
+    } catch {
+      note('  ! opencode.json is not valid JSON — add "instructions": ["' + rel + '"] yourself.');
+      return;
+    }
+  }
+  const instr = Array.isArray(json.instructions) ? json.instructions : [];
+  if (!instr.includes(rel)) instr.push(rel);
+  json.instructions = instr;
+  fs.writeFileSync(cfg, JSON.stringify(json, null, 2) + "\n");
+  note("  registered " + rel + " in " + cfg);
+}
 // ---- statusline (Claude Code) ---------------------------------------------
 const SL_DIR = path.join(CLAUDE_DIR, "honey");
 const SL_PATH = path.join(SL_DIR, "statusline.js");
@@ -189,7 +209,7 @@ const RULE_AGENTS = [
   { id: "windsurf", name: "Windsurf", src: ".windsurf/rules/honey.md", dest: ".windsurf/rules/honey.md" },
   { id: "cline", name: "Cline", src: ".clinerules/honey.md", dest: ".clinerules/honey.md" },
   { id: "copilot-editor", name: "Copilot (editor)", src: ".github/copilot-instructions.md", dest: ".github/copilot-instructions.md" },
-  { id: "opencode", name: "OpenCode", src: ".opencode/AGENTS.md", dest: ".opencode/AGENTS.md" },
+  { id: "opencode", name: "OpenCode", src: ".opencode/AGENTS.md", dest: ".opencode/AGENTS.md", post: (cwd, dest) => registerOpencode(cwd, dest) },
   { id: "kiro", name: "Kiro", src: ".kiro/steering/honey.md", dest: ".kiro/steering/honey.md" },
   { id: "agents", name: "AGENTS.md (Aider/Zed/universal)", src: "AGENTS.md", dest: "AGENTS.md" },
 ];
@@ -220,6 +240,7 @@ function install() {
       for (const a of targets) {
         any = true;
         copy(a.src, path.join(process.cwd(), a.dest));
+        if (a.post) a.post(process.cwd(), a.dest);
       }
     }
   } else {
