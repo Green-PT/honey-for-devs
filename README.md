@@ -9,7 +9,7 @@
 cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
 making agents emit less code *and* less prose without losing correctness. It works
 with **Claude (claude.ai and the API), Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
-OpenClaw, and Kiro**. Three independent levers, applied reflexively:
+OpenClaw, Kiro, and Kilo Code**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
@@ -337,6 +337,7 @@ PATH. Safe to re-run; skips tools you don't have.
 | GitHub Copilot (editor) | copy `.github/copilot-instructions.md` into your project |
 | Kiro | copy `.kiro/steering/honey.md` (project or `~/.kiro/steering/`) |
 | OpenCode | copy `.opencode/AGENTS.md` into your project, then register it in `opencode.json` (`"instructions": [".opencode/AGENTS.md"]`) — or copy it to global `~/.config/opencode/AGENTS.md`. OpenCode does not auto-load a nested `.opencode/AGENTS.md`. |
+| Kilo Code | copy `.kilo/rules/honey.md` into your project (auto-discovered; legacy `.kilocode/` not used) |
 | Aider / Zed / any AGENTS.md reader | copy `AGENTS.md` into your project |
 
 All of these are also handled automatically by the one-line installer. See

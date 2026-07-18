@@ -210,6 +210,7 @@ const RULE_AGENTS = [
   { id: "cline", name: "Cline", src: ".clinerules/honey.md", dest: ".clinerules/honey.md" },
   { id: "copilot-editor", name: "Copilot (editor)", src: ".github/copilot-instructions.md", dest: ".github/copilot-instructions.md" },
   { id: "opencode", name: "OpenCode", src: ".opencode/AGENTS.md", dest: ".opencode/AGENTS.md", post: (cwd, dest) => registerOpencode(cwd, dest) },
+  { id: "kilo", name: "Kilo Code", src: ".kilo/rules/honey.md", dest: ".kilo/rules/honey.md" },
   { id: "kiro", name: "Kiro", src: ".kiro/steering/honey.md", dest: ".kiro/steering/honey.md" },
   { id: "agents", name: "AGENTS.md (Aider/Zed/universal)", src: "AGENTS.md", dest: "AGENTS.md" },
 ];

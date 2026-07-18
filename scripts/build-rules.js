@@ -62,6 +62,12 @@ const TARGETS = [
     wrap: (body) => `${BANNER}\n\n${body}`,
   },
   {
+    // Kilo Code (post-rename): auto-discovered project rules under `.kilo/rules/`.
+    // The legacy `.kilocode/` layout is intentionally not used. See kilo.jsonc config.
+    path: ".kilo/rules/honey.md",
+    wrap: (body) => `${BANNER}\n\n${body}`,
+  },
+  {
     // Universal fallback (Aider, Codex global, Zed, CodeWhale, and any AGENTS.md
     // reader). Root-level so `cp AGENTS.md <project>` just works.
     path: "AGENTS.md",
