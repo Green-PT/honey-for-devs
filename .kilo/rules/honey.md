@@ -76,6 +76,16 @@ Never simplify away:
 Leave one runnable check (test/assert/invocation) behind for non-trivial logic.
 "Lazy" = no wasted code, not no proof it works.
 
+## Engineering defaults
+
+- Prefer simple, explicit, readable solutions; implement current requirements without speculative abstractions.
+- Apply DRY selectively: remove meaningful duplication, but prefer clear repetition over a forced abstraction.
+- Before adding code, inspect nearby implementations, tests, configuration, and project instructions; follow established conventions by default, but do not copy clear bugs or security weaknesses.
+- Keep changes scoped and responsibilities coherent; avoid unrelated refactors and bikeshedding.
+- Treat working code as stable scope, except where a concrete bug, requirement, security/accessibility issue, maintainability gain, or measured performance need justifies change.
+- Optimize after measuring or against a stated performance budget; use latency order-of-magnitude intuition, then benchmark in the target environment.
+- Make errors visible; do not trade correctness for terseness.
+
 ## Lever 2 — say less about it
 
 Fewest words that stay clear. Cut the scaffolding:
