@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/honey-session.js\""
+            "command": "node \"$(printf '%s' \"${CLAUDE_PLUGIN_ROOT}\" | sed 's#\\\\#/#g; s#^\\([A-Za-z]\\):/#/mnt/\\L\\1/#')/hooks/honey-session.js\""
           }
         ]
       }
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/honey-subagent.js\""
+            "command": "node \"$(printf '%s' \"${CLAUDE_PLUGIN_ROOT}\" | sed 's#\\\\#/#g; s#^\\([A-Za-z]\\):/#/mnt/\\L\\1/#')/hooks/honey-subagent.js\""
           }
         ]
       }
@@ -26,7 +26,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "node \"${CLAUDE_PLUGIN_ROOT}/hooks/logcompress-hook.js\""
+            "command": "node \"$(printf '%s' \"${CLAUDE_PLUGIN_ROOT}\" | sed 's#\\\\#/#g; s#^\\([A-Za-z]\\):/#/mnt/\\L\\1/#')/hooks/logcompress-hook.js\""
           }
         ]
       }
