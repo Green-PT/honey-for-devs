@@ -1,0 +1,23 @@
+# Benchmark workspace — kept local, never published
+benchmark/
+
+# macOS
+.DS_Store
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# Local Honey state (created at runtime, not source)
+.honey-active
+
+# Python bytecode
+__pycache__/
+*.pyc
+
+# CCR runtime cache
+.honey-ccr/
+
+# Cline harness-bench logs (raw run output; results.json under bench/results/ is kept)
+bench/results_cline*.log

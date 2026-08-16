@@ -1,0 +1,44 @@
+{
+  "_about": "Honey CO2 estimate config. Model params come from EcoLogits' registry (hooks/eco-models.json), NOT hand estimates. This file only holds: grids, savings, and aliases for frontier models too new for the registry.",
+  "_engine": "Faithful port of EcoLogits v0.8.2 (genai-impact/ecologits, MIT). scripts/eco_report.py runs the real package for the authoritative breakdown.",
+  "_match": "A model id is resolved by: (1) exact name in eco-models.json, else (2) first alias whose 'match' substring appears in the id -> borrow that registry model's params, else (3) default_alias. Params and provider always come from the registry.",
+  "_grid_note": "Per-provider, location-based. Anthropic on AWS Trainium (Project Rainier PA/IN/MS ~500), OpenAI on Azure (~400), Google on GCP (~330). Researched, not from EcoLogits; market-based (renewable PPAs) would be lower.",
+  "grids_gco2_per_kwh": {
+    "anthropic": 500,
+    "openai": 400,
+    "google": 330,
+    "default": 450
+  },
+
+  "_savings_note": "Output-token reduction vs a no-Honey baseline (CO2 scales with output tokens). This is a MODELLED counterfactual carried over from the benchmark — it is NOT measured for the session being reported, and every consumer must say so. 'full' is the paired per-task median from the committed stamp in savings_provenance (all task tiers, not the flattering code-only slice); lite/ultra keep their historical ratio to 'full' and remain extrapolations, never measured. Per tier on the same stamp: code -39% (p=0.007), user-facing -7% (ns, p=0.673), agent-to-agent -49% (n=2). $ savings run lower than CO2 since input isn't cut — and can go negative on a cold session.",
+  "savings_vs_baseline": { "lite": 0.17, "full": 0.29, "ultra": 0.38 },
+
+  "_savings_provenance_note": "Which measurement the ratio above came from. by_model gates the claim: a session whose model matches no key here gets NO savings line rather than an extrapolated one. An entry's 'n' overrides the suite-wide count when tasks were excluded (fable: cells with stop_reason 'refusal' — Fable 5 refuses some bare bench prompts — are dropped from pairing; see the stamp's report.md). Regenerate after a live bench with: node bench/src/report.js --stamp <stamp>",
+  "savings_provenance": {
+    "measured_mode": "full",
+    "method": "paired per-task median delta in output tokens vs baseline; runs collapsed by median; two-sided Wilcoxon signed-rank",
+    "stamp": "bench/results/full-opus48",
+    "n": 23,
+    "by_model": {
+      "opus": { "ratio": 0.286, "p": 0.020, "stamp": "bench/results/full-opus48", "model": "claude-opus-4-8" },
+      "gpt-5": { "ratio": 0.196, "p": 0.004, "stamp": "bench/results/full-gpt55", "model": "gpt-5.5" },
+      "fable": { "ratio": 0.393, "p": 0.0003, "n": 17, "stamp": "bench/results/full-fable5", "model": "claude-fable-5" }
+    }
+  },
+
+  "_serving_note": "EcoLogits' coefficient is a SINGLE-STREAM (batch-size-1) upper bound: it assigns one request the whole GPU set for the full generation latency (e.g. Opus ~1.9 tok/s, ~523s for 1000 tokens — ~30x slower than reality). Production serves many requests concurrently via continuous batching, which produces ~B tokens per forward pass at ~one-pass power, so per-request usage AND embodied impact (both latency-scaled) amortize by ~B. The badge and reports divide the faithful EcoLogits ceiling by this factor to show realistic SERVED impact; eco_report.py also prints the ceiling. 32 is calibrated so modeled throughput matches observed interactive serving (Opus 1.9 tok/s x 32 = ~61 tok/s, in the real ~50-70 tok/s range) and sits mid-range of published vLLM/TensorRT-LLM continuous-batching concurrency (16-64). Conservative by design — a carbon tool should not understate.",
+  "serving_concurrency": 32,
+
+  "_aliases_note": "For ids newer than the registry. Each points at the closest registry model whose EcoLogits params we borrow.",
+  "default_alias": "gpt-4o",
+  "aliases": [
+    { "match": ["fable", "mythos"], "registry": "claude-opus-4-1" },
+    { "match": ["opus"],            "registry": "claude-opus-4-1" },
+    { "match": ["sonnet"],          "registry": "claude-sonnet-4-0" },
+    { "match": ["haiku"],           "registry": "claude-3-5-haiku-latest" },
+    { "match": ["gpt-5", "codex"],  "registry": "gpt-5" },
+    { "match": ["gpt-4.1"],         "registry": "gpt-4.1" },
+    { "match": ["gpt-4", "o3", "o4", "o1"], "registry": "gpt-4o" },
+    { "match": ["gemini"],          "registry": "gemini-2.0-flash" }
+  ]
+}
