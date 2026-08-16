@@ -1,0 +1,35 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"require('module').runMain(process.argv[1]=process.argv[1].split(String.fromCharCode(92)).join('/'))\" \"${CLAUDE_PLUGIN_ROOT}/hooks/honey-session.js\""
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"require('module').runMain(process.argv[1]=process.argv[1].split(String.fromCharCode(92)).join('/'))\" \"${CLAUDE_PLUGIN_ROOT}/hooks/honey-subagent.js\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node -e \"require('module').runMain(process.argv[1]=process.argv[1].split(String.fromCharCode(92)).join('/'))\" \"${CLAUDE_PLUGIN_ROOT}/hooks/logcompress-hook.js\""
+          }
+        ]
+      }
+    ]
+  }
+}

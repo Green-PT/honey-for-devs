@@ -1,0 +1,74 @@
+name: Build Claude plugin
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "plugins/honey/**"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Rebuild Claude plugin package
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          rm -rf plugins/honey
+          mkdir -p plugins/honey
+
+          # Copy the actual Claude plugin payload from the repository root.
+          # Do NOT copy the Codex-generated plugins/honey directory itself.
+          rsync -a \
+            --exclude=".git/" \
+            --exclude=".github/" \
+            --exclude="plugins/" \
+            --exclude="bench/" \
+            --exclude="tests/" \
+            ./ plugins/honey/
+
+          # A nested plugin needs its own plugin manifest,
+          # but it must not contain the marketplace manifest.
+          rm -f plugins/honey/.claude-plugin/marketplace.json
+
+          echo "Built plugins/honey:"
+          find plugins/honey -maxdepth 2 -type f | sort | head -200
+
+          test -f plugins/honey/.claude-plugin/plugin.json
+          test -f plugins/honey/skills/honey/SKILL.md
+          test -f plugins/honey/hooks/hooks.json
+          test -f plugins/honey/hooks/honey-session.js
+          test -f plugins/honey/hooks/honey-subagent.js
+          test -f plugins/honey/hooks/logcompress-hook.js
+          test -d plugins/honey/agents
+          test -d plugins/honey/bin
+          test -d plugins/honey/eso
+
+      - name: Commit generated Claude plugin
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add plugins/honey
+
+          if git diff --cached --quiet; then
+            echo "No plugin changes."
+            exit 0
+          fi
+
+          git commit -m "build: sync Claude plugin package"
+          git push
