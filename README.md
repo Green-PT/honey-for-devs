@@ -392,7 +392,7 @@ PATH. Safe to re-run; skips tools you don't have.
 | Cline | copy `.clinerules/honey.md` into your project (token-conscious: the compact `skills/honey/cline-rule.md`) |
 | GitHub Copilot (editor) | copy `.github/copilot-instructions.md` into your project |
 | Kiro | copy `.kiro/steering/honey.md` (project or `~/.kiro/steering/`) |
-| OpenCode | copy `.opencode/AGENTS.md` into your project, then register it in `opencode.json` (`"instructions": [".opencode/AGENTS.md"]`) — or copy it to global `~/.config/opencode/AGENTS.md`. OpenCode does not auto-load a nested `.opencode/AGENTS.md`. |
+| OpenCode | `node bin/install.js --only opencode` — copies `AGENTS.md` to `~/.config/opencode/AGENTS.md` (always-on in every project) and `skills/` into `~/.config/opencode/skills/` as native skills; verify with `opencode debug skill` |
 | Kilo Code | copy `.kilo/rules/honey.md` into your project (auto-discovered; `.kilocode/rules/` also works) |
 | Aider / Zed / any AGENTS.md reader | copy `AGENTS.md` into your project |
 

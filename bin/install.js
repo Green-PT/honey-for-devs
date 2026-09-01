@@ -32,6 +32,7 @@ const SLUG = "Green-PT/honey-for-devs";
 const URL = "https://github.com/" + SLUG;
 const HOME = os.homedir();
 const CLAUDE_DIR = process.env.CLAUDE_CONFIG_DIR || path.join(HOME, ".claude");
+const OPENCODE_DIR = path.join(process.env.XDG_CONFIG_HOME || path.join(HOME, ".config"), "opencode");
 // Heading of the generated AGENTS.md — proves a copied file is ours before we delete it.
 const MARKER = "Honey (I Shrunk the AI)";
 
@@ -105,26 +106,6 @@ function copy(srcRel, destAbs) {
   fs.mkdirSync(path.dirname(destAbs), { recursive: true });
   fs.copyFileSync(src, destAbs);
   note("  copy " + srcRel + " -> " + destAbs);
-}
-// OpenCode auto-loads root AGENTS.md / global / opencode.json `instructions` —
-// NOT a nested .opencode/AGENTS.md. Register the copied file so it's actually read.
-function registerOpencode(cwd, rel) {
-  const cfg = path.join(cwd, "opencode.json");
-  if (DRY) return note("  [dry-run] register " + rel + " in " + cfg);
-  let json = { $schema: "https://opencode.ai/config.json" };
-  if (fs.existsSync(cfg)) {
-    try {
-      json = JSON.parse(fs.readFileSync(cfg, "utf8"));
-    } catch {
-      note('  ! opencode.json is not valid JSON — add "instructions": ["' + rel + '"] yourself.');
-      return;
-    }
-  }
-  const instr = Array.isArray(json.instructions) ? json.instructions : [];
-  if (!instr.includes(rel)) instr.push(rel);
-  json.instructions = instr;
-  fs.writeFileSync(cfg, JSON.stringify(json, null, 2) + "\n");
-  note("  registered " + rel + " in " + cfg);
 }
 // ---- statusline (Claude Code) ---------------------------------------------
 const SL_DIR = path.join(CLAUDE_DIR, "honey");
@@ -280,6 +261,25 @@ const CLI_AGENTS = [
       }
     },
   },
+  {
+    id: "opencode",
+    name: "OpenCode",
+    detect: () => which("opencode") || dirExists(OPENCODE_DIR),
+    // Global, not per-repo: OpenCode auto-loads ~/.config/opencode/AGENTS.md for
+    // always-on rules and reads native SKILL.md packages from its skills/ dir.
+    // Verify with `opencode debug skill` (the earlier per-repo .opencode/AGENTS.md
+    // needed an opencode.json `instructions` entry and silently did nothing without one).
+    install: () => {
+      copy("AGENTS.md", path.join(OPENCODE_DIR, "AGENTS.md"));
+      for (const s of OPENCLAW_SKILLS)
+        copy(path.join("skills", s, "SKILL.md"), path.join(OPENCODE_DIR, "skills", s, "SKILL.md"));
+      note("  always-on via AGENTS.md; check with: opencode debug skill");
+    },
+    uninstall: () => {
+      remove(path.join(OPENCODE_DIR, "AGENTS.md"), MARKER);
+      for (const s of OPENCLAW_SKILLS) remove(path.join(OPENCODE_DIR, "skills", s));
+    },
+  },
 ];
 
 // Editor agents are configured by dropping a generated rule file into a repo.
@@ -288,7 +288,6 @@ const RULE_AGENTS = [
   { id: "windsurf", name: "Windsurf", src: ".windsurf/rules/honey.md", dest: ".windsurf/rules/honey.md" },
   { id: "cline", name: "Cline", src: ".clinerules/honey.md", dest: ".clinerules/honey.md" },
   { id: "copilot-editor", name: "Copilot (editor)", src: ".github/copilot-instructions.md", dest: ".github/copilot-instructions.md" },
-  { id: "opencode", name: "OpenCode", src: ".opencode/AGENTS.md", dest: ".opencode/AGENTS.md", post: (cwd, dest) => registerOpencode(cwd, dest) },
   { id: "kilo", name: "Kilo Code", src: ".kilo/rules/honey.md", dest: ".kilo/rules/honey.md" },
   { id: "kiro", name: "Kiro", src: ".kiro/steering/honey.md", dest: ".kiro/steering/honey.md" },
   { id: "agents", name: "AGENTS.md (Aider/Zed/universal)", src: "AGENTS.md", dest: "AGENTS.md" },
@@ -422,7 +421,7 @@ async function wizard() {
 
   let withInit = false;
   if (editorPicked)
-    withInit = await askYesNo(rl, "\nDrop editor rule files into this repo (" + process.cwd() + ")?", false);
+    withInit = await askYesNo(rl, "\nDrop editor rule files into this repo (" + process.cwd() + ")?", true);
 
   let mode = (await ask(rl, "\nDefault Honey mode — lite / full / ultra [full]: ")).toLowerCase();
   if (!["lite", "full", "ultra"].includes(mode)) mode = "full";
@@ -446,9 +445,12 @@ async function wizard() {
 }
 
 // ---- dispatch -------------------------------------------------------------
-const explicit = onlyIds.length || has("--all") || MINIMAL || WITH_INIT || YES;
-if (has("--help")) help();
-else if (has("--list")) list();
-else if (has("--uninstall")) uninstall();
-else if (!explicit && ttyAvailable()) wizard();
-else install();
+module.exports = { CLI_AGENTS, RULE_AGENTS };
+if (require.main === module) {
+  const explicit = onlyIds.length || has("--all") || MINIMAL || WITH_INIT || YES;
+  if (has("--help")) help();
+  else if (has("--list")) list();
+  else if (has("--uninstall")) uninstall();
+  else if (!explicit && ttyAvailable()) wizard();
+  else install();
+}
