@@ -84,6 +84,31 @@ without restarting the session. `node bin/install.js --only omp` does the same
 and also copies the root `AGENTS.md` to `~/.omp/agent/AGENTS.md` for always-on
 user-scope context.
 
+## Option A6 — OpenCode
+
+```bash
+node bin/install.js --only opencode
+```
+
+Global, no per-repo step: copies the root `AGENTS.md` to
+`~/.config/opencode/AGENTS.md`, which OpenCode loads as always-on instructions in
+every project, and the canonical [`skills/`](skills/) as native SKILL.md packages
+in `~/.config/opencode/skills/` — the core `honey` skill plus the companions.
+Restart OpenCode, then verify it actually loaded:
+
+```bash
+opencode debug skill     # lists honey + companions and the path each came from
+```
+
+Manual alternative: `cp AGENTS.md ~/.config/opencode/AGENTS.md` and
+`cp -r skills/* ~/.config/opencode/skills/`.
+
+Earlier versions dropped `.opencode/AGENTS.md` into the project and registered it
+in `opencode.json` `instructions`; without that registration OpenCode never read
+the file, so an install could silently do nothing. For repo-scoped Honey,
+commit the root `AGENTS.md` instead (`node bin/install.js --only agents
+--with-init`) — OpenCode reads it natively.
+
 ## Option B — One-line installer (all agents)
 
 macOS / Linux / WSL / Git Bash:
@@ -151,10 +176,10 @@ Each editor reads an always-on rule file. Copy the matching one into your projec
 | Cline | `.clinerules/honey.md` | `<project>/.clinerules/` |
 | Copilot (editor) | `.github/copilot-instructions.md` | `<project>/.github/` |
 | Kiro | `.kiro/steering/honey.md` | `<project>/.kiro/steering/` or `~/.kiro/steering/` |
-| OpenCode | `.opencode/AGENTS.md` + `opencode.json` | `<project>/.opencode/` (installer also registers it in `opencode.json` `instructions`, since OpenCode doesn't auto-load nested `.opencode/AGENTS.md`; alternatively copy to `~/.config/opencode/AGENTS.md`) |
 | Aider / Zed / universal | `AGENTS.md` | `<project>/` |
 
-OpenClaw is not a rule-file copy — it uses native skills; see Option A3.
+OpenClaw and OpenCode are not rule-file copies — they use native skills; see
+Options A3 and A6.
 
 These files are generated from `skills/honey/SKILL.md`; don't edit them by hand —
 edit the source and run `node scripts/build-rules.js`.
