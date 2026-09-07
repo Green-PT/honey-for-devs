@@ -4,6 +4,7 @@
   "_default": { "in": 3.0, "out": 15.0, "cache_write": 1.25, "cache_read": 0.1 },
   "_order_note": "Matched by FIRST substring hit, so specific ids must precede generic ones — 'claude-opus-5' also contains 'opus'. Rates verified 2026-07-30 against the current model table.",
   "rates": [
+    { "match": "gpt-6",   "in": 10.0, "out": 50.0, "cache_write": 1.25, "cache_read": 0.1 },
     { "match": "gpt-5.5", "in": 2.5, "out": 15.0, "cache_write": 1.0, "cache_read": 0.1 },
     { "match": "gpt-5.4", "in": 2.5, "out": 15.0, "cache_write": 1.0, "cache_read": 0.1 },
     { "match": "fable",  "in": 10.0, "out": 50.0 },
