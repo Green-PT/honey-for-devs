@@ -38,7 +38,7 @@
     { "match": ["opus"],            "registry": "claude-opus-4-1" },
     { "match": ["sonnet"],          "registry": "claude-sonnet-4-0" },
     { "match": ["haiku"],           "registry": "claude-3-5-haiku-latest" },
-    { "match": ["gpt-5", "codex"],  "registry": "gpt-5" },
+    { "match": ["gpt-6", "gpt-5", "codex"], "registry": "gpt-5" },
     { "match": ["gpt-4.1"],         "registry": "gpt-4.1" },
     { "match": ["gpt-4", "o3", "o4", "o1"], "registry": "gpt-4o" },
     { "match": ["gemini"],          "registry": "gemini-2.0-flash" }
