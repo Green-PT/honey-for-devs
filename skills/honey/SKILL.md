@@ -248,3 +248,6 @@ on the script's output:
 - `lite`/`full`/`ultra` → reply in one line (e.g. "🍯 Honey on (full).") and apply
   this skill at that intensity for the rest of the session. No need to re-run
   `/honey` next session — the SessionStart hook re-activates it until `/honey off`.
+- `default <mode>` → reply "Honey default: <mode>." The mode is per project:
+  `/honey <mode>` sets this repo only; `/honey default <mode>` sets every repo
+  without its own setting.

@@ -48,10 +48,8 @@ try {
   if ((input.tool_name || input.toolName) !== "Bash") passthrough();
 
   // gate: any active Honey mode — same flag honey-session.js reads
-  const dir = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
-  let mode = "";
-  try { mode = fs.readFileSync(path.join(dir, ".honey-active"), "utf8").trim(); } catch {}
-  if (!mode || mode === "off") passthrough();
+  const mode = require("./honey-state.js").activeMode(input.cwd);
+  if (!mode) passthrough();
 
   const resp = input.tool_response ?? input.toolResponse ?? input.tool_result;
   const text = typeof resp === "string" ? resp

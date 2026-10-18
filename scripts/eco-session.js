@@ -42,8 +42,7 @@ function newestTranscript() {
 }
 
 function activeMode() {
-  const dir = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
-  try { return fs.readFileSync(path.join(dir, ".honey-active"), "utf8").trim() || "full"; } catch { return "full"; }
+  return require(path.join(__dirname, "..", "hooks", "honey-state.js")).readMode() || "full";
 }
 
 const tx = arg("--transcript") || newestTranscript();

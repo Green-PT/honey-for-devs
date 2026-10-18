@@ -78,9 +78,15 @@ test("SKILL.md /honey toggle command matches hooks.json wrapper and survives man
   const m = skill.match(/`(node -e "[^`]+honey-state\.js" set \$ARGUMENTS)`/);
   assert.ok(m, "SKILL.md documents the honey-state toggle command");
   const cfg = fs.mkdtempSync(path.join(os.tmpdir(), "honey-cfg-"));
+  const proj = fs.mkdtempSync(path.join(os.tmpdir(), "honey-proj-"));
   const out = runCommand(m[1].replace("$ARGUMENTS", "full"), MANGLED, {
-    env: { CLAUDE_CONFIG_DIR: cfg },
+    env: { CLAUDE_CONFIG_DIR: cfg, CLAUDE_PROJECT_DIR: proj },
   });
   assert.equal(out, "full");
-  assert.equal(fs.readFileSync(path.join(cfg, ".honey-active"), "utf8").trim(), "full");
+  process.env.CLAUDE_CONFIG_DIR = cfg;
+  try {
+    assert.equal(require("./honey-state.js").readMode(proj), "full");
+  } finally {
+    delete process.env.CLAUDE_CONFIG_DIR;
+  }
 });

@@ -43,18 +43,16 @@ function ccrInert(version) {
 function main() {
   const DIR = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
 
-  let mode = null;
-  try {
-    mode = fs.readFileSync(path.join(DIR, ".honey-active"), "utf8").trim() || null;
-  } catch (e) {}
+  var hookInput = null;
+  try { hookInput = JSON.parse(fs.readFileSync(0, "utf8")); } catch (e) {}
 
-  if (!mode || mode === "off") process.exit(0);
+  const mode = require("./honey-state.js").activeMode(hookInput && hookInput.cwd);
+  if (!mode) process.exit(0);
 
   // Ledger for `honey-usage --savings`: one line per Honey session start, so
   // savings can later be claimed only for sessions verifiably run under Honey
   // (and in which mode). Append-only; never let it break the hook.
   try {
-    var hookInput = JSON.parse(fs.readFileSync(0, "utf8"));
     if (hookInput && hookInput.transcript_path) {
       fs.appendFileSync(
         path.join(DIR, ".honey-usage-ledger.jsonl"),

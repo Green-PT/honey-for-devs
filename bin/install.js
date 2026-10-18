@@ -115,6 +115,7 @@ const settingsPath = path.join(CLAUDE_DIR, "settings.json");
 function installStatusline() {
   if (MINIMAL) return;
   copy("hooks/statusline.js", SL_PATH);
+  copy("hooks/honey-state.js", path.join(SL_DIR, "honey-state.js"));
   copy("hooks/eco.js", path.join(SL_DIR, "eco.js")); // statusline requires these
   copy("hooks/eco-config.json", path.join(SL_DIR, "eco-config.json"));
   copy("hooks/eco-models.json", path.join(SL_DIR, "eco-models.json"));
@@ -168,7 +169,8 @@ const CLI_AGENTS = [
       run("claude plugin uninstall honey@greenpt");
       run("claude plugin marketplace remove greenpt");
       remove(path.join(CLAUDE_DIR, "plugins", "cache", "greenpt"));
-      remove(path.join(CLAUDE_DIR, ".honey-active")); // mode flag
+      remove(path.join(CLAUDE_DIR, ".honey-active")); // default mode flag
+      remove(path.join(CLAUDE_DIR, "honey-projects")); // per-project mode flags
       removeStatusline();
     },
   },
@@ -441,7 +443,7 @@ async function wizard() {
   note("");
   install();
   note("\nDefault mode: " + mode);
-  run('node "' + path.join(REPO, "hooks", "honey-state.js") + '" set ' + mode);
+  run('node "' + path.join(REPO, "hooks", "honey-state.js") + '" set default ' + mode);
 }
 
 // ---- dispatch -------------------------------------------------------------
