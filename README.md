@@ -1,7 +1,7 @@
 # 🍯 Honey (I Shrunk the AI)
 
 <p align="center">
-  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHRsNndobm8wM3F1c3pqNnhxODF6NDY2a2t3YjN5OHFoYmtvZXg0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUh0yTz4h931K/giphy.gif" alt="Honey, I shrunk the AI" width="480">
+  <img src="assets/honey-banner.svg" alt="Honey — I shrunk the AI. Versus no skill on Claude Opus 5.5: output tokens −40%, lines of code −52%, cost −31%, 100% of tests passing." width="100%">
 </p>
 
 **Write less code and say less about it.** Honey (I Shrunk the AI) by
