@@ -14,7 +14,13 @@ Apply Lever 2 to a file the agent re-reads every session. The cheapest token is 
 1. **Back up first.** Copy `FILE` → `FILE.original.md`. If that backup already exists, stop and ask — never clobber a restore point. If no backup can be written, refuse.
 2. **Rewrite the prose tersely** — drop wind-up, hedging, narration, and redundancy; fragments over paragraphs; merge guidance that repeats.
 3. **Preserve every distinct instruction** — terser words, identical rules. If unsure whether a line changes behavior, keep it verbatim.
-4. **Report** original vs new line/byte count and the backup path.
+4. **Verify, then keep or undo.** Run `node "${CLAUDE_PLUGIN_ROOT}/bin/check.js" fidelity FILE.original.md FILE`.
+   It fails if any number, code span, URL, negation or safety word was lost, or if the
+   file didn't get smaller. On a failure, fix the named loss, or restore the backup
+   (`cp FILE.original.md FILE`) when the fix would cost the savings. Never report a
+   failing rewrite as done.
+   (If `CLAUDE_PLUGIN_ROOT` is unexpanded, `bin/check.js` lives at the plugin root, two directories above this file; installed from npm it is `honey-check`.)
+5. **Report** original vs new byte count (the check prints it) and the backup path.
 
 ## Keep exact — never compress
 
@@ -29,4 +35,4 @@ Apply Lever 2 to a file the agent re-reads every session. The cheapest token is 
 
 ## Boundaries
 
-Reversible by design — `FILE.original.md` is the restore path. Verify the rewrite still carries every rule before reporting done.
+Reversible by design — `FILE.original.md` is the restore path. The fidelity check is the floor, not the ceiling: it catches lost facts, not a reworded rule that changed meaning, so still read the diff.

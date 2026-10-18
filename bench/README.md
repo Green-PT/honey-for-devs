@@ -6,7 +6,7 @@ A **reproducible** benchmark comparing skill configurations on real coding tasks
 |---------|---------------|
 | `baseline` | none (control) |
 | `caveman` | [Caveman](https://github.com/JuliusBrussee/caveman) `SKILL.md` (pinned in [`variants/caveman.md`](variants/caveman.md)) |
-| `ponytail` | [Ponytail](https://github.com/DietrichGebert/ponytail) `AGENTS.md` (pinned in [`variants/ponytail.md`](variants/ponytail.md)) |
+| `ponytail` | [Ponytail](https://github.com/DietrichGebert/ponytail) `skills/ponytail/SKILL.md` (pinned in [`variants/ponytail.md`](variants/ponytail.md)) |
 | `honey` | this repo's [`skills/honey/SKILL.md`](../skills/honey/SKILL.md) (loaded live, no copy to drift) |
 | `honey-design` | the web-only satellite [`skills/honey-design/SKILL.md`](../skills/honey-design/SKILL.md) — opt-in, only meaningful on `web` tasks |
 
@@ -287,6 +287,10 @@ Full cross-provider run — `plain` rubric, 4-judge cross-family panel
 > ⚠ **Partially re-verified.** These stamps predate the 2026-07-30 skill revision
 > (repo-reuse ladder rung, root-cause rule, no-prose-abbreviation rule) and the refresh of
 > `variants/caveman.md` / `variants/ponytail.md` to current upstream.
+>
+> **Competitor columns are stale.** The variants were re-pinned again on 2026-10-18
+> (Ponytail v5.3.2, Caveman v4.0.1); every caveman/ponytail figure below is the July 2026
+> versions' result until a new run lands.
 >
 > A live **k=1 smoke** on the revised skill (`results/smoke-postchange`, 23 tasks,
 > baseline vs honey, single judge) reproduces the headline and passes the gate: Δ output

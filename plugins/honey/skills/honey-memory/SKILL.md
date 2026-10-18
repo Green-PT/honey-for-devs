@@ -57,6 +57,12 @@ A markdown file does not update itself. Reliability = discipline, not infra:
   fact in the same commit. Review catches drift because the file is in git.
 - **On-demand refresh.** Re-read the repo and rewrite stale entries; show the
   diff. Don't blind-append — appending is how these files bloat and rot.
+- **Lint before and after a refresh.** `node "${CLAUDE_PLUGIN_ROOT}/bin/check.js" memory`
+  (no model) finds paths the file names that no longer exist, `@imports` that load
+  nothing, the same rule loaded from two files, and a Claude Code `MEMORY.md` past the
+  200 lines / 25KB that load at session start. Fix each finding with the user's yes;
+  never delete memory content unasked. (If `CLAUDE_PLUGIN_ROOT` is unexpanded,
+  `bin/check.js` lives at the plugin root, two directories above this file.)
 - Treat a fact as **superseded**, not accumulated: replace the old line, don't
   stack a new one beside it.
 

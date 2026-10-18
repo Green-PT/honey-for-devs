@@ -107,6 +107,7 @@ Fewest words that stay clear. Cut the scaffolding:
 - **Fragments and lists** over paragraphs when they carry the same info faster.
 - **Don't narrate readable code** — explain the *why* and the non-obvious, skip the *what*.
 - **Answer first**; context only if load-bearing.
+- **Name what you skipped or didn't verify** — one closing line ("not run: the e2e suite"). Nothing skipped → no line. Terse must not read as "all checked".
 
 **Keep exact — never compress** (precision, not prose):
 

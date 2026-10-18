@@ -194,7 +194,10 @@ prompts, so a live-loaded `honey` can't drift against moving competitors mid-exp
 The cost is that they go stale: both were refreshed on 2026-07-30 after upstream revisions
 (Caveman dropped prose abbreviations and causal arrows from `ultra` on tokenizer grounds
 and restated its headline from "~75%" to "65% (measured)"; Ponytail added a repo-reuse
-rung, an understand-before-you-climb guard, and a root-cause rule). Re-check them before
+rung, an understand-before-you-climb guard, and a root-cause rule). Refreshed again on
+2026-10-18 after both rewrote their skills: Ponytail `skills/ponytail/SKILL.md` at
+`df9e899` (v5.3.2) and Caveman `skills/caveman/SKILL.md` at `2178ed6` (unchanged through
+v4.0.1). Every competitor column in a stamp older than that describes the July pins. Re-check them before
 any paid run — comparing against a year-old competitor is not a fair benchmark, and the
 refresh invalidates prior stamps for competitor columns.
 

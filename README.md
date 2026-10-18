@@ -91,6 +91,11 @@ Against the competitors on the whole suite (judge win/loss/tie by exact sign tes
 | Ponytail | −33% (p=0.028) | −7% (ns, p=0.267) | 1/19/1, **p<0.001** | 90% |
 | **Honey** | **−43%** (p<0.001) | **−29%** (p=0.020) | 8/11/2, p=0.648 | **100%** |
 
+> These competitor rows were measured against the **July 2026** copies of both skills.
+> Both projects have since rewritten them (Ponytail 5, Caveman 3.1). The bench variants
+> were re-pinned on 2026-10-18 and a re-run is pending, so read these rows as the old
+> versions' results, not the current ones'.
+
 - **Code** — the deepest cut (−39%) at 100% unit-test pass. Ponytail's mandatory
   self-check *inflates* trivial code (+60% on Opus, +92% on GPT-5.5).
 - **User-facing** — the carve-out keeps Honey from compressing polish: the output
@@ -264,12 +269,12 @@ reach for at a specific moment.
 | `honey` | core skill (always-on) | the three levers, applied reflexively to every response — plus loop cost discipline for recurring `/loop` runs. `/honey [lite\|full\|ultra\|off]` |
 | `honey-chat` | standalone prompt | Honey for plain chat — the terse-prose core, no tools required. Paste [`skills/honey-chat/SKILL.md`](skills/honey-chat/SKILL.md) into a claude.ai Project's custom instructions, a Style, or an API system prompt (~500 tokens); [`COMPACT.md`](skills/honey-chat/COMPACT.md) (≤1,500 chars) fits ChatGPT/Gemini custom-instruction fields |
 | `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
-| `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
+| `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse numbered delete-list ("cut 1 and 3") |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-debt` | satellite skill | harvest every `honey:` shortcut marker into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
-| `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
-| `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git |
+| `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original, then `honey-check fidelity` undoes any rewrite that lost a number, code span, negation or safety word, or didn't shrink |
+| `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git and linted by `honey-check memory` (stale paths, dead `@imports`, duplicated rules, a `MEMORY.md` past what loads) |
 | `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eson crush`/`retrieve` |
 | `honey-px` | satellite skill | read huge dense *read-only* bulk as rendered PNG pages (`npx pxpipe-proxy export`) — image tokens scale with pixels, not chars: **up to −85%** on token-dense content (Fable-class readers only); lossy on exact strings, never for files you'll edit |
 | `honey-loop` | satellite skill | cost discipline for recurring `/loop` runs: cache-aware pacing (skip the 300s dead zone), event-driven-over-polling, no-change short-circuit, compact state handle, stop condition |
@@ -302,6 +307,8 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 > from −15% to **−29%** — the old method was understating it — but it also retired
 > two numbers that turned out to be outlier artifacts: Ponytail's "−22% output" is
 > really −7% (ns), and Caveman's "tied quality" is a 16-of-23-task loss (p=0.004).
+> Both corrections concern the July 2026 versions. Ponytail 5 now publishes paired
+> per-task results of its own (−45% output on Opus 5.5) that Honey hasn't re-run yet.
 > Method and pre-registered endpoints: [`bench/METHODOLOGY.md`](bench/METHODOLOGY.md).
 > Regenerate any figure offline with
 > `node bench/src/report.js --stamp full-opus48 --by-type`.
