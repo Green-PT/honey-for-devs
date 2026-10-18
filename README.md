@@ -6,10 +6,11 @@
 
 **Write less code and say less about it.** Honey (I Shrunk the AI) by
 [GreenPT](https://github.com/Green-PT) is a
-cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
-making agents emit less code *and* less prose without losing correctness. It works
+cross-tool coding skill that cuts the output tokens AI coding agents spend —
+making them emit less code *and* less prose without losing correctness. It works
 with **Claude (claude.ai and the API), Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
-OpenClaw, oh-my-pi, Kiro, Kilo Code, and Hermes Agent**. Three independent levers, applied reflexively:
+OpenClaw, oh-my-pi, Kiro, Kilo Code, Hermes Agent, Kimi Code, Devin CLI, Grok Build, Qoder,
+Antigravity, and CodeBuddy**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
@@ -397,6 +398,12 @@ PATH. Safe to re-run; skips tools you don't have.
 | Kiro | copy `.kiro/steering/honey.md` (project or `~/.kiro/steering/`) |
 | OpenCode | `node bin/install.js --only opencode` — copies `AGENTS.md` to `~/.config/opencode/AGENTS.md` (always-on in every project) and `skills/` into `~/.config/opencode/skills/` as native skills; verify with `opencode debug skill` |
 | Kilo Code | copy `.kilo/rules/honey.md` into your project (auto-discovered; `.kilocode/rules/` also works) |
+| Kimi Code | `/plugins install https://github.com/Green-PT/honey-for-devs`, then `/reload` (`AGENTS.md` goes into the system prompt, skills load on demand) |
+| Devin CLI | `devin plugins install Green-PT/honey-for-devs` |
+| Grok Build | `grok plugin install Green-PT/honey-for-devs --trust`, then enable it under `/plugins` |
+| Qoder | `qodercli plugins install <path-to-checkout>`, or copy `.qoder/rules/honey.md` into your project (`AGENTS.md` at the repo root also auto-loads) |
+| Antigravity | copy `.agents/rules/honey.md` into your project |
+| CodeBuddy | same two `/plugin` commands as Claude Code |
 | Aider / Zed / any AGENTS.md reader | copy `AGENTS.md` into your project |
 
 All of these are also handled automatically by the one-line installer. See

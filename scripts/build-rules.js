@@ -64,6 +64,16 @@ const TARGETS = [
     wrap: (body) => `${BANNER}\n\n${body}`,
   },
   {
+    // Qoder: always-on project rules.
+    path: ".qoder/rules/honey.md",
+    wrap: (body) => `${BANNER}\n\n${body}`,
+  },
+  {
+    // Antigravity: workspace rules.
+    path: ".agents/rules/honey.md",
+    wrap: (body) => `${BANNER}\n\n${body}`,
+  },
+  {
     // Universal fallback (Aider, Codex global, Zed, CodeWhale, and any AGENTS.md
     // reader). Root-level so `cp AGENTS.md <project>` just works.
     path: "AGENTS.md",

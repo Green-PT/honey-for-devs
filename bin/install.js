@@ -292,6 +292,8 @@ const RULE_AGENTS = [
   { id: "copilot-editor", name: "Copilot (editor)", src: ".github/copilot-instructions.md", dest: ".github/copilot-instructions.md" },
   { id: "kilo", name: "Kilo Code", src: ".kilo/rules/honey.md", dest: ".kilo/rules/honey.md" },
   { id: "kiro", name: "Kiro", src: ".kiro/steering/honey.md", dest: ".kiro/steering/honey.md" },
+  { id: "qoder", name: "Qoder", src: ".qoder/rules/honey.md", dest: ".qoder/rules/honey.md" },
+  { id: "antigravity", name: "Antigravity", src: ".agents/rules/honey.md", dest: ".agents/rules/honey.md" },
   { id: "agents", name: "AGENTS.md (Aider/Zed/universal)", src: "AGENTS.md", dest: "AGENTS.md" },
 ];
 
