@@ -167,14 +167,10 @@ answer accuracy, **100%** with retrieve — and the lone crushed miss was a refu
 hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comprehension`
 (quality). The `honey-ccr` skill tells the agent when to reach for it.
 
-> **Known limitation (upstream):** Claude Code builds affected by
-> [anthropics/claude-code#68951](https://github.com/anthropics/claude-code/issues/68951)
-> (a regression present since ~2.1.121, still open) ignore a PostToolUse hook's
-> `updatedToolOutput` for the built-in Bash tool. On those versions the entry-time
-> hook runs and stashes the original, but the model still receives the raw
-> uncompressed output — honey warns once at session start when it detects an
-> affected version. Piping explicitly (`some-tool | eson crush`) is unaffected:
-> compression happens before the output leaves the tool. Separately, the hooks
+> **Requirements:** the entry-time hook needs Claude Code **2.1.121+** (where
+> PostToolUse `updatedToolOutput` arrived for built-in tools); honey warns once at
+> session start on older builds. Piping explicitly (`some-tool | eson crush`) works
+> everywhere: compression happens before the output leaves the tool. The hooks also
 > need **Node >= 14** on the PATH Claude Code spawns them with — desktop-app
 > sessions inherit the launchd PATH, not your shell profile, so a stale
 > `/usr/local/bin/node` is common; the hook now warns instead of failing silently.

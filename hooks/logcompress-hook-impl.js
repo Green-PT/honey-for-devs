@@ -10,10 +10,9 @@
 //      (measured 0.4% on typical coding output — real wins are retry storms/installers)
 // Loaded via logcompress-hook.js (ES5 guard — keeps old node from parsing the `??` here);
 // fires only while Honey mode is active (`/honey off` disables).
-// NOTE: Claude Code builds hit by anthropics/claude-code#68951 ignore updatedToolOutput
-// for built-in Bash — the hook then runs and stashes but the rewrite is dropped.
-// honey-session.js warns at session start on affected versions.
-// Emits `updatedToolOutput` (replaces the tool result the model sees). Fail-open
+// Emits `updatedToolOutput` (replaces the tool result the model sees). For Bash it MUST
+// be Bash's output object ({stdout, stderr, interrupted, …}); a bare string is silently
+// dropped (anthropics/claude-code#68951, closed as working-as-designed). Fail-open
 // everywhere: any uncertainty → no output → the original result reaches the model unchanged.
 const fs = require("fs");
 const os = require("os");
@@ -27,7 +26,13 @@ const { crush } = require("../eso/ccr");
 const CRUSH_MIN_ITEMS = 20;
 const CRUSH_MIN_CHARS = 2000;
 
-function emit(obj) { process.stdout.write(JSON.stringify(obj)); }
+// Replace only stdout; keep the tool's own fields so the object still matches Bash's shape.
+function emit(resp, stdout) {
+  const base = resp && typeof resp === "object" ? resp : { stderr: "", interrupted: false };
+  process.stdout.write(JSON.stringify({
+    hookSpecificOutput: { hookEventName: "PostToolUse", updatedToolOutput: { ...base, stdout } },
+  }));
+}
 function passthrough() { process.exit(0); } // no output → original result is kept
 
 function stash(text) {
@@ -62,7 +67,7 @@ try {
       if (dropped > 0) {
         const hash = stash(text);
         const note = `\n[honey: kept ${array.length - dropped} of ${array.length} rows. Full array: \`eson retrieve ${hash}\`]`;
-        emit({ hookSpecificOutput: { hookEventName: "PostToolUse", updatedToolOutput: JSON.stringify(view) + note } });
+        emit(resp, JSON.stringify(view) + note);
         process.exit(0);
       }
     }
@@ -74,7 +79,7 @@ try {
 
   const hash = stash(text);
   const note = `\n[honey: collapsed ${dropped} repeated line(s). Full output: \`eson retrieve ${hash}\`]`;
-  emit({ hookSpecificOutput: { hookEventName: "PostToolUse", updatedToolOutput: view + note } });
+  emit(resp, view + note);
 } catch {
   passthrough(); // fail open — never corrupt a tool result
 }

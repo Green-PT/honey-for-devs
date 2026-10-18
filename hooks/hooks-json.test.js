@@ -69,7 +69,7 @@ for (const [label, root] of [["clean", ROOT], ["mangled", MANGLED]]) {
       input: JSON.stringify({ tool_name: "Bash", tool_response: { stdout: JSON.stringify(bigArray) } }),
       env: { CLAUDE_CONFIG_DIR: cfg, HONEY_CCR_DIR: path.join(cfg, "ccr") },
     }));
-    assert.match(out.hookSpecificOutput.updatedToolOutput, /eson retrieve [0-9a-f]{16}/);
+    assert.match(out.hookSpecificOutput.updatedToolOutput.stdout, /eson retrieve [0-9a-f]{16}/);
   });
 }
 

@@ -4,8 +4,8 @@
 // purpose — the full skill lives in skills/honey/SKILL.md; re-injecting it every
 // session would itself burn the tokens Honey exists to save.
 // Also warns (once per version, via systemMessage) when the Bash log compressor
-// is inert: old node on the hook PATH, or a Claude Code build affected by
-// anthropics/claude-code#68951 (updatedToolOutput ignored for built-in Bash).
+// is inert: old node on the hook PATH, or a Claude Code build too old to rewrite
+// built-in tool output via PostToolUse updatedToolOutput.
 // Must stay parseable on old node: no `??`, no `?.` — this file IS the warning path.
 "use strict";
 
@@ -13,11 +13,10 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-// anthropics/claude-code#68951 — PostToolUse updatedToolOutput ignored for Bash.
-// Regression surface is v2.1.121 (where the field shipped for built-in tools).
-// When upstream ships a fix, set CCR_FIXED_IN to that version.
-const CCR_BROKEN_SINCE = "2.1.121";
-const CCR_FIXED_IN = null;
+// PostToolUse updatedToolOutput for built-in tools shipped in 2.1.121. (#68951 was the
+// hook sending a bare string instead of Bash's output object — fixed in
+// logcompress-hook-impl.js, not a Claude Code bug.)
+const CCR_MIN_VERSION = "2.1.121";
 
 function claudeCodeVersion(env) {
   let m = (env.CLAUDE_CODE_VERSION || "").match(/^\d+\.\d+\.\d+/);
@@ -38,9 +37,7 @@ function cmpVersions(a, b) {
 
 // null version → unknown build → assume fine (README covers it); don't cry wolf.
 function ccrInert(version) {
-  if (!version) return false;
-  if (cmpVersions(version, CCR_BROKEN_SINCE) < 0) return false;
-  return !CCR_FIXED_IN || cmpVersions(version, CCR_FIXED_IN) < 0;
+  return !!version && cmpVersions(version, CCR_MIN_VERSION) < 0;
 }
 
 function main() {
@@ -78,8 +75,8 @@ function main() {
   const cc = claudeCodeVersion(process.env);
   if (ccrInert(cc)) {
     warnings.push(
-      "honey: Claude Code " + cc + " ignores PostToolUse updatedToolOutput for the " +
-      "built-in Bash tool (anthropics/claude-code#68951), so the Bash log compressor " +
+      "honey: Claude Code " + cc + " predates PostToolUse updatedToolOutput for " +
+      "built-in tools (needs " + CCR_MIN_VERSION + "+), so the Bash log compressor " +
       "is inert on this version. Piping through `eson crush` still works."
     );
   }
