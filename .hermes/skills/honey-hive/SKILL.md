@@ -1,7 +1,7 @@
 ---
 name: honey-hive
 description: "Delegate search/review to subagents; compressed returns."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

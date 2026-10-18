@@ -1,7 +1,7 @@
 ---
 name: honey-eco
 description: "Report session token and CO2 savings vs no-Honey baseline."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

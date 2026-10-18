@@ -6,7 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { grade } = require("./grade");
 
-const dir = path.join(__dirname, "..", "tasks");
+const dir = path.join(__dirname, "..", process.env.TASKS_DIR || "tasks");
 let bad = 0;
 for (const d of fs.readdirSync(dir)) {
   const metaPath = path.join(dir, d, "meta.json");

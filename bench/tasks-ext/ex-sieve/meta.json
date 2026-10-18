@@ -1,0 +1,15 @@
+{
+  "id": "ex-sieve",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/sieve",
+  "solution_file": "sieve.py",
+  "test_file": "sieve_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "sieve_test"
+  ]
+}

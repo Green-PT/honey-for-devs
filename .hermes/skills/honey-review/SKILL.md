@@ -1,7 +1,7 @@
 ---
 name: honey-review
 description: "Review a diff for over-engineering; terse delete-list."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

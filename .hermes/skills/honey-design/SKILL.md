@@ -1,7 +1,7 @@
 ---
 name: honey-design
 description: "Same pixels, fewer tokens: dense CSS for user-facing UI."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

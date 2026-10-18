@@ -1,0 +1,15 @@
+{
+  "id": "ex-go-counting",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/go-counting",
+  "solution_file": "go_counting.py",
+  "test_file": "go_counting_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "go_counting_test"
+  ]
+}

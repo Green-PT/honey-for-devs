@@ -1,0 +1,15 @@
+{
+  "id": "ex-custom-set",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/custom-set",
+  "solution_file": "custom_set.py",
+  "test_file": "custom_set_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "custom_set_test"
+  ]
+}

@@ -1,7 +1,7 @@
 ---
 name: honey-loop
 description: "Cost discipline for recurring loop runs."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

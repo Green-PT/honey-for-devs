@@ -12,7 +12,7 @@ const ROOT = path.join(__dirname, "..");
 const metaCache = {};
 const taskOf = (id) => {
   if (!metaCache[id]) {
-    const base = path.join(ROOT, "tasks", id);
+    const base = path.join(ROOT, process.env.TASKS_DIR || "tasks", id);
     const meta = JSON.parse(fs.readFileSync(path.join(base, "meta.json"), "utf8"));
     metaCache[id] = { meta, testPath: meta.test_file ? path.join(base, meta.test_file) : null };
   }

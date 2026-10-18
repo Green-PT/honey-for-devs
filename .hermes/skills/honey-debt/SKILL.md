@@ -1,7 +1,7 @@
 ---
 name: honey-debt
 description: "Harvest honey shortcut markers into a debt ledger."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

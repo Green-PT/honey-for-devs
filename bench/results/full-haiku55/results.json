@@ -1,0 +1,3535 @@
+{
+  "meta": {
+    "model": "claude-haiku-5-5",
+    "receiver": "claude-haiku-5-5",
+    "judge": [
+      "claude-haiku-4-5"
+    ],
+    "judge_rubric": "plain",
+    "runs": 3,
+    "thinking": 0,
+    "mock": false,
+    "variant_hashes": {
+      "baseline": null,
+      "honey": "845b11b11fe9"
+    }
+  },
+  "records": [
+    {
+      "variant": "baseline",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 192,
+        "output": 160,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.013531480162354134,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper exports, handles all cases perfectly."
+    },
+    {
+      "variant": "baseline",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 192,
+        "output": 160,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.013531480162354134,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct implementation, proper exports, handles all requirements."
+    },
+    {
+      "variant": "baseline",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 192,
+        "output": 84,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.0071040270852359205,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct implementation, proper exports, handles all cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 230,
+        "output": 327,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.027654962581811264,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 230,
+        "output": 327,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.027654962581811264,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 230,
+        "output": 285,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.024102949039193303,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 151,
+        "output": 471,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.039833294727929985,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 82,
+      "judge_min": 82,
+      "judge_max": 82,
+      "judges": {
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct core logic, handles CSV quoting and KeyError. Minor: normalizes header whitespace without task requirement; doesn't validate numeric conversion errors."
+    },
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 5584,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.47224865766615925,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 379,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent typography, hierarchy, spacing. All requirements met."
+    },
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 5639,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.4769001039719685,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 411,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent typography, spacing, and micro-interactions."
+    },
+    {
+      "variant": "baseline",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 151,
+        "output": 530,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.04482302803779807,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 26,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear. Minor: row length check is defensive but CSV reader typically handles this."
+    },
+    {
+      "variant": "baseline",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 151,
+        "output": 837,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.07078655559931507,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 36,
+      "judge": 72,
+      "judge_min": 72,
+      "judge_max": 72,
+      "judges": {
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Mostly correct; whitespace-stripping deviates from CSV spec without justification."
+    },
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 7612,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.6437601687239979,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 371,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, spacing, semantic HTML, accessibility features."
+    },
+    {
+      "variant": "baseline",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 141,
+        "output": 1767,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.14943828404299847,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 59,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation with excellent safety measures. Minor: doesn't explicitly handle non-plain-object inputs gracefully."
+    },
+    {
+      "variant": "baseline",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 141,
+        "output": 1673,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.1414885394476154,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 51,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct implementation with excellent security. Minor: handles non-objects gracefully but task didn't require it."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 9730,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.8228831373731609,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 642,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, spacing, color system. Mobile-friendly with thoughtful interactions."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 8919,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.7542954473002283,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 572,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete dashboard. Excellent typography, spacing, color hierarchy. Responsive breakpoints well-executed. Minor: search placeholder unclickable, could add more semantic ARIA labels."
+    },
+    {
+      "variant": "baseline",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 141,
+        "output": 1411,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.11933074068176051,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 44,
+      "judge": 72,
+      "judge_min": 72,
+      "judge_max": 72,
+      "judges": {
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correctly merges objects recursively, doesn't mutate inputs. Filters unsafe keys but task doesn't require this."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 10039,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.8490158084367072,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 685,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, spacing, color system, typography. All requested components present and fleshed out. Mobile-friendly with proper media queries. Minor: search input missing placeholder text attribute."
+    },
+    {
+      "variant": "baseline",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 498,
+        "output": 401,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.03391327215690005,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 4006,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.3387944345649417,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 253,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, spacing, micro-interactions, accessibility."
+    },
+    {
+      "variant": "baseline",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 498,
+        "output": 291,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.024610379545281582,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 498,
+        "output": 291,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.024610379545281582,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 4421,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.3738917112360477,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 287,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, spacing, accessibility, dark theme. Perfect execution."
+    },
+    {
+      "variant": "baseline",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 183,
+        "output": 480,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.04059444048706241,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles nesting, edge cases, non-recursive."
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 4415,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.37338428072995933,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 286,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, smooth interactions, accessible."
+    },
+    {
+      "variant": "baseline",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 183,
+        "output": 514,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.043469880021562664,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles nested lists/tuples, treats strings as leaves, maintains left-to-right order."
+    },
+    {
+      "variant": "baseline",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 183,
+        "output": 507,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.042877877764459664,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, handles all edge cases, readable, uses explicit stack for deep nesting."
+    },
+    {
+      "variant": "baseline",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 236,
+        "output": 730,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.06173737824074074,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 75,
+      "judge_min": 75,
+      "judge_max": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Logic error: bytes < 1024 returns correct format, but loop continues dividing for all units including B. When value >= 1024, idx should start at 1 (KB), not 0 (B). Current code can return '1024.0 B' instead of '1.0 KB'. Fix: start idx at 1 in the while loop."
+    },
+    {
+      "variant": "baseline",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 236,
+        "output": 1047,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.08854662331240488,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper edge case handling, clean implementation."
+    },
+    {
+      "variant": "baseline",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 272,
+        "output": 260,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.021988655263825468,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic and handles all requirements. Minor: creates intermediate list in sorted()."
+    },
+    {
+      "variant": "baseline",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 236,
+        "output": 799,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.06757282906075596,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct logic, minor output format issue on rounding edge case."
+    },
+    {
+      "variant": "baseline",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 272,
+        "output": 294,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.024864094798325725,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, proper non-mutation, excellent clarity. Minor: mutates merged[-1][1] during iteration (acceptable since merged is new)."
+    },
+    {
+      "variant": "baseline",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 272,
+        "output": 565,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.047783039323313035,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all cases including touching intervals."
+    },
+    {
+      "variant": "baseline",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 476,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.04025615348300355,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct implementation. Minor: capacity validation may be outside task scope."
+    },
+    {
+      "variant": "baseline",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 229,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.019366930982369357,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct logic, but capacity validation exceeds task requirements."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 5569,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.47098008140093856,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 443,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and brand cohesion."
+    },
+    {
+      "variant": "baseline",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 236,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.01995893323947235,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: capacity validation exceeds task requirements."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 6846,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.5789782074467275,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 492,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Exceptional design execution and accessibility."
+    },
+    {
+      "variant": "baseline",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 541,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.04575331729895992,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 78,
+      "judge_min": 78,
+      "judge_max": 78,
+      "judges": {
+        "claude-haiku-4-5": 78
+      },
+      "judge_note": "Fixes both issues correctly. Empty-sequence handling changes behavior; task doesn't specify expected behavior."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 6896,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.5832067949974632,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 523,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, typography, spacing. Minor: nav links hidden on mobile without fallback menu."
+    },
+    {
+      "variant": "baseline",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 392,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.03315212639776763,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct logic, handles even/odd, doesn't mutate. ValueError on empty adds safety beyond requirements."
+    },
+    {
+      "variant": "baseline",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 459,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.038818433715753414,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 75,
+      "judge_min": 75,
+      "judge_max": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Fixes both issues correctly. Empty-sequence handling adds behavior not required by task."
+    },
+    {
+      "variant": "baseline",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 129,
+        "output": 745,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.06300595450596144,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: doesn't handle JSON.stringify errors gracefully."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 220,
+        "output": 890,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.07526885840309487,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic and edge cases. Minor: bool check unnecessary since int subclass check covers most cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 220,
+        "output": 890,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.07526885840309487,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 43,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Excellent. Minor: bool check unnecessary since bool is int subclass in Python."
+    },
+    {
+      "variant": "baseline",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 129,
+        "output": 1412,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.11941531243277523,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear. Minor: unbounded cache could be noted in task context."
+    },
+    {
+      "variant": "baseline",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 129,
+        "output": 1025,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.08668604479008118,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 26,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: undefined/null collision acceptable per JSON limits."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 220,
+        "output": 1069,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.09040720183472856,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 33,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: regex fullmatch is strict but slightly over-engineered."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 268,
+        "output": 838,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.07087112735032977,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 41,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles edge cases well. Object.defineProperty is unnecessary."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 268,
+        "output": 865,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.07315456462772703,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 42,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles all edge cases. Over-engineered Object.defineProperty."
+    },
+    {
+      "variant": "baseline",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 268,
+        "output": 971,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.08211917023528667,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 54,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles all cases. Minor: defineProperty unnecessary for normal keys."
+    },
+    {
+      "variant": "baseline",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 226,
+        "output": 568,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.04803675457635717,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 28,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, proper exponential backoff, clear code. Missing explicit validation of options."
+    },
+    {
+      "variant": "baseline",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 226,
+        "output": 628,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.05311105963723998,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": null,
+      "judge_min": null,
+      "judge_max": null,
+      "judges": {
+        "claude-haiku-4-5": null
+      },
+      "judge_note": "unparseable judge output"
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 4635,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.39199006595319635,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 340,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent visual hierarchy and micro-interactions."
+    },
+    {
+      "variant": "baseline",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 226,
+        "output": 593,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.050151048351725014,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct implementation with proper exponential backoff, error handling, and exports."
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 5506,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.4656520610870116,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 345,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Enterprise price section minor detail."
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 5815,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.49178473215055807,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 326,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent hierarchy, spacing, typography. Accessible semantic markup with aria labels. Smooth transitions, mobile-first layout, reduced-motion support. Minor: footnote link could be a button."
+    },
+    {
+      "variant": "baseline",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 284,
+        "output": 999,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.08448717926369863,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: localcontext precision adjustment unnecessary but harmless."
+    },
+    {
+      "variant": "baseline",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 284,
+        "output": 1302,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.11011241982115677,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct implementation. Minor: negative-zero normalization unnecessary for most cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 284,
+        "output": 983,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.0831340312474632,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct implementation, excellent handling of edge cases and floats."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 3009,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.2544763988032725,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 265,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible, responsive. Minor: success state could reset form."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 6365,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.5382991952086503,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 455,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible. Excellent mobile responsiveness and dark mode."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 5481,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.4635377673116438,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 448,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible. Excellent mobile responsiveness, modern design."
+    },
+    {
+      "variant": "baseline",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 189,
+        "output": 363,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.03069954561834094,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 5,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all stated cases perfectly."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 2516,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.21278252555301874,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 228,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, complete, accessible, responsive. Excellent modern design."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 7218,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.610438898824201,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 507,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, accessible. Excellent mobile responsiveness, smooth interactions."
+    },
+    {
+      "variant": "baseline",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 189,
+        "output": 436,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.036873283442415014,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 6,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all stated requirements and edge cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 189,
+        "output": 332,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.028077821336884825,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 4,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all stated examples and edge cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 3555,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 0.30065257485730595,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 295,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent modern design."
+    },
+    {
+      "variant": "honey",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 190,
+        "output": 440,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.03721157044647387,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 6,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, and clear. Handles all stated requirements."
+    },
+    {
+      "variant": "honey",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 190,
+        "output": 434,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.03670413994038559,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 5,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper exports, handles all cases including edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 190,
+        "output": 489,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.04135558624619482,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 4,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear. Edge case: empty array size=0 causes division by zero."
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 4364,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.369071121428209,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 277,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, color, spacing, accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 228,
+        "output": 367,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.0310378326223998,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 228,
+        "output": 497,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.042032160254312535,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "config-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 228,
+        "output": 456,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.03856471846270928,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 148,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.012516619150177575,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct logic, handles quoted CSV. Minor: blank cells crash; task doesn't specify handling."
+    },
+    {
+      "variant": "honey",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 151,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.012770334403221714,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic and edge cases. Minor: blank cells raise ValueError (reasonable, not specified)."
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 7527,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.6365715698877473,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 396,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent typography, color, spacing."
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 6944,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.5872662390461695,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 184,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible. Responsive grid perfect. Minor: footer nav inline style redundant."
+    },
+    {
+      "variant": "honey",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 102,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.008626318603500759,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Works correctly but fieldnames check happens before reading; edge case with empty/malformed CSV unclear."
+    },
+    {
+      "variant": "honey",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 139,
+        "output": 1620,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.13700623664383563,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, non-mutating, handles edge cases well. Minor: array reference sharing undocumented in signature."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 7153,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.6049417350082444,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 462,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and modern design."
+    },
+    {
+      "variant": "honey",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 139,
+        "output": 1538,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.13007135306062909,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles recursion well. Minor: ignores target input type (always returns plain object)."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 8265,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.6989855221366058,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 506,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, typography, spacing. Mobile layout thoughtful."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 8126,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.6872300487455607,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 400,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy, spacing, typography. Mobile-first breakpoints. Accessible structure."
+    },
+    {
+      "variant": "honey",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 139,
+        "output": 1088,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.09201406510400811,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles edge cases well. Minor: shallow-copies target only."
+    },
+    {
+      "variant": "honey",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 496,
+        "output": 1030,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.08710890354515474,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 3938,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.3330435554959411,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 223,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, responsive, accessible. Six cards, icons, CTA all present and refined."
+    },
+    {
+      "variant": "honey",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 496,
+        "output": 768,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.06495110477929984,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 5475,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.46303033680555555,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 201,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, spacing, accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 4303,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.3639122446163115,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 229,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and micro-interactions."
+    },
+    {
+      "variant": "honey",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 75,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.0063428813261035,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles nested lists/tuples recursively, treats all else as leaves."
+    },
+    {
+      "variant": "honey",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 75,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.0063428813261035,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct recursion, handles lists/tuples, non-strings as leaves, proper export."
+    },
+    {
+      "variant": "honey",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 181,
+        "output": 75,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.0063428813261035,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, and clear. Handles recursion perfectly."
+    },
+    {
+      "variant": "honey",
+      "task": "findings-relay",
+      "category": "agent-handoff",
+      "type": "relay",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 496,
+        "output": 984,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.08321860299847793,
+      "passed": true,
+      "accuracy": 1,
+      "grade_detail": "ok",
+      "receiver_stop": "end_turn",
+      "judge": null
+    },
+    {
+      "variant": "honey",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 234,
+        "output": 892,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.0754380019051243,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear. Minor: rounding logic edge case handling is defensive but unneeded."
+    },
+    {
+      "variant": "honey",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 234,
+        "output": 731,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.06182194999175546,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Logic correct and handles edge cases well. Minor: PB cap lacks explicit documentation."
+    },
+    {
+      "variant": "honey",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 270,
+        "output": 642,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.054295064151445964,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, handles edge cases. Minor: mutates merged[-1][1] in-place."
+    },
+    {
+      "variant": "honey",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 234,
+        "output": 902,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.07628371941527143,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic and output format. Minor: PB handling lacks explicit overflow protection."
+    },
+    {
+      "variant": "honey",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 270,
+        "output": 174,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.01471548467656012,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 8,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Works correctly but mutates inner lists during merge operation."
+    },
+    {
+      "variant": "honey",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 270,
+        "output": 731,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.06182194999175546,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all requirements and edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 707,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.05979222796740233,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 72,
+      "judge_min": 72,
+      "judge_max": 72,
+      "judges": {
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct logic, but capacity validation and -1 ambiguity violate task specs."
+    },
+    {
+      "variant": "honey",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 833,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.07044826859525621,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, proper O(1) operations. Minor: capacity validation exceeds requirements."
+    },
+    {
+      "variant": "honey",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 1058,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.08947691257356671,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: capacity validation is beyond stated requirements."
+    },
+    {
+      "variant": "honey",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 397,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.03357498515284119,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 6,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct for odd/even cases, no mutation, right signature, clear logic."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 7313,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.6184732151705987,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 334,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and micro-interactions."
+    },
+    {
+      "variant": "honey",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 485,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.041017299242135964,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 6,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, handles both issues. Minor: doesn't state empty-list handling explicitly."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 9257,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.7828806991432014,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 649,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Excellent typography, color hierarchy, spacing. All sections present and fleshed out."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 9283,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.785079564669584,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 642,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive. Honey-themed design cohesive. Minor: placeholder links, no form."
+    },
+    {
+      "variant": "honey",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 393,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.03323669814878234,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 90,
+      "judge_min": 90,
+      "judge_max": 90,
+      "judges": {
+        "claude-haiku-4-5": 90
+      },
+      "judge_note": "Correct logic and fixes both issues. Doesn't handle empty input edge case."
+    },
+    {
+      "variant": "honey",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 127,
+        "output": 545,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.04609160430301878,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct core logic. Unbounded cache and undefined/null collision are acceptable trade-offs."
+    },
+    {
+      "variant": "honey",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 127,
+        "output": 610,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.051588768118975135,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct implementation. Minor: unbounded cache could be noted as design choice, not defect."
+    },
+    {
+      "variant": "honey",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 127,
+        "output": 544,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.04600703255200406,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear. Minor: JSON.stringify key collision edge case."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 218,
+        "output": 981,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.08296488774543377,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all requirements and edge cases perfectly."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 218,
+        "output": 789,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.06672711155060883,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correctly handles all requirements: defaults, validation, clamping, return format."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 218,
+        "output": 872,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.07374656688483003,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic; note about whitespace/+ handling is helpful but task doesn't forbid it."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 266,
+        "output": 1304,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.1102815633231862,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear. Minor: uncaught URIError on malformed encoding."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 266,
+        "output": 1467,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.12406675873858446,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct logic, handles all cases. Minor: error handling for malformed encoding is task-neutral but reasonable."
+    },
+    {
+      "variant": "honey",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 266,
+        "output": 970,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.08203459848427193,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 85,
+      "judge_min": 85,
+      "judge_max": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct logic and handles all cases; misleading __proto__ comment detracts."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 3939,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.33312812724695584,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 279,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 224,
+        "output": 704,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.05953851271435819,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper defaults, exponential backoff, last error thrown."
+    },
+    {
+      "variant": "honey",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 224,
+        "output": 680,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.05750879069000507,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper exponential backoff, handles all edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 224,
+        "output": 751,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.06351338501204973,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct logic, proper exponential backoff, handles all edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 4245,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.35900708305745815,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 276,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Excellent visual hierarchy and accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 282,
+        "output": 512,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.043300736519533235,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 5,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: doesn't explicitly document exception behavior."
+    },
+    {
+      "variant": "honey",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 282,
+        "output": 666,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.05632478617579908,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 3,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct implementation. Minor: doesn't explicitly handle edge cases mentioned."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 5572,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.47123379665398274,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 281,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Excellent visual hierarchy and spacing."
+    },
+    {
+      "variant": "honey",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 282,
+        "output": 863,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.07298542112569763,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 4,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct logic, handles all examples. Minor: NaN/inf raise exceptions rather than return float."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 4622,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.390890633190005,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 357,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Minor: password confirm field lacks maxlength."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 5229,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.44222568605593604,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 389,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive. Minor: password grid nesting awkward, validate feedback could improve UX."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 6001,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.5075150778392947,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 436,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible. Excellent visual design and mobile responsiveness."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 5580,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.47191037066210045,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 201,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 96,
+      "judges": {
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, accessible, responsive. Minor: could add success state reset."
+    },
+    {
+      "variant": "honey",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 187,
+        "output": 324,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.027401247328767125,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 3,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct implementation. Handles all stated requirements and edge cases perfectly."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2190,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.18521213472222223,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 153,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible, mobile-ready. Minor: no server validation shown."
+    },
+    {
+      "variant": "honey",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 187,
+        "output": 52,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.004397731052765095,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 3,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all stated cases perfectly."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2327,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.19679846461123793,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 163,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete, responsive, accessible. Minor: backend integration needed."
+    },
+    {
+      "variant": "honey",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 187,
+        "output": 542,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 0.045837889049974635,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 4,
+      "judge": 100,
+      "judge_min": 100,
+      "judge_max": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear. Handles all examples and edge cases perfectly."
+    }
+  ]
+}

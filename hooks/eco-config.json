@@ -24,6 +24,7 @@
       "opus": { "ratio": 0.286, "p": 0.020, "stamp": "bench/results/full-opus48", "model": "claude-opus-4-8" },
       "gpt-5": { "ratio": 0.196, "p": 0.004, "stamp": "bench/results/full-gpt55", "model": "gpt-5.5" },
       "fable": { "ratio": 0.393, "p": 0.0003, "n": 17, "stamp": "bench/results/full-fable5", "model": "claude-fable-5" },
+      "sonnet-5-5": { "ratio": 0.374, "p": 0.00006, "n": 23, "stamp": "bench/results/full-sonnet55", "model": "claude-sonnet-5-5" },
       "sonnet-5": { "ratio": 0.235, "p": 0.00006, "n": 23, "stamp": "bench/results/full-sonnet5", "model": "claude-sonnet-5" },
       "haiku-4-5": { "ratio": 0.402, "p": 0.00005, "n": 23, "stamp": "bench/results/full-haiku45", "model": "claude-haiku-4-5-20251001" }
     }

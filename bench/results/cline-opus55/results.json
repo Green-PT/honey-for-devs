@@ -1,0 +1,2914 @@
+{
+  "meta": {
+    "harness": "cline",
+    "cline_bin": "cline",
+    "model": "claude-opus-5-5",
+    "provider": "anthropic",
+    "runs": 3,
+    "variants": [
+      "off",
+      "compact",
+      "full"
+    ]
+  },
+  "records": [
+    {
+      "variant": "off",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22369,
+        "output": 1079,
+        "cache_read": 10721,
+        "cache_write": 10721
+      },
+      "cost": 0.0810372,
+      "iterations": 2,
+      "gco2": 23.719989369619245,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22243,
+        "output": 820,
+        "cache_read": 10720,
+        "cache_write": 10720
+      },
+      "cost": 0.075356,
+      "iterations": 2,
+      "gco2": 18.02631258858923,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22248,
+        "output": 837,
+        "cache_read": 10721,
+        "cache_write": 10721
+      },
+      "cost": 0.07571320000000001,
+      "iterations": 2,
+      "gco2": 18.40002882518193,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22488,
+        "output": 1367,
+        "cache_read": 10683,
+        "cache_write": 10683
+      },
+      "cost": 0.0873796,
+      "iterations": 2,
+      "gco2": 30.05118208366034,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 25,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22354,
+        "output": 1138,
+        "cache_read": 10683,
+        "cache_write": 10683
+      },
+      "cost": 0.08226359999999999,
+      "iterations": 2,
+      "gco2": 25.017004543676272,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 25,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22429,
+        "output": 1203,
+        "cache_read": 10683,
+        "cache_write": 10683
+      },
+      "cost": 0.0842236,
+      "iterations": 2,
+      "gco2": 26.44591956594249,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 25,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22813,
+        "output": 2179,
+        "cache_read": 10673,
+        "cache_write": 10673
+      },
+      "cost": 0.1060076,
+      "iterations": 2,
+      "gco2": 47.90162820797065,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 39,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22767,
+        "output": 2067,
+        "cache_read": 10671,
+        "cache_write": 10671
+      },
+      "cost": 0.10252919999999999,
+      "iterations": 2,
+      "gco2": 45.43949770806577,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 38,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22927,
+        "output": 2285,
+        "cache_read": 10672,
+        "cache_write": 10672
+      },
+      "cost": 0.1075264,
+      "iterations": 2,
+      "gco2": 50.23185885966633,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 40,
+      "judge": 78,
+      "judges": {
+        "claude-haiku-4-5": 78
+      }
+    },
+    {
+      "variant": "off",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 33647,
+        "output": 1320,
+        "cache_read": 21422,
+        "cache_write": 10711
+      },
+      "cost": 0.0902954,
+      "iterations": 3,
+      "gco2": 29.017966606021684,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 19,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22508,
+        "output": 1313,
+        "cache_read": 10712,
+        "cache_write": 10712
+      },
+      "cost": 0.08691839999999999,
+      "iterations": 2,
+      "gco2": 28.864083449777638,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 21,
+      "judge": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      }
+    },
+    {
+      "variant": "off",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22514,
+        "output": 1360,
+        "cache_read": 10712,
+        "cache_write": 10712
+      },
+      "cost": 0.0878824,
+      "iterations": 2,
+      "gco2": 29.897298927416283,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 19,
+      "judge": 45,
+      "judges": {
+        "claude-haiku-4-5": 45
+      }
+    },
+    {
+      "variant": "off",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 47172,
+        "output": 2013,
+        "cache_read": 32301,
+        "cache_write": 10767
+      },
+      "cost": 0.12323120000000001,
+      "iterations": 4,
+      "gco2": 44.25239907418308,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22631,
+        "output": 1446,
+        "cache_read": 10767,
+        "cache_write": 10767
+      },
+      "cost": 0.0995964,
+      "iterations": 2,
+      "gco2": 31.78786341841467,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 15,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22711,
+        "output": 1322,
+        "cache_read": 10767,
+        "cache_write": 10767
+      },
+      "cost": 0.08953639999999999,
+      "iterations": 2,
+      "gco2": 29.06193322209141,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22627,
+        "output": 1263,
+        "cache_read": 10803,
+        "cache_write": 10803
+      },
+      "cost": 0.08551959999999999,
+      "iterations": 2,
+      "gco2": 27.764918048034385,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 16,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22629,
+        "output": 1330,
+        "cache_read": 10803,
+        "cache_write": 10803
+      },
+      "cost": 0.0876876,
+      "iterations": 2,
+      "gco2": 29.237799686370337,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 16,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22645,
+        "output": 1277,
+        "cache_read": 10803,
+        "cache_write": 10803
+      },
+      "cost": 0.08587159999999999,
+      "iterations": 2,
+      "gco2": 28.072684360522498,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 16,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22482,
+        "output": 1253,
+        "cache_read": 10712,
+        "cache_write": 10712
+      },
+      "cost": 0.0849944,
+      "iterations": 2,
+      "gco2": 27.54508496768574,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 19,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22469,
+        "output": 1289,
+        "cache_read": 10712,
+        "cache_write": 10712
+      },
+      "cost": 0.0856624,
+      "iterations": 2,
+      "gco2": 28.336484056940876,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 33655,
+        "output": 1176,
+        "cache_read": 21424,
+        "cache_write": 10712
+      },
+      "cost": 0.0874408,
+      "iterations": 3,
+      "gco2": 25.852370249001144,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 19,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22367,
+        "output": 1139,
+        "cache_read": 10688,
+        "cache_write": 10688
+      },
+      "cost": 0.08714160000000001,
+      "iterations": 2,
+      "gco2": 25.038987851711134,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 13,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 33469,
+        "output": 1174,
+        "cache_read": 21376,
+        "cache_write": 10688
+      },
+      "cost": 0.0908352,
+      "iterations": 3,
+      "gco2": 25.808403632931405,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 14,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22332,
+        "output": 1096,
+        "cache_read": 10687,
+        "cache_write": 10687
+      },
+      "cost": 0.0842044,
+      "iterations": 2,
+      "gco2": 24.093705606211948,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 13,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22105,
+        "output": 1012,
+        "cache_read": 10656,
+        "cache_write": 10656
+      },
+      "cost": 0.0788232,
+      "iterations": 2,
+      "gco2": 22.247107731283297,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 14,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22157,
+        "output": 1036,
+        "cache_read": 10657,
+        "cache_write": 10657
+      },
+      "cost": 0.07950839999999999,
+      "iterations": 2,
+      "gco2": 22.774707124120045,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 12,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22129,
+        "output": 973,
+        "cache_read": 10659,
+        "cache_write": 10659
+      },
+      "cost": 0.0781308,
+      "iterations": 2,
+      "gco2": 21.389758717923563,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 14,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23105,
+        "output": 2264,
+        "cache_read": 10752,
+        "cache_write": 10752
+      },
+      "cost": 0.1130344,
+      "iterations": 2,
+      "gco2": 49.77020939093417,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 37,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23062,
+        "output": 2258,
+        "cache_read": 10752,
+        "cache_write": 10752
+      },
+      "cost": 0.11336239999999999,
+      "iterations": 2,
+      "gco2": 49.638309542724976,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 38,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23233,
+        "output": 2542,
+        "cache_read": 10752,
+        "cache_write": 10752
+      },
+      "cost": 0.11762639999999999,
+      "iterations": 2,
+      "gco2": 55.881569024626614,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 42,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23162,
+        "output": 2086,
+        "cache_read": 10798,
+        "cache_write": 10798
+      },
+      "cost": 0.1082936,
+      "iterations": 2,
+      "gco2": 45.85718056072821,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 38,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23213,
+        "output": 2240,
+        "cache_read": 10797,
+        "cache_write": 10797
+      },
+      "cost": 0.1115604,
+      "iterations": 2,
+      "gco2": 49.2426099980974,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 48,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22954,
+        "output": 1752,
+        "cache_read": 10799,
+        "cache_write": 10799
+      },
+      "cost": 0.0966188,
+      "iterations": 2,
+      "gco2": 38.51475567708333,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 36,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22441,
+        "output": 1097,
+        "cache_read": 10758,
+        "cache_write": 10758
+      },
+      "cost": 0.0815816,
+      "iterations": 2,
+      "gco2": 24.11568891424681,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22432,
+        "output": 1143,
+        "cache_read": 10757,
+        "cache_write": 10757
+      },
+      "cost": 0.0824684,
+      "iterations": 2,
+      "gco2": 25.126921083850597,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22433,
+        "output": 1073,
+        "cache_read": 10757,
+        "cache_write": 10757
+      },
+      "cost": 0.0810724,
+      "iterations": 2,
+      "gco2": 23.588089521410055,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "off",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23138,
+        "output": 1769,
+        "cache_read": 10814,
+        "cache_write": 10814
+      },
+      "cost": 0.10091280000000001,
+      "iterations": 2,
+      "gco2": 38.888471913676035,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 37183,
+        "output": 2416,
+        "cache_read": 21628,
+        "cache_write": 10814
+      },
+      "cost": 0.12829959999999999,
+      "iterations": 3,
+      "gco2": 53.111672212233636,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 19,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23326,
+        "output": 1844,
+        "cache_read": 10814,
+        "cache_write": 10814
+      },
+      "cost": 0.1033648,
+      "iterations": 2,
+      "gco2": 40.5372200162909,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 26,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "off",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 22469,
+        "output": 1087,
+        "cache_read": 10718,
+        "cache_write": 10718
+      },
+      "cost": 0.0833256,
+      "iterations": 2,
+      "gco2": 23.895855833898164,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 22437,
+        "output": 920,
+        "cache_read": 10718,
+        "cache_write": 10718
+      },
+      "cost": 0.08173760000000001,
+      "iterations": 2,
+      "gco2": 20.22464339207572,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "off",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 22191,
+        "output": 809,
+        "cache_read": 10717,
+        "cache_write": 10717
+      },
+      "cost": 0.07493640000000001,
+      "iterations": 2,
+      "gco2": 17.784496200205716,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23574,
+        "output": 616,
+        "cache_read": 11447,
+        "cache_write": 11447
+      },
+      "cost": 0.0745644,
+      "iterations": 2,
+      "gco2": 13.541717749476788,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 6,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23577,
+        "output": 554,
+        "cache_read": 11447,
+        "cache_write": 11447
+      },
+      "cost": 0.07333640000000001,
+      "iterations": 2,
+      "gco2": 12.178752651315163,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 6,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23566,
+        "output": 535,
+        "cache_read": 11448,
+        "cache_write": 11448
+      },
+      "cost": 0.07290959999999999,
+      "iterations": 2,
+      "gco2": 11.76106979865273,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 6,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23685,
+        "output": 796,
+        "cache_read": 11410,
+        "cache_write": 11410
+      },
+      "cost": 0.079212,
+      "iterations": 2,
+      "gco2": 17.49871319575247,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23668,
+        "output": 770,
+        "cache_read": 11410,
+        "cache_write": 11410
+      },
+      "cost": 0.078124,
+      "iterations": 2,
+      "gco2": 16.927147186845982,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23643,
+        "output": 736,
+        "cache_read": 11410,
+        "cache_write": 11410
+      },
+      "cost": 0.077344,
+      "iterations": 2,
+      "gco2": 16.179714713660577,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 24182,
+        "output": 1767,
+        "cache_read": 11399,
+        "cache_write": 11399
+      },
+      "cost": 0.10461079999999999,
+      "iterations": 2,
+      "gco2": 38.844505297606304,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 26,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23896,
+        "output": 1333,
+        "cache_read": 11397,
+        "cache_write": 11397
+      },
+      "cost": 0.09033240000000001,
+      "iterations": 2,
+      "gco2": 29.303749610474927,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 72,
+      "judges": {
+        "claude-haiku-4-5": 72
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23908,
+        "output": 1171,
+        "cache_read": 11398,
+        "cache_write": 11398
+      },
+      "cost": 0.1004176,
+      "iterations": 2,
+      "gco2": 25.742453708826815,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 15,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23723,
+        "output": 835,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.0800856,
+      "iterations": 2,
+      "gco2": 18.356062209112203,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 12,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23715,
+        "output": 839,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.0796136,
+      "iterations": 2,
+      "gco2": 18.443995441251666,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23674,
+        "output": 759,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.07886960000000001,
+      "iterations": 2,
+      "gco2": 16.685330798462466,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23811,
+        "output": 885,
+        "cache_read": 11492,
+        "cache_write": 11492
+      },
+      "cost": 0.0841264,
+      "iterations": 2,
+      "gco2": 19.45522761085545,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23838,
+        "output": 909,
+        "cache_read": 11494,
+        "cache_write": 11494
+      },
+      "cost": 0.08744880000000001,
+      "iterations": 2,
+      "gco2": 19.982827003692204,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23827,
+        "output": 860,
+        "cache_read": 11493,
+        "cache_write": 11493
+      },
+      "cost": 0.0859676,
+      "iterations": 2,
+      "gco2": 18.905644909983828,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23895,
+        "output": 771,
+        "cache_read": 11530,
+        "cache_write": 11530
+      },
+      "cost": 0.07871600000000001,
+      "iterations": 2,
+      "gco2": 16.949130494880848,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23904,
+        "output": 775,
+        "cache_read": 11530,
+        "cache_write": 11530
+      },
+      "cost": 0.07883200000000001,
+      "iterations": 2,
+      "gco2": 17.03706372702031,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 35751,
+        "output": 785,
+        "cache_read": 23056,
+        "cache_write": 11528
+      },
+      "cost": 0.0826192,
+      "iterations": 3,
+      "gco2": 17.256896807368957,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23891,
+        "output": 1026,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.0844376,
+      "iterations": 2,
+      "gco2": 22.5548740437714,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23823,
+        "output": 978,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.08282560000000001,
+      "iterations": 2,
+      "gco2": 21.499675258097888,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23825,
+        "output": 966,
+        "cache_read": 11438,
+        "cache_write": 11438
+      },
+      "cost": 0.0825936,
+      "iterations": 2,
+      "gco2": 21.23587556167951,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23546,
+        "output": 654,
+        "cache_read": 11414,
+        "cache_write": 11414
+      },
+      "cost": 0.0790248,
+      "iterations": 2,
+      "gco2": 14.377083454801655,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23518,
+        "output": 655,
+        "cache_read": 11413,
+        "cache_write": 11413
+      },
+      "cost": 0.0787556,
+      "iterations": 2,
+      "gco2": 14.399066762836519,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23532,
+        "output": 659,
+        "cache_read": 11413,
+        "cache_write": 11413
+      },
+      "cost": 0.0804716,
+      "iterations": 2,
+      "gco2": 14.486999994975976,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23455,
+        "output": 698,
+        "cache_read": 11382,
+        "cache_write": 11382
+      },
+      "cost": 0.07611040000000001,
+      "iterations": 2,
+      "gco2": 15.344349008335708,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23474,
+        "output": 721,
+        "cache_read": 11385,
+        "cache_write": 11385
+      },
+      "cost": 0.07643799999999999,
+      "iterations": 2,
+      "gco2": 15.849965093137602,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23481,
+        "output": 656,
+        "cache_read": 11385,
+        "cache_write": 11385
+      },
+      "cost": 0.075166,
+      "iterations": 2,
+      "gco2": 14.421050070871381,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23943,
+        "output": 1127,
+        "cache_read": 11477,
+        "cache_write": 11477
+      },
+      "cost": 0.0909764,
+      "iterations": 2,
+      "gco2": 24.775188155292756,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23998,
+        "output": 1300,
+        "cache_read": 11478,
+        "cache_write": 11478
+      },
+      "cost": 0.09381360000000001,
+      "iterations": 2,
+      "gco2": 28.578300445324384,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 16,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 36023,
+        "output": 1364,
+        "cache_read": 22956,
+        "cache_write": 11478
+      },
+      "cost": 0.10583720000000002,
+      "iterations": 3,
+      "gco2": 29.98523215955574,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 15,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 37110,
+        "output": 1315,
+        "cache_read": 23046,
+        "cache_write": 11523
+      },
+      "cost": 0.10272819999999999,
+      "iterations": 3,
+      "gco2": 28.90805006584736,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 24003,
+        "output": 1005,
+        "cache_read": 11525,
+        "cache_write": 11525
+      },
+      "cost": 0.089162,
+      "iterations": 2,
+      "gco2": 22.09322457503924,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 13,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23950,
+        "output": 926,
+        "cache_read": 11524,
+        "cache_write": 11524
+      },
+      "cost": 0.0867928,
+      "iterations": 2,
+      "gco2": 20.35654324028491,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 45,
+      "judges": {
+        "claude-haiku-4-5": 45
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23812,
+        "output": 837,
+        "cache_read": 11484,
+        "cache_write": 11484
+      },
+      "cost": 0.0798328,
+      "iterations": 2,
+      "gco2": 18.40002882518193,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23806,
+        "output": 781,
+        "cache_read": 11484,
+        "cache_write": 11484
+      },
+      "cost": 0.07868879999999999,
+      "iterations": 2,
+      "gco2": 17.168963575229498,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23806,
+        "output": 807,
+        "cache_read": 11484,
+        "cache_write": 11484
+      },
+      "cost": 0.0792088,
+      "iterations": 2,
+      "gco2": 17.740529584135988,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23985,
+        "output": 994,
+        "cache_read": 11541,
+        "cache_write": 11541
+      },
+      "cost": 0.0874252,
+      "iterations": 2,
+      "gco2": 21.851408186655725,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 5,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23953,
+        "output": 858,
+        "cache_read": 11540,
+        "cache_write": 11540
+      },
+      "cost": 0.08384,
+      "iterations": 2,
+      "gco2": 18.861678293914093,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 5,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 23943,
+        "output": 927,
+        "cache_read": 11541,
+        "cache_write": 11541
+      },
+      "cost": 0.0850372,
+      "iterations": 2,
+      "gco2": 20.378526548319773,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 4,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 23562,
+        "output": 487,
+        "cache_read": 11442,
+        "cache_write": 11442
+      },
+      "cost": 0.0726504,
+      "iterations": 2,
+      "gco2": 10.705871012979213,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 23605,
+        "output": 501,
+        "cache_read": 11444,
+        "cache_write": 11444
+      },
+      "cost": 0.0733368,
+      "iterations": 2,
+      "gco2": 11.013637325467322,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "compact",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 35299,
+        "output": 508,
+        "cache_read": 22888,
+        "cache_write": 11444
+      },
+      "cost": 0.07582559999999999,
+      "iterations": 3,
+      "gco2": 11.167520481711376,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32557,
+        "output": 599,
+        "cache_read": 15938,
+        "cache_write": 15938
+      },
+      "cost": 0.09758160000000002,
+      "iterations": 2,
+      "gco2": 13.168001512884084,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32640,
+        "output": 650,
+        "cache_read": 15938,
+        "cache_write": 15938
+      },
+      "cost": 0.09893360000000001,
+      "iterations": 2,
+      "gco2": 14.289150222662192,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "chunk",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32543,
+        "output": 551,
+        "cache_read": 15938,
+        "cache_write": 15938
+      },
+      "cost": 0.09732560000000001,
+      "iterations": 2,
+      "gco2": 12.112802727210566,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 6,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32672,
+        "output": 810,
+        "cache_read": 15901,
+        "cache_write": 15901
+      },
+      "cost": 0.10432519999999998,
+      "iterations": 2,
+      "gco2": 17.806479508240578,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 90,
+      "judges": {
+        "claude-haiku-4-5": 90
+      }
+    },
+    {
+      "variant": "full",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32688,
+        "output": 845,
+        "cache_read": 15902,
+        "cache_write": 15902
+      },
+      "cost": 0.1031264,
+      "iterations": 2,
+      "gco2": 18.57589528946085,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "csv-column-sum",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 48871,
+        "output": 734,
+        "cache_read": 31802,
+        "cache_write": 15901
+      },
+      "cost": 0.10793739999999999,
+      "iterations": 3,
+      "gco2": 16.13574809759085,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 49275,
+        "output": 1325,
+        "cache_read": 31776,
+        "cache_write": 15888
+      },
+      "cost": 0.1323392,
+      "iterations": 3,
+      "gco2": 29.127883146196012,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 24,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32973,
+        "output": 1276,
+        "cache_read": 15889,
+        "cache_write": 15889
+      },
+      "cost": 0.1153028,
+      "iterations": 2,
+      "gco2": 28.05070105248763,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 25,
+      "judge": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      }
+    },
+    {
+      "variant": "full",
+      "task": "deep-merge",
+      "category": "data",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 33140,
+        "output": 1753,
+        "cache_read": 15889,
+        "cache_write": 15889
+      },
+      "cost": 0.1285308,
+      "iterations": 2,
+      "gco2": 38.53673898511819,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 29,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32718,
+        "output": 841,
+        "cache_read": 15929,
+        "cache_write": 15929
+      },
+      "cost": 0.1038508,
+      "iterations": 2,
+      "gco2": 18.487962057321393,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 13,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "full",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32895,
+        "output": 1144,
+        "cache_read": 15930,
+        "cache_write": 15930
+      },
+      "cost": 0.110596,
+      "iterations": 2,
+      "gco2": 25.148904391885463,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 18,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "flatten",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32792,
+        "output": 918,
+        "cache_read": 15929,
+        "cache_write": 15929
+      },
+      "cost": 0.1049268,
+      "iterations": 2,
+      "gco2": 20.18067677600599,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 15,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32787,
+        "output": 840,
+        "cache_read": 15984,
+        "cache_write": 15984
+      },
+      "cost": 0.10617280000000001,
+      "iterations": 2,
+      "gco2": 18.465978749286528,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 50941,
+        "output": 1581,
+        "cache_read": 31968,
+        "cache_write": 15984
+      },
+      "cost": 0.13658959999999998,
+      "iterations": 3,
+      "gco2": 34.75561000312143,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "full",
+      "task": "format-bytes",
+      "category": "formatting",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 50821,
+        "output": 1361,
+        "cache_read": 31968,
+        "cache_write": 15984
+      },
+      "cost": 0.13510960000000002,
+      "iterations": 3,
+      "gco2": 29.919282235451142,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 49234,
+        "output": 809,
+        "cache_read": 32042,
+        "cache_write": 16021
+      },
+      "cost": 0.1077574,
+      "iterations": 3,
+      "gco2": 17.784496200205716,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      }
+    },
+    {
+      "variant": "full",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32873,
+        "output": 774,
+        "cache_read": 16020,
+        "cache_write": 16020
+      },
+      "cost": 0.102116,
+      "iterations": 2,
+      "gco2": 17.01508041898544,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 75,
+      "judges": {
+        "claude-haiku-4-5": 75
+      }
+    },
+    {
+      "variant": "full",
+      "task": "interval-merge",
+      "category": "algorithm",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32870,
+        "output": 795,
+        "cache_read": 16020,
+        "cache_write": 16020
+      },
+      "cost": 0.102524,
+      "iterations": 2,
+      "gco2": 17.476729887717603,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 8,
+      "judge": 85,
+      "judges": {
+        "claude-haiku-4-5": 85
+      }
+    },
+    {
+      "variant": "full",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32851,
+        "output": 1071,
+        "cache_read": 15930,
+        "cache_write": 15930
+      },
+      "cost": 0.10866,
+      "iterations": 2,
+      "gco2": 23.544122905340323,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32808,
+        "output": 1009,
+        "cache_read": 15929,
+        "cache_write": 15929
+      },
+      "cost": 0.10681079999999998,
+      "iterations": 2,
+      "gco2": 22.1811578071787,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "lru-cache",
+      "category": "data-structure",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32834,
+        "output": 1065,
+        "cache_read": 15929,
+        "cache_write": 15929
+      },
+      "cost": 0.1080348,
+      "iterations": 2,
+      "gco2": 23.412223057131133,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32567,
+        "output": 758,
+        "cache_read": 15904,
+        "cache_write": 15904
+      },
+      "cost": 0.10613680000000002,
+      "iterations": 2,
+      "gco2": 16.663347490427608,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 5,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32526,
+        "output": 666,
+        "cache_read": 15906,
+        "cache_write": 15906
+      },
+      "cost": 0.1022272,
+      "iterations": 2,
+      "gco2": 14.64088315122003,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "median-bugfix",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32566,
+        "output": 720,
+        "cache_read": 15904,
+        "cache_write": 15904
+      },
+      "cost": 0.1018328,
+      "iterations": 2,
+      "gco2": 15.827981785102738,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 7,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32532,
+        "output": 754,
+        "cache_read": 15875,
+        "cache_write": 15875
+      },
+      "cost": 0.101578,
+      "iterations": 2,
+      "gco2": 16.575414258288145,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32514,
+        "output": 748,
+        "cache_read": 15876,
+        "cache_write": 15876
+      },
+      "cost": 0.10166320000000001,
+      "iterations": 2,
+      "gco2": 16.443514410078958,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "memoize",
+      "category": "performance",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32528,
+        "output": 836,
+        "cache_read": 15875,
+        "cache_write": 15875
+      },
+      "cost": 0.10238200000000001,
+      "iterations": 2,
+      "gco2": 18.378045517147072,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 9,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 49487,
+        "output": 1375,
+        "cache_read": 31938,
+        "cache_write": 15969
+      },
+      "cost": 0.1240526,
+      "iterations": 3,
+      "gco2": 30.22704854793925,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 20,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32983,
+        "output": 1317,
+        "cache_read": 15968,
+        "cache_write": 15968
+      },
+      "cost": 0.11932159999999999,
+      "iterations": 2,
+      "gco2": 28.952016681917094,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 17,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-pagination",
+      "category": "validation",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 33005,
+        "output": 1298,
+        "cache_read": 15970,
+        "cache_write": 15970
+      },
+      "cost": 0.118664,
+      "iterations": 2,
+      "gco2": 28.53433382925466,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 20,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 33013,
+        "output": 1101,
+        "cache_read": 16015,
+        "cache_write": 16015
+      },
+      "cost": 0.11393,
+      "iterations": 2,
+      "gco2": 24.203622146386273,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 12,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 33045,
+        "output": 1190,
+        "cache_read": 16015,
+        "cache_write": 16015
+      },
+      "cost": 0.11671800000000002,
+      "iterations": 2,
+      "gco2": 26.16013656148925,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 13,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "parse-query",
+      "category": "parsing",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32965,
+        "output": 984,
+        "cache_read": 16015,
+        "cache_write": 16015
+      },
+      "cost": 0.11371800000000001,
+      "iterations": 2,
+      "gco2": 21.63157510630707,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 12,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32794,
+        "output": 819,
+        "cache_read": 15975,
+        "cache_write": 15975
+      },
+      "cost": 0.102826,
+      "iterations": 2,
+      "gco2": 18.004329280554362,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32785,
+        "output": 824,
+        "cache_read": 15975,
+        "cache_write": 15975
+      },
+      "cost": 0.10379,
+      "iterations": 2,
+      "gco2": 18.11424582072869,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "retry-backoff",
+      "category": "async",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32796,
+        "output": 870,
+        "cache_read": 15975,
+        "cache_write": 15975
+      },
+      "cost": 0.103854,
+      "iterations": 2,
+      "gco2": 19.125477990332474,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 11,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32921,
+        "output": 930,
+        "cache_read": 16032,
+        "cache_write": 16032
+      },
+      "cost": 0.10819440000000001,
+      "iterations": 2,
+      "gco2": 20.444476472424366,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 4,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32866,
+        "output": 751,
+        "cache_read": 16030,
+        "cache_write": 16030
+      },
+      "cost": 0.10382,
+      "iterations": 2,
+      "gco2": 16.50946433418355,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 4,
+      "judge": 95,
+      "judges": {
+        "claude-haiku-4-5": 95
+      }
+    },
+    {
+      "variant": "full",
+      "task": "round-half-up",
+      "category": "bugfix",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 51490,
+        "output": 1505,
+        "cache_read": 32062,
+        "cache_write": 16031
+      },
+      "cost": 0.1404554,
+      "iterations": 3,
+      "gco2": 33.084878592471696,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 10,
+      "judge": 92,
+      "judges": {
+        "claude-haiku-4-5": 92
+      }
+    },
+    {
+      "variant": "full",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 0,
+      "usage": {
+        "input": 32568,
+        "output": 562,
+        "cache_read": 15935,
+        "cache_write": 15935
+      },
+      "cost": 0.09875400000000001,
+      "iterations": 2,
+      "gco2": 12.354619115594081,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 1,
+      "usage": {
+        "input": 32597,
+        "output": 615,
+        "cache_read": 15934,
+        "cache_write": 15934
+      },
+      "cost": 0.1001728,
+      "iterations": 2,
+      "gco2": 13.519734441441924,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    },
+    {
+      "variant": "full",
+      "task": "slugify",
+      "category": "string",
+      "type": "code",
+      "run": 2,
+      "usage": {
+        "input": 32560,
+        "output": 542,
+        "cache_read": 15934,
+        "cache_write": 15934
+      },
+      "cost": 0.0986048,
+      "iterations": 2,
+      "gco2": 11.914952954896783,
+      "passed": true,
+      "grade_detail": "ok",
+      "loc": 3,
+      "judge": 100,
+      "judges": {
+        "claude-haiku-4-5": 100
+      }
+    }
+  ]
+}

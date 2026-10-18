@@ -1,7 +1,7 @@
 ---
 name: honey-gain
 description: "Honey benchmark scoreboard vs baseline and rival skills."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

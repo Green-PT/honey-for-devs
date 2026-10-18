@@ -1,0 +1,15 @@
+{
+  "id": "ex-tournament",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/tournament",
+  "solution_file": "tournament.py",
+  "test_file": "tournament_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "tournament_test"
+  ]
+}

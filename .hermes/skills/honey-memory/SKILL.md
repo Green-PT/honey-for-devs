@@ -1,7 +1,7 @@
 ---
 name: honey-memory
 description: "Per-project persistent memory files indexed in MEMORY.md."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

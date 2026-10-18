@@ -1,0 +1,1786 @@
+{
+  "meta": {
+    "model": "claude-opus-5-5",
+    "receiver": "claude-opus-5-5",
+    "judge": [
+      "claude-opus-5-5",
+      "claude-sonnet-5-5",
+      "claude-haiku-4-5"
+    ],
+    "judge_rubric": "plain",
+    "runs": 3,
+    "thinking": 0,
+    "mock": false,
+    "variant_hashes": {
+      "baseline": null,
+      "honey": "845b11b11fe9",
+      "honey-design": "52211cc322e0"
+    }
+  },
+  "records": [
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 10259,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 225.52675712967917,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 609,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished editorial design, custom SVG covers, responsive grid, strong accessibility."
+    },
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 9893,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 217.4808663889186,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 555,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, accessible, complete; bespoke SVG covers, fluid responsive grid."
+    },
+    {
+      "variant": "baseline",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 154,
+        "output": 10665,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 234.4519801918343,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 571,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, cohesive design; custom SVG covers, accessible, fluid responsive grid."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 12523,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 275.2969665206133,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 591,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive with CSS drawer and strong accessibility."
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 4508,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 99.10075262117103,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 314,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished dark theme, complete, responsive, accessible; minor two-line description nitpick."
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 5375,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 118.16028068739891,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 311,
+      "judge": 94,
+      "judge_min": 93,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark design, complete, responsive, accessible; very strong."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 10537,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 231.63811676337158,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 686,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, strong accessibility; activity panel somewhat sparse alone."
+    },
+    {
+      "variant": "baseline",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 4777,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 105.01426248254971,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 330,
+      "judge": 94,
+      "judge_min": 93,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished dark theme, six SVG feature cards, responsive, accessible."
+    },
+    {
+      "variant": "baseline",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 179,
+        "output": 14153,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 311.12975861744314,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 768,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive dashboard with strong accessibility details."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 9832,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 216.13988459879184,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 640,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, on-brand, complete, responsive, accessible; minor nitpicks only."
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 7112,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 156.3452867439593,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 333,
+      "judge": 90,
+      "judge_min": 88,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 97
+      },
+      "judge_note": "Polished, accessible pricing cards; desktop height calc slightly fragile."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 12140,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 266.87735954326007,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 740,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, on-brand, complete, responsive, accessible; excellent code-to-docs hero visual."
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 7239,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 159.13716686438715,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 408,
+      "judge": 92,
+      "judge_min": 91,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, accessible, responsive; strong Pro highlight and semantic structure."
+    },
+    {
+      "variant": "baseline",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 159,
+        "output": 13838,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 304.2050165864607,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 797,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, on-brand, complete, responsive, accessible; minor nits only."
+    },
+    {
+      "variant": "baseline",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 149,
+        "output": 4864,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 106.92681028158295,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 345,
+      "judge": 92,
+      "judge_min": 91,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, responsive pricing cards; Pro clearly highlighted."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 5340,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 117.39086490617865,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 457,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, complete settings panel with responsive layout and validation."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 6026,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 132.47141421809596,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 439,
+      "judge": 94,
+      "judge_min": 90,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, accessible, responsive settings panel; dark mode, validation, all sections present."
+    },
+    {
+      "variant": "baseline",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 158,
+        "output": 6488,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 142.62770253020358,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 441,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, accessible, responsive settings panel; all sections complete, dark mode."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 2866,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 63.004160827922846,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 258,
+      "judge": 90,
+      "judge_min": 88,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, accessible, responsive form with dark mode and password toggle."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 4348,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 95.58342333559266,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 265,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, responsive form with dark mode and validation."
+    },
+    {
+      "variant": "baseline",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 95,
+        "output": 4575,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 100.57363425950697,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 323,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, responsive form with dark mode and validation."
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 7303,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 160.54409857861847,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 351,
+      "judge": 94,
+      "judge_min": 93,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished editorial design, complete sections, fluid grid, strong accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 8484,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 186.5063853677939,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 521,
+      "judge": 92,
+      "judge_min": 88,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, accessible, responsive; featured layout leaves orphan card, mismatched placeholders"
+    },
+    {
+      "variant": "honey",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 9708,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 213.4139544024686,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 412,
+      "judge": 91,
+      "judge_min": 87,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 87,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished editorial design; featured span orphans last card on desktop."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 7277,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 159.97253256971197,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 318,
+      "judge": 92,
+      "judge_min": 91,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete dashboard; good responsive breakpoints and accessible semantics."
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 3808,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 83.71243699676559,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 195,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark design, complete, responsive, accessible semantics; minor untested quirks."
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 3854,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 84.72366916636939,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 196,
+      "judge": 94,
+      "judge_min": 93,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished dark theme, six complete cards, responsive, accessible semantics."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 7318,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 160.87384819914143,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 311,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive dashboard with strong accessibility details."
+    },
+    {
+      "variant": "honey",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 9212,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 202.51023361717557,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 342,
+      "judge": 91,
+      "judge_min": 91,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 91,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete dashboard with strong responsive and accessibility handling; minor hacks."
+    },
+    {
+      "variant": "honey",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 3960,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 87.05389981806506,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 196,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 97
+      },
+      "judge_note": "Polished dark design, complete, fluid grid, accessible; minor reduced-motion gap."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 10705,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 235.3313125132289,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 451,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive, accessible; strong branding and hero visual."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 10296,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 226.34013952696918,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 424,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished dark honey theme, complete sections, responsive, strong accessibility."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 6398,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 140.64920480706573,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 267,
+      "judge": 89,
+      "judge_min": 88,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 89,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished dark tiers, clear Pro highlight, responsive; minor aria-label mismatch."
+    },
+    {
+      "variant": "honey",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 9069,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 199.3666205681899,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 381,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished dark theme, all sections, responsive, strong accessibility details."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 3470,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 76.28207888098125,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 172,
+      "judge": 92,
+      "judge_min": 88,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 88,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, accessible, responsive settings panel with dark mode and switches."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 4287,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 94.2424415454659,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 274,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished dark design, strong Pro highlight, thoughtful responsive breakpoints, accessible."
+    },
+    {
+      "variant": "honey",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 4195,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 92.2199772062583,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 253,
+      "judge": 91,
+      "judge_min": 88,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished dark theme, clear Pro highlight; awkward two-column wrap at tablet widths."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 3907,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 85.88878449221721,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 226,
+      "judge": 88,
+      "judge_min": 88,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 88,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, accessible, responsive settings panel; minor quirks, modest visual flair."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2157,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 47.417995431203614,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 129,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, responsive form with dark mode and thoughtful details."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2257,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 49.616326234690106,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 158,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, accessible, responsive card form with dark mode support."
+    },
+    {
+      "variant": "honey",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 3781,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 83.11888767982425,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 227,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, accessible switches, dark mode, responsive grid; minor nitpicks."
+    },
+    {
+      "variant": "honey",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2292,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 50.38574201591039,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 158,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished glassmorphism card, accessible labels, responsive, reduced-motion support."
+    },
+    {
+      "variant": "honey-design",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 4892,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 107.54234290655916,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 161,
+      "judge": 93,
+      "judge_min": 89,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 89,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, complete, responsive grid; footer links have low contrast."
+    },
+    {
+      "variant": "honey-design",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 5781,
+        "cache_read": 0,
+        "cache_write": 1383
+      },
+      "gco2": 127.08550374955408,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 177,
+      "judge": 94,
+      "judge_min": 88,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, responsive, accessible; footer links inherit low-contrast nav styling."
+    },
+    {
+      "variant": "honey-design",
+      "task": "blog-grid",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 152,
+        "output": 4853,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 106.68499389319943,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 144,
+      "judge": 93,
+      "judge_min": 88,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 96
+      },
+      "judge_note": "Polished, complete, responsive; footer links low-contrast; random images mismatch alt"
+    },
+    {
+      "variant": "honey-design",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 4855,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 106.72896050926916,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 104,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, complete, responsive dashboard with good semantics and accessibility."
+    },
+    {
+      "variant": "honey-design",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 2555,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 56.16735202907985,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 51,
+      "judge": 93,
+      "judge_min": 90,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark theme, complete, fluid grid, accessible; minor nits only"
+    },
+    {
+      "variant": "honey-design",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 2719,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 59.772614546797705,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 52,
+      "judge": 94,
+      "judge_min": 88,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 88,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark theme, six iconed cards, fluid grid, accessible CTA."
+    },
+    {
+      "variant": "honey-design",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 4355,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 95.73730649183672,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 101,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, complete dashboard; thoughtful responsive nav and good accessibility."
+    },
+    {
+      "variant": "honey-design",
+      "task": "dashboard",
+      "category": "dashboard",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 177,
+        "output": 3894,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 85.60300148776398,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 102,
+      "judge": 91,
+      "judge_min": 90,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 91,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark dashboard, complete, responsive, accessible; churn-down colored red."
+    },
+    {
+      "variant": "honey-design",
+      "task": "feature-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 155,
+        "output": 2667,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 58.62948252898472,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 51,
+      "judge": 88,
+      "judge_min": 85,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 85,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark grid, responsive, accessible; minor invalid font shorthand."
+    },
+    {
+      "variant": "honey-design",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 6405,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 140.80308796330976,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 196,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, on-brand, complete, accessible, responsive; excellent execution throughout."
+    },
+    {
+      "variant": "honey-design",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 2809,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 61.75111226993553,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 96,
+      "judge": 85,
+      "judge_min": 80,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 85,
+        "claude-sonnet-5-5": 80,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark design and responsive; checkmark icon CSS likely misaligned."
+    },
+    {
+      "variant": "honey-design",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 5539,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 121.76554320511676,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 132,
+      "judge": 94,
+      "judge_min": 93,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, on-brand dark honey theme; complete, accessible, responsive."
+    },
+    {
+      "variant": "honey-design",
+      "task": "landing-page",
+      "category": "landing-page",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 157,
+        "output": 7333,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 161.2035978196644,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 213,
+      "judge": 94,
+      "judge_min": 94,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished honey-themed dark design, complete sections, accessible, responsive."
+    },
+    {
+      "variant": "honey-design",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 2398,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 52.71597266760607,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 84,
+      "judge": 88,
+      "judge_min": 85,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 85,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, accessible, responsive; button font shorthand invalid, minor flaw."
+    },
+    {
+      "variant": "honey-design",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 2803,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 61.61921242172636,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 93,
+      "judge": 92,
+      "judge_min": 91,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished dark pricing UI, highlighted Pro, responsive, accessible; minor label mismatch."
+    },
+    {
+      "variant": "honey-design",
+      "task": "pricing-section",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 147,
+        "output": 2638,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 57.99196659597364,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 94,
+      "judge": 85,
+      "judge_min": 80,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 85,
+        "claude-sonnet-5-5": 80,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Polished, accessible pricing; checkmark mask likely renders inverted."
+    },
+    {
+      "variant": "honey-design",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 3245,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 71.33583457313665,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 90,
+      "judge": 91,
+      "judge_min": 88,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 91,
+        "claude-sonnet-5-5": 88,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, accessible, responsive; button font shorthand invalid, minor flaw."
+    },
+    {
+      "variant": "honey-design",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2038,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 44.8019817750547,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 71,
+      "judge": 90,
+      "judge_min": 88,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, accessible, responsive; invalid button font shorthand drops styling."
+    },
+    {
+      "variant": "honey-design",
+      "task": "settings-panel",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 156,
+        "output": 2505,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 55.0681866273366,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 82,
+      "judge": 88,
+      "judge_min": 88,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 88,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Polished, accessible, responsive; invalid button font shorthand loses weight/size."
+    },
+    {
+      "variant": "honey-design",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2732,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 60.05839755125094,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 91,
+      "judge": 88,
+      "judge_min": 86,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 86,
+        "claude-haiku-4-5": 94
+      },
+      "judge_note": "Polished, accessible, responsive; invalid font shorthand breaks button typography."
+    },
+    {
+      "variant": "honey-design",
+      "task": "signup-form",
+      "category": "ui-component",
+      "type": "web",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 93,
+        "output": 2169,
+        "cache_read": 1383,
+        "cache_write": 0
+      },
+      "gco2": 47.681795127622,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 72,
+      "judge": 91,
+      "judge_min": 88,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 91,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Polished, accessible, responsive form; invalid font shorthand weakens button text."
+    }
+  ]
+}

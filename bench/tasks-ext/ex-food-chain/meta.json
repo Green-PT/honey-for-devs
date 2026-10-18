@@ -1,0 +1,15 @@
+{
+  "id": "ex-food-chain",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/food-chain",
+  "solution_file": "food_chain.py",
+  "test_file": "food_chain_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "food_chain_test"
+  ]
+}

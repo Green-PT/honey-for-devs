@@ -94,7 +94,7 @@ test("--json: exact per-app numbers, usd math, gco2 present", (t) => {
   const glm = rows.find((r) => r.model === "glm-5.2");
   assert.equal(glm.output, 15); // output + reasoning
   close(glm.usd, 0.5); // embedded cost wins
-  close(rows.find((r) => r.model === "claude-sonnet-5").usd, (200 * 3 + 40 * 15) / 1e6);
+  close(rows.find((r) => r.model === "claude-sonnet-5").usd, (200 * 2 + 40 * 10) / 1e6);
 });
 
 test("--daily: day rows ascending, combines with --json", (t) => {

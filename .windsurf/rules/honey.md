@@ -92,6 +92,9 @@ Never simplify away:
   motion, responsive richness, on-brand visual hierarchy) *is* the requirement,
   not "speculative." Markup that looks unfinished isn't minimal. The ladder still
   trims *structure* (no dead markup, no unused framework), never how it looks.
+- **Names a provided stub, interface or public API defines** — constants, classes,
+  functions, signatures — even when they look unused: callers and tests you can't see
+  import them.
 - **Anything the user explicitly asked for.**
 
 Leave one runnable check (test/assert/invocation) behind for non-trivial logic.

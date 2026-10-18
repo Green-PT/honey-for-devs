@@ -5,7 +5,7 @@
   },
   "metadata": {
     "description": "Honey (I Shrunk the AI) — write less code and say less about it.",
-    "version": "1.1.0"
+    "version": "1.4.0"
   },
   "plugins": [
     {

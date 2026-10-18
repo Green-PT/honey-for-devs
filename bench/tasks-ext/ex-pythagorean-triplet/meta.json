@@ -1,0 +1,15 @@
+{
+  "id": "ex-pythagorean-triplet",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/pythagorean-triplet",
+  "solution_file": "pythagorean_triplet.py",
+  "test_file": "pythagorean_triplet_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "pythagorean_triplet_test"
+  ]
+}

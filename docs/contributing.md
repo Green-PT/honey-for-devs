@@ -1,0 +1,17 @@
+# Contributing
+
+## How it stays in sync
+
+The skill is authored **once** in [`skills/honey/SKILL.md`](../skills/honey/SKILL.md).
+Every per-platform rule file (and `AGENTS.md`) is generated from it:
+
+```bash
+node scripts/build-rules.js          # regenerate all rule files
+node scripts/build-rules.js --check  # CI: fail if any copy drifted
+```
+
+The OpenClaw (`.openclaw/skills/`) and Hermes (`.hermes/skills/`) skill packages
+are generated the same way from `skills/`; rerun
+`node scripts/build-openclaw-skills.js` / `node scripts/build-hermes-skills.js`
+after changing a skill. `tests/openclaw-skills.test.js` and
+`tests/hermes-skills.test.js` fail if a committed copy is stale.

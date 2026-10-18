@@ -23,6 +23,7 @@ const os = require("os");
 const path = require("path");
 const { spawnSync } = require("child_process");
 const { grade } = require("./grade");
+const { loc } = require("./extract");
 const { dollars, newInput } = require("./report");
 const { pairedDelta } = require("./paired");
 const eco = require("../../hooks/eco");
@@ -109,6 +110,33 @@ function runCline(prompt, cwd) {
 
 const cfg = eco.loadConfig();
 
+// Parse the run, grade the file it wrote, judge it.
+async function finishCell(task, variant, run, dir, { stdout, stderr, status }, parse) {
+  const parsed = parse(stdout);
+  if (!parsed) {
+    return { variant, task: task.meta.id, type: "code", run, passed: false,
+      grade_detail: `no result (status ${status}): ${(stderr || stdout).slice(-200)}`,
+      usage: { input: 0, output: 0, cache_read: 0, cache_write: 0 }, gco2: 0, judge: null };
+  }
+
+  const solPath = path.join(dir, task.meta.solution_file);
+  const code = fs.existsSync(solPath) ? fs.readFileSync(solPath, "utf8") : "";
+  const g = grade(task, code); // reuses the exact same test execution as src/run.js
+
+  const panel = await Promise.all(JUDGE_MODELS.map((m) =>
+    judge({ model: m, taskPrompt: task.prompt, candidateOutput: code || parsed.text, type: "code" })
+      .then((r) => ({ model: m, ...r })).catch(() => ({ model: m, score: null }))));
+  const scores = panel.map((p) => p.score).filter((s) => s != null);
+
+  return {
+    variant, task: task.meta.id, category: task.meta.category, type: "code", run,
+    usage: parsed.usage, cost: parsed.cost, iterations: parsed.iterations,
+    gco2: eco.estimate(MODEL, parsed.usage.output, cfg).gco2,
+    passed: g.passed, grade_detail: g.detail, loc: loc(code),
+    judge: median(scores), judges: Object.fromEntries(panel.map((p) => [p.model, p.score])),
+  };
+}
+
 async function runCell(task, variant, run) {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), `cline-${task.meta.id}-`));
   try {
@@ -119,30 +147,7 @@ async function runCell(task, variant, run) {
     }
     // Steer the agentic loop to write the graded file (the task prompts assume a code block).
     const prompt = `${task.prompt}\n\nCreate the file \`${task.meta.solution_file}\` in the current directory with your solution.`;
-    const { stdout, stderr, status } = runCline(prompt, dir);
-    const parsed = parseCline(stdout);
-    if (!parsed) {
-      return { variant, task: task.meta.id, type: "code", run, passed: false,
-        grade_detail: `no run_result (status ${status}): ${(stderr || stdout).slice(-200)}`,
-        usage: { input: 0, output: 0, cache_read: 0, cache_write: 0 }, gco2: 0, judge: null };
-    }
-
-    const solPath = path.join(dir, task.meta.solution_file);
-    const code = fs.existsSync(solPath) ? fs.readFileSync(solPath, "utf8") : "";
-    const g = grade(task, code); // reuses the exact same test execution as src/run.js
-
-    const panel = await Promise.all(JUDGE_MODELS.map((m) =>
-      judge({ model: m, taskPrompt: task.prompt, candidateOutput: code || parsed.text, type: "code" })
-        .then((r) => ({ model: m, ...r })).catch(() => ({ model: m, score: null }))));
-    const scores = panel.map((p) => p.score).filter((s) => s != null);
-
-    return {
-      variant, task: task.meta.id, category: task.meta.category, type: "code", run,
-      usage: parsed.usage, cost: parsed.cost, iterations: parsed.iterations,
-      gco2: eco.estimate(MODEL, parsed.usage.output, cfg).gco2,
-      passed: g.passed, grade_detail: g.detail,
-      judge: median(scores), judges: Object.fromEntries(panel.map((p) => [p.model, p.score])),
-    };
+    return await finishCell(task, variant, run, dir, runCline(prompt, dir), parseCline);
   } finally {
     fs.rmSync(dir, { recursive: true, force: true });
   }
@@ -163,6 +168,8 @@ const cellKey = (v, t, r) => `${v}__${t}__r${r}`;
   const outDir = path.join(ROOT, "results", stamp);
   fs.mkdirSync(outDir, { recursive: true });
   const outFile = path.join(outDir, "results.json");
+  if (!RESUME && fs.existsSync(outFile))
+    throw new Error(`results/${stamp} already holds a run — use --resume to continue it, or a fresh STAMP`);
 
   // resume: agentic runs are expensive and get killed; reload prior records and skip their cells.
   let records = [];
