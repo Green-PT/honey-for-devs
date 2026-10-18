@@ -102,8 +102,10 @@ task type. **Δ LOC** measures Lever 1 directly, **Δ output** measures the toke
 
 The measured Honey prompt includes the rule to end with one line naming what was
 skipped or not verified; against the Opus 5 stamp it passes the regression gate
-(`node bench/src/gate.js full-opus55b full-opus5`). That rule's own token cost is not
-isolated — there is no ablation arm for it.
+(`node bench/src/gate.js full-opus55b full-opus5`). An ablation without that one line
+([`full-opus55-noclose`](bench/results/full-opus55-noclose/)) shows it costs nothing
+measurable: output +0.3% (p=0.90), cost +0.4% (p=0.84), judge 4/8/9 (p=0.39). It fires on
+16% of replies — see [`METHODOLOGY.md`](bench/METHODOLOGY.md#closing-line-ablation).
 
 Earlier generations: on **Opus 4.8** against the July 2026 competitor copies
 ([`full-opus48`](bench/results/full-opus48/), 4-judge cross-family panel) Honey cut

@@ -40,7 +40,7 @@ const JUDGE_MODELS = (process.env.JUDGE_MODELS || process.env.JUDGE_MODEL || MOD
 const RUNS = Number(process.env.RUNS || 1);
 const THINKING = Number(process.env.THINKING || 0);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4);
-const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey", "honey-design", "honey-lean"];
+const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey", "honey-design", "honey-lean", "honey-noclose"];
 // Both are opt-in, excluded from the default sweep — request with --variants.
 //   honey-design: user-facing satellite, only meaningful on web tasks.
 //   honey-lean:   candidate replacement for the core skill, not a satellite — 781 tokens
@@ -49,7 +49,9 @@ const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey", "honey-design"
 //     prompts at +10–15% eval with 41–66% fewer tokens; Anthropic says prior-model
 //     prompts "reduce output quality" on Fable 5). If it wins, honey becomes lean —
 //     this does not ship as a second skill. See ../METHODOLOGY.md § Lean-prompt ablation.
-const OPT_IN = new Set(["honey-design", "honey-lean"]);
+//   honey-noclose: the shipped skill minus the one closing-line rule ("name what you
+//     skipped or didn't verify"). See ../METHODOLOGY.md § Closing-line ablation.
+const OPT_IN = new Set(["honey-design", "honey-lean", "honey-noclose"]);
 const DEFAULT_VARIANTS = ALL_VARIANTS.filter((v) => !OPT_IN.has(v));
 const VARIANTS = (flag("variants") || DEFAULT_VARIANTS.join(",")).split(",").map((s) => s.trim());
 const TASK_FILTER = flag("tasks") ? new Set(flag("tasks").split(",").map((s) => s.trim())) : null;

@@ -320,7 +320,8 @@ the [lean-prompt ablation](METHODOLOGY.md#lean-prompt-ablation) predicted. Gate:
 `node src/gate.js full-opus55b full-opus5` passes for honey (tests +4 pt, judge +3.8,
 paired output reduction −3 pt against a 10-pt limit) and flags caveman (44% → 29%), a
 competitor arm whose prompt changed. That is not a Honey regression. The closing-line rule's
-own token cost is not isolated: there is no ablation arm for it.
+own cost is ≈0 (output +0.3%, p=0.90): see the
+[closing-line ablation](METHODOLOGY.md#closing-line-ablation).
 
 **Judge budget.** The first Opus 5.5 attempt (discarded) judged with `max_tokens: 200`.
 Opus and Sonnet 5.5 think by default and the budget is shared, so 40–57% of their seats
