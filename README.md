@@ -324,8 +324,11 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 ```
 
 Then `/honey` **once** to turn it on (`/honey lite|full|ultra` to set intensity,
-`/honey off` to stop). The state persists across sessions — a SessionStart hook
-re-activates it every session until you run `/honey off`. A 🍯 badge shows the
+`/honey off` to stop). The state persists across sessions and is kept per
+project; `/honey default <mode>` sets it for every repo without its own. A
+SessionStart hook re-activates it every session and adds a ~50-token map of the
+repo's top-level folders and shared helpers, so the agent reuses before it writes
+(`HONEY_MAP=0` turns the map off). A 🍯 badge shows the
 active mode in your statusline. If your client autocompletes `/honey` to
 `honey:honey`, that's the same command.
 

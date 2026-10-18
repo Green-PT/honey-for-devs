@@ -35,6 +35,45 @@ function cmpVersions(a, b) {
   return 0;
 }
 
+// Short map of what already exists, so the agent reuses before it writes (Lever 1,
+// rung 2). Hardened because file names are repo-controlled text injected into hidden
+// context: only plain path characters pass, symlinks are skipped, and a 1s cap means
+// a huge or slow repo just gets no map. HONEY_MAP=0 turns it off.
+var SAFE_PATH = /^[A-Za-z0-9._@+\/-]{1,120}$/;
+var SHARED_DIR = /(^|\/)(utils?|helpers?|lib|common|shared|core)\//i;
+
+function repoMap(cwd) {
+  if (!cwd || process.env.HONEY_MAP === "0") return "";
+  var out;
+  try {
+    out = require("child_process").execFileSync("git", ["-C", cwd, "ls-files", "-s"], {
+      encoding: "utf8", stdio: ["ignore", "pipe", "ignore"], timeout: 1000, maxBuffer: 64 << 20,
+    });
+  } catch (e) {
+    return "";
+  }
+  var dirs = {}, shared = [];
+  out.split("\n").forEach(function (line) {
+    var tab = line.indexOf("\t");
+    if (tab < 0 || line.slice(0, 6) === "120000") return; // symlink
+    var p = line.slice(tab + 1);
+    if (!SAFE_PATH.test(p)) return;
+    var slash = p.indexOf("/");
+    var top = slash < 0 ? "." : p.slice(0, slash + 1);
+    dirs[top] = (dirs[top] || 0) + 1;
+    if (SHARED_DIR.test(p) && !/(test|spec)/i.test(p)) shared.push(p);
+  });
+  var tops = Object.keys(dirs).sort(function (a, b) { return dirs[b] - dirs[a]; }).slice(0, 12);
+  if (!tops.length) return "";
+  var map = "Repo map (reuse before writing): " +
+    tops.map(function (d) { return d + " " + dirs[d]; }).join(", ") + ".";
+  if (shared.length) {
+    map += " Shared code: " + shared.slice(0, 15).join(", ") +
+      (shared.length > 15 ? " (+" + (shared.length - 15) + " more)" : "") + ".";
+  }
+  return map;
+}
+
 // null version → unknown build → assume fine (README covers it); don't cry wolf.
 function ccrInert(version) {
   return !!version && cmpVersions(version, CCR_MIN_VERSION) < 0;
@@ -93,6 +132,8 @@ function main() {
         "spend reasoning tokens deciding how to comply.",
     },
   };
+  const map = repoMap((hookInput && hookInput.cwd) || process.env.CLAUDE_PROJECT_DIR);
+  if (map) out.hookSpecificOutput.additionalContext += "\n" + map;
 
   // One-time: re-warn only when the environment changes (upgrade/downgrade),
   // not on every session start.
@@ -111,4 +152,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { claudeCodeVersion, cmpVersions, ccrInert };
+module.exports = { claudeCodeVersion, cmpVersions, ccrInert, repoMap };
