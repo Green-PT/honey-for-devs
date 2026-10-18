@@ -1,0 +1,7080 @@
+{
+  "meta": {
+    "model": "claude-opus-5-5",
+    "receiver": "claude-opus-5-5",
+    "judge": [
+      "claude-opus-5-5",
+      "claude-sonnet-5-5",
+      "claude-haiku-4-5"
+    ],
+    "judge_rubric": "plain",
+    "runs": 3,
+    "thinking": 0,
+    "mock": false,
+    "variant_hashes": {
+      "baseline": null,
+      "caveman": "947106a852e1",
+      "ponytail": "26a0cd68504a",
+      "honey": "845b11b11fe9"
+    },
+    "tasks_dir": "tasks-ext"
+  },
+  "records": [
+    {
+      "variant": "baseline",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1663,
+        "output": 541,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 11.892969646861918,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct encode/decode, grouping, digits, and coprime ValueError; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1663,
+        "output": 664,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 14.596916535150303,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 41,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; handles coprime error, digits, grouping."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1663,
+        "output": 532,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 11.695119874548134,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct encode/decode, valid MMI, proper coprime ValueError; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 791,
+        "output": 637,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 14.00336721820895,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct verses, pluralization, and separators; clean, readable implementation."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 344,
+        "output": 1632,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 35.87675871289953,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 59,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, efficient backtracking solver; handles leading zeros and uniqueness."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 344,
+        "output": 1250,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 27.479135043581145,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 55,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted-sum backtracking with sound pruning, leading-zero handling, and clean code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 791,
+        "output": 463,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 10.178271620142455,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verses, pluralization, separators; clean helper structure."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 344,
+        "output": 1528,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 33.59049467727358,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 59,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted backtracking with valid pruning and leading-zero handling."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 791,
+        "output": 574,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 12.61841881201246,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, handles singular/zero cases, clear structure."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 606,
+        "output": 815,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 17.916396048414907,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct DP solution with proper ValueError messages and edge cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 606,
+        "output": 598,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 13.146018204849218,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 28,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct DP, exact error messages, sorted output, handles edge cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 606,
+        "output": 497,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 10.925704093327862,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 28,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct DP, sorted output, proper ValueError messages"
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1271,
+        "output": 1509,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 33.17281182461115,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 68,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete operations with reflected operators and tolerant equality."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 320,
+        "output": 830,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 18.246145668937878,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 48,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete set semantics; clear code; lists all extras but issuperset."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1271,
+        "output": 1609,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 35.371142628097644,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 81,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete; handles mixed operands; tolerant equality is reasonable."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1271,
+        "output": 1637,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 35.98667525307386,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 77,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, handles reals; hash inconsistent with tolerant equality."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 320,
+        "output": 797,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 17.520696503787338,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 49,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete list-based set; handles duplicates and equality properly."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1074,
+        "output": 646,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 14.201216990522733,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 34,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct verses, separators, spider and horse cases; clean code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 320,
+        "output": 780,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 17.146980267194635,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 52,
+      "judge": 95,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct, complete set semantics; clear, with sensible extra operators."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1074,
+        "output": 648,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 14.245183606592468,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 33,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct algorithmic verses, separators, and horse ending; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1074,
+        "output": 871,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 19.147461298367343,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 35,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, data-driven, matches expected list-of-lines format"
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1140,
+        "output": 1048,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 23.038506820538434,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 68,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, proper ValueError, handles all edge cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1140,
+        "output": 1008,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 22.159174499143834,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, ownership, and validation; clean, readable code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1140,
+        "output": 968,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 21.279842177749238,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, validation, and territories; clean and readable."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 881,
+        "output": 865,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 19.01556145015815,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 95,
+      "judge_min": 78,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 78
+      },
+      "judge_note": "Correct hangman logic; handles repeats, win, loss, and ValueError."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1668,
+        "output": 371,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 8.155807280934882,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct mapping, sorted roster, default handled; clean and readable."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 881,
+        "output": 1002,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 22.027274650934643,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct rules, edge cases handled, clear and complete implementation."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 881,
+        "output": 1284,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 28.22656751676655,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 95,
+      "judge_min": 35,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 35
+      },
+      "judge_note": "Correct derived-state logic; matches all standard hangman test cases."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1668,
+        "output": 387,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 8.50754020949272,
+      "passed": false,
+      "grade_detail": "----------------------------------------------------------------------\nRan 19 tests in 0.003s\n\nFAILED (failures=14)",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 95,
+      "judge_min": 25,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 25,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Returns singular names; tests expect 'Violets', 'Radishes'. Logic otherwise correct."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1668,
+        "output": 363,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 7.979940816655965,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct and complete; sorts custom roster and maps plant names correctly."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 767,
+        "output": 261,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 5.737643397099743,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct 1-based rows/columns, clean parsing, clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 767,
+        "output": 169,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 3.7151790578921697,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct 1-based rows/columns parsing; clean and complete."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 767,
+        "output": 186,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 4.088895294484875,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct 1-based rows/columns, clean parsing, returns copies."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3332,
+        "output": 2652,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 58.299732908461756,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 109,
+      "judge": 95,
+      "judge_min": 45,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct, clean refactor matching original output; thorough log included."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3332,
+        "output": 2543,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 55.903552332661484,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 97,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Faithful refactor and output matches; log wrongly claims strftime use."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3332,
+        "output": 2662,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 58.5195659888104,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 100,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Faithful, clean refactor with logged changes; output matches original exactly."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1351,
+        "output": 1635,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 35.94270863700413,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 70,
+      "judge": 68.5,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": null,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct pruned search, proper factors, errors, and empty-case handling."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 584,
+        "output": 593,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 13.036101664674895,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct closed-form derivation, linear loop, verified triplets; clear and efficient."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 584,
+        "output": 407,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 8.947206370190022,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation; handles all edge cases; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 584,
+        "output": 521,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 11.45330348616462,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation; handles edge cases and ordering properly."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1351,
+        "output": 1749,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 38.448805752978735,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 94,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct pruned search, collects all factor pairs, proper ValueError."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1351,
+        "output": 1735,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 38.14103944049062,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 65,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct pruned search; handles errors, empty results, and factor pairs."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 446,
+        "output": 609,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 13.387834593232734,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 38,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear; matches example and expected API."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 380,
+        "output": 1142,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 25.104937775815728,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 59,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct topological propagation; callbacks fire once only on changed values."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 380,
+        "output": 1412,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 31.040430945229257,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 61,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct topological propagation and callbacks; clean and readable implementation."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 380,
+        "output": 1181,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 25.96228678917546,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 60,
+      "judge": 95,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct topological propagation; callbacks fire once, only on changes."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1283,
+        "output": 256,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 5.627726856925419,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 98,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct sieve implementation, handles edge cases, clear and readable."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 446,
+        "output": 563,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 12.376602423628947,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 38,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, and clear; matches the expected test interface."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 446,
+        "output": 700,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 15.38831562440544,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 38,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear; matches standard exercise API and example."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1283,
+        "output": 216,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 4.748394535530821,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 98,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct sieve, handles edge cases, clear and efficient."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1283,
+        "output": 193,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 4.242778450728929,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 98,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, efficient sieve; handles edge cases; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 258,
+        "output": 256,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 5.627726856925419,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct direction-turning spiral; handles size 0 and 1; clear."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 258,
+        "output": 383,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 8.419606977353261,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 97,
+      "judge_min": 75,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct spiral fill, handles size 0 and 1, clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 258,
+        "output": 311,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 6.836808798842989,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 96,
+      "judge_min": 45,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct spiral fill; handles sizes 0 and 1; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 738,
+        "output": 860,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 18.905644909983828,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 38,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tallying, sorting, and formatting; clean, readable implementation."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 738,
+        "output": 756,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 16.619380874357876,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 36,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tally, sorting, and formatting; handles invalid input."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 975,
+        "output": 427,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 9.386872530887318,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct encode/decode; proper ValueError with expected message"
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 975,
+        "output": 408,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 8.969189678224883,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct VLQ encode/decode; raises the required incomplete-sequence error; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 738,
+        "output": 756,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 16.619380874357876,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 36,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tallying, sorting, and formatting; clean and readable."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 975,
+        "output": 442,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 9.716622151410292,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct encode/decode; proper incomplete-sequence ValueError; clear code."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 546,
+        "output": 944,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 20.752242784912475,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 56,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct pruned solver encodes all clues; unused constant only."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 546,
+        "output": 1006,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 22.115207883074103,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 39,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "All clues encoded correctly; returns Norwegian and Japanese as expected."
+    },
+    {
+      "variant": "baseline",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 546,
+        "output": 946,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "gco2": 20.79620940098221,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 60,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "All 15 clues encoded; returns Norwegian and Japanese correctly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 552,
+        "cache_read": 0,
+        "cache_write": 1618
+      },
+      "gco2": 12.134786035245433,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; handles digits, grouping, coprime error."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 587,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 12.904201816465703,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; proper ValueError, grouping, digits handled."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 662,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.552949919080573,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 35,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct encode/decode, grouping, digits, and coprime ValueError; clean code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1271,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 27.940784512313307,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 51,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted backtracking with pruning; handles leading zeros, no-solution cases."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 585,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 12.860235200395975,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct lyrics, pluralization, capitalization, and verse separation; clean helpers."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1654,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 36.36039148966657,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 52,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted DFS with sound pruning; handles leading zeros."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1420,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 31.216297409508176,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 48,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted backtracking with sound pruning; handles leading zeros."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 496,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 10.903720785292998,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 95,
+      "judge_min": 94,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clean; handles singular and 'no' cases."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 562,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 12.354619115594081,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 22,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct DP, handles edge cases, error messages match spec."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 555,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 12.200735959350027,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct verses, plurals, separators; clean, readable helper functions."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 604,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 13.277918053058409,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 28,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct DP with backtracking; exact error messages; handles edge cases."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 600,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 13.189984820918948,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct DP with backtracking; handles zero, negative, impossible targets."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1388,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 30.512831552392505,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 78,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, and clear; hash conflicts with tolerant equality."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 543,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 11.936936262931649,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 95,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct, complete set semantics; clean list-based implementation."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1496,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 32.887028820157916,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 75,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete operations with reflected ops; hash ignores eq tolerance."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1464,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 32.183562963042235,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 75,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete operations; real coercion and tolerant equality handled well."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 644,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.157250374453005,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 45,
+      "judge": 95,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct, complete set semantics; list-backed storage is O(n^2) but fine."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 701,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 15.410298932440305,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 45,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear; all set operations handle duplicates properly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 635,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 13.95940060213922,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 35,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, algorithmic, clear; matches expected output format."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 671,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.750799691394356,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 34,
+      "judge": 97,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct lyrics, data-driven, proper verse separation, clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 725,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 15.937898325277065,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 34,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct data-driven verses; matches Exercism format with blank separators."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 1143,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 25.126921083850597,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct flood fill; edge cases and ValueError handled cleanly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 1218,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 26.775669186465468,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, constants exported, proper ValueError; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 1119,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 24.599321691013838,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 68,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, ownership logic, error handling; clear structure."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 904,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 19.872910463517883,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 75,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct logic, edge cases handled, clear and complete."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 461,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 10.134305004072726,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct mapping, sorting, default roster; clean and readable."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 809,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 17.784496200205716,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct logic, edge cases handled, clear; FRP style not used"
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 981,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 21.56562518220248,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 40,
+      "judge": 93,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct derived-state logic; handles repeats, losing, last-guess win."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 460,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 10.11232169603786,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete, clear; sorts custom rosters and maps plant names properly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 428,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 9.408855838922184,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 22,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct mapping, sorted roster, default handled; clean and readable."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 171,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 3.7591456739619002,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct 1-based rows/columns; clean, defensive copies."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 163,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 3.5832792096829813,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct 1-based rows/columns, clean, returns copies."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 178,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 3.913028830205954,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct 1-based rows/columns, clean, handles blank lines."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 2185,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 48.03352805617984,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 98,
+      "judge": 95,
+      "judge_min": 78,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 78
+      },
+      "judge_note": "Correct, faithful refactor with clear log; output matches original formatting."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 2511,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 55.2000864755458,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 98,
+      "judge": 93,
+      "judge_min": 72,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct, clean refactor; refactoring log included; output format preserved."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 3069,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 67.46677235900042,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 92,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct, clean refactor preserving output; refactoring log included."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1552,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 34.118094070110345,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 64,
+      "judge": 95,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct, efficient search; edge cases and ValueError message handled properly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 620,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 13.629650981616248,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 22,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct O(N) derivation; verified ordering and equation; clean, readable code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 489,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 10.749837629048944,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct derivation, O(N), handles edge cases, clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1567,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 34.44784369063332,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 60,
+      "judge": 95,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct, efficient pruning; handles empty ranges and invalid input."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1361,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 29.919282235451142,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 66,
+      "judge": 93,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct pruned search; collects all factor pairs; proper ValueError."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 386,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 8.485556901457858,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct O(N) derivation; handles ordering and edge cases cleanly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1097,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 24.11568891424681,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 60,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct propagation, creation-order updates, change-only callbacks; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1153,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 25.346754164199247,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 56,
+      "judge": 95,
+      "judge_min": 75,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct topological propagation and callback semantics; clear, complete implementation."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1343,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 29.52358269082358,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 56,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct topological propagation and stable-state callbacks; clean, readable implementation."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 755,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 16.59739756632301,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 45,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; coordinates tuple and move work properly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 668,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.684849767289762,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 40,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear; modular turning and coordinates property work."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 220,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 4.836327767670281,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 97,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, complete sieve; handles edge cases; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 230,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 5.05616084801893,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 97,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, efficient sieve; handles limits below 2; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 707,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 15.542198780649493,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 40,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct and complete. Matches the expected coordinates, direction and move API."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 283,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 6.221276173866771,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 98,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, efficient sieve; handles edge cases; clear and readable."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 367,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 8.067874048795424,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 17,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct clockwise spiral; handles sizes 0 and 1; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 293,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 6.441109254215421,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 96,
+      "judge_min": 75,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct spiral walk; handles sizes 0 and 1; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 316,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 6.946725339017314,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 97,
+      "judge_min": 97,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct boundary-shrinking spiral; handles sizes 0 and 1."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 788,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 17.32284673147355,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 33,
+      "judge": 93,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct tally, sorting, and formatting; returns the expected list of lines."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 307,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 6.7488755667035285,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 96,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct encode/decode with proper incomplete-sequence error; clear code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 743,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 16.333597869904633,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 92,
+      "judge_min": 75,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct formatting, sorting, and tallying; clean, readable implementation."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 855,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 18.7957283698095,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 94,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct parsing, sorting, and formatting; clean and readable."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 331,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 7.276474959540287,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 97,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct encode/decode; incomplete-sequence ValueError handled; clean, readable code."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 406,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 8.925223062155155,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 96,
+      "judge_min": 15,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 15
+      },
+      "judge_note": "Correct encode/decode; raises ValueError on incomplete sequences."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 668,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.684849767289762,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 55,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct pruned permutation search; returns Norwegian and Japanese as expected."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 814,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 17.894412740380044,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 55,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "All constraints encoded; returns Norwegian and Japanese correctly."
+    },
+    {
+      "variant": "caveman",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 661,
+        "cache_read": 1618,
+        "cache_write": 0
+      },
+      "gco2": 14.530966611045706,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 55,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct solver; all constraints encoded; returns Norwegian and Japanese."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 508,
+        "cache_read": 0,
+        "cache_write": 968
+      },
+      "gco2": 11.167520481711376,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 95,
+      "judge_min": 78,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 78
+      },
+      "judge_note": "Correct, complete, and clean; handles grouping, digits, and coprime errors."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 606,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 13.32188466912814,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct encode/decode, grouping, digits, and coprime ValueError; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 719,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 15.805998477067874,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 26,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, handles digits, grouping, and coprime error."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1385,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 30.446881628287905,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 92,
+      "judge_min": 82,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct weighted-sum backtracking with pruning; handles leading zeros and no-solution."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 466,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.24422154424705,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verses, pluralization, and Exercism line format; clean code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 988,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 21.719508338446534,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted backtracking; leading-zero and no-solution cases handled; clear."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1163,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 25.566587244547893,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 34,
+      "judge": 76,
+      "judge_min": 30,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 30,
+        "claude-sonnet-5-5": 76,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "KeyError possible when a leading letter is left only zero."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 456,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.0243884638984,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 96,
+      "judge_min": 42,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct verses, pluralization, and separators; clean, readable implementation."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 493,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.837770861188403,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verses, pluralization and blank-line separators; clean code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 455,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.002405155863537,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct DP, handles zero, negative, and unreachable targets."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 867,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 19.05952806622788,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct DP; handles negative, zero, and unreachable cases with messages."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 502,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 11.035620633502187,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 93,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct DP and messages; memory complexity claim slightly inaccurate."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1198,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 26.336003025768168,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 42,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct and complete with reflected operators; tolerant equality is reasonable."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 599,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 13.168001512884084,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete wrapper over built-in set; clear and concise."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1373,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 30.183081931869527,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 42,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete operations with real-number mixing; clear, tolerant equality."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1354,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 29.76539907920709,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 43,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete operations with real-number interop; clear, tolerant equality."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 640,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 14.069317142313544,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; built-in set backing is allowed."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 559,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 12.288669191489488,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete set semantics via built-in set; clear and concise."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 823,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 18.09226251269382,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct algorithmic lyrics generation; matches expected format; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 712,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 15.652115320823816,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 45,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct, complete, clear; output format matches Exercism's expected list."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 1188,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 26.116169945419518,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 50,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, ownership, validation, and territories; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 1020,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 22.42297419556221,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct verses, separators, and horse ending; clear data-driven loop."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 1072,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 23.566106213375186,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 45,
+      "judge": 95,
+      "judge_min": 82,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct flood fill, proper errors, constants exported; clean code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 854,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 18.773745061774637,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 36,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct flood fill, valid errors, exports constants; passes typical tests."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 720,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 15.827981785102738,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 26,
+      "judge": 93,
+      "judge_min": 62,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 62
+      },
+      "judge_note": "Correct logic; should pass the standard tests; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 831,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 18.26812897697274,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 95,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct exercism hangman logic; repeats count as misses; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 479,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.530004548700294,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 95,
+      "judge_min": 45,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct, complete, clear; sorts roster; plant names match expected output."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 927,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 20.378526548319773,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 95,
+      "judge_min": 42,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct logic; matches expected losing threshold and repeat-guess penalty."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 380,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 8.353657053248668,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; sorts custom rosters and uses expected plurals."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 428,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 9.408855838922184,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct, concise; sorts roster, maps plant names correctly, default roster works."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 210,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 4.616494687321632,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct 1-based rows/columns; clear, concise; limitations honestly disclosed."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 211,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 4.638477995356497,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct 1-based rows/columns; honest note on skipped index validation."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 1977,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 43.460999984927945,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 48,
+      "judge": 93,
+      "judge_min": 42,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Output matches original formatting; clean refactor with change log."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 1896,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 41.68035203410387,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 49,
+      "judge": 94,
+      "judge_min": 42,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Faithful, clean refactor with clear log; output formats verified correct."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 2319,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 50.97929133285174,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 50,
+      "judge": 93,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Faithful refactor with log; output format and sorting preserved."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 202,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 4.4406282230427125,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 96,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct 1-based rows/columns; clean, concise implementation."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 518,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 11.387353562060023,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation and bounds; note miscounts its three asserts."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1266,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 27.830867972138982,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 72,
+      "judge_min": 42,
+      "judge_max": 86,
+      "judges": {
+        "claude-opus-5-5": 86,
+        "claude-sonnet-5-5": 72,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Correct on likely tests; min_factor=0 causes ZeroDivisionError."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1623,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 35.67890894058576,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 82.5,
+      "judge_min": 72,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": null,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct, efficient enough; handles empty result and errors; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 435,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 9.562738995166237,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 11,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) algebraic solution; handles edge cases; clear."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1696,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 37.28369042713089,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 90,
+      "judge_min": 72,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct results, empty case, and ValueError; brute force but acceptable."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 885,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 19.45522761085545,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation; handles all stated cases cleanly."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1312,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 28.842100141742762,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 57,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct topological propagation, deduped callbacks; clear and complete."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1383,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 30.402915012218177,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 55,
+      "judge": 94,
+      "judge_min": 82,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct glitch-free propagation, change-only callbacks; clear, complete implementation."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 672,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 14.772782999429223,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, matches the standard exercism API; clean and readable."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1428,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 31.392163873787098,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 57,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct topological propagation; callbacks fire once on change; clean."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 328,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 7.2105250354356905,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, efficient sieve; handles edge cases; clear and readable."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 647,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 14.223200298557597,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 96,
+      "judge_min": 82,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 82
+      },
+      "judge_note": "Correct, complete Exercism API; clockwise turning and example verified."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 295,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 6.48507587028515,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 14,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, efficient sieve; edge cases handled; clear and concise."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 583,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 12.816268584326243,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, matches Exercism interface; clean modular turning logic."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 208,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 4.572528071251902,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, efficient sieve; handles limits below 2; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 708,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 15.564182088684362,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 15,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct clockwise spiral; handles size 0 and 1; clear."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 571,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 12.552468887907864,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 96,
+      "judge_min": 88,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 88
+      },
+      "judge_note": "Correct clockwise spiral; handles sizes 0 and 1; clear code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 734,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 16.13574809759085,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 16,
+      "judge": 88,
+      "judge_min": 85,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 88,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Spiral correct; false claim that negative size returns []."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 990,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 21.763474954516266,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tally, sorting, formatting; clean and readable implementation."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 932,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 20.4884430884941,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 92,
+      "judge_min": 86,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 86,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tally, formatting, sorting and validation; returns list of lines."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 372,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 8.17779058896975,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 22,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct encode/decode with proper incomplete-sequence error; import-time asserts pass."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 514,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 11.299420329920565,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct encode/decode; proper incomplete-sequence error; clean, concise code."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 1168,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 25.676503784722225,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 36,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tallying, formatting, sorting; returns list of strings as tests expect."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 1161,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 25.52262062847817,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 94,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Encodes all clues correctly; returns Norwegian and Japanese efficiently."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 477,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 10.486037932630563,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct encode/decode; incomplete-sequence ValueError raised with message."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 742,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 16.311614561869764,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 27,
+      "judge": 90,
+      "judge_min": 85,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": null,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Encodes all constraints correctly; returns Norwegian and Japanese."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 385,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 8.463573593422991,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, concise; handles grouping, digits, coprime check."
+    },
+    {
+      "variant": "ponytail",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 1183,
+        "cache_read": 968,
+        "cache_write": 0
+      },
+      "gco2": 26.006253405245193,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "All clues encoded; returns Norwegian and Japanese efficiently."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 360,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 7.913990892551369,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct encode/decode, grouping, and coprime ValueError; clean and readable."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-affine-cipher",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1661,
+        "output": 359,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 7.892007584516504,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, handles digits, grouping, coprime errors; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 513,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 11.2774370218857,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verses, pluralization, and separators; clean, readable implementation."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1220,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 26.819635802535192,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 37,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct weighted backtracking with leading-zero checks; large-puzzle speed unverified."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1028,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 22.59884065984113,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 41,
+      "judge": 92,
+      "judge_min": 92,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 92,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct pruned search; handles leading zeros and unsolvable puzzles."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-alphametics",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 342,
+        "output": 1444,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 31.743896802344928,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 43,
+      "judge": 92.5,
+      "judge_min": 92,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": null,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct column-pruned backtracking; handles leading zeros, no-solution cases."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 411,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 9.03513960232948,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verses, plurals, separators; clean and readable."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-bottle-song",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 789,
+        "output": 499,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 10.969670709397592,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 96,
+      "judge_min": 94,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct verses, singular/plural and 'no' handled; clean, readable code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 364,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 8.001924124690829,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct DP; handles zero, negative, and impossible targets with messages."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 367,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 8.067874048795424,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct DP, handles zero, negative, impossible cases; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-change",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 604,
+        "output": 451,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 9.914471923724077,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct DP with reconstruction; exact error messages; handles edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1417,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 31.150347485403582,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 68,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete operations with reflected operand support; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 542,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 11.914952954896783,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete wrapper around set; clear and handles edge cases."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 507,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 11.145537173676512,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete set wrapper; clear; default-argument change is harmless."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1460,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 32.09562973090278,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 65,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete operations with real-number coercion; clear implementation."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-complex-numbers",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1269,
+        "output": 1208,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 26.555836106116818,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 45,
+      "judge": 95,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct and complete, including reflected real operands; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-custom-set",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 318,
+        "output": 763,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 16.77326403060193,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct, complete, clear implementation; all stub methods properly implemented."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 675,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 14.838732923533817,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 96,
+      "judge_min": 45,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct algorithmic verses, horse ending, and verse separators; clean."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 671,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 14.750799691394356,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 31,
+      "judge": 96,
+      "judge_min": 15,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 15
+      },
+      "judge_note": "Correct, complete, clear algorithmic implementation."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 805,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 17.696562968066253,
+      "passed": false,
+      "grade_detail": "----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)",
+      "nblocks": 1,
+      "loc": 42,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, handles edge cases, clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-food-chain",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1072,
+        "output": 644,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 14.157250374453005,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 30,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct verse generation and separators; clean, readable algorithmic approach."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 930,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 20.444476472424366,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 47,
+      "judge": 95,
+      "judge_min": 75,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct flood fill, ownership, ValueError and constants; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-go-counting",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1138,
+        "output": 796,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 17.49871319575247,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 40,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct flood fill, ownership, errors, and territories; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 337,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 7.4083748077494755,
+      "passed": false,
+      "grade_detail": "----------------------------------------------------------------------\nRan 19 tests in 0.002s\n\nFAILED (failures=9)",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 35,
+      "judge_min": 25,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 35,
+        "claude-sonnet-5-5": 25,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Returns 'Radish' instead of 'Radishes'; radish-containing tests will fail."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 800,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 17.58664642789193,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 24,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Correct logic, edge cases handled, clear; not FRP-styled."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 378,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 8.309690437178938,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 96,
+      "judge_min": 75,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 97,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct, complete, clear; handles default and custom sorted rosters."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 814,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 17.894412740380044,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 25,
+      "judge": 95,
+      "judge_min": 75,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Correct logic, edge cases handled, clear and concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-hangman",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 879,
+        "output": 719,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 15.805998477067874,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 26,
+      "judge": 95,
+      "judge_min": 72,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 72
+      },
+      "judge_note": "Handles misses, repeats, win, loss, and ended-game errors correctly."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-kindergarten-garden",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1666,
+        "output": 358,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 7.8700242764816375,
+      "passed": false,
+      "grade_detail": "----------------------------------------------------------------------\nRan 19 tests in 0.003s\n\nFAILED (failures=14)",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 95,
+      "judge_min": 30,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 30,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Uses 'Radish'/'Violet'; the example output expects 'Radishes'/'Violets'."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 144,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 3.165596357020548,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct 1-based rows/columns, returns copies, clean and concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 160,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 3.517329285578386,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 95,
+      "judge_min": 45,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct 1-based rows/columns, int parsing, clean and concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 765,
+        "output": 156,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 3.4293960534389263,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 7,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct 1-based rows/columns with int parsing; clean, concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 1833,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 40.29540362790739,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 52,
+      "judge": 90,
+      "judge_min": 42,
+      "judge_max": 93,
+      "judges": {
+        "claude-opus-5-5": 93,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Clean, faithful refactor with log; fixes inner-group zero-padding bug."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 2184,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 48.01154474814497,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 67,
+      "judge": 94,
+      "judge_min": 75,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 75
+      },
+      "judge_note": "Faithful refactor; formatting matches; clear log; minor intended behavior changes."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-ledger",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 3330,
+        "output": 2358,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 51.83664034621147,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 77,
+      "judge": 92,
+      "judge_min": 42,
+      "judge_max": 94,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 42
+      },
+      "judge_note": "Faithful, clean refactor with log; output matches original formatting."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1336,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 29.369699534579524,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 41,
+      "judge": 92,
+      "judge_min": 45,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 92,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct, pruned search; minor min_factor=0 factor edge case."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 419,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 9.211006066608398,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 12,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation; ordering enforced; handles small and odd N."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1115,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 24.51138845887438,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 46,
+      "judge": 93,
+      "judge_min": 35,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 35
+      },
+      "judge_note": "Correct, efficient pruning; handles errors and empty ranges properly."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-palindrome-products",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1349,
+        "output": 1199,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 26.357986333803034,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 39,
+      "judge": 94,
+      "judge_min": 25,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 25
+      },
+      "judge_note": "Correct pruned search; collects all factor pairs, raises ValueError properly."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 302,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 6.638959026529204,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 96,
+      "judge_min": 45,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 45
+      },
+      "judge_note": "Correct closed-form derivation; filters ordering properly; clear and efficient."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-pythagorean-triplet",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 582,
+        "output": 331,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 7.276474959540287,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 13,
+      "judge": 96,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct O(N) derivation; checks ordering; handles small inputs."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 967,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 21.257858869714376,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 47,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct topological propagation; callbacks fire once on change; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1199,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 26.357986333803034,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 48,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 94,
+        "claude-sonnet-5-5": 95,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct glitch-free propagation, callbacks fire properly; clean, readable code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 601,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 13.211968128953814,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct and complete; matches the expected coordinates/direction/move API."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-react",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 378,
+        "output": 1836,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 40.36135355201198,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 2,
+      "loc": 47,
+      "judge": 80,
+      "judge_min": 80,
+      "judge_max": 92,
+      "judges": {
+        "claude-opus-5-5": 80,
+        "claude-sonnet-5-5": 80,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct glitch-free solution, but two code blocks violate single-block instruction."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 601,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 13.211968128953814,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 23,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, matches expected API; clear clockwise modular turning."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 211,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.638477995356497,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct sieve with edge cases handled; slice assignment is clear."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-robot-simulator",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 444,
+        "output": 460,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 10.11232169603786,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 19,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct, complete, clear; matches the expected API and example."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 204,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.484594839112441,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 97,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct, efficient sieve; handles limits below 2; clear code."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-sieve",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 1281,
+        "output": 209,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.594511379286768,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 9,
+      "judge": 96,
+      "judge_min": 90,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 90
+      },
+      "judge_note": "Correct, efficient sieve; handles edge cases; clear and concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 206,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.528561455182173,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 96,
+      "judge_min": 85,
+      "judge_max": 97,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 85
+      },
+      "judge_note": "Correct clockwise spiral; handles size 0 and 1; concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 195,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.286745066798659,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 98,
+        "claude-haiku-4-5": 95
+      },
+      "judge_note": "Correct clockwise spiral; handles size 0 and 1; clear."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-spiral-matrix",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 256,
+        "output": 193,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 4.242778450728929,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 10,
+      "judge": 97,
+      "judge_min": 96,
+      "judge_max": 98,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 98
+      },
+      "judge_note": "Correct clockwise spiral; handles size 0 and 1; concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 573,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 12.596435503977597,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 93,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 93,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct formatting, sorting, and points; clean, readable implementation."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 266,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 5.847559937274067,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct encode/decode; raises incomplete-sequence error with required message."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 598,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 13.146018204849218,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 18,
+      "judge": 92,
+      "judge_min": 90,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 90,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tallying, formatting, and sorting; clear and concise."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 265,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 5.825576629239202,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 20,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct encode/decode; incomplete sequences raise ValueError with message."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-tournament",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 736,
+        "output": 612,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 13.45378451733733,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 94,
+      "judge_min": 92,
+      "judge_max": 95,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 94,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Correct tally, formatting, sorting; clean and readable."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-variable-length-quantity",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 973,
+        "output": 279,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 6.133342941727311,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 21,
+      "judge": 96,
+      "judge_min": 95,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "Correct encode/decode; proper incomplete-sequence ValueError; clean, readable."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 1,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 624,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 13.717584213755705,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 29,
+      "judge": 97,
+      "judge_min": 96,
+      "judge_max": 100,
+      "judges": {
+        "claude-opus-5-5": 96,
+        "claude-sonnet-5-5": 97,
+        "claude-haiku-4-5": 100
+      },
+      "judge_note": "All constraints encoded correctly; returns Norwegian and Japanese efficiently."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 0,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 589,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 12.948168432535436,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 32,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "Encodes all constraints correctly; returns Norwegian and Japanese."
+    },
+    {
+      "variant": "honey",
+      "task": "ex-zebra-puzzle",
+      "category": "exercism",
+      "type": "code",
+      "run": 2,
+      "stop_reason": "end_turn",
+      "usage": {
+        "input": 544,
+        "output": 720,
+        "cache_read": 5210,
+        "cache_write": 0
+      },
+      "gco2": 15.827981785102738,
+      "passed": true,
+      "grade_detail": "ok",
+      "nblocks": 1,
+      "loc": 28,
+      "judge": 95,
+      "judge_min": 92,
+      "judge_max": 96,
+      "judges": {
+        "claude-opus-5-5": 95,
+        "claude-sonnet-5-5": 96,
+        "claude-haiku-4-5": 92
+      },
+      "judge_note": "All 15 constraints encoded; correct answers; efficient pruned search."
+    }
+  ]
+}

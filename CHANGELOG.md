@@ -28,6 +28,15 @@ tagged on `main`.
   judge a tie, 100% tests. Opus 5, Sonnet 5, Haiku 4.5 and Fable 5 stamps added.
 - Bench pricing: Opus 5.5 $4/$20, Sonnet 5 corrected to $2/$10, Haiku 5.5 added.
 
+### Measured (all Opus 5.5 unless named)
+- External suite: 21 Exercism tasks picked by rule. Honey −20% output, −36% LOC, −13%
+  cost, 95% tests (baseline 98%). Honey dropped a stub's constants on one task.
+- Agent loop (Cline): compact rule −39% output with no extra turns, cost flat (−1%, ns);
+  the full skill as a per-turn rule costs 36% more.
+- Sonnet 5.5: −37% output (gets a savings entry). Haiku 5.5: −38% LOC but output −3% (ns),
+  because thinking grows; no savings claim.
+- `honey-design` cuts 52% but loses the web judge on all 7 pages; stays opt-in.
+
 ### Fixed
 - Log compressor returns Bash's output object as `updatedToolOutput`, so Claude Code
   applies it.

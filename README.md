@@ -50,8 +50,12 @@ is a paired per-task median vs no skill, with a Wilcoxon p-value
 | **Honey** | **−40%** | **−52%** | **−31%** | tie (5/12/4) | 100% |
 
 Quality is a tie with no skill: fewer tokens at the same quality, not better quality.
-The tasks are author-written and the bench is one API call per task, so treat cost as
-an upper bound. Per-tier numbers, older models, method and every caveat:
+Those 23 tasks are author-written. On 21 Exercism tasks picked by a fixed rule, Honey cuts
+less: output −20%, lines −36%, cost −13% (all p≤0.002), with 95% of tests passing against
+98% for no skill ([`ext-opus55`](bench/results/ext-opus55/)); read that as the
+conservative figure. In a real agent loop (Cline, Opus 5.5) the output cut holds (−39%,
+no extra turns) but the bill stays flat (−1%, ns), because input dominates a session; the
+cost figure above is single-call only ([details](bench/README.md#result-on-opus-55-cline-opus55)). Per-tier numbers, older models, method and every caveat:
 [docs/benchmark.md](docs/benchmark.md) and [`bench/`](bench/). Regenerate any figure
 offline with `node bench/src/report.js --stamp full-opus55b --by-type`.
 

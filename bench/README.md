@@ -155,6 +155,23 @@ Measured (Opus 4.8, 14 code tasks): `compact` holds Honey's output cut (≈−49
 **100% test-pass and flat judge**, while `full` inflates per-turn input (the whole skill re-sent
 each loop) — which is why `compact` is the shape to ship for agentic use.
 
+### Result on Opus 5.5 (`cline-opus55`)
+
+Cline 3.0.29, 14 code tasks × 3 runs × off / compact / full, 126 agent runs, Haiku 4.5
+judge. Every run passed its test.
+
+| Payload | Δ output | Δ LOC | Δ new-input | Δ cost | Δ turns | Judge W/L/T |
+|---------|---------:|------:|------------:|-------:|--------:|------------:|
+| compact | **−39%** (p=0.001) | **−53%** (p=0.001) | +6% | −1% (ns) | 0 (median 2) | 5/3/6 |
+| full | −35% (p=0.001) | −44% (p=0.001) | +47% | **+36%** (p=0.001) | 0 (median 2) | 6/2/6 |
+
+**In a real agent loop the output cut holds and there is no retry tax, but the bill does
+not fall.** A session's cost is mostly input (the harness prompt, tool definitions, context
+re-sent each turn), so cutting output 39% moves cost by −1%. Sending the whole `SKILL.md`
+as a per-turn rule adds 47% new input and makes each task 36% *more* expensive. That is
+why the compact rule is the recommended Cline payload, and why the single-call −31% cost
+figure is an upper bound, not a promise.
+
 ## Regression gate
 
 `skills/honey/SKILL.md` loads live into the bench, so editing the skill silently changes
@@ -329,6 +346,57 @@ Opus and Sonnet 5.5 think by default and the budget is shared, so 40–57% of th
 came back empty. `judge.js` now allows 4096 and parses the last `{"score": …}` object.
 Any stamp judged by a thinking-by-default model before `cd763a3` should be re-judged with
 `src/rejudge-stamp.js` before its judge column is quoted.
+
+### External tasks (`ext-opus55`) — tasks Honey didn't write
+
+21 Python exercises from Exercism ([`tasks-ext/`](tasks-ext/README.md)), picked by a fixed
+rule before any run. Opus 5.5, 3 runs, same 3-judge panel, 252 cells, zero refusals.
+
+| Variant | Δ output | Δ LOC | Δ cost | Judge W/L/T | sign p | Tests |
+|---------|---------:|------:|-------:|------------:|-------:|------:|
+| caveman | −3% (ns) | −2% (p=0.008) | −0% (ns) | 4/3/14 | 1.000 | 100% |
+| ponytail | +6% (ns) | −36% (p<0.001) | +7% (ns) | 2/10/9 | **0.039** | 100% |
+| honey | **−20%** (p<0.001) | **−36%** (p<0.001) | **−13%** (p=0.002) | 2/9/10 | 0.065 | 95% |
+
+The cut holds on outside tasks but is about half of what the author-written suite shows
+(−40% / −52% / −31%), and Honey is the one arm that loses test cells here (60/63 against
+baseline 62/63). Two are real misses: on `go-counting` Honey dropped the stub's `WHITE` /
+`BLACK` / `NONE` constants, which the hidden tests import (the ladder cut names it judged
+unused). On `kindergarten-garden` it wrote "Radish" for "Radishes", a slip baseline also
+made once. Read this table, not the author-written one, as the conservative estimate.
+
+### Sonnet 5.5 and Haiku 5.5 (`full-sonnet55`, `full-haiku55`)
+
+Baseline vs honey, 23 tasks × 3 runs, Haiku 4.5 judge (as for the Sonnet 5 / Haiku 4.5
+stamps), 138 cells each, zero refusals.
+
+| Model | Δ output | Δ LOC | Δ cost | Judge W/L/T | Tests base → honey |
+|-------|---------:|------:|-------:|------------:|-------------------:|
+| Sonnet 5.5 | **−37%** (p<0.001) | **−55%** (p<0.001) | **−24%** (p<0.001) | 5/11/5 (p=0.210) | 96% → 99% |
+| Haiku 5.5 | −3% (ns) | **−38%** (p=0.001) | +9% (ns) | 6/4/11 (p=0.754) | 100% → 100% |
+
+**On Haiku 5.5 Honey moves tokens into thinking.** On code tasks the visible reply halves
+(median 868 → 447 characters, LOC −55%) while billed output rises 593 → 666 tokens: Haiku
+5.5 thinks by default and reasons longer under the skill. So `hooks/eco-config.json` gets a
+`sonnet-5-5` savings entry and no `haiku-5-5` entry — a Haiku 5.5 session shows no savings
+line rather than one the bill doesn't back.
+
+### `honey-design` on Opus 5.5 (`web-opus55-design`)
+
+The 7 user-facing tasks, baseline / honey / honey-design in one run, 3-judge panel, 63
+cells. Every page passes the structural and a11y checks in every arm (21/21).
+
+| Variant | Δ output | Δ LOC | Δ cost | Judge W/L/T | sign p |
+|---------|---------:|------:|-------:|------------:|-------:|
+| honey | −37% (p=0.022) | −40% (p=0.022) | −36% (p=0.022) | 0/6/1 | **0.031** |
+| honey-design | −52% (p=0.022) | −74% (p=0.022) | −52% (p=0.022) | 0/7/0 | **0.016** |
+
+**`honey-design` no longer earns its place on Opus 5.5**: it cuts hardest and the judges
+rank it below no skill on every page (two drop to 85 and 88), and below core honey head to
+head (1/3/3). It stays opt-in and is not loaded automatically. Core honey's web deficit is
+small (1–3 judge points per task) but one-directional here, where `full-opus55b` had it
+level (3/3/1) with the same prompt. Two runs of 7 tasks don't settle it; treat
+user-facing quality on Opus 5.5 as an open question.
 
 ### Earlier stamps
 
