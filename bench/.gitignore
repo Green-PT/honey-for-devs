@@ -9,6 +9,7 @@ results/*
 !results/full-opus5/
 !results/full-sonnet5/
 !results/full-haiku45/
+!results/full-opus55b/
 results/full-opus48/raw/
 results/full-gpt55/raw/
 results/full-opus5-lean/raw/
@@ -16,6 +17,7 @@ results/full-fable5/raw/
 results/full-opus5/raw/
 results/full-sonnet5/raw/
 results/full-haiku45/raw/
+results/full-opus55b/raw/
 
 node_modules/
 __pycache__/

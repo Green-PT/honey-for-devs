@@ -281,36 +281,60 @@ Add a `code` task: drop a folder in `tasks/` with `prompt.md`, `meta.json`, a `t
 
 ## Results
 
-Full cross-provider run — `plain` rubric, 4-judge cross-family panel
-(opus + sonnet + haiku + gpt-5.5), 23 tasks, 3 runs, stamps `full-opus48` / `full-gpt55`.
-
-> ⚠ **Partially re-verified.** These stamps predate the 2026-07-30 skill revision
-> (repo-reuse ladder rung, root-cause rule, no-prose-abbreviation rule) and the refresh of
-> `variants/caveman.md` / `variants/ponytail.md` to current upstream.
->
-> **Competitor columns are stale.** The variants were re-pinned again on 2026-10-18
-> (Ponytail v5.3.2, Caveman v4.0.1); every caveman/ponytail figure below is the July 2026
-> versions' result until a new run lands.
->
-> A live **k=1 smoke** on the revised skill (`results/smoke-postchange`, 23 tasks,
-> baseline vs honey, single judge) reproduces the headline and passes the gate: Δ output
-> **−29%** (p=0.040), Δ LOC **−38%** (p=0.001), tests 100% vs baseline 96%, judge 5/2/14
-> (p=0.453 — tie). `node src/gate.js smoke-postchange full-opus48` → OK, no regression.
->
-> Per the [run ladder](METHODOLOGY.md#run-ladder), **k=1 is not quotable**. It establishes
-> "no regression", not a number. The honey columns below still describe the previous
-> `SKILL.md`, and the competitor columns still describe older upstream prompts. A `RUNS=3`
-> re-run is needed before either is quoted as current. `Δ LOC` is backfilled from the saved
-> replies and is valid for these stamps as-is.
-
 Every figure is a **paired per-task median** vs `baseline` with a two-sided Wilcoxon `p`;
 judge is an exact sign test over per-task wins/losses/ties. `(ns)` = misses p<0.05, i.e. a
 tie. Regenerate any of it offline, no API spend:
 
 ```bash
-node src/report.js --stamp full-opus48            # whole suite
-node src/report.js --stamp full-opus48 --by-type  # per tier
+node src/report.js --stamp full-opus55b            # whole suite
+node src/report.js --stamp full-opus55b --by-type  # per tier
 ```
+
+### Opus 5.5 (`full-opus55b`) — current upstream competitors
+
+23 tasks × 3 runs, 276 cells, zero refusals, zero truncation, `MAX_TOKENS=16000`. Judge
+panel `claude-opus-5-5,claude-sonnet-5-5,claude-haiku-4-5` (no OpenAI seat: no key), `plain`
+rubric; 2 of 756 judge seats null. Competitors pinned 2026-10-18: Ponytail v5.3.2
+(`26a0cd68504a`), Caveman v4.0.1 (`947106a852e1`); honey `845b11b11fe9`, which includes
+the closing-line rule (name what was skipped or not verified). Run on `cd763a3`, the
+first commit with judges that work on thinking-by-default models (see *Judge budget* below).
+
+| Variant | Δ output | Δ LOC | Δ new-input | Δ cost | Judge W/L/T | sign p | Tests |
+|---------|---------:|------:|------------:|-------:|------------:|-------:|------:|
+| caveman | −29% (p<0.001) | −27% (p<0.001) | −1% | −26% (p<0.001) | 3/8/10 | 0.227 | 100% |
+| ponytail | −28% (p=0.002) | −52% (p<0.001) | −1% | −26% (p=0.002) | 1/16/4 | **<0.001** | 100% |
+| honey | **−40%** (p<0.001) | **−52%** (p<0.001) | −1% | **−31%** (p<0.001) | 5/12/4 | 0.143 | 100% |
+
+By tier, Δ output · Δ LOC:
+
+| Tier | tasks | caveman | ponytail | honey |
+|------|------:|--------:|---------:|------:|
+| code | 14 | −31% · −30% | −18% · −34% | **−44% · −65%** |
+| user-facing | 7 | −27% · −23% (ns) | −68% · −71% | −16% · −35% |
+| agent-to-agent | 2 | +24% | +52% | −15% |
+
+Every arm passes 100% of tests on every tier and recovers 100% of relay queries, so on this
+model the differences are volume and judged quality, not correctness. Ponytail 5's −68% on
+user-facing pages comes with a 0/7 judge loss (p=0.016) — the "shorter substitute" shape
+the [lean-prompt ablation](METHODOLOGY.md#lean-prompt-ablation) predicted. Gate:
+`node src/gate.js full-opus55b full-opus5` passes for honey (tests +4 pt, judge +3.8,
+paired output reduction −3 pt against a 10-pt limit) and flags caveman (44% → 29%), a
+competitor arm whose prompt changed. That is not a Honey regression. The closing-line rule's
+own token cost is not isolated: there is no ablation arm for it.
+
+**Judge budget.** The first Opus 5.5 attempt (discarded) judged with `max_tokens: 200`.
+Opus and Sonnet 5.5 think by default and the budget is shared, so 40–57% of their seats
+came back empty. `judge.js` now allows 4096 and parses the last `{"score": …}` object.
+Any stamp judged by a thinking-by-default model before `cd763a3` should be re-judged with
+`src/rejudge-stamp.js` before its judge column is quoted.
+
+### Earlier stamps
+
+Full cross-provider run — `plain` rubric, 4-judge cross-family panel
+(opus + sonnet + haiku + gpt-5.5), 23 tasks, 3 runs, stamps `full-opus48` / `full-gpt55`.
+These use the **July 2026** competitor copies and the pre-2026-07-30 skill; the current
+competitor figures are the Opus 5.5 table above. `Δ LOC` is backfilled from the saved
+replies and is valid for these stamps as-is.
 
 ### Opus 4.8 (`full-opus48`)
 
