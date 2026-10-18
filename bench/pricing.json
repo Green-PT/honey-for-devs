@@ -2,7 +2,7 @@
   "_about": "Approximate USD per 1M tokens, for the $ columns only. Update to your real rates. Matched by first substring hit; falls back to _default.",
   "_cache_about": "cache_write / cache_read are multipliers on that row's input rate. Anthropic bills a 5-minute cache write at 1.25x input and a cache read at 0.1x. OpenAI charges nothing extra to create a cache entry and bills cached input at 0.1x. Rows omitting either field inherit _default's.",
   "_default": { "in": 3.0, "out": 15.0, "cache_write": 1.25, "cache_read": 0.1 },
-  "_order_note": "Matched by FIRST substring hit, so specific ids must precede generic ones — 'claude-opus-5' also contains 'opus'. Rates verified 2026-07-30 against the current model table; opus-5-5 added 2026-10-18 ($4/$20, cache read $0.20 = 0.05x).",
+  "_order_note": "Matched by FIRST substring hit, so specific ids must precede generic ones — 'claude-opus-5' also contains 'opus'. Rates verified 2026-07-30 against the current model table; opus-5-5 added 2026-10-18 ($4/$20, cache read $0.20 = 0.05x); sonnet-5 / sonnet-5-5 at $2/$10 and haiku-5-5 at $0.10/$0.50 (prompts up to 100K) verified the same day.",
   "rates": [
     { "match": "gpt-6",   "in": 10.0, "out": 50.0, "cache_write": 1.25, "cache_read": 0.1 },
     { "match": "gpt-5.5", "in": 2.5, "out": 15.0, "cache_write": 1.0, "cache_read": 0.1 },
@@ -15,8 +15,9 @@
     { "match": "opus-4-7", "in": 5.0, "out": 25.0 },
     { "match": "opus-4-6", "in": 5.0, "out": 25.0 },
     { "match": "opus",   "in": 15.0, "out": 75.0 },
-    { "match": "sonnet-5", "in": 3.0, "out": 15.0 },
+    { "match": "sonnet-5", "in": 2.0, "out": 10.0 },
     { "match": "sonnet", "in": 3.0,  "out": 15.0 },
+    { "match": "haiku-5-5", "in": 0.1, "out": 0.5 },
     { "match": "haiku",  "in": 1.0,  "out": 5.0 }
   ]
 }

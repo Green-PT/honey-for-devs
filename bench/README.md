@@ -102,7 +102,8 @@ Knobs (env):
 | `RUNS` | `1` | repeats per task (use 3+ to average sampling noise) |
 | `THINKING` | `0` | extended-thinking token budget (0 = off) |
 | `CONCURRENCY` | `4` | parallel API calls |
-| `STAMP` | `latest` | results subdirectory name |
+| `STAMP` | `latest` (`mock-latest` with `--mock`) | results subdirectory name. A live run refuses a stamp that already holds `results.json` unless `--resume`, and a `.lock` stops two runs writing one stamp |
+| `JUDGE_NULL_MAX` | `0.05` | exit 1 when more than this share of judge seats returned no score; results are kept, re-judge with `src/rejudge-stamp.js` |
 
 The full cross-provider run used: `JUDGE_MODELS=claude-opus-4-8,claude-sonnet-4-6,claude-haiku-4-5-20251001,gpt-5.5`,
 `JUDGE_RUBRIC=plain`, `RUNS=3`, once with `MODEL=claude-opus-4-8 STAMP=full-opus48` and once with
