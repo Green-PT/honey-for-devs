@@ -272,7 +272,7 @@ reach for at a specific moment.
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse numbered delete-list ("cut 1 and 3") |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
-| `honey-debt` | satellite skill | harvest every `honey:` shortcut marker into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
+| `honey-debt` | satellite skill | harvest every `shortcut:` marker (and legacy `honey:` ones) into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original, then `honey-check fidelity` undoes any rewrite that lost a number, code span, negation or safety word, or didn't shrink |
 | `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git and linted by `honey-check memory` (stale paths, dead `@imports`, duplicated rules, a `MEMORY.md` past what loads) |
 | `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eson crush`/`retrieve` |
