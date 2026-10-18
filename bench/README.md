@@ -365,6 +365,13 @@ baseline 62/63). Two are real misses: on `go-counting` Honey dropped the stub's 
 unused). On `kindergarten-garden` it wrote "Radish" for "Radishes", a slip baseline also
 made once. Read this table, not the author-written one, as the conservative estimate.
 
+**Fixed by a rule, then re-run (`ext-opus55-stub`).** `SKILL.md` now lists, under *Never
+cut*, every name a provided stub, interface or public API defines. Re-run with that prompt
+(`9dbd635b9fb7`), baseline vs honey: Honey passes **63/63** (baseline 61/63), with output
+−21%, LOC −37%, cost −10% (all p≤0.007), judge 3/6/12 (p=0.508). On the main suite
+(`full-opus55-stub`) the same prompt gives −42% / −53% / −36% at 69/69 tests, and
+`node src/gate.js full-opus55-stub full-opus55b` passes.
+
 ### Sonnet 5.5 and Haiku 5.5 (`full-sonnet55`, `full-haiku55`)
 
 Baseline vs honey, 23 tasks × 3 runs, Haiku 4.5 judge (as for the Sonnet 5 / Haiku 4.5

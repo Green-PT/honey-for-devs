@@ -12,6 +12,9 @@ tagged on `main`.
 - Honey mode per project; `/honey default <mode>` sets the fallback for every repo.
 - Repo map at session start (~50 tokens) so the agent reuses before writing; `HONEY_MAP=0`
   turns it off.
+- Core rule: never cut a name a provided stub, interface or public API defines. Found by
+  the external suite (Honey dropped stub constants the hidden tests import); with it Honey
+  passes 63/63 there (was 60/63) and the regression gate passes.
 - Core rule: end with one line naming what was skipped or not verified. Benched free:
   output +0.3% (p=0.90) against the skill without it.
 - New hosts: Kimi Code, Devin CLI, Grok Build, Qoder, Antigravity, CodeBuddy, oh-my-pi.
@@ -30,7 +33,7 @@ tagged on `main`.
 
 ### Measured (all Opus 5.5 unless named)
 - External suite: 21 Exercism tasks picked by rule. Honey −20% output, −36% LOC, −13%
-  cost, 95% tests (baseline 98%). Honey dropped a stub's constants on one task.
+  cost, 95% tests (baseline 98%); after the stub-names rule −21% / −37% / −10% at 100%.
 - Agent loop (Cline): compact rule −39% output with no extra turns, cost flat (−1%, ns);
   the full skill as a per-turn rule costs 36% more.
 - Sonnet 5.5: −37% output (gets a savings entry). Haiku 5.5: −38% LOC but output −3% (ns),

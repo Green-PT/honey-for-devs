@@ -11,6 +11,8 @@ results/*
 !results/full-haiku45/
 !results/full-opus55b/
 !results/full-opus55-noclose/
+!results/full-opus55-stub/
+!results/ext-opus55-stub/
 !results/cline-opus55/
 !results/web-opus55-design/
 !results/ext-opus55/
@@ -25,6 +27,8 @@ results/full-sonnet5/raw/
 results/full-haiku45/raw/
 results/full-opus55b/raw/
 results/full-opus55-noclose/raw/
+results/full-opus55-stub/raw/
+results/ext-opus55-stub/raw/
 results/cline-opus55/raw/
 results/web-opus55-design/raw/
 results/ext-opus55/raw/

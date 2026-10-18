@@ -51,8 +51,8 @@ is a paired per-task median vs no skill, with a Wilcoxon p-value
 
 Quality is a tie with no skill: fewer tokens at the same quality, not better quality.
 Those 23 tasks are author-written. On 21 Exercism tasks picked by a fixed rule, Honey cuts
-less: output −20%, lines −36%, cost −13% (all p≤0.002), with 95% of tests passing against
-98% for no skill ([`ext-opus55`](bench/results/ext-opus55/)); read that as the
+less: output −21%, lines −37%, cost −10% (all p≤0.007), with 100% of tests passing against
+97% for no skill ([`ext-opus55-stub`](bench/results/ext-opus55-stub/)); read that as the
 conservative figure. In a real agent loop (Cline, Opus 5.5) the output cut holds (−39%,
 no extra turns) but the bill stays flat (−1%, ns), because input dominates a session; the
 cost figure above is single-call only ([details](bench/README.md#result-on-opus-55-cline-opus55)). Per-tier numbers, older models, method and every caveat:
