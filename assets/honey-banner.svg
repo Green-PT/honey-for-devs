@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" role="img" aria-labelledby="t d">
+<title id="t">Honey — I shrunk the AI</title>
+<desc id="d">Honey cuts output tokens 40%, lines of code 52% and cost 31% versus no skill, with 100% of tests passing. Claude Opus 5.5, 23 tasks, 3 runs, paired medians.</desc>
+<style>
+text{font-family:Inter, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;fill:#f0f3ee}
+.lab{font-size:13px;font-weight:600;letter-spacing:.06em;fill:#aab0a6}
+.dl{font-size:40px;font-weight:650;letter-spacing:-.03em;fill:#3bc971;animation:dl 6s ease-out infinite both}
+.k{fill:#3bc971;stroke:#3bc971}
+.c{fill:transparent;stroke:#5b7565;animation:cut 6s ease-in-out infinite both}
+.chip{fill:none;stroke:#2c3a30}
+.ct{font-size:14px;font-weight:600}
+.logo{transform-box:fill-box;transform-origin:center;animation:spin 6s ease-in-out infinite}
+@keyframes cut{0%,12%{fill:#3bc971;stroke:#3bc971}30%,88%{fill:transparent;stroke:#5b7565}100%{fill:#3bc971;stroke:#3bc971}}
+@keyframes dl{0%,22%{opacity:0}34%,88%{opacity:1}100%{opacity:0}}
+@keyframes spin{0%,40%{transform:rotate(0)}55%,100%{transform:rotate(60deg)}}
+@media (prefers-reduced-motion:reduce){.c,.dl,.logo{animation:none}}
+</style>
+<defs><polygon id="h" points="12.5,1.5 23.5,7.75 23.5,20.25 12.5,26.5 1.5,20.25 1.5,7.75" stroke-width="1.5"/></defs>
+<rect width="1280" height="640" fill="#16241c"/>
+<polygon class="logo" points="94,73 107,80.5 107,95.5 94,103 81,95.5 81,80.5" fill="#3bc971"/>
+<text x="120" y="95" class="lab">GREENPT · OPEN-SOURCE SKILL</text>
+<text x="74" y="232" style="font-size:128px;font-weight:650;letter-spacing:-.045em">Honey</text>
+<text x="80" y="292" style="font-size:34px;font-weight:600;letter-spacing:-.02em">I shrunk the AI.</text>
+<text x="80" y="346" style="font-size:19px;fill:#ccd2c9">Write less code. Say less about it.</text>
+<text x="80" y="374" style="font-size:19px;fill:#ccd2c9">A coding-agent skill that cuts what the model</text>
+<text x="80" y="402" style="font-size:19px;fill:#ccd2c9">emits, not what it gets right.</text>
+<text x="620" y="150" class="lab">OUTPUT TOKENS</text><text x="1196" y="152" class="dl" text-anchor="end" style="animation-delay:0.00s">−40%</text><use href="#h" x="620" y="166" class="k"/><use href="#h" x="649" y="166" class="k"/><use href="#h" x="678" y="166" class="k"/><use href="#h" x="707" y="166" class="k"/><use href="#h" x="736" y="166" class="k"/><use href="#h" x="765" y="166" class="k"/><use href="#h" x="794" y="166" class="k"/><use href="#h" x="823" y="166" class="k"/><use href="#h" x="852" y="166" class="k"/><use href="#h" x="881" y="166" class="k"/><use href="#h" x="910" y="166" class="k"/><use href="#h" x="939" y="166" class="k"/><use href="#h" x="968" y="166" class="c" style="animation-delay:0.42s"/><use href="#h" x="997" y="166" class="c" style="animation-delay:0.36s"/><use href="#h" x="1026" y="166" class="c" style="animation-delay:0.30s"/><use href="#h" x="1055" y="166" class="c" style="animation-delay:0.24s"/><use href="#h" x="1084" y="166" class="c" style="animation-delay:0.18s"/><use href="#h" x="1113" y="166" class="c" style="animation-delay:0.12s"/><use href="#h" x="1142" y="166" class="c" style="animation-delay:0.06s"/><use href="#h" x="1171" y="166" class="c" style="animation-delay:0.00s"/><text x="620" y="268" class="lab">LINES OF CODE</text><text x="1196" y="270" class="dl" text-anchor="end" style="animation-delay:0.25s">−52%</text><use href="#h" x="620" y="284" class="k"/><use href="#h" x="649" y="284" class="k"/><use href="#h" x="678" y="284" class="k"/><use href="#h" x="707" y="284" class="k"/><use href="#h" x="736" y="284" class="k"/><use href="#h" x="765" y="284" class="k"/><use href="#h" x="794" y="284" class="k"/><use href="#h" x="823" y="284" class="k"/><use href="#h" x="852" y="284" class="k"/><use href="#h" x="881" y="284" class="k"/><use href="#h" x="910" y="284" class="c" style="animation-delay:0.79s"/><use href="#h" x="939" y="284" class="c" style="animation-delay:0.73s"/><use href="#h" x="968" y="284" class="c" style="animation-delay:0.67s"/><use href="#h" x="997" y="284" class="c" style="animation-delay:0.61s"/><use href="#h" x="1026" y="284" class="c" style="animation-delay:0.55s"/><use href="#h" x="1055" y="284" class="c" style="animation-delay:0.49s"/><use href="#h" x="1084" y="284" class="c" style="animation-delay:0.43s"/><use href="#h" x="1113" y="284" class="c" style="animation-delay:0.37s"/><use href="#h" x="1142" y="284" class="c" style="animation-delay:0.31s"/><use href="#h" x="1171" y="284" class="c" style="animation-delay:0.25s"/><text x="620" y="386" class="lab">COST</text><text x="1196" y="388" class="dl" text-anchor="end" style="animation-delay:0.50s">−31%</text><use href="#h" x="620" y="402" class="k"/><use href="#h" x="649" y="402" class="k"/><use href="#h" x="678" y="402" class="k"/><use href="#h" x="707" y="402" class="k"/><use href="#h" x="736" y="402" class="k"/><use href="#h" x="765" y="402" class="k"/><use href="#h" x="794" y="402" class="k"/><use href="#h" x="823" y="402" class="k"/><use href="#h" x="852" y="402" class="k"/><use href="#h" x="881" y="402" class="k"/><use href="#h" x="910" y="402" class="k"/><use href="#h" x="939" y="402" class="k"/><use href="#h" x="968" y="402" class="k"/><use href="#h" x="997" y="402" class="k"/><use href="#h" x="1026" y="402" class="c" style="animation-delay:0.80s"/><use href="#h" x="1055" y="402" class="c" style="animation-delay:0.74s"/><use href="#h" x="1084" y="402" class="c" style="animation-delay:0.68s"/><use href="#h" x="1113" y="402" class="c" style="animation-delay:0.62s"/><use href="#h" x="1142" y="402" class="c" style="animation-delay:0.56s"/><use href="#h" x="1171" y="402" class="c" style="animation-delay:0.50s"/>
+<use href="#h" x="620" y="476" class="k" transform="translate(620 476) scale(.56) translate(-620 -476)"/>
+<text x="642" y="490" style="font-size:13px;fill:#aab0a6">Honey</text>
+<use href="#h" x="700" y="476" transform="translate(700 476) scale(.56) translate(-700 -476)" style="fill:none;stroke:#5b7565"/>
+<text x="722" y="490" style="font-size:13px;fill:#aab0a6">what no skill emits</text>
+<line x1="80" y1="550" x2="1200" y2="550" stroke="#2c3a30"/>
+<rect x="80" y="574" width="152" height="34" rx="17" class="chip"/><text x="156.0" y="596" text-anchor="middle" class="ct">100% tests pass</text><rect x="242" y="574" width="232" height="34" rx="17" class="chip"/><text x="358.0" y="596" text-anchor="middle" class="ct">Quality: tie with no skill</text><rect x="484" y="574" width="172" height="34" rx="17" class="chip"/><text x="570.0" y="596" text-anchor="middle" class="ct">Reproducible bench</text>
+<text x="1200" y="596" text-anchor="end" style="font-family:'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;font-size:13px;fill:#aab0a6">Claude Opus 5.5 · 23 tasks × 3 runs · paired medians, p&lt;0.001</text>
+</svg>

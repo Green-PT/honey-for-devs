@@ -62,10 +62,12 @@ explanation but a beautiful page deserves ~100; a chatty reply with a plain page
 Reply with ONLY a JSON object: {"score": <int 0-100>, "note": "<= 12 words"}`;
 
 function parseScore(text) {
-  const m = text.match(/\{[\s\S]*\}/);
-  if (!m) return { score: null, note: "unparseable judge output" };
+  // Last flat {"score": ...} object: a judge that reasons aloud first (Sonnet 5.5 does)
+  // mentions `{}` in its prose, and a greedy first-brace match swallowed it.
+  const all = text.match(/\{[^{}]*"score"[^{}]*\}/g);
+  if (!all) return { score: null, note: "unparseable judge output" };
   try {
-    const o = JSON.parse(m[0]);
+    const o = JSON.parse(all[all.length - 1]);
     const s = Math.max(0, Math.min(100, Math.round(Number(o.score))));
     return { score: Number.isFinite(s) ? s : null, note: String(o.note || "") };
   } catch {
@@ -76,8 +78,10 @@ function parseScore(text) {
 async function judge({ model, taskPrompt, candidateOutput, type = "code" }) {
   const system = type === "web" ? SYSTEM_WEB : SYSTEM_CODE;
   const user = `TASK:\n${taskPrompt}\n\nCANDIDATE ANSWER:\n${candidateOutput}`;
-  const { text } = await complete({ model, system, user, maxTokens: 200 });
+  // Thinking is on by default on Opus/Sonnet 5.5 and shares max_tokens: at 200 the judge
+  // spent the whole budget thinking and returned "" — a null score, not a judgement.
+  const { text } = await complete({ model, system, user, maxTokens: 4096 });
   return parseScore(text);
 }
 
-module.exports = { judge, RUBRIC };
+module.exports = { judge, parseScore, RUBRIC };

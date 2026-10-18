@@ -13,6 +13,8 @@ const LANG_ALIASES = {
 // replies append one ("const x = require('./solution'); x(1,2)"); gluing it onto the real
 // code breaks the import. Drop those — keep only definition blocks.
 function isUsageBlock(body, lang) {
+  // Comments don't count: a solution block may show `require('./x')` usage in one.
+  body = body.replace(lang === "python" ? /#.*$/gm : /\/\/.*$/gm, "");
   if (lang === "python") return /^\s*(from\s+solution\s+import|import\s+solution)\b/m.test(body);
   return /\brequire\(\s*['"]\.\//.test(body) || /^\s*import\s+.*\bfrom\s+['"]\.\//m.test(body);
 }

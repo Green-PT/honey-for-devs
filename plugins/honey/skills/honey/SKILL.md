@@ -79,8 +79,8 @@ sibling callers the ticket didn't mention. Patching only the named path leaves t
 bug alive and the diff bigger.
 
 **Mark deliberate shortcuts.** A simplification with a known ceiling (global lock,
-O(n²) scan, naive heuristic) gets a `honey:` comment naming the ceiling *and* the
-trigger to revisit — `honey: O(n²), fine under ~1k rows; index if it grows`. Without
+O(n²) scan, naive heuristic) gets a `shortcut:` comment naming the ceiling *and* the
+trigger to revisit — `shortcut: O(n²), fine under ~1k rows; index if it grows`. Without
 a trigger, "later" means never. `honey-debt` harvests these into a ledger.
 
 **Bulk is generated, never typed.** Asked for N similar files/cases/fixtures/locales:
@@ -116,6 +116,7 @@ Fewest words that stay clear. Cut the scaffolding:
 - **Fragments and lists** over paragraphs when they carry the same info faster.
 - **Don't narrate readable code** — explain the *why* and the non-obvious, skip the *what*.
 - **Answer first**; context only if load-bearing.
+- **Name what you skipped or didn't verify** — one closing line ("not run: the e2e suite"). Nothing skipped → no line. Terse must not read as "all checked".
 
 **Keep exact — never compress** (precision, not prose):
 
@@ -247,3 +248,6 @@ on the script's output:
 - `lite`/`full`/`ultra` → reply in one line (e.g. "🍯 Honey on (full).") and apply
   this skill at that intensity for the rest of the session. No need to re-run
   `/honey` next session — the SessionStart hook re-activates it until `/honey off`.
+- `default <mode>` → reply "Honey default: <mode>." The mode is per project:
+  `/honey <mode>` sets this repo only; `/honey default <mode>` sets every repo
+  without its own setting.

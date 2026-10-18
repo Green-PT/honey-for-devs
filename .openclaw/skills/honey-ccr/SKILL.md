@@ -50,6 +50,6 @@ The original is always stashed first, and the rewritten result ends with the exa
 history already in context is immutable — this fires at entry, the only place a
 hook can act.
 
-Caveat: Claude Code builds affected by anthropics/claude-code#68951 ignore the
-hook's Bash rewrite, making it inert (a session-start warning tells you when this
-applies). Manual `some-tool | eson crush` piping is unaffected — prefer it there.
+Caveat: the hook needs Claude Code 2.1.121+; older builds can't rewrite Bash output
+(a session-start warning tells you). Manual `some-tool | eson crush` piping works on
+any version — prefer it there.

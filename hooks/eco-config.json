@@ -20,6 +20,7 @@
     "stamp": "bench/results/full-opus48",
     "n": 23,
     "by_model": {
+      "opus-5-5": { "ratio": 0.399, "p": 0.00008, "n": 23, "stamp": "bench/results/full-opus55b", "model": "claude-opus-5-5" },
       "opus": { "ratio": 0.286, "p": 0.020, "stamp": "bench/results/full-opus48", "model": "claude-opus-4-8" },
       "gpt-5": { "ratio": 0.196, "p": 0.004, "stamp": "bench/results/full-gpt55", "model": "gpt-5.5" },
       "fable": { "ratio": 0.393, "p": 0.0003, "n": 17, "stamp": "bench/results/full-fable5", "model": "claude-fable-5" },

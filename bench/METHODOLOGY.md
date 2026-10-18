@@ -156,6 +156,46 @@ endpoints that matter for it. Where lean does hold up is the code tier (output �
 −45%, cost −46% vs −34%, LOC −64% vs −72%) and relay (−63% vs −50%). A middle variant —
 lean's structure with the user-facing carve-out restored in full — is the open candidate.
 
+## Closing-line ablation
+
+`skills/honey/SKILL.md` gained a rule on 2026-10-18, taken from Ponytail 5: end with one
+line naming what was skipped or not verified ("not run: the e2e suite"). It is the only
+rule in the skill that *adds* output, and Ponytail's own judge credited it for their
+v5-over-v4 preference, so it needed its own measurement rather than riding along in the
+honey arm. `variants/honey-noclose.md` is the shipped skill with exactly that one line
+removed (hash `55ad1aefbb36` vs honey `845b11b11fe9`).
+
+```bash
+RUNS=3 MAX_TOKENS=16000 MODEL=claude-opus-5-5 \
+  JUDGE_MODELS=claude-opus-5-5,claude-sonnet-5-5,claude-haiku-4-5 \
+  node src/run.js --variants baseline,honey,honey-noclose
+```
+
+### Result: the rule is free, and does not move the judge (`full-opus55-noclose`)
+
+23 tasks × 3 runs, 207 cells, zero refusals, zero truncation, no null judge seats, ≈$16.
+Paired with `honey-noclose` as the control:
+
+| honey vs honey-noclose | Δ | p | higher/lower/tie |
+|---|---:|---:|---:|
+| output | +0.3% | 0.897 | 12/10/1 |
+| LOC | 0.0% | 0.836 | 8/8/5 |
+| cost | +0.4% | 0.843 | 13/10/0 |
+| judge | 0 | 0.388 (sign) | 4/8/9 |
+
+Against baseline: honey −35% output / −46% LOC / −32% cost, honey-noclose −39% / −48% /
+−32%, all p<0.001; tests 100% in both arms. The 4-point gap in the vs-baseline column is
+inside run-to-run noise. The same honey prompt measured −40% output in `full-opus55b`
+hours earlier, a 5-point swing with nothing changed. The direct pairing above is the
+comparison that counts.
+
+The rule does change behaviour. 11 of 69 honey replies end with a skipped/not-verified
+line, against 0 of 69 for `honey-noclose` and for baseline (regex over each reply's last
+three lines, so a lower bound). It fires about one reply in six and costs too few tokens to see. **Keep it.** It neither pays
+nor charges at these endpoints. Its claimed benefit, a judge preference, does not show
+here (4/8/9, p=0.39). That is a tie, not a loss, and a single-call bench has no "the user
+trusted an unchecked claim" failure for it to prevent.
+
 ## Hazard: Fable 5 refusals silently corrupt a run
 
 **Do not benchmark on Fable 5 until this is fixed.** A parallel Fable 5 run (23 tasks × 3,
@@ -194,7 +234,10 @@ prompts, so a live-loaded `honey` can't drift against moving competitors mid-exp
 The cost is that they go stale: both were refreshed on 2026-07-30 after upstream revisions
 (Caveman dropped prose abbreviations and causal arrows from `ultra` on tokenizer grounds
 and restated its headline from "~75%" to "65% (measured)"; Ponytail added a repo-reuse
-rung, an understand-before-you-climb guard, and a root-cause rule). Re-check them before
+rung, an understand-before-you-climb guard, and a root-cause rule). Refreshed again on
+2026-10-18 after both rewrote their skills: Ponytail `skills/ponytail/SKILL.md` at
+`df9e899` (v5.3.2) and Caveman `skills/caveman/SKILL.md` at `2178ed6` (unchanged through
+v4.0.1). Every competitor column in a stamp older than that describes the July pins. Re-check them before
 any paid run — comparing against a year-old competitor is not a fair benchmark, and the
 refresh invalidates prior stamps for competitor columns.
 

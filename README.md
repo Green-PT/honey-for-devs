@@ -1,15 +1,16 @@
 # 🍯 Honey (I Shrunk the AI)
 
 <p align="center">
-  <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExbHRsNndobm8wM3F1c3pqNnhxODF6NDY2a2t3YjN5OHFoYmtvZXg0dCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/JUh0yTz4h931K/giphy.gif" alt="Honey, I shrunk the AI" width="480">
+  <img src="assets/honey-banner.svg" alt="Honey — I shrunk the AI. Versus no skill on Claude Opus 5.5: output tokens −40%, lines of code −52%, cost −31%, 100% of tests passing." width="100%">
 </p>
 
 **Write less code and say less about it.** Honey (I Shrunk the AI) by
 [GreenPT](https://github.com/Green-PT) is a
-cross-tool coding skill that cuts AI coding-agent token usage and LLM API costs —
-making agents emit less code *and* less prose without losing correctness. It works
+cross-tool coding skill that cuts the output tokens AI coding agents spend —
+making them emit less code *and* less prose without losing correctness. It works
 with **Claude (claude.ai and the API), Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, Cline,
-OpenClaw, oh-my-pi, Kiro, Kilo Code, and Hermes Agent**. Three independent levers, applied reflexively:
+OpenClaw, oh-my-pi, Kiro, Kilo Code, Hermes Agent, Kimi Code, Devin CLI, Grok Build, Qoder,
+Antigravity, and CodeBuddy**. Three independent levers, applied reflexively:
 
 1. **Less code** — YAGNI first. Walk a ladder (does it need to exist? → stdlib →
    language native → existing dependency → one line → minimum block) and stop at
@@ -46,10 +47,11 @@ to take the numbers on faith: 23 tasks across three kinds of work — baseline v
 [Ponytail](https://github.com/DietrichGebert/ponytail) vs Honey — same model, same
 prompts, only the skill changes. Correctness is objective (unit tests, structural /
 accessibility checks, and lossless round-trip recovery for agent handoffs); quality
-is scored by a **4-model cross-family judge panel** (median of Opus 4.8 + Sonnet 4.6
-+ Haiku 4.5 + GPT-5.5) under a **neutral rubric** that says nothing about length, so a
-terse skill gets no thumb on the scale. The figures below are the committed results
-(Claude Opus 4.8, 3 runs each) — run `cd bench && npm run bench` to reproduce.
+is scored by a **judge panel** (median of three or four models; the Opus 4.8 run adds
+GPT-5.5 for a cross-family seat) under a **neutral rubric** that says nothing about
+length, so a terse skill gets no thumb on the scale. The figures below are the
+committed results (Claude Opus 5.5, 3 runs each) — run `cd bench && npm run bench` to
+reproduce.
 
 Every number is a **paired per-task delta** vs baseline — runs collapse by median,
 tasks pair up, and the figure is the median of those paired deltas with a two-sided
@@ -58,65 +60,64 @@ to be longest, and it is how token-saving tools end up publishing numbers nobody
 reproduce. Endpoints and the run ladder are pre-registered in
 [`bench/METHODOLOGY.md`](bench/METHODOLOGY.md).
 
-On **Claude Opus 5** (23 tasks × 3 runs, 207 cells, zero refusals or truncation —
-[`full-opus5-lean`](bench/results/full-opus5-lean/)):
+On **Claude Opus 5.5** against the current upstream skills (Ponytail v5.3.2, Caveman
+v4.0.1) — 23 tasks × 3 runs, 276 cells, zero refusals or truncation, 3-judge panel
+(Opus 5.5 + Sonnet 5.5 + Haiku 4.5) — [`full-opus55b`](bench/results/full-opus55b/):
 
-| | Δ LOC | Δ output | Δ cost | Tests |
-|---|------:|---------:|-------:|------:|
-| **Honey** | **−71%** (p<0.001) | **−38%** (p<0.001) | **−24%** (p<0.001) | **100%** |
-
-Honey is the only arm with no failing cell — the no-skill baseline fails four. And the
-cut is **larger on the newer model, not smaller**: −71% LOC on Opus 5 against −39% on
-Opus 4.8. That runs against the 2026 prompting guidance that newer models need less
-instruction, which we tested directly and rejected — see
-[`METHODOLOGY.md`](bench/METHODOLOGY.md#lean-prompt-ablation).
+| Variant | Δ LOC | Δ output | Δ cost | Judge W/L/T | Tests |
+|---------|------:|---------:|-------:|------------:|------:|
+| Caveman | −27% (p<0.001) | −29% (p<0.001) | −26% (p<0.001) | 3/8/10, p=0.227 | 100% |
+| Ponytail | **−52%** (p<0.001) | −28% (p=0.002) | −26% (p=0.002) | 1/16/4, **p<0.001** | 100% |
+| **Honey** | **−52%** (p<0.001) | **−40%** (p<0.001) | **−31%** (p<0.001) | 5/12/4, p=0.143 | 100% |
 
 A single blended number hides the story, because the levers fire differently per
-task type. Honey on Opus 4.8, where the full competitor set was run — **Δ LOC**
-measures Lever 1 directly, **Δ output** measures the tokens (code *and* the prose
-around it):
+task type. **Δ LOC** measures Lever 1 directly, **Δ output** measures the tokens (code
+*and* the prose around it):
 
-| Task tier | tasks | Δ LOC | Δ output |
-|-----------|------:|------:|---------:|
-| **Code** | 14 | **−53%** (p=0.002) | **−39%** (p=0.007) |
-| **User-facing** | 7 | −23% (p=0.022) | −7% (p=0.673 — a tie) |
-| **Agent-to-agent** | 2 | — (no code) | −49% (n=2, no p) |
-| whole suite | 23 | **−43%** (p<0.001) | **−29%** (p=0.020) |
+| Task tier | tasks | Honey Δ LOC | Honey Δ output | Ponytail Δ output | Caveman Δ output |
+|-----------|------:|------------:|---------------:|------------------:|-----------------:|
+| **Code** | 14 | **−65%** (p=0.001) | **−44%** (p=0.002) | −18% (p=0.017) | −31% (p=0.003) |
+| **User-facing** | 7 | −35% (p=0.022) | −16% (p=0.022) | −68% (p=0.022) | −27% (p=0.022) |
+| **Agent-to-agent** | 2 | — (no code) | −15% (n=2, no p) | +52% | +24% |
+| whole suite | 23 | **−52%** (p<0.001) | **−40%** (p<0.001) | −28% (p=0.002) | −29% (p<0.001) |
 
-Against the competitors on the whole suite (judge win/loss/tie by exact sign test):
+- **Code** — Honey's deepest cut: −65% of lines and −44% output at 100% unit-test
+  pass, a bigger cut than either competitor. The code judge is a tie (2/9/3, p=0.065).
+- **User-facing** — Ponytail 5 compresses landing pages hardest (−68% output) and
+  loses the judge on all 7 (0/7, p=0.016), though every arm still passes the
+  structural/a11y checks. Honey's carve-out keeps the polish: −16% output, judge 3/3/1.
+- **Agent-to-agent** — every arm recovers 100% of the adversarial relay queries on
+  Opus 5.5. Honey is the only one that shrinks the handoff (−15%); Caveman and Ponytail
+  grow it (+24% / +52%). Two tasks, so no p-value. (On Opus 4.8 Caveman and Ponytail
+  lost recovery, 67% / 50%; Honey stayed lossless.)
+- **Quality is a tie** for Honey (p=0.143) and Caveman (p=0.227) — fewer tokens at
+  no measurable quality cost, not higher quality. Ponytail is the one arm the judges
+  rank significantly below baseline (1/16/4, p<0.001).
+- **Cost is now significant**: −31% (p<0.001) at Opus 5.5 list prices with the skill
+  prompt cached. On a cold session Honey still costs more than no skill ($4.54 vs
+  $4.04 for the sweep), because its prompt is the largest.
+- **Ponytail's own number.** Ponytail 5 reports −45% output on Opus 5.5 in its own
+  harness (Claude Code, 39 tasks × 5 runs). This single-call bench measures −28%
+  (p=0.002). The harness and the tasks differ, so neither disproves the other.
 
-| Variant | Δ LOC | Δ output | Judge W/L/T | Tests |
-|---------|------:|---------:|------------:|------:|
-| Caveman | −28% (p<0.001) | −22% (p<0.001) | 3/16/2, **p=0.004** | 94% |
-| Ponytail | −33% (p=0.028) | −7% (ns, p=0.267) | 1/19/1, **p<0.001** | 90% |
-| **Honey** | **−43%** (p<0.001) | **−29%** (p=0.020) | 8/11/2, p=0.648 | **100%** |
+The measured Honey prompt includes the rule to end with one line naming what was
+skipped or not verified; against the Opus 5 stamp it passes the regression gate
+(`node bench/src/gate.js full-opus55b full-opus5`). An ablation without that one line
+([`full-opus55-noclose`](bench/results/full-opus55-noclose/)) shows it costs nothing
+measurable: output +0.3% (p=0.90), cost +0.4% (p=0.84), judge 4/8/9 (p=0.39). It fires on
+16% of replies — see [`METHODOLOGY.md`](bench/METHODOLOGY.md#closing-line-ablation).
 
-- **Code** — the deepest cut (−39%) at 100% unit-test pass. Ponytail's mandatory
-  self-check *inflates* trivial code (+60% on Opus, +92% on GPT-5.5).
-- **User-facing** — the carve-out keeps Honey from compressing polish: the output
-  delta here is a **statistical tie**, and Honey holds the only 100% accessibility
-  pass while Ponytail drops to 81% on the structural/a11y checklist.
-- **Agent-to-agent** — under adversarial relay queries (ordinal, nested, absence,
-  cross-field count) Honey is the **only variant that stays 100% lossless** while
-  roughly halving handoff size; Caveman and Ponytail compress harder *and* lose
-  recovery (67% / 50%). Its biggest, cleanest win — on 2 tasks, so no p-value.
-- **Quality is a tie overall** (p=0.648) — fewer tokens at no measurable quality
-  cost, not higher quality. But the whole-suite tie is two opposing effects
-  cancelling: on Opus, Honey **wins user-facing 6/0/1 (p=0.031)** and **loses the
-  code judge 2/11/1 (p=0.022)** — on tasks where every variant passes 100% of the
-  unit tests, so that is a stylistic penalty for terseness, not a correctness one.
-  Neither effect replicates on GPT-5.5 (p=0.375 / p=1.000), so treat the code-judge
-  dip as suggestive, not established. Caveman's judge *mean* also ties baseline
-  exactly — but paired, it loses 16 of 23 tasks (p=0.004). Means hide that; sign
-  tests don't.
-- **The dollar saving is unproven at this sample size.** −21% on Opus is p=0.104 —
-  not significant on 23 tasks. Output volume is down; the bill is not yet a claim.
+Earlier generations: on **Opus 4.8** against the July 2026 competitor copies
+([`full-opus48`](bench/results/full-opus48/), 4-judge cross-family panel) Honey cut
+−43% LOC and −29% output; on **Opus 5** ([`full-opus5-lean`](bench/results/full-opus5-lean/))
+−71% LOC and −38% output, where a 781-token lean rewrite of the skill was tested and
+rejected — see [`METHODOLOGY.md`](bench/METHODOLOGY.md#lean-prompt-ablation).
 
 The output cut holds on GPT-5.5 (−20%, p=0.004; full two-provider table in
 [`bench/README.md`](bench/README.md#results)), but there **cost comes out +14% (ns)**
 because no prompt caching engaged in that arm, so every task paid the skill prompt
-fresh. Honey is the only variant with no test regressions across all three tiers on
-Opus.
+fresh. On Opus 4.8 Honey was the only variant with no test regressions across all
+three tiers.
 
 ### End-to-end agentic measurement (Cline harness)
 
@@ -167,14 +168,10 @@ answer accuracy, **100%** with retrieve — and the lone crushed miss was a refu
 hallucination. Benches: `npm run bench:ccr` (tokens) and `npm run bench:ccr:comprehension`
 (quality). The `honey-ccr` skill tells the agent when to reach for it.
 
-> **Known limitation (upstream):** Claude Code builds affected by
-> [anthropics/claude-code#68951](https://github.com/anthropics/claude-code/issues/68951)
-> (a regression present since ~2.1.121, still open) ignore a PostToolUse hook's
-> `updatedToolOutput` for the built-in Bash tool. On those versions the entry-time
-> hook runs and stashes the original, but the model still receives the raw
-> uncompressed output — honey warns once at session start when it detects an
-> affected version. Piping explicitly (`some-tool | eson crush`) is unaffected:
-> compression happens before the output leaves the tool. Separately, the hooks
+> **Requirements:** the entry-time hook needs Claude Code **2.1.121+** (where
+> PostToolUse `updatedToolOutput` arrived for built-in tools); honey warns once at
+> session start on older builds. Piping explicitly (`some-tool | eson crush`) works
+> everywhere: compression happens before the output leaves the tool. The hooks also
 > need **Node >= 14** on the PATH Claude Code spawns them with — desktop-app
 > sessions inherit the launchd PATH, not your shell profile, so a stale
 > `/usr/local/bin/node` is common; the hook now warns instead of failing silently.
@@ -268,12 +265,12 @@ reach for at a specific moment.
 | `honey` | core skill (always-on) | the three levers, applied reflexively to every response — plus loop cost discipline for recurring `/loop` runs. `/honey [lite\|full\|ultra\|off]` |
 | `honey-chat` | standalone prompt | Honey for plain chat — the terse-prose core, no tools required. Paste [`skills/honey-chat/SKILL.md`](skills/honey-chat/SKILL.md) into a claude.ai Project's custom instructions, a Style, or an API system prompt (~500 tokens); [`COMPACT.md`](skills/honey-chat/COMPACT.md) (≤1,500 chars) fits ChatGPT/Gemini custom-instruction fields |
 | `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
-| `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse delete-list |
+| `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse numbered delete-list ("cut 1 and 3") |
 | `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
-| `honey-debt` | satellite skill | harvest every `honey:` shortcut marker into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
-| `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original |
-| `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git |
+| `honey-debt` | satellite skill | harvest every `shortcut:` marker (and legacy `honey:` ones) into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
+| `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original, then `honey-check fidelity` undoes any rewrite that lost a number, code span, negation or safety word, or didn't shrink |
+| `honey-memory` | satellite skill | create + maintain one committed per-project `PROJECT.md` so agents stop re-discovering the same facts every cold session; stores only stable, not-in-the-code context, kept honest by living in git and linted by `honey-check memory` (stale paths, dead `@imports`, duplicated rules, a `MEMORY.md` past what loads) |
 | `honey-ccr` | satellite skill | crush huge redundant array tool output (logs, scan results) to a sampled view; lossy-but-recoverable via `eson crush`/`retrieve` |
 | `honey-px` | satellite skill | read huge dense *read-only* bulk as rendered PNG pages (`npx pxpipe-proxy export`) — image tokens scale with pixels, not chars: **up to −85%** on token-dense content (Fable-class readers only); lossy on exact strings, never for files you'll edit |
 | `honey-loop` | satellite skill | cost discipline for recurring `/loop` runs: cache-aware pacing (skip the 300s dead zone), event-driven-over-polling, no-change short-circuit, compact state handle, stop condition |
@@ -306,9 +303,12 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 > from −15% to **−29%** — the old method was understating it — but it also retired
 > two numbers that turned out to be outlier artifacts: Ponytail's "−22% output" is
 > really −7% (ns), and Caveman's "tied quality" is a 16-of-23-task loss (p=0.004).
+> Both corrections concern the July 2026 versions. Re-run on Opus 5.5 against the
+> current upstream skills, Ponytail 5 is −28% output (p=0.002) and Caveman −29%
+> (p<0.001); Ponytail's own harness reports −45% on the same model.
 > Method and pre-registered endpoints: [`bench/METHODOLOGY.md`](bench/METHODOLOGY.md).
 > Regenerate any figure offline with
-> `node bench/src/report.js --stamp full-opus48 --by-type`.
+> `node bench/src/report.js --stamp full-opus55b --by-type`.
 
 ## Install
 
@@ -320,8 +320,11 @@ tasks. See [`bench/results/honey-design.md`](bench/results/honey-design.md).
 ```
 
 Then `/honey` **once** to turn it on (`/honey lite|full|ultra` to set intensity,
-`/honey off` to stop). The state persists across sessions — a SessionStart hook
-re-activates it every session until you run `/honey off`. A 🍯 badge shows the
+`/honey off` to stop). The state persists across sessions and is kept per
+project; `/honey default <mode>` sets it for every repo without its own. A
+SessionStart hook re-activates it every session and adds a ~50-token map of the
+repo's top-level folders and shared helpers, so the agent reuses before it writes
+(`HONEY_MAP=0` turns the map off). A 🍯 badge shows the
 active mode in your statusline. If your client autocompletes `/honey` to
 `honey:honey`, that's the same command.
 
@@ -394,6 +397,12 @@ PATH. Safe to re-run; skips tools you don't have.
 | Kiro | copy `.kiro/steering/honey.md` (project or `~/.kiro/steering/`) |
 | OpenCode | `node bin/install.js --only opencode` — copies `AGENTS.md` to `~/.config/opencode/AGENTS.md` (always-on in every project) and `skills/` into `~/.config/opencode/skills/` as native skills; verify with `opencode debug skill` |
 | Kilo Code | copy `.kilo/rules/honey.md` into your project (auto-discovered; `.kilocode/rules/` also works) |
+| Kimi Code | `/plugins install https://github.com/Green-PT/honey-for-devs`, then `/reload` (`AGENTS.md` goes into the system prompt, skills load on demand) |
+| Devin CLI | `devin plugins install Green-PT/honey-for-devs` |
+| Grok Build | `grok plugin install Green-PT/honey-for-devs --trust`, then enable it under `/plugins` |
+| Qoder | `qodercli plugins install <path-to-checkout>`, or copy `.qoder/rules/honey.md` into your project (`AGENTS.md` at the repo root also auto-loads) |
+| Antigravity | copy `.agents/rules/honey.md` into your project |
+| CodeBuddy | same two `/plugin` commands as Claude Code |
 | Aider / Zed / any AGENTS.md reader | copy `AGENTS.md` into your project |
 
 All of these are also handled automatically by the one-line installer. See

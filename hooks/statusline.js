@@ -8,30 +8,32 @@ const fs = require("fs");
 const os = require("os");
 const path = require("path");
 
-const DIR = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
-const FLAG = path.join(DIR, ".honey-active");
+let input = null;
+try {
+  input = JSON.parse(fs.readFileSync(0, "utf8")); // CC statusline JSON on stdin
+} catch {}
 
 let mode = null;
 try {
-  mode = fs.readFileSync(FLAG, "utf8").trim() || null;
+  const ws = (input && input.workspace) || {};
+  mode = require("./honey-state.js").activeMode(ws.project_dir || ws.current_dir || (input && input.cwd));
 } catch {}
-if (!mode || mode === "off") {
+if (!mode) {
   process.stdout.write("");
   process.exit(0);
 }
 
 let badge = `🍯 honey:${mode}`;
 try {
-  badge += ecoSuffix(mode);
+  badge += ecoSuffix(mode, input);
 } catch {} // any failure -> plain badge
 process.stdout.write(badge);
 
 // ---------------------------------------------------------------------------
-function ecoSuffix(mode) {
+function ecoSuffix(mode, input) {
   const eco = require("./eco.js");
   const cfg = eco.loadConfig();
 
-  const input = JSON.parse(fs.readFileSync(0, "utf8")); // CC statusline JSON on stdin
   const tx = input && input.transcript_path;
   if (!tx || !fs.existsSync(tx)) return "";
 

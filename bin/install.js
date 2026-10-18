@@ -115,6 +115,7 @@ const settingsPath = path.join(CLAUDE_DIR, "settings.json");
 function installStatusline() {
   if (MINIMAL) return;
   copy("hooks/statusline.js", SL_PATH);
+  copy("hooks/honey-state.js", path.join(SL_DIR, "honey-state.js"));
   copy("hooks/eco.js", path.join(SL_DIR, "eco.js")); // statusline requires these
   copy("hooks/eco-config.json", path.join(SL_DIR, "eco-config.json"));
   copy("hooks/eco-models.json", path.join(SL_DIR, "eco-models.json"));
@@ -168,7 +169,8 @@ const CLI_AGENTS = [
       run("claude plugin uninstall honey@greenpt");
       run("claude plugin marketplace remove greenpt");
       remove(path.join(CLAUDE_DIR, "plugins", "cache", "greenpt"));
-      remove(path.join(CLAUDE_DIR, ".honey-active")); // mode flag
+      remove(path.join(CLAUDE_DIR, ".honey-active")); // default mode flag
+      remove(path.join(CLAUDE_DIR, "honey-projects")); // per-project mode flags
       removeStatusline();
     },
   },
@@ -290,6 +292,8 @@ const RULE_AGENTS = [
   { id: "copilot-editor", name: "Copilot (editor)", src: ".github/copilot-instructions.md", dest: ".github/copilot-instructions.md" },
   { id: "kilo", name: "Kilo Code", src: ".kilo/rules/honey.md", dest: ".kilo/rules/honey.md" },
   { id: "kiro", name: "Kiro", src: ".kiro/steering/honey.md", dest: ".kiro/steering/honey.md" },
+  { id: "qoder", name: "Qoder", src: ".qoder/rules/honey.md", dest: ".qoder/rules/honey.md" },
+  { id: "antigravity", name: "Antigravity", src: ".agents/rules/honey.md", dest: ".agents/rules/honey.md" },
   { id: "agents", name: "AGENTS.md (Aider/Zed/universal)", src: "AGENTS.md", dest: "AGENTS.md" },
 ];
 
@@ -441,7 +445,7 @@ async function wizard() {
   note("");
   install();
   note("\nDefault mode: " + mode);
-  run('node "' + path.join(REPO, "hooks", "honey-state.js") + '" set ' + mode);
+  run('node "' + path.join(REPO, "hooks", "honey-state.js") + '" set default ' + mode);
 }
 
 // ---- dispatch -------------------------------------------------------------

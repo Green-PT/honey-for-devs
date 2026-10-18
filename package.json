@@ -9,7 +9,8 @@
     "honey-install": "bin/install.js",
     "eso": "bin/eso.js",
     "eson": "bin/eso.js",
-    "honey-usage": "bin/usage.js"
+    "honey-usage": "bin/usage.js",
+    "honey-check": "bin/check.js"
   },
   "scripts": {
     "bench:eso": "node bench/eso/run.mjs",

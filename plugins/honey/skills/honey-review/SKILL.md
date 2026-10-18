@@ -26,10 +26,10 @@ Input validation, error handling, auth, secrets handling, accessibility basics, 
 ## Output — delete-list, one line per finding
 
 ```
-path:line — cut <what>; <one-clause why> (−N lines)
+N. path:line — cut <what>; <one-clause why> (−N lines)
 ```
 
-- Ordered by lines saved, deepest first.
+- Numbered and ordered by lines saved, deepest first, so the user can answer "cut 1 and 3".
 - End with one total line: `Total: −N lines across M findings.`
 - Nothing to cut → say so in one line. Don't manufacture findings.
 - Terse but human-readable (this is for a person, not an agent — that's `hive-reviewer`'s job).
@@ -37,7 +37,7 @@ path:line — cut <what>; <one-clause why> (−N lines)
 Example:
 
 ```
-src/util.py:12 — cut hand-rolled flatten; stdlib itertools.chain.from_iterable does it (−9 lines)
-src/api.js:40 — cut unused `opts` param; no caller passes it (−3 lines)
+1. src/util.py:12 — cut hand-rolled flatten; stdlib itertools.chain.from_iterable does it (−9 lines)
+2. src/api.js:40 — cut unused `opts` param; no caller passes it (−3 lines)
 Total: −12 lines across 2 findings.
 ```

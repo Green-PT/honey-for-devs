@@ -6,9 +6,6 @@
 // report, never the verdict.
 "use strict";
 
-const fs = require("fs");
-const os = require("os");
-const path = require("path");
 
 const WORKER =
   "Apply Honey: write the minimum code that needs to exist — YAGNI, stdlib/native " +
@@ -27,15 +24,7 @@ function directiveFor(agentType) {
   return /review|audit|critic|judge/i.test(agentType || "") ? REVIEWER : WORKER;
 }
 
-function activeMode() {
-  const dir = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
-  try {
-    const mode = fs.readFileSync(path.join(dir, ".honey-active"), "utf8").trim();
-    return mode && mode !== "off" ? mode : null;
-  } catch {
-    return null;
-  }
-}
+const { activeMode } = require("./honey-state.js");
 
 module.exports = { WORKER, REVIEWER, directiveFor, activeMode };
 
