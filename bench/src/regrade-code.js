@@ -5,7 +5,7 @@
 //   node src/regrade-code.js opus48 code2
 const fs = require("fs");
 const path = require("path");
-const { extractCode } = require("./extract");
+const { extractInfo, loc } = require("./extract");
 const { grade } = require("./grade");
 
 const ROOT = path.join(__dirname, "..");
@@ -24,14 +24,17 @@ for (const stamp of process.argv.slice(2)) {
   const j = JSON.parse(fs.readFileSync(path.join(dir, "results.json"), "utf8"));
   let changed = 0;
   for (const r of j.records) {
-    if ((r.type || "code") === "web") continue;
+    if ((r.type || "code") !== "code") continue; // web/relay have their own graders
     const task = taskOf(r.task);
     const lang = task.meta.lang === "python" ? "python" : "javascript";
     const raw = fs.readFileSync(path.join(dir, "raw", `${r.variant}__${r.task}__r${r.run}.md`), "utf8");
-    const g = grade(task, extractCode(raw, lang));
+    const ex = extractInfo(raw, lang);
+    const g = grade(task, ex.code);
     if (r.passed !== g.passed) changed++;
     r.passed = g.passed;
     r.grade_detail = g.detail;
+    r.nblocks = ex.nblocks;
+    r.loc = loc(ex.code);
   }
   fs.writeFileSync(path.join(dir, "results.json"), JSON.stringify(j, null, 2));
   console.log(`regraded ${stamp}: ${changed} cells changed`);
