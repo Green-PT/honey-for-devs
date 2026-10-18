@@ -1,0 +1,15 @@
+{
+  "id": "ex-hangman",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/hangman",
+  "solution_file": "hangman.py",
+  "test_file": "hangman_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "hangman_test"
+  ]
+}

@@ -40,6 +40,8 @@ const JUDGE_MODELS = (process.env.JUDGE_MODELS || process.env.JUDGE_MODEL || MOD
 const RUNS = Number(process.env.RUNS || 1);
 const THINKING = Number(process.env.THINKING || 0);
 const CONCURRENCY = Number(process.env.CONCURRENCY || 4);
+// TASKS_DIR=tasks-ext runs the external suite (Exercism, picked by rule — see tasks-ext/README.md).
+const TASKS_DIR = process.env.TASKS_DIR || "tasks";
 const JUDGE_NULL_MAX = Number(process.env.JUDGE_NULL_MAX ?? 0.05); // max share of empty judge seats
 const ALL_VARIANTS = ["baseline", "caveman", "ponytail", "honey", "honey-design", "honey-lean", "honey-noclose"];
 // Both are opt-in, excluded from the default sweep — request with --variants.
@@ -74,7 +76,7 @@ function loadVariant(name) {
 
 // --- tasks ---------------------------------------------------------------------
 function loadTasks() {
-  const dir = path.join(ROOT, "tasks");
+  const dir = path.join(ROOT, TASKS_DIR);
   return fs
     .readdirSync(dir)
     .filter((d) => fs.existsSync(path.join(dir, d, "meta.json")))
@@ -326,6 +328,7 @@ const cellKey = (v, t, r) => `${v}__${t}__r${r}`;
     thinking: THINKING,
     mock: MOCK,
     variant_hashes: variantHashes,
+    tasks_dir: TASKS_DIR,
   };
   const persist = () => fs.writeFileSync(outFile, JSON.stringify({ meta, records }, null, 2));
 

@@ -1,0 +1,15 @@
+{
+  "id": "ex-ledger",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/ledger",
+  "solution_file": "ledger.py",
+  "test_file": "ledger_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "ledger_test"
+  ]
+}

@@ -64,15 +64,19 @@ Reply with ONLY a JSON object: {"score": <int 0-100>, "note": "<= 12 words"}`;
 function parseScore(text) {
   // Last flat {"score": ...} object: a judge that reasons aloud first (Sonnet 5.5 does)
   // mentions `{}` in its prose, and a greedy first-brace match swallowed it.
+  const clamp = (n) => (Number.isFinite(n) ? Math.max(0, Math.min(100, Math.round(n))) : null);
   const all = text.match(/\{[^{}]*"score"[^{}]*\}/g);
-  if (!all) return { score: null, note: "unparseable judge output" };
-  try {
-    const o = JSON.parse(all[all.length - 1]);
-    const s = Math.max(0, Math.min(100, Math.round(Number(o.score))));
-    return { score: Number.isFinite(s) ? s : null, note: String(o.note || "") };
-  } catch {
-    return { score: null, note: "unparseable judge output" };
+  if (all) {
+    try {
+      const o = JSON.parse(all[all.length - 1]);
+      return { score: clamp(Number(o.score)), note: String(o.note || "") };
+    } catch {}
   }
+  // The object didn't parse (a brace or bare quote in its note): the score itself is still
+  // there. Without this fallback such a seat scored null.
+  const nums = [...text.matchAll(/"score"\s*:\s*(\d{1,3})/g)];
+  if (nums.length) return { score: clamp(Number(nums[nums.length - 1][1])), note: "" };
+  return { score: null, note: "unparseable judge output" };
 }
 
 async function judge({ model, taskPrompt, candidateOutput, type = "code" }) {

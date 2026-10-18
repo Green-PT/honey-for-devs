@@ -19,7 +19,7 @@ const file = path.join(dir, "results.json");
 const j = JSON.parse(fs.readFileSync(file, "utf8"));
 const prompts = {};
 const promptOf = (id) =>
-  (prompts[id] = prompts[id] || fs.readFileSync(path.join(ROOT, "tasks", id, "prompt.md"), "utf8").trim());
+  (prompts[id] = prompts[id] || fs.readFileSync(path.join(ROOT, j.meta.tasks_dir || "tasks", id, "prompt.md"), "utf8").trim());
 const median = (xs) => {
   const s = [...xs].sort((a, b) => a - b), m = Math.floor(s.length / 2);
   return !s.length ? null : s.length % 2 ? s[m] : (s[m - 1] + s[m]) / 2;

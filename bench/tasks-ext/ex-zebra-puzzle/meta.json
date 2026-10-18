@@ -1,0 +1,15 @@
+{
+  "id": "ex-zebra-puzzle",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/zebra-puzzle",
+  "solution_file": "zebra_puzzle.py",
+  "test_file": "zebra_puzzle_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "zebra_puzzle_test"
+  ]
+}

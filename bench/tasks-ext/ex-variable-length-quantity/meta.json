@@ -1,0 +1,15 @@
+{
+  "id": "ex-variable-length-quantity",
+  "lang": "python",
+  "category": "exercism",
+  "source": "exercism/python@6105f6d exercises/practice/variable-length-quantity",
+  "solution_file": "variable_length_quantity.py",
+  "test_file": "variable_length_quantity_test.py",
+  "test_cmd": [
+    "python3",
+    "-m",
+    "unittest",
+    "-q",
+    "variable_length_quantity_test"
+  ]
+}
