@@ -1,7 +1,7 @@
 ---
 name: honey-px
 description: "Read huge read-only text as PNG pages; big input cut."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

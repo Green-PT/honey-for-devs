@@ -1,7 +1,7 @@
 ---
 name: honey-ccr
 description: "Compress-cache-retrieve huge array tool output."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

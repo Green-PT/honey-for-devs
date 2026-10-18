@@ -1,7 +1,7 @@
 ---
 name: honey
 description: "Write less code and say less about it. Cuts token cost."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:

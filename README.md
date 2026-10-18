@@ -83,6 +83,7 @@ Claude and ChatGPT, …) and the one-line installer: [docs/platforms.md](docs/pl
 - [Carbon badge and usage report](docs/carbon-and-usage.md)
 - [Benchmark results](docs/benchmark.md) · [Methodology](bench/METHODOLOGY.md)
 - [Contributing](docs/contributing.md) — one source skill, generated rule files
+- [Changelog](CHANGELOG.md)
 
 ## License
 

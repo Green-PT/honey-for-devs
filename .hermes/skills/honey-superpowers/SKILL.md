@@ -1,7 +1,7 @@
 ---
 name: honey-superpowers
 description: "Inject Honey levers into dispatched subagent prompts."
-version: 1.3.1
+version: 1.4.0
 author: GreenPT
 license: MIT
 metadata:
