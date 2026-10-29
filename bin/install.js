@@ -33,6 +33,18 @@ const URL = "https://github.com/" + SLUG;
 const HOME = os.homedir();
 const CLAUDE_DIR = process.env.CLAUDE_CONFIG_DIR || path.join(HOME, ".claude");
 const OPENCODE_DIR = path.join(process.env.XDG_CONFIG_HOME || path.join(HOME, ".config"), "opencode");
+// Same lookup as Hermes itself (hermes_constants.py): HERMES_HOME with ~ and $VARS
+// expanded, else %LOCALAPPDATA%\hermes on native Windows, else ~/.hermes.
+function hermesHome(env, platform) {
+  const set = (env.HERMES_HOME || "").trim();
+  if (set)
+    return set.replace(/\$\{(\w+)\}|\$(\w+)/g, (m, a, b) => env[a || b] ?? m).replace(/^~(?=$|[\\/])/, HOME);
+  const name = "hermes" + (env.HERMES_DATA_DIR_SUFFIX || "");
+  const local = (env.LOCALAPPDATA || "").trim();
+  if (platform === "win32") return path.join(local || path.join(HOME, "AppData", "Local"), name);
+  return path.join(HOME, "." + name);
+}
+const HERMES_DIR = hermesHome(process.env, process.platform);
 // Heading of the generated AGENTS.md — proves a copied file is ours before we delete it.
 const MARKER = "Honey (I Shrunk the AI)";
 
@@ -106,6 +118,13 @@ function copy(srcRel, destAbs) {
   fs.mkdirSync(path.dirname(destAbs), { recursive: true });
   fs.copyFileSync(src, destAbs);
   note("  copy " + srcRel + " -> " + destAbs);
+}
+// Skills-only installs copy SKILL.md files; a skill that runs bin/check.js gets the
+// checker next to it, where the skill text tells the agent to look.
+function copySkill(srcRel, destDir) {
+  copy(srcRel, path.join(destDir, "SKILL.md"));
+  if (fs.readFileSync(path.join(REPO, srcRel), "utf8").includes("bin/check.js"))
+    copy(path.join("bin", "check.js"), path.join(destDir, "check.js"));
 }
 // ---- statusline (Claude Code) ---------------------------------------------
 const SL_DIR = path.join(CLAUDE_DIR, "honey");
@@ -245,18 +264,18 @@ const CLI_AGENTS = [
   {
     id: "hermes",
     name: "Hermes Agent",
-    detect: () => which("hermes") || dirExists(path.join(HOME, ".hermes")),
-    // Native Hermes skills (portable SKILL.md standard) copied into
-    // ~/.hermes/skills/. Not always-on: activate with /honey or by asking;
+    detect: () => which("hermes") || dirExists(HERMES_DIR),
+    // Native Hermes skills (portable SKILL.md standard) copied into the Hermes
+    // home's skills/. Not always-on: activate with /honey or by asking;
     // workspace AGENTS.md gives per-project always-on.
     install: () => {
       for (const s of HERMES_SKILLS)
-        copy(path.join(".hermes", "skills", s, "SKILL.md"), path.join(HOME, ".hermes", "skills", s, "SKILL.md"));
+        copySkill(path.join(".hermes", "skills", s, "SKILL.md"), path.join(HERMES_DIR, "skills", s));
       note("  activate with /honey (or ask); workspace AGENTS.md is always-on");
     },
     uninstall: () => {
       for (const s of HERMES_SKILLS) {
-        const dir = path.join(HOME, ".hermes", "skills", s);
+        const dir = path.join(HERMES_DIR, "skills", s);
         if (DRY) { note("  [dry-run] remove " + dir); continue; }
         fs.rmSync(dir, { recursive: true, force: true });
         note("  removed " + dir);
@@ -274,7 +293,7 @@ const CLI_AGENTS = [
     install: () => {
       copy("AGENTS.md", path.join(OPENCODE_DIR, "AGENTS.md"));
       for (const s of OPENCLAW_SKILLS)
-        copy(path.join("skills", s, "SKILL.md"), path.join(OPENCODE_DIR, "skills", s, "SKILL.md"));
+        copySkill(path.join("skills", s, "SKILL.md"), path.join(OPENCODE_DIR, "skills", s));
       note("  always-on via AGENTS.md; check with: opencode debug skill");
     },
     uninstall: () => {
@@ -449,7 +468,7 @@ async function wizard() {
 }
 
 // ---- dispatch -------------------------------------------------------------
-module.exports = { CLI_AGENTS, RULE_AGENTS };
+module.exports = { CLI_AGENTS, RULE_AGENTS, hermesHome };
 if (require.main === module) {
   const explicit = onlyIds.length || has("--all") || MINIMAL || WITH_INIT || YES;
   if (has("--help")) help();

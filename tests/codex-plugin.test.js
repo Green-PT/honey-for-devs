@@ -33,6 +33,14 @@ test('skills is a real directory, not a symlink', () => {
   assert.ok(!fs.lstatSync(path.join(OUT, 'skills')).isSymbolicLink(), 'plugins/honey/skills must be a real copy');
 });
 
+test('the plugin root carries bin/check.js for the skills that run it', () => {
+  // honey-compress and honey-memory fall back to <plugin root>/bin/check.js when
+  // CLAUDE_PLUGIN_ROOT is unexpanded, a Claude Code variable.
+  const copied = path.join(OUT, 'bin', 'check.js');
+  assert.ok(fs.existsSync(copied), 'plugins/honey/bin/check.js missing — run the generator');
+  assert.equal(fs.readFileSync(copied, 'utf8'), fs.readFileSync(path.join(ROOT, 'bin', 'check.js'), 'utf8'));
+});
+
 test('the marketplace points at the subdirectory, never the repo root', () => {
   // `path: "./"` is what made `codex plugin add honey@greenpt` fail.
   const mkt = JSON.parse(fs.readFileSync(path.join(ROOT, '.agents', 'plugins', 'marketplace.json'), 'utf8'));

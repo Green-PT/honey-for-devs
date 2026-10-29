@@ -59,16 +59,29 @@ into `~/.openclaw/skills/`.
 ## Option A4 — Hermes Agent
 
 ```bash
+hermes plugins install Green-PT/honey-for-devs/.hermes --enable
+```
+
+Installs [`.hermes/`](.hermes/) as a Hermes plugin: Honey is always-on (the compact
+directive goes into every new session's system prompt), `/honey lite|full|ultra|off`
+pins a level, and every Honey skill loads as `honey:<name>` (`skill_view("honey:honey")`).
+`hermes plugins update honey` follows this repo. Start a new session after installing.
+
+Skills only, no plugin:
+
+```bash
 node bin/install.js --only hermes
 ```
 
 Copies the generated Hermes skill package ([`.hermes/skills/`](.hermes/skills/))
-into `~/.hermes/skills/` — the core `honey` skill plus the companions
+into the `skills/` folder of your Hermes home — `$HERMES_HOME` if set, else `~/.hermes`
+(`%LOCALAPPDATA%\hermes` on native Windows), the same lookup Hermes uses — the core `honey` skill plus the companions
 (`honey-review`, `honey-design`, and so on), in the portable SKILL.md format
 Hermes reads natively. Skills aren't always-on in Hermes: activate with
 `/honey` (or just ask); for per-project always-on, drop the root `AGENTS.md`
 into your workspace — Hermes reads workspace `AGENTS.md` automatically.
-Manual alternative: `cp -r .hermes/skills/* ~/.hermes/skills/`.
+Manual alternative: `cp -r .hermes/skills/* ~/.hermes/skills/` (that Hermes home folder), then
+copy `bin/check.js` into its `honey-compress/` and `honey-memory/` — both run it.
 
 ## Option A5 — oh-my-pi (`omp`)
 

@@ -1,0 +1,9 @@
+name: honey
+version: 1.4.0
+description: "Honey always-on: compact directive in every session prompt, /honey levels, the Honey skills."
+author: GreenPT
+license: MIT
+homepage: https://github.com/Green-PT/honey-for-devs
+kind: standalone
+provides_hooks:
+  - pre_llm_call
