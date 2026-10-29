@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Generate the Hermes Agent skill package (.hermes/skills/) from the canonical
 // skills/. Hermes (NousResearch/hermes-agent) reads the portable SKILL.md
-// standard from ~/.hermes/skills/, requiring `name`, `description`, `version`
+// standard from the Hermes home's skills/, requiring `name`, `description`, `version`
 // frontmatter with descriptions kept to one line under 60 chars. The body is
 // copied verbatim from skills/<name>/SKILL.md (via build-openclaw-skills) so the
 // ruleset never drifts; only the frontmatter is rewritten.

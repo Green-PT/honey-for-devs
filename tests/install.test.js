@@ -32,3 +32,55 @@ test('every rule file an agent copies exists', () => {
   for (const a of RULE_AGENTS)
     assert.ok(fs.existsSync(path.join(ROOT, a.src)), `missing ${a.src} for ${a.id}`);
 });
+
+// Hermes resolves its home as HERMES_HOME, else %LOCALAPPDATA%\hermes on native
+// Windows, else ~/.hermes. A hard-coded ~/.hermes installed into a folder Hermes
+// on Windows never reads.
+test('hermes home follows HERMES_HOME, then the platform default', () => {
+  const { hermesHome } = require('../bin/install');
+  const home = require('os').homedir();
+  assert.equal(hermesHome({ HERMES_HOME: '/srv/h' }, 'linux'), '/srv/h');
+  assert.equal(hermesHome({ HERMES_HOME: 'D:\\h', LOCALAPPDATA: 'C:\\L' }, 'win32'), 'D:\\h');
+  assert.equal(hermesHome({ LOCALAPPDATA: 'C:\\L' }, 'win32'), path.join('C:\\L', 'hermes'));
+  assert.equal(hermesHome({}, 'win32'), path.join(home, 'AppData', 'Local', 'hermes'));
+  assert.equal(hermesHome({}, 'darwin'), path.join(home, '.hermes'));
+  // Hermes expands ~ and $VARS in HERMES_HOME and treats a blank one as unset.
+  assert.equal(hermesHome({ HERMES_HOME: '~/h' }, 'linux'), home + '/h');
+  assert.equal(hermesHome({ HERMES_HOME: '$BASE/h', BASE: '/b' }, 'linux'), '/b/h');
+  assert.equal(hermesHome({ HERMES_HOME: '  ' }, 'darwin'), path.join(home, '.hermes'));
+});
+
+// Skill-only installs copy SKILL.md files, so a skill that runs bin/check.js
+// needs the checker next to it — nothing else on disk provides it.
+for (const [id, envKey, skillsDir] of [
+  ['hermes', 'HERMES_HOME', (d) => path.join(d, 'skills')],
+  ['opencode', 'XDG_CONFIG_HOME', (d) => path.join(d, 'opencode', 'skills')],
+]) {
+  test(`${id}: install ships check.js next to every skill that runs it, uninstall removes it`, () => {
+    const os = require('os');
+    const cp = require('child_process');
+    const tmp = fs.mkdtempSync(path.join(os.tmpdir(), `honey-${id}-`));
+    // HOME/USERPROFILE too, so even a build that ignores envKey stays in tmp.
+    const env = { ...process.env, HOME: tmp, USERPROFILE: tmp, [envKey]: tmp };
+    const installer = path.join(ROOT, 'bin', 'install.js');
+    try {
+      cp.execFileSync(process.execPath, [installer, '--only', id], { env, stdio: 'pipe' });
+      const users = NAMES.filter((s) =>
+        fs.readFileSync(path.join(ROOT, 'skills', s, 'SKILL.md'), 'utf8').includes('bin/check.js'));
+      assert.ok(users.length >= 2, 'expected honey-compress and honey-memory to run bin/check.js');
+      for (const s of users) {
+        const checker = path.join(skillsDir(tmp), s, 'check.js');
+        assert.ok(fs.existsSync(checker), `missing ${checker}`);
+        const a = path.join(tmp, 'a.md');
+        const b = path.join(tmp, 'b.md');
+        fs.writeFileSync(a, 'Never run `rm -rf` on 3 hosts, see https://x.io. Some wordy filler text here.\n');
+        fs.writeFileSync(b, 'Never run `rm -rf` on 3 hosts, see https://x.io.\n');
+        cp.execFileSync(process.execPath, [checker, 'fidelity', a, b], { stdio: 'pipe' });
+      }
+      cp.execFileSync(process.execPath, [installer, '--uninstall', '--only', id], { env, stdio: 'pipe' });
+      for (const s of users) assert.ok(!fs.existsSync(path.join(skillsDir(tmp), s)), `${s} left behind`);
+    } finally {
+      fs.rmSync(tmp, { recursive: true, force: true });
+    }
+  });
+}

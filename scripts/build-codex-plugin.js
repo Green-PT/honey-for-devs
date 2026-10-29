@@ -37,6 +37,9 @@ function build() {
     recursive: true,
     filter: (src) => !path.basename(src).startsWith('.'),
   });
+  // honey-compress and honey-memory run bin/check.js from the plugin root.
+  fs.mkdirSync(path.join(OUT, 'bin'), { recursive: true });
+  fs.copyFileSync(path.join(ROOT, 'bin', 'check.js'), path.join(OUT, 'bin', 'check.js'));
 }
 
 if (require.main === module) {

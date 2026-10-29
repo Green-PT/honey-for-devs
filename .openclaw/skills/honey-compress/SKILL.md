@@ -19,7 +19,7 @@ Apply Lever 2 to a file the agent re-reads every session. The cheapest token is 
    file didn't get smaller. On a failure, fix the named loss, or restore the backup
    (`cp FILE.original.md FILE`) when the fix would cost the savings. Never report a
    failing rewrite as done.
-   (If `CLAUDE_PLUGIN_ROOT` is unexpanded, `bin/check.js` lives at the plugin root, two directories above this file; installed from npm it is `honey-check`.)
+   (If `CLAUDE_PLUGIN_ROOT` is unexpanded, `bin/check.js` lives at the plugin root, two directories above this file; a skills-only install (Hermes, OpenCode) puts it next to this file as `check.js`; installed from npm it is `honey-check`.)
 5. **Report** original vs new byte count (the check prints it) and the backup path.
 
 ## Keep exact — never compress

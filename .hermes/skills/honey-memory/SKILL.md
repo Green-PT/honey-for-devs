@@ -59,7 +59,8 @@ A markdown file does not update itself. Reliability = discipline, not infra:
   nothing, the same rule loaded from two files, and a Claude Code `MEMORY.md` past the
   200 lines / 25KB that load at session start. Fix each finding with the user's yes;
   never delete memory content unasked. (If `CLAUDE_PLUGIN_ROOT` is unexpanded,
-  `bin/check.js` lives at the plugin root, two directories above this file.)
+  `bin/check.js` lives at the plugin root, two directories above this file; a skills-only
+  install (Hermes, OpenCode) puts it next to this file as `check.js`.)
 - Treat a fact as **superseded**, not accumulated: replace the old line, don't
   stack a new one beside it.
 

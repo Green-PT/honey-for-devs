@@ -63,7 +63,7 @@ PATH. Safe to re-run; skips tools you don't have.
 | GitHub Copilot CLI | `copilot plugin marketplace add Green-PT/honey-for-devs` then `copilot plugin install honey@greenpt` |
 | Gemini CLI | `gemini extensions install https://github.com/Green-PT/honey-for-devs` |
 | OpenClaw | `clawhub install honey` (companions: `clawhub install honey-review`, …) |
-| Hermes Agent | `node bin/install.js --only hermes` — copies `.hermes/skills/` into `~/.hermes/skills/`; activate with `/honey` (workspace `AGENTS.md` is always-on) |
+| Hermes Agent | `node bin/install.js --only hermes` — copies `.hermes/skills/` into the Hermes home's `skills/` (`$HERMES_HOME`, else `~/.hermes`; `%LOCALAPPDATA%\hermes` on native Windows); activate with `/honey` (workspace `AGENTS.md` is always-on) |
 | Cursor | copy `.cursor/rules/honey.mdc` into your project |
 | Windsurf | copy `.windsurf/rules/honey.md` into your project |
 | Cline | copy `.clinerules/honey.md` into your project (token-conscious: the compact `skills/honey/cline-rule.md`) |
