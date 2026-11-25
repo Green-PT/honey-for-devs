@@ -38,7 +38,7 @@
   ],
   "devDependencies": {
     "@anthropic-ai/tokenizer": "^0.0.4",
-    "@toon-format/toon": "^2.3.0",
+    "@toon-format/toon": "^2.3.1",
     "gpt-tokenizer": "^3.4.0",
     "pxpipe-proxy": "^0.8.0"
   }
