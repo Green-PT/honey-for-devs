@@ -1,45 +1,57 @@
 # Carbon badge and usage report
 
-## Carbon badge (Claude Code)
+## Carbon and water badge (Claude Code)
 
-When Honey is active, the statusline also shows a live **CO₂ estimate** for the
-session and the **CO₂/$ saved** vs a no-Honey baseline:
+When Honey is active, the statusline also shows a live **CO₂e and water estimate**
+for the session and the **CO₂ saved** vs a no-Honey baseline:
 
 ```
-🍯 honey:full · 🌿 44g CO₂ (saved ~26g · $0.18)
+🍯 honey:full · 🌿 17.6g CO₂ · 💧 78mL (est. saved ~0.46g)
 ```
 
-(Illustrative — a ~2k-output-token Opus session.) The estimate is a faithful port
-of [EcoLogits](https://github.com/genai-impact/ecologits) v0.8.2 (verified to match
-the package exactly). **Model params come from EcoLogits' own registry**
-([`hooks/eco-models.json`](../hooks/eco-models.json), exported by
-[`scripts/build-eco-models.py`](../scripts/build-eco-models.py)) — matched by exact id,
-falling back to a per-family alias for frontier models too new for the registry.
-**Grid switches per provider** — Anthropic on AWS Trainium (~500 gCO₂/kWh), OpenAI
-on Azure (~400), Google on GCP (~330). Aliases, grids, and per-mode savings live in
-[`hooks/eco-config.json`](../hooks/eco-config.json).
+(Illustrative — an Opus session with 2k output tokens and 500k cache-read tokens.)
 
-The badge itself renders **only in Claude Code** (it reads Claude Code's
-transcript, where every model is a Claude model). The provider switching matters
-for [`scripts/eco_report.py`](../scripts/eco_report.py), which runs against any
-transcript — Codex/Gemini CLIs would each need their own statusline hook to show
-a live badge there.
+**Method.** The token-based method of Llopis-Garcia (2026), *Accounting for purchased
+artificial intelligence inference in corporate greenhouse gas inventories: A token-based
+method*, Sustainable Production and Consumption 70, 320–347,
+[doi:10.1016/j.spc.2026.11.003](https://doi.org/10.1016/j.spc.2026.11.003) (preprint
+[arXiv 2606.10660](https://arxiv.org/abs/2606.10660)), with the factors of its
+[SAEF dataset v3.2.0](https://doi.org/10.5281/zenodo.24460344) (CC BY 4.0):
 
-> Params are **speculative** — Anthropic discloses none. EcoLogits' raw coefficient
-> is a **single-stream (batch-size-1) upper bound** — it gives one request the whole
-> GPU set for the full generation (for Opus, ~1.9 tok/s, ~30× slower than reality),
-> which alone is ~1.4 kg per 1M output tokens. Production serves many requests
-> concurrently, so the badge divides that ceiling by an effective batch concurrency
-> (`serving_concurrency`, default 32 — calibrated so modeled throughput matches real
-> ~50–70 tok/s serving) to show realistic **served** impact. `eco_report.py` prints
-> both the served figure and the single-stream ceiling. Treat these as a range, not
-> a meter reading.
+```
+effective tokens = (output + 0.30 × (uncached input + cache writes) + 0.05 × cache reads) / 1.339
+kg CO₂e          = effective/1e6 × inference footprint + billed/1e6 × training term
+water (mL)       = effective/1e3 × (on-site WUE + off-site EWIF) per 1k effective tokens
+```
 
-For the full breakdown (usage + embodied + primary energy) run the real package:
+- **Every token counts**, weighted by the compute it costs: output in full, fresh input
+  at 0.30, cached input at 0.05. In a cache-heavy agentic session, cache reads are most
+  of the footprint and output is a few percent.
+- **Cradle-to-gate scope:** serving electricity (measured accelerator energy from the
+  ML.ENERGY Leaderboard, plus host, idle and PUE uplifts), embodied hardware,
+  data-centre construction, and the amortised final training run.
+- **Size class, not model:** a model id maps by tier word to class A (small: haiku,
+  mini, nano, flash, luna, terra), B (standard: sonnet, gpt-4o, gpt-4.1) or C
+  (frontier: opus, fable, mythos, gpt-5/6, astra, sol — and any unmapped id). Each
+  class value is the mean of its measured open-weight members; closed models are
+  assumed to match their class.
+- **Global-average grid and water** (0.4832 kg CO₂e/kWh; WUE 0.55 L/kWh, EWIF
+  3.142 L/kWh): providers don't disclose where a request is served, and that is the
+  paper's rule for unknown routing.
+- **Saved** runs only the saved output tokens through the same method — Honey cuts
+  output, not the input and cache that dominate the footprint — so it is a small share.
+
+> The paper calls its energy term **best-case** (lowest measured energy at ≤50 ms
+> inter-token latency): its serving-regime range is 2.0–2.8× the central factor, and
+> `eco-session.js` also prints the conservative high case. Treat the figures as an
+> estimate, not a meter reading.
+
+The badge renders **only in Claude Code** (it reads Claude Code's transcript).
+`honey-usage` below applies the same estimator to Codex and OpenCode sessions.
+For the full basis of the current session:
 
 ```bash
-pip install ecologits
-python scripts/eco_report.py        # newest session, or --transcript PATH
+node scripts/eco-session.js        # newest session, or --transcript PATH
 ```
 
 ## honey-usage — actual token usage across your coding agents
@@ -47,7 +59,7 @@ python scripts/eco_report.py        # newest session, or --transcript PATH
 `honey-usage` ([`bin/usage.js`](../bin/usage.js), inspired by
 [tokscale](https://github.com/junhoyeo/tokscale)) reads the session data your
 coding agents already write to disk and reports **actual token usage** —
-tokens, approximate USD, and served CO₂ — per app and model. Zero dependencies,
+tokens, approximate USD, CO₂e and water — per app and model. Zero dependencies,
 no network, nothing leaves your machine.
 
 | App | Source |
@@ -67,8 +79,8 @@ honey-usage --client codex,opencode --today  # scope by app and local day
 ```
 
 ```
-APP     MODEL        INPUT      OUTPUT   CACHE-R      CACHE-W     USD     CO2
-claude  claude-opus-5  85,540  4,296,591  1,814,741,458  44,864,917  $1295.62  94.45kg
+APP     MODEL          INPUT     OUTPUT        CACHE-R     CACHE-W       USD      CO2   WATER
+claude  claude-opus-5  85,540  4,296,591  1,814,741,458  44,864,917  $1295.62  59.80kg  256.1L
 ...
 ```
 
@@ -81,9 +93,9 @@ Details that keep the numbers honest:
   fall back to `_default`, so treat $ as approximate). Codex's
   `cached_input_tokens` are split out of `input_tokens` and priced as cache
   reads; OpenCode rows use the app's own recorded cost.
-- **CO₂** — the same served EcoLogits estimate as the badge
-  ([`hooks/eco.js`](../hooks/eco.js)), from output tokens; the badge's caveats
-  apply.
+- **CO₂e and water** — the same token-based estimate as the badge
+  ([`hooks/eco.js`](../hooks/eco.js)), from input, cache and output tokens; the
+  badge's caveats apply.
 - **Savings are ledger-gated** — the default report has no "saved" column: it
   shows what was actually spent, and app logs don't record whether Honey was
   active. `honey-usage --savings` claims savings **only** for sessions the

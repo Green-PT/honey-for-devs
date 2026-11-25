@@ -118,7 +118,6 @@ function installStatusline() {
   copy("hooks/honey-state.js", path.join(SL_DIR, "honey-state.js"));
   copy("hooks/eco.js", path.join(SL_DIR, "eco.js")); // statusline requires these
   copy("hooks/eco-config.json", path.join(SL_DIR, "eco-config.json"));
-  copy("hooks/eco-models.json", path.join(SL_DIR, "eco-models.json"));
   const cmd = 'node "' + SL_PATH + '"';
   if (DRY) return note("  [dry-run] wire statusLine in " + settingsPath);
   let settings = {};

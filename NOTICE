@@ -8,26 +8,22 @@ exception of the third-party material noted below.
 Third-party material
 ------------------------------------------------------------------------
 
-EcoLogits (genai-impact/ecologits) — Mozilla Public License 2.0 (MPL-2.0)
-  https://github.com/genai-impact/ecologits
-  License: https://www.mozilla.org/MPL/2.0/
+SOMA AI Emission Factors (SAEF) dataset v3.2.0 — Creative Commons
+Attribution 4.0 International (CC BY 4.0)
+  Llopis-Garcia, G. (2026). AI Inference Emission and Resource Factors for
+  Corporate GHG Inventories, dataset v3.2.0. Zenodo.
+  https://doi.org/10.5281/zenodo.24460344
+  License: https://creativecommons.org/licenses/by/4.0/
 
-The following files are derived from EcoLogits and remain governed by the
-MPL-2.0, not the MIT License:
+  - hooks/eco-config.json ("token_basis" and "classes")
+        A subset of SAEF v3.2.0: the H100 central, global-average rows for
+        classes A/B/C of factors_v3_lifecycle.csv and the central values of
+        token_basis_constants.csv. Values are unchanged; columns are renamed
+        and the rest of the dataset is omitted. CC BY 4.0, not MIT.
 
-  - hooks/eco-models.json
-        Generated from EcoLogits' model_repository (model active/total
-        parameter counts). Regenerated via scripts/build-eco-models.py.
-
-  - hooks/eco.js
-        The GPU energy/latency coefficients and the per-request impact
-        methodology (constants E_ALPHA, E_BETA, L_ALPHA, L_BETA, GPU_MEM,
-        GPU_EMB_GWP, and related serving/embodied factors) are taken from
-        EcoLogits and are MPL-2.0. The surrounding application code is MIT.
-
-Under the MPL-2.0, the source form of these files is available in this
-repository. Modifications to the EcoLogits-derived portions are also
-governed by the MPL-2.0.
+  The estimator in hooks/eco.js implements the published method of
+  Llopis-Garcia (2026), Sustainable Production and Consumption 70, 320-347,
+  doi:10.1016/j.spc.2026.11.003. It shares no code with SAEF. Honey-authored, MIT.
 
 ------------------------------------------------------------------------
 

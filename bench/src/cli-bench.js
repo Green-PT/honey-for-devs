@@ -209,7 +209,7 @@ function writeReport(A, B, C, started) {
   L.push(``);
   L.push(`Real \`claude\` CLI (model \`${MODEL}\`), ${RUNS} runs/cell, medians. Clean control: \`--setting-sources project\` from a settings-free temp cwd (no Honey hook leakage). Variants via \`--append-system-prompt\`. Started ${started}.`);
   L.push(``);
-  L.push(`Headline = **output tokens** (the volume each skill controls). CO₂ via the repo's EcoLogits port.`);
+  L.push(`Headline = **output tokens** (the volume each skill controls). CO₂e via the repo's token-based estimator (output tokens only here).`);
   // Part A
   L.push(`\n## A · Landing page (user-facing web)`);
   L.push(`\n| variant | out tok | vs honey | checks pass | pass-rate | bytes | CO₂ g/reply | $/reply |`);

@@ -36,7 +36,7 @@ Per task × variant × run:
    `src/rejudge.js` re-scores saved replies with any panel/rubric without regenerating.
 3. **Tokens** — input/output/cache from the API `usage`, kept as four separate classes
    (fresh input, cache creation, cache read, output) because they bill at different rates.
-4. **CO₂** — via the repo's EcoLogits port ([`hooks/eco.js`](../hooks/eco.js)), from output tokens.
+4. **CO₂e** — via the repo's token-based estimator ([`hooks/eco.js`](../hooks/eco.js); Llopis-Garcia 2026, SAEF v3.2.0), from input, cache and output tokens.
 5. **$** — reported two ways: **`$ (cached)`** (steady state — cache reads at ≈10% of input,
    cache *creation* charged at 1.25×) and **`$ (cold)`** (every input token billed fresh).
    Rates and cache multipliers in [`pricing.json`](pricing.json).

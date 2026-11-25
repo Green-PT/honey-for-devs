@@ -93,6 +93,6 @@ Claude and ChatGPT, …) and the one-line installer: [docs/platforms.md](docs/pl
 
 MIT — see [LICENSE](LICENSE).
 
-The carbon-estimation data and coefficients in `hooks/eco-models.json` and
-`hooks/eco.js` are derived from [EcoLogits](https://github.com/genai-impact/ecologits)
-and remain under the **MPL-2.0**. See [NOTICE](NOTICE) for details.
+The carbon and water factors in `hooks/eco-config.json` are a subset of the
+[SAEF dataset v3.2.0](https://doi.org/10.5281/zenodo.24460344) by G. Llopis-Garcia,
+under **CC BY 4.0**. See [NOTICE](NOTICE) for details.

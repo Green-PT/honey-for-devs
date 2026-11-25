@@ -197,7 +197,7 @@ async function runCell(task, variantName, system, run) {
     run,
     stop_reason: gen.stop_reason ?? null, // "max_tokens" = truncated; not a real token saving
     usage: gen.usage,
-    gco2: eco.estimate(MODEL, gen.usage.output, cfg).gco2,
+    gco2: eco.estimate(MODEL, gen.usage, cfg).gco2,
     reply: gen.text,
   };
 
@@ -392,7 +392,7 @@ const cellKey = (v, t, r) => `${v}__${t}__r${r}`;
     `- **$ (cached)** — steady state: cache reads at ≈10% of input, cache *creation* charged.\n` +
     `  **$ (cold)** — first-turn worst case: every input token billed fresh. Real cost sits\n` +
     `  between, nearer cached as a session lengthens. Rates in \`bench/pricing.json\`.\n` +
-    `- **CO₂** via EcoLogits port (\`hooks/eco.js\`), from output tokens.\n`;
+    `- **CO₂e** via the token-based estimator (\`hooks/eco.js\`), from input, cache and output tokens.\n`;
   fs.writeFileSync(path.join(outDir, "report.md"), md);
 
   console.log("\n" + ptbl + "\n\n" + tbl + "\n");

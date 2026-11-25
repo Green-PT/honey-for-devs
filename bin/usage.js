@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // honey-usage — actual token usage of local AI coding apps, with approximate USD
-// (bench/pricing.json) and served CO2 (hooks/eco.js EcoLogits port).
+// (bench/pricing.json), CO2e and water (hooks/eco.js token-based estimate).
 //
 // Apps: claude (Claude Code), codex (Codex CLI), opencode (OpenCode).
 // Only apps with data on this machine are scanned; missing roots are skipped.
@@ -316,9 +316,13 @@ function aggregate(records, keys) {
   }
   const cfg = eco.loadConfig();
   const rows = [...groups.values()];
-  const totals = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, usd: 0, gco2: 0 };
+  const totals = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0, usd: 0, gco2: 0, waterMl: 0 };
   for (const r of rows) {
-    r.gco2 = eco.estimate(r.model, r.output, cfg).gco2;
+    const e = eco.estimate(r.model, {
+      input: r.input, output: r.output, cache_read: r.cacheRead, cache_write: r.cacheWrite,
+    }, cfg);
+    r.gco2 = e.gco2;
+    r.waterMl = e.waterMl;
     for (const f of Object.keys(totals)) totals[f] += r[f];
   }
   rows.sort((a, b) => keys.map((f) => a[f]).join() < keys.map((f) => b[f]).join() ? -1 : 1);
@@ -327,13 +331,14 @@ function aggregate(records, keys) {
 
 const fmtN = (n) => n.toLocaleString("en-US");
 const fmtG = (g) => (g >= 1000 ? (g / 1000).toFixed(2) + "kg" : g.toFixed(1) + "g");
+const fmtL = (ml) => (ml >= 1000 ? (ml / 1000).toFixed(1) + "L" : Math.round(ml) + "mL");
 
 function render(rows, totals, keys) {
-  const heads = [...keys.map((k) => k.toUpperCase()), "INPUT", "OUTPUT", "CACHE-R", "CACHE-W", "USD", "CO2"];
+  const heads = [...keys.map((k) => k.toUpperCase()), "INPUT", "OUTPUT", "CACHE-R", "CACHE-W", "USD", "CO2", "WATER"];
   const line = (r) => [
     ...keys.map((k, i) => String(r[k] ?? (i === 0 ? "total" : ""))),
     fmtN(r.input), fmtN(r.output), fmtN(r.cacheRead), fmtN(r.cacheWrite),
-    "$" + r.usd.toFixed(2), fmtG(r.gco2),
+    "$" + r.usd.toFixed(2), fmtG(r.gco2), fmtL(r.waterMl),
   ];
   const table = [heads, ...rows.map(line), line(totals)];
   const w = heads.map((_, i) => Math.max(...table.map((r) => r[i].length)));
@@ -354,8 +359,9 @@ Reads actual token usage from local app data:
   opencode  ($XDG_DATA_HOME or ~/.local/share)/opencode/opencode.db  (needs sqlite3)
 
 Costs are approximate (bench/pricing.json; unknown models use its _default rate;
-OpenCode rows use the app's own recorded cost). CO2 is the served EcoLogits
-estimate from output tokens (hooks/eco.js).
+OpenCode rows use the app's own recorded cost). CO2e and water use the token-based
+method of Llopis-Garcia (2026) with SAEF v3.2.0 factors (hooks/eco.js): input,
+cache and output tokens all count, global-average grid and water.
 
 --savings reports modeled Honey savings, only for Claude Code sessions the
 SessionStart hook recorded in $CLAUDE_CONFIG_DIR/.honey-usage-ledger.jsonl

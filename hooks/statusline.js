@@ -1,12 +1,15 @@
 #!/usr/bin/env node
-// Statusline badge. When Honey is active, shows the mode plus a live EcoLogits
-// CO2 estimate for this session and the CO2/$ saved vs a no-Honey baseline.
+// Statusline badge. When Honey is active, shows the mode plus a live token-based
+// CO2e and water estimate for this session (hooks/eco.js) and the CO2 saved vs a
+// no-Honey baseline.
 // When Honey is off, prints nothing. Never throws — a statusline must not error.
 "use strict";
 
 const fs = require("fs");
 const os = require("os");
 const path = require("path");
+
+const DIR = process.env.CLAUDE_CONFIG_DIR || path.join(os.homedir(), ".claude");
 
 let input = null;
 try {
@@ -39,29 +42,35 @@ function ecoSuffix(mode, input) {
 
   const perModel = tokensByModel(tx);
 
-  let gco2 = 0, tokens = 0, topModel = null, topTokens = 0;
-  for (const [model, out] of Object.entries(perModel)) {
-    gco2 += eco.estimate(model, out, cfg).gco2;
-    tokens += out;
-    if (out > topTokens) { topTokens = out; topModel = model; }
+  let gco2 = 0, water = 0, tokens = 0, topModel = null, topTokens = 0;
+  for (const [model, t] of Object.entries(perModel)) {
+    const e = eco.estimate(model, t, cfg);
+    gco2 += e.gco2;
+    water += e.waterMl;
+    tokens += t.output;
+    if (t.output > topTokens) { topTokens = t.output; topModel = model; }
   }
   if (!tokens) return "";
 
-  let s = ` · 🌿 ${g(gco2)} CO₂`;
+  let s = ` · 🌿 ${g(gco2)} CO₂ · 💧 ${ml(water)}`;
 
   // CO₂ is measured from this session; the savings figure is a modelled counterfactual
   // from a committed bench stamp. Badge width can't carry the caveat, so it carries a
   // `~` and an `est.` marker and `/honey-eco` prints the full basis. No stamp for this
   // model -> no savings claim.
   const sv = eco.savingsInfo(cfg, mode, topModel);
-  const usd = input.cost && input.cost.total_cost_usd;
   if (sv && sv.k > 0) {
-    s += ` (est. saved ~${g(gco2 * sv.k)}` + (usd ? ` · $${(usd * sv.k).toFixed(2)}` : "") + ")";
+    // Honey cuts output tokens; only those go through the estimator as saved. No $ here:
+    // session cost is mostly input/cache, so cost x k would overclaim — `honey-usage
+    // --savings` prices the saved output tokens instead.
+    let saved = 0;
+    for (const [model, t] of Object.entries(perModel)) saved += eco.estimate(model, t.output * sv.k, cfg).gco2;
+    s += ` (est. saved ~${g(saved)})`;
   }
   return s;
 }
 
-// Sum output tokens per model. Transcripts are append-only, so cache the running
+// Sum token kinds per model. Transcripts are append-only, so cache the running
 // sums per path and parse only the bytes appended since the last render — O(new)
 // instead of re-reading the whole (unboundedly growing) file every statusline tick.
 function tokensByModel(tx) {
@@ -70,7 +79,7 @@ function tokensByModel(tx) {
   try { store = JSON.parse(fs.readFileSync(cacheFile, "utf8")); } catch {}
 
   const size = fs.statSync(tx).size;
-  const prev = store[tx];
+  const prev = store[tx] && store[tx].v === 2 ? store[tx] : null; // v1 cached output only
   const perModel = prev && prev.offset <= size ? { ...prev.perModel } : {};
   const from = prev && prev.offset <= size ? prev.offset : 0;
 
@@ -89,12 +98,21 @@ function tokensByModel(tx) {
     try { o = JSON.parse(line); } catch { continue; }
     const m = o.message;
     if (!m || m.role !== "assistant" || !m.usage) continue;
-    perModel[m.model] = (perModel[m.model] || 0) + (m.usage.output_tokens || 0);
+    const t = (perModel[m.model] = perModel[m.model] || { input: 0, output: 0, cache_read: 0, cache_write: 0 });
+    const u = m.usage;
+    t.input += u.input_tokens || 0;
+    t.output += u.output_tokens || 0;
+    t.cache_read += u.cache_read_input_tokens || 0;
+    t.cache_write += u.cache_creation_input_tokens || 0;
   }
 
-  store[tx] = { offset: from + consumed, perModel };
+  store[tx] = { v: 2, offset: from + consumed, perModel };
   try { fs.writeFileSync(cacheFile, JSON.stringify(store)); } catch {}
   return perModel;
+}
+
+function ml(v) {
+  return v >= 1000 ? `${(v / 1000).toFixed(v >= 10000 ? 0 : 1)}L` : `${Math.round(v)}mL`;
 }
 
 function g(v) {

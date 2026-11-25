@@ -1,18 +1,75 @@
 {
-  "_about": "Honey CO2 estimate config. Model params come from EcoLogits' registry (hooks/eco-models.json), NOT hand estimates. This file only holds: grids, savings, and aliases for frontier models too new for the registry.",
-  "_engine": "Faithful port of EcoLogits v0.8.2 (genai-impact/ecologits, MIT). scripts/eco_report.py runs the real package for the authoritative breakdown.",
-  "_match": "A model id is resolved by: (1) exact name in eco-models.json, else (2) first alias whose 'match' substring appears in the id -> borrow that registry model's params, else (3) default_alias. Params and provider always come from the registry.",
-  "_grid_note": "Per-provider, location-based. Anthropic on AWS Trainium (Project Rainier PA/IN/MS ~500), OpenAI on Azure (~400), Google on GCP (~330). Researched, not from EcoLogits; market-based (renewable PPAs) would be lower.",
-  "grids_gco2_per_kwh": {
-    "anthropic": 500,
-    "openai": 400,
-    "google": 330,
-    "default": 450
+  "_about": "Honey CO2e + water estimate config. Method: Llopis-Garcia (2026), Sustainable Production and Consumption 70, 320-347, doi:10.1016/j.spc.2026.11.003 (preprint arXiv 2606.10660). Factors: SOMA AI Emission Factors (SAEF) dataset v3.2.0, Llopis-Garcia (2026), Zenodo doi:10.5281/zenodo.24460344, licensed CC BY 4.0. Changes: subset only — the H100 central, global-average rows for classes A/B/C (factors_v3_lifecycle.csv) and the token-basis constants (token_basis_constants.csv); values unchanged. Do not refresh from SAEF v3.3.0+: same values, but a non-commercial data licence.",
+  "_scope": "Cradle-to-gate per token: serving electricity (accelerator energy from ML.ENERGY Leaderboard v3 at <=50 ms inter-token latency, x host uplift 1.5, x idle uplift 1.1, x PUE 1.2, utilisation 0.75), embodied hardware, data-centre construction, and amortised final training run. Grid: global average 0.4832 kg CO2e/kWh lifecycle (Ember 2023 World), location-based. Water: on-site WUE 0.55 L/kWh on server energy + off-site EWIF 3.142 L/kWh on facility energy, consumption basis (Li et al. 2025); excl-hydro uses EWIF 1.572. The paper calls its energy term best-case (biased low): its serving-regime range is 2.0-2.8x the central factor; gco2High is the conservative high case (+64% on the footprint).",
+  "token_basis": {
+    "w_in": 0.3,
+    "w_cache": 0.05,
+    "d": 1.339
   },
-
-  "_savings_note": "Output-token reduction vs a no-Honey baseline (CO2 scales with output tokens). This is a MODELLED counterfactual carried over from the benchmark — it is NOT measured for the session being reported, and every consumer must say so. 'full' is the paired per-task median from the committed stamp in savings_provenance (all task tiers, not the flattering code-only slice); lite/ultra keep their historical ratio to 'full' and remain extrapolations, never measured. Per tier on the same stamp: code -39% (p=0.007), user-facing -7% (ns, p=0.673), agent-to-agent -49% (n=2). $ savings run lower than CO2 since input isn't cut — and can go negative on a cold session.",
-  "savings_vs_baseline": { "lite": 0.17, "full": 0.29, "ultra": 0.38 },
-
+  "_class_note": "Closed models are classed by vendor tier word, as the paper prescribes (small: haiku/mini/nano/flash/lite/luna/terra; standard: sonnet, gpt-4o, gpt-4.1, gemini pro; frontier: opus, fable, mythos, gpt-5/6, astra, sol, o-series, codex). First rule hit wins; '-mini' keeps its dash so 'gemini' does not read as mini. Unmapped -> C (highest intensity). A class value is the mean of its measured open-weight members, an assumption to disclose for closed models.",
+  "class_rules": [
+    {
+      "match": [
+        "haiku",
+        "-mini",
+        "-nano",
+        "flash",
+        "-lite",
+        "luna",
+        "terra",
+        "instant",
+        "gpt-3.5",
+        "oss-20b"
+      ],
+      "class": "A"
+    },
+    {
+      "match": [
+        "sonnet",
+        "gpt-4o",
+        "gpt-4.1",
+        "oss-120b",
+        "gemini"
+      ],
+      "class": "B"
+    }
+  ],
+  "default_class": "C",
+  "classes": {
+    "A": {
+      "label": "small (8-30B)",
+      "facility_kwh_per_m_eff": 0.07197,
+      "footprint_kg_per_m_eff": 0.03612,
+      "footprint_high_kg_per_m_eff": 0.05919,
+      "training_kg_per_m_billed": 0.0006,
+      "water_ml_per_1k_eff": 0.2591,
+      "water_excl_hydro_ml_per_1k_eff": 0.1461
+    },
+    "B": {
+      "label": "standard (~70B)",
+      "facility_kwh_per_m_eff": 0.23569,
+      "footprint_kg_per_m_eff": 0.11873,
+      "footprint_high_kg_per_m_eff": 0.19439,
+      "training_kg_per_m_billed": 0.00293,
+      "water_ml_per_1k_eff": 0.8486,
+      "water_excl_hydro_ml_per_1k_eff": 0.4784
+    },
+    "C": {
+      "label": "frontier",
+      "facility_kwh_per_m_eff": 0.87767,
+      "footprint_kg_per_m_eff": 0.44253,
+      "footprint_high_kg_per_m_eff": 0.72435,
+      "training_kg_per_m_billed": 0.01284,
+      "water_ml_per_1k_eff": 3.1599,
+      "water_excl_hydro_ml_per_1k_eff": 1.7816
+    }
+  },
+  "_savings_note": "Output-token reduction vs a no-Honey baseline. Saved CO2/water = the saved output tokens through the same token method, so the saving is a small share of a cache-heavy agentic session's footprint (input and cache reads count too). This is a MODELLED counterfactual carried over from the benchmark — it is NOT measured for the session being reported, and every consumer must say so. 'full' is the paired per-task median from the committed stamp in savings_provenance (all task tiers, not the flattering code-only slice); lite/ultra keep their historical ratio to 'full' and remain extrapolations, never measured. Per tier on the same stamp: code -39% (p=0.007), user-facing -7% (ns, p=0.673), agent-to-agent -49% (n=2). $ savings run lower than CO2 since input isn't cut — and can go negative on a cold session.",
+  "savings_vs_baseline": {
+    "lite": 0.17,
+    "full": 0.29,
+    "ultra": 0.38
+  },
   "_savings_provenance_note": "Which measurement the ratio above came from. by_model gates the claim: a session whose model matches no key here gets NO savings line rather than an extrapolated one. An entry's 'n' overrides the suite-wide count when tasks were excluded (fable: cells with stop_reason 'refusal' — Fable 5 refuses some bare bench prompts — are dropped from pairing; see the stamp's report.md). Regenerate after a live bench with: node bench/src/report.js --stamp <stamp>",
   "savings_provenance": {
     "measured_mode": "full",
@@ -20,29 +77,53 @@
     "stamp": "bench/results/full-opus48",
     "n": 23,
     "by_model": {
-      "opus-5-5": { "ratio": 0.399, "p": 0.00008, "n": 23, "stamp": "bench/results/full-opus55b", "model": "claude-opus-5-5" },
-      "opus": { "ratio": 0.286, "p": 0.020, "stamp": "bench/results/full-opus48", "model": "claude-opus-4-8" },
-      "gpt-5": { "ratio": 0.196, "p": 0.004, "stamp": "bench/results/full-gpt55", "model": "gpt-5.5" },
-      "fable": { "ratio": 0.393, "p": 0.0003, "n": 17, "stamp": "bench/results/full-fable5", "model": "claude-fable-5" },
-      "sonnet-5-5": { "ratio": 0.374, "p": 0.00006, "n": 23, "stamp": "bench/results/full-sonnet55", "model": "claude-sonnet-5-5" },
-      "sonnet-5": { "ratio": 0.235, "p": 0.00006, "n": 23, "stamp": "bench/results/full-sonnet5", "model": "claude-sonnet-5" },
-      "haiku-4-5": { "ratio": 0.402, "p": 0.00005, "n": 23, "stamp": "bench/results/full-haiku45", "model": "claude-haiku-4-5-20251001" }
+      "opus-5-5": {
+        "ratio": 0.399,
+        "p": 8e-05,
+        "n": 23,
+        "stamp": "bench/results/full-opus55b",
+        "model": "claude-opus-5-5"
+      },
+      "opus": {
+        "ratio": 0.286,
+        "p": 0.02,
+        "stamp": "bench/results/full-opus48",
+        "model": "claude-opus-4-8"
+      },
+      "gpt-5": {
+        "ratio": 0.196,
+        "p": 0.004,
+        "stamp": "bench/results/full-gpt55",
+        "model": "gpt-5.5"
+      },
+      "fable": {
+        "ratio": 0.393,
+        "p": 0.0003,
+        "n": 17,
+        "stamp": "bench/results/full-fable5",
+        "model": "claude-fable-5"
+      },
+      "sonnet-5-5": {
+        "ratio": 0.374,
+        "p": 6e-05,
+        "n": 23,
+        "stamp": "bench/results/full-sonnet55",
+        "model": "claude-sonnet-5-5"
+      },
+      "sonnet-5": {
+        "ratio": 0.235,
+        "p": 6e-05,
+        "n": 23,
+        "stamp": "bench/results/full-sonnet5",
+        "model": "claude-sonnet-5"
+      },
+      "haiku-4-5": {
+        "ratio": 0.402,
+        "p": 5e-05,
+        "n": 23,
+        "stamp": "bench/results/full-haiku45",
+        "model": "claude-haiku-4-5-20251001"
+      }
     }
-  },
-
-  "_serving_note": "EcoLogits' coefficient is a SINGLE-STREAM (batch-size-1) upper bound: it assigns one request the whole GPU set for the full generation latency (e.g. Opus ~1.9 tok/s, ~523s for 1000 tokens — ~30x slower than reality). Production serves many requests concurrently via continuous batching, which produces ~B tokens per forward pass at ~one-pass power, so per-request usage AND embodied impact (both latency-scaled) amortize by ~B. The badge and reports divide the faithful EcoLogits ceiling by this factor to show realistic SERVED impact; eco_report.py also prints the ceiling. 32 is calibrated so modeled throughput matches observed interactive serving (Opus 1.9 tok/s x 32 = ~61 tok/s, in the real ~50-70 tok/s range) and sits mid-range of published vLLM/TensorRT-LLM continuous-batching concurrency (16-64). Conservative by design — a carbon tool should not understate.",
-  "serving_concurrency": 32,
-
-  "_aliases_note": "For ids newer than the registry. Each points at the closest registry model whose EcoLogits params we borrow.",
-  "default_alias": "gpt-4o",
-  "aliases": [
-    { "match": ["fable", "mythos"], "registry": "claude-opus-4-1" },
-    { "match": ["opus"],            "registry": "claude-opus-4-1" },
-    { "match": ["sonnet"],          "registry": "claude-sonnet-4-0" },
-    { "match": ["haiku"],           "registry": "claude-3-5-haiku-latest" },
-    { "match": ["gpt-6", "gpt-5", "codex"], "registry": "gpt-5" },
-    { "match": ["gpt-4.1"],         "registry": "gpt-4.1" },
-    { "match": ["gpt-4", "o3", "o4", "o1"], "registry": "gpt-4o" },
-    { "match": ["gemini"],          "registry": "gemini-2.0-flash" }
-  ]
+  }
 }

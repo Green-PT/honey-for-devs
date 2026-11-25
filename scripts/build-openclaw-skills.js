@@ -22,7 +22,7 @@ const DESCRIPTIONS = {
   'honey-design': 'Same pixels, fewer tokens. For user-facing markup: keeps the full design, expresses it densely with CSS vars, shorthand, fluid units.',
   'honey-gain': "Show Honey's benchmark scoreboard: committed quality and token results per task tier vs Caveman, Ponytail, and no-skill. One-shot.",
   'honey-debt': 'Harvest every `honey:` shortcut marker into a debt ledger, flagging the ones with no revisit trigger. One-shot report, changes nothing.',
-  'honey-eco': "Report the session's Honey savings: output tokens, CO2, and CO2/$ saved vs a no-Honey baseline, via the committed EcoLogits port.",
+  'honey-eco': "Report the session's tokens, CO2e and water, plus CO2 saved vs a no-Honey baseline, via the committed token-based estimator.",
   'honey-ccr': 'Compress-Cache-Retrieve huge repetitive array tool output before it hits context: keep a sample, cache the rest, leave a hash.',
   'honey-px': 'Read huge dense read-only text as PNG pages via pxpipe export: ~60-75% fewer input tokens. Lossy on exact strings; never for files you will edit.',
   'honey-compress': 'Rewrite a memory or context file (CLAUDE.md, AGENTS.md, notes) into Honey-terse form to cut per-session input tokens. Backs up first.',

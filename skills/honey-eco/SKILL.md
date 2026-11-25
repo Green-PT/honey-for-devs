@@ -1,8 +1,8 @@
 ---
 name: honey-eco
 description: >-
-  Report this session's output tokens and CO₂ by running the repo's committed
-  EcoLogits port, plus the modelled CO₂/$ saved vs a no-Honey baseline — always
+  Report this session's tokens, CO₂e and water by running the repo's committed
+  token-based estimator, plus the modelled CO₂ saved vs a no-Honey baseline — always
   labelled with the bench stamp it came from. Use when asked how much Honey saved,
   the session's carbon/token footprint, or to expand the 🍯 statusline badge into a
   full breakdown.
@@ -11,7 +11,7 @@ license: MIT
 
 # Honey Eco
 
-Surface the numbers the carbon badge is based on. **Never estimate by hand** — run the committed report so the figure matches `hooks/eco.js` (the verified EcoLogits v0.8.2 port) exactly.
+Surface the numbers the carbon badge is based on. **Never estimate by hand** — run the committed report so the figure matches `hooks/eco.js` (the Llopis-Garcia 2026 token-based method with SAEF v3.2.0 factors) exactly.
 
 ## Do
 
@@ -22,11 +22,11 @@ node scripts/eco-session.js              # newest session
 node scripts/eco-session.js --transcript PATH --mode full
 ```
 
-Then report terse — output tokens, CO₂eq (g), and the `saved` line — in a line or two. Keep the exact numbers the script prints; don't round away precision.
+Then report terse — tokens, CO₂e (g), water (mL), and the `saved` line — in a line or two. Keep the exact numbers the script prints; don't round away precision.
 
 ## Two numbers, two epistemic statuses — never merge them
 
-- **CO₂eq is measured** for this session: real output tokens through the EcoLogits port.
+- **CO₂e and water are computed** from this session's real tokens (input, cache, output) through the estimator.
 - **`saved` is not.** It is a *modelled counterfactual* — how many tokens a no-Honey run
   would have emitted — taken from a committed bench stamp. Always pass through the
   `basis:` line the script prints (stamp, model, n, p). Never state a savings figure
@@ -36,15 +36,9 @@ When the script prints `saved : —`, no committed stamp covers this session's m
 that. Do not extrapolate from another model's ratio — that is exactly how a tool ends up
 reporting savings while the invoice goes up.
 
-For the authoritative breakdown (usage + embodied + primary energy) the user can run the Python path, which needs the real package:
-
-```bash
-pip install ecologits && python scripts/eco_report.py
-```
-
 ## Say once, don't bury
 
-The params are **speculative** (Anthropic discloses none). The badge shows **served** impact — EcoLogits' single-stream (batch-1) ceiling divided by `serving_concurrency` (continuous-batching amortization); `eco-session.js`/`eco_report.py` also print the raw ceiling. State that once, briefly, then give the number. The badge renders only in Claude Code (its transcript is all Claude models).
+Closed models are estimated by **size class** (mean of measured open-weight models), on a global-average grid, and the paper calls its energy term best-case (2.0–2.8× serving-regime range; the script prints a high case). `saved` covers output tokens only — Honey doesn't cut the input and cache that dominate an agentic session. State that once, briefly, then give the number. The badge renders only in Claude Code (its transcript is all Claude models).
 
 ## Boundaries
 

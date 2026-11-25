@@ -3,6 +3,28 @@
 Every manifest carries the same version (`tests/versions.test.js` checks it). Releases are
 tagged on `main`.
 
+## Unreleased
+
+### Changed
+- CO₂ now uses the token-based method of Llopis-Garcia (2026, *Sustainable Production
+  and Consumption* 70, doi:10.1016/j.spc.2026.11.003) with SAEF v3.2.0 factors (CC BY
+  4.0), replacing the EcoLogits port. Input and cache tokens count, size classes replace
+  per-model params, and the grid is the global average. Opus figures drop ~60× per
+  output token, and the CO₂ saved shrinks to the output share of the session.
+- Water estimate (on-site + off-site) in the badge, `honey-eco` and `honey-usage`.
+- Badge no longer shows $ saved: session cost x saving ratio overclaimed, since most cost
+  is input and cache. `honey-usage --savings` prices saved output tokens.
+- Pricing for Claude Fable 5.2 / Mythos 5.2, the Sonnet 5.5 cache rate, and GPT-6.x
+  (Astra, Sol, Terra, Luna); OpenAI cache writes no longer billed at 1.25x.
+- Bench client: adaptive thinking on current Claude models (`budget_tokens` 400s there).
+- CI on Node 22; `@toon-format/toon` 2.3.1 (GHSA-p95v-992w-h6c3).
+
+### Fixed
+- The CO₂ badge never rendered since 1.4.0: the statusline referenced a removed `DIR`.
+
+### Removed
+- `hooks/eco-models.json`, `scripts/eco_report.py`, `scripts/build-eco-models.py`.
+
 ## 1.4.0 — 2026-10-18
 
 ### Added

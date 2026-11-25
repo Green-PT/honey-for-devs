@@ -11,7 +11,7 @@ reach for at a specific moment.
 | `honey-chat` | standalone prompt | Honey for plain chat — the terse-prose core, no tools required. Paste [`skills/honey-chat/SKILL.md`](../skills/honey-chat/SKILL.md) into a claude.ai Project's custom instructions, a Style, or an API system prompt (~500 tokens); [`COMPACT.md`](../skills/honey-chat/COMPACT.md) (≤1,500 chars) fits ChatGPT/Gemini custom-instruction fields |
 | `honey-design` | satellite skill | for user-facing UI (landing pages, components): keeps the full rendered polish, cuts tokens by writing the design densely (CSS vars, shared classes, `clamp()`) — same pixels, fewer tokens |
 | `honey-review` | satellite skill | review a diff for over-engineering + over-verbosity; terse numbered delete-list ("cut 1 and 3") |
-| `honey-eco` | satellite skill | this session's CO₂ / $ / tokens saved, from the committed EcoLogits port |
+| `honey-eco` | satellite skill | this session's CO₂e, water and tokens, plus CO₂ saved, from the committed token-based estimator |
 | `honey-gain` | satellite skill | the committed benchmark scoreboard (reads `bench/results/` at runtime) |
 | `honey-debt` | satellite skill | harvest every `shortcut:` marker (and legacy `honey:` ones) into a debt ledger, flagging the ones with no revisit trigger — so a deliberate simplification can't quietly go permanent |
 | `honey-compress` | satellite skill | rewrite a re-read memory file (CLAUDE.md, AGENTS.md) tersely to cut *input* tokens; backs up the original, then `honey-check fidelity` undoes any rewrite that lost a number, code span, negation or safety word, or didn't shrink |

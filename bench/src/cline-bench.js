@@ -131,7 +131,7 @@ async function finishCell(task, variant, run, dir, { stdout, stderr, status }, p
   return {
     variant, task: task.meta.id, category: task.meta.category, type: "code", run,
     usage: parsed.usage, cost: parsed.cost, iterations: parsed.iterations,
-    gco2: eco.estimate(MODEL, parsed.usage.output, cfg).gco2,
+    gco2: eco.estimate(MODEL, parsed.usage, cfg).gco2,
     passed: g.passed, grade_detail: g.detail, loc: loc(code),
     judge: median(scores), judges: Object.fromEntries(panel.map((p) => [p.model, p.score])),
   };
