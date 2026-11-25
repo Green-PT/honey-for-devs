@@ -6,6 +6,8 @@ const OPENAI_BASE = (process.env.OPENAI_BASE_URL || "https://api.openai.com").re
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const TRANSIENT = new Set([408, 409, 429, 500, 502, 503, 504, 529]);
+// Pre-4.6 ids: claude-3*, haiku-4-5, opus/sonnet 4, 4.1, 4.5 (incl. dated snapshots).
+const LEGACY_THINKING = /claude-(3|haiku-4-5|(opus|sonnet)-4-(1|5|20\d{6}))/i;
 
 // POST JSON with retry — a long benchmark run will hit the odd transient network drop or
 // 429/overloaded; one of those shouldn't kill 300+ generations. Up to 8 attempts with capped
@@ -54,7 +56,12 @@ async function completeAnthropic({ model, system, user, maxTokens, thinking }) {
   // re-billed per task. cache_control makes repeat calls read it at ~10% input cost.
   if (system) body.system = [{ type: "text", text: system, cache_control: { type: "ephemeral" } }];
   if (thinking > 0) {
-    body.thinking = { type: "enabled", budget_tokens: thinking };
+    // budget_tokens 400s on Opus 4.7+, Sonnet 5+, Haiku 5.5 and Fable; only pre-4.6
+    // models (Haiku 4.5, Sonnet/Opus 4.5 and older) still need it. Adaptive elsewhere —
+    // thinking is then the model's call, and `thinking` only adds max_tokens headroom.
+    body.thinking = LEGACY_THINKING.test(model)
+      ? { type: "enabled", budget_tokens: thinking }
+      : { type: "adaptive" };
     body.max_tokens = maxTokens + thinking; // max_tokens must exceed the thinking budget
   }
 

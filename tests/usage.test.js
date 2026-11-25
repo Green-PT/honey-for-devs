@@ -242,6 +242,20 @@ test("unit: dollars() rates and cache multipliers mirror bench/pricing.json", ()
   close(dollars("some-unknown-model", { input: 1e6, output: 1e6 }), 3.0 + 15.0); // _default
 });
 
+// First substring hit wins: each newest id must hit its own row, not a generic sibling.
+test("unit: newest Claude and GPT-6.x ids resolve to their own rates", () => {
+  const out = (m) => dollars(m, { output: 1e6 });
+  close(out("claude-fable-5-2"), 40.0); // not "fable" ($50)
+  close(out("claude-fable-5-1"), 50.0);
+  close(dollars("claude-sonnet-5-5", { cache_read: 1e6 }), 2.0 * 0.05); // not "sonnet-5" (0.1x)
+  close(out("gpt-6.2-astra"), 40.0); // not "gpt-6" ($50)
+  close(out("gpt-6.2-sol"), 10.0);
+  close(out("gpt-6.1-terra"), 5.0);
+  close(out("gpt-6-luna"), 0.5);
+  close(out("gpt-6-astra"), 50.0);
+  close(dollars("gpt-6.2-astra", { cache_write: 1e6 }), 8.0 * 1.0); // OpenAI: no write premium
+});
+
 test("unit: day() is local-time YYYY-MM-DD", () => {
   const ts = Date.UTC(2026, 0, 2, 12);
   const d = new Date(ts);
