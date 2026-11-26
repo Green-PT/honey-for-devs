@@ -21,13 +21,19 @@ try {
 }
 
 let dataDir; // XDG_DATA_HOME containing opencode/opencode.db
+let v2Dir; // XDG_DATA_HOME for an OpenCode v2 (session_message) database
+let bothDir; // XDG_DATA_HOME where the v1 and v2 tables both hold rows
 let emptyDir;
 
 before(() => {
   const tmp = fs.mkdtempSync(path.join(os.tmpdir(), "honey-usage-"));
   dataDir = path.join(tmp, "data");
+  v2Dir = path.join(tmp, "v2");
+  bothDir = path.join(tmp, "both");
   emptyDir = path.join(tmp, "empty");
   fs.mkdirSync(path.join(dataDir, "opencode"), { recursive: true });
+  fs.mkdirSync(path.join(v2Dir, "opencode"), { recursive: true });
+  fs.mkdirSync(path.join(bothDir, "opencode"), { recursive: true });
   fs.mkdirSync(emptyDir);
   if (!HAS_SQLITE) return;
   const row = (id, d) => `INSERT INTO message VALUES('${id}','s1',0,0,'${JSON.stringify(d)}');`;
@@ -38,6 +44,36 @@ before(() => {
     row("m3", { role: "user", time: { created: Date.UTC(2026, 0, 1, 12) } }),
   ].join("\n");
   execFileSync("sqlite3", [path.join(dataDir, "opencode", "opencode.db"), sql]);
+
+  // v2 fixture: role lives in the `type` column and the model in `model.id`.
+  const v2 = (id, type, d) => `INSERT INTO session_message VALUES('${id}','s1','${type}',0,0,0,'${JSON.stringify(d)}');`;
+  const v2Row = (id, output) =>
+    v2(id, "assistant", {
+      cost: 0.25,
+      tokens: { input: 300, output, reasoning: 3, cache: { write: 0, read: 40 } },
+      model: { id: "glm-5.3", providerID: "x" },
+      time: { created: Date.UTC(2026, 0, 3, 12) },
+    });
+  execFileSync("sqlite3", [
+    path.join(v2Dir, "opencode", "opencode.db"),
+    [
+      "CREATE TABLE session_message(id text primary key, session_id text not null, type text not null, seq integer not null, time_created integer not null, time_updated integer not null, data text not null);",
+      v2Row("m1", 20),
+      v2("m2", "user", { text: "hi", time: { created: Date.UTC(2026, 0, 3, 12) } }),
+    ].join("\n"),
+  ]);
+
+  // Both tables populated: m1 was migrated, m9 is new. Counting both reads m1 twice.
+  execFileSync("sqlite3", [
+    path.join(bothDir, "opencode", "opencode.db"),
+    [
+      "CREATE TABLE message(id text primary key, session_id text not null, time_created integer not null, time_updated integer not null, data text not null);",
+      "CREATE TABLE session_message(id text primary key, session_id text not null, type text not null, seq integer not null, time_created integer not null, time_updated integer not null, data text not null);",
+      row("m1", { role: "assistant", tokens: { input: 100, output: 10, reasoning: 0, cache: { write: 0, read: 0 } }, modelID: "glm-5.2", time: { created: Date.UTC(2026, 0, 1, 12) } }),
+      v2Row("m1", 10),
+      v2Row("m9", 99),
+    ].join("\n"),
+  ]);
 });
 
 function run(args, envOverrides) {
@@ -106,6 +142,25 @@ test("--daily: day rows ascending, combines with --json", (t) => {
   assert.equal(rows.find((r) => r.day === "2026-01-01" && r.app === "claude").input, 100);
   const table = run(["--daily"]);
   assert.match(table.stdout, /^DAY\s+APP\s+MODEL/, "day column first");
+});
+
+test("OpenCode v2: reads session_message, takes the model from model.id", (t) => {
+  if (!HAS_SQLITE) return t.skip("no sqlite3");
+  const { rows } = rowsJson(["--client", "opencode"], { XDG_DATA_HOME: v2Dir });
+  assert.equal(rows.length, 1);
+  const r = rows[0];
+  assert.deepEqual(
+    { model: r.model, input: r.input, output: r.output, cacheRead: r.cacheRead, cacheWrite: r.cacheWrite },
+    { model: "glm-5.3", input: 300, output: 23, cacheRead: 40, cacheWrite: 0 }
+  );
+  close(r.usd, 0.25); // embedded cost wins
+});
+
+test("OpenCode v2: migrated rows count once when both tables hold them", (t) => {
+  if (!HAS_SQLITE) return t.skip("no sqlite3");
+  const { rows } = rowsJson(["--client", "opencode"], { XDG_DATA_HOME: bothDir });
+  assert.equal(rows.length, 1);
+  assert.equal(rows[0].output, 115); // m1 once (10+3) + m9 (99+3); 125 if m1 is read twice
 });
 
 test("--client filters apps; unknown client exits 1", () => {
