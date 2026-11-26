@@ -141,12 +141,24 @@ function scanCodex(root) {
 // `reasoning` is billed as output.
 function scanOpencode(db) {
   if (!fs.existsSync(db)) return [];
-  let out;
-  try {
-    out = execFileSync("sqlite3", ["-readonly", "-json", db, "select data from message"], {
+  const q = (sql) =>
+    execFileSync("sqlite3", ["-readonly", "-json", db, sql], {
       encoding: "utf8",
       maxBuffer: 1 << 28,
     });
+  let out;
+  try {
+    // OpenCode v2 replaced `message` with `session_message`; the legacy table
+    // stops at the migration. Read exactly one: migrated rows are in both, so
+    // reading both counts them twice.
+    const tables = new Set(
+      JSON.parse(q("select name from sqlite_master where type='table'") || "[]").map((r) => r.name),
+    );
+    out = q(
+      tables.has("session_message")
+        ? "select data from session_message where type='assistant'"
+        : "select data from message",
+    );
   } catch (e) {
     const why = e.code === "ENOENT" ? "sqlite3 not found" : String(e.message).split("\n")[0];
     process.stderr.write(`honey-usage: skipping opencode (${why})\n`);
@@ -161,11 +173,12 @@ function scanOpencode(db) {
     } catch {
       continue;
     }
-    if (d.role !== "assistant" || !d.tokens) continue;
+    // v2 keeps the role in the `type` column, so only v1 rows carry `role`.
+    if ((d.role && d.role !== "assistant") || !d.tokens) continue;
     const t = d.tokens;
     recs.push({
       app: "opencode",
-      model: d.modelID || "unknown",
+      model: d.modelID || (d.model && d.model.id) || "unknown",
       ts: (d.time && d.time.created) || null,
       input: t.input || 0,
       output: (t.output || 0) + (t.reasoning || 0),
